@@ -7,17 +7,14 @@ import PopularServices from './components/PopularServices';
 import ChooseCategory from './components/ChooseCategory';
 import Worker from './components/Worker';
 */
+import Index from './components/pages/home/index';
 import Footer from './components/shared/Footer';
 
 
 
 function App() {  
   return <><Header/>
-  {/*<Banner/>
-   <Search/>
-  <PopularServices/>
-  <ChooseCategory/>
-  <Worker/> */}
+  <Index/>   
   <Footer/></>;
 }
 
