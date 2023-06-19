@@ -1,26 +1,32 @@
+import React from 'react';
+import { BrowserRouter as Router,Routes, Route, Link } from 'react-router-dom';
 function Footer() {
     return   <footer class="text-white py-2 mt-2">
     <div class="container mt-5">
       <div class="row">
         <div class="col-md-3">
-          <a class="navbar-brand logo " href="index.php">
-            <img src="assets/images/logo.png" class="footer" alt="" /></a>
+          <Link class="navbar-brand logo " to="/" >
+            <img src="assets/images/logo.png" class="footer" alt="" /></Link>
           <p class="foot">Career Growth: We believe in nurturing talent and providing opportunities for professional growth and development
           </p>
         </div>
         <div class="col-lg-3">
           <h4 class="text-white mb-4 ml-5">For Clients</h4>
           <ul class="list-unstyled ml-5">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="Category.index.html">Find Work</a></li>
-            <li><a href="services.html">Find Freelancers</a></li>
-            <li><a href="Contact us.html">Contact Us</a></li>
+            <li><Link to="/" >Home</Link></li>
+            <li><Link to="/category">Find Work</Link></li>
+            <li><Link to="/service">Find Freelancers</Link></li>
+            <li><Link to="/contact" >Contact Us</Link></li>
           </ul>
         </div>
         <div class="col-lg-3">
-          <h4 class="text-white mb-4">For Freelancers</h4>
-          <p class="foot">Find Work</p>
-          <p class="foot">Create Account</p>          
+          <h4 class="text-white mb-4">For Freelancers</h4>         
+          <ul class="list-unstyled ml-5">
+            <li><Link to="/signup">Create Account</Link></li>
+            <li><Link to="/login">Log In</Link></li>
+            <li><Link to="/service">Find Freelancers</Link></li>
+            <li><Link to="/contact" >Contact Us</Link></li>
+          </ul>
         </div>
         <div class="col-lg-3">
           <h4 class="text-white mb-4">Call Us</h4>
