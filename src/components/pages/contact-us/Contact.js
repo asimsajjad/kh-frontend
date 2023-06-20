@@ -1,4 +1,17 @@
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+
 function Contact() {
+
+  // const [myData, setMyData] = useState([]);
+  // const [isError, setIsError] = useState("");
+  // useEffect(() => {
+  //   axios
+  //     .get("http://localhost/khadim-hazir/api/employeesListing")
+  //     .then((response) => console.log(response.data))
+  //     .catch((error) => setIsError(error.message));
+  // }, []);
+
     return <section class="login-section pl-3">
     <div class="container mt-5">
       <div class="row height500">

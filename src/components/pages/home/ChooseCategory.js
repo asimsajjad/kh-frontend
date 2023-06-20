@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 function ChooseCategory() {
-  const [myData, setMyData] = useState([]);
-  const [isError, setIsError] = useState("");
-  useEffect(() => {
-    axios
-      .get("http://localhost/khadim-hazir/api/employeesListing")
-      .then((response) => console.log(response.data))
-      .catch((error) => setIsError(error.message));
-  }, []);
+  // const [myData, setMyData] = useState([]);
+  // const [isError, setIsError] = useState("");
+  // useEffect(() => {
+  //   axios
+  //     .get("http://localhost/khadim-hazir/api/employerList")
+  //     .then((response) => console.log(response.data))
+  //     .catch((error) => setIsError(error.message));
+  // }, []);
   return <>
     <div class="container mb-5">
     <h1 class="Category">Choose Different <span style={{color: "#673AB7"}}> Category</span> </h1>

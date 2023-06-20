@@ -21,9 +21,6 @@ import Contact from './components/pages/contact-us/Contact';
 
 import Footer from './components/shared/Footer';
 
-
-
-
 function App() {  
   return  <Router>
     <Header/>
@@ -47,5 +44,41 @@ function App() {
 
 export default App;
 
+// import { useState, useEffect } from "react";
+// import "./App.css";
+// import axios from 'axios';
 
+// const App = () => {
+//   const [myData, setMyData] = useState([]);
+//   const [isError, setIsError] = useState("");
 
+//   // using Promises
+//   useEffect(() => {
+//     axios
+//       .get("http://localhost/khadim-hazir/api/employeesListing")
+//       .then((response) => console.log(response.data))
+//       .catch((error) => setIsError(error.message));
+//   }, []);
+
+// //plz subscribe to thapa technical
+//   return (
+//     <>
+//       <h1>Axios Tutorial</h1>
+//       {/* {isError !== "" && <h2>{isError}</h2>}
+
+//       <div className="grid">
+//         {myData.map((post) => {
+//         const { username, employee_id, category_name } = post;
+//         return (
+//       <div key={employee_id} className="card">
+//         <h2>{username}</h2>
+//         <p>{category_name}</p>
+//       </div>
+//     );
+//   })}
+// </div> */}
+//     </>
+//   );
+// };
+
+// export default App; 

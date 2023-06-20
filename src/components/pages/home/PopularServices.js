@@ -1,9 +1,33 @@
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+
 function PopularServices() {
+  const [myData, setMyData] = useState([]);
+  const [isError, setIsError] = useState("");
+  useEffect(() => {
+    axios
+      .get("http://localhost/khadim-hazir/api/sevenCategories")
+      .then((response) => console.log(response.data.data.en))
+      .then((response) => setMyData(response.data.data.en))
+      .catch((error) => setIsError(error.message));
+  }, []);
+
     return <section class="pt-5 pb-5 worker-carousel mb-5">
+      
+    {myData.map((post) => {
+          const { name, id, image } = post;
+          
+          
+         
+        
+  <div>
+              <h2 class="mb-3 categories">{post.name}</h2>
+            </div>
+            })}
     <div class="container">
       <div class="row">
         <div class="col-md-6 mb-5">
-          <h2 class="mb-3 categories">Popular Services </h2>
+          {/* <h2 class="mb-3 categories">Popular Services </h2> */}
         </div>
         <div class="col-md-6 text-right">
           <a class="btn carousel-btn-left mb-3 mr-1" href="#carouselExampleIndicators2" role="button" data-slide="prev">
@@ -25,7 +49,7 @@ function PopularServices() {
                       <div class="carousel-card text-center">
                         <img class="img-fluid mx-auto" src="assets/images/svgviewer-png-output (1).png" alt="" />
                         <div class="card-body">
-                          <p>Landscaping</p>
+                        <p>Landscaping</p>
                         </div>
                       </div>
                     </div>
