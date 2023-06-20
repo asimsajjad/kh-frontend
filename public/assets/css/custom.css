@@ -1,11 +1,8 @@
-@font-face {
-    font-family: 'LimesSans';
-    src: url(fonts/LimesSans.ttf);
-}
+
 
 
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Poppins' !important;
 }
 
 .bi-search {
@@ -13,11 +10,11 @@ body {
 }
 
 .nav-links {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Poppins';
 }
 
 .nav li a.active {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Poppins';
 }
 
 .btn-light {
@@ -155,16 +152,7 @@ body {
     width: 700px;
     height: 50px;
 }
-@font-face{
-    font-family: myFont;
-    src: url(Poppins-Regular.ttf);
-}
-.main-banner .item h2{
-    font-family: myFont;
-}
-h2{
-    font-family: myFont;
-}
+
 .search-btn {
     border: none;
     width: 130px;

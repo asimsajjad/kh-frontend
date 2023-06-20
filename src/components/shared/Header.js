@@ -3,7 +3,7 @@ import { BrowserRouter as Router,Routes, Route, Link } from 'react-router-dom';
 function Header() {
     return <nav className="navbar navbar-expand-lg">
     <div className="container-fluid navbar">    
-      <Link to="/" className="navbar-brand logo pl-5" href="index.html">
+      <Link to="/" className="navbar-brand logo pl-4" href="index.html">
         <img src="assets/images/logo.png" alt="" width="253px"/></Link>
       <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

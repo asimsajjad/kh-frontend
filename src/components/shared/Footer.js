@@ -25,9 +25,9 @@ function Footer() {
         </div>
         <div class="col-lg-3">
           <h4 class="text-white mb-4">Call Us</h4>
-          <p class="foot"><i class="mr-2 bi bi-geo-alt"></i>Kenya</p>
-          <p class="foot"><i class="mr-2 bi bi-telephone"></i>+25470000000</p>
-          <p class="foot"><i class="mr-2 bi bi-envelope"></i>
+          <p class="foot"><i class="mr-2 fa fa-map-marker"></i>Kenya</p>
+          <p class="foot"><i class="mr-2 fa fa-phone"></i>+25470000000</p>
+          <p class="foot"><i class="mr-2 fa fa-envelope"></i>
             bluelance@gmail.com
           </p>
         </div>
