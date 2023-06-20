@@ -348,7 +348,7 @@ optgroup,
 select,
 textarea {
     margin: 0;
-    font-family: inherit;
+    font-family: 'Poppins';
     font-size: inherit;
     line-height: inherit
 }
@@ -674,7 +674,7 @@ progress {
     .container-md,
     .container-sm,
     .container-xl {
-        max-width: 1140px
+        max-width: 1170px
     }
 }
 

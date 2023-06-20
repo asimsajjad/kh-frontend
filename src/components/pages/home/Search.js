@@ -3,7 +3,7 @@ function Search() {
     <div class="row">
       <div class="col-md-12 d-flex justify-content-center">
         <div class="input-box">
-          <i class="fas fa-search "></i>
+          <i class="fas fa-search mr-3 "></i>
           <input type="text" class="search-input" placeholder="How can we help?" />
           <button class="button search-btn">search</button>
         </div>

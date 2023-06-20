@@ -38,8 +38,9 @@ function Contact() {
         <div class="col-md-4 pl-0">
           <div class="login-details">
             <h3 class="text-light ">Welcome Back</h3>
-            <p class="text-light mb-5 mt-5">to keep connected with us please </p>
-              <p>Login with your personal info</p>            
+            <p class="text-light mb-5 mt-5">to keep connected with us please
+Login with your personal info </p>
+                      
           </div>
         </div>
       </div>

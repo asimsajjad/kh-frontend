@@ -23,8 +23,8 @@ function ChooseCategory() {
             </div>
           </div>
         </div>
-        <div class="card-body cuntent">
-          <a href="#" class="categories m-3"> Appliance Repair <i class="fas fa-angle-right float-right"></i></a>
+        <div class="card-body cuntent text-center">
+          <a href="#" class="categories m-3"> Appliance Repair </a>
         </div>
       </div>
       <div class="col-md-3 mb-3 ">
@@ -35,8 +35,8 @@ function ChooseCategory() {
             </div>
           </div>
         </div>
-        <div class="card-body cuntent">
-          <a href="#" class="categories m-3"> Fence Repair <i class="fas fa-angle-right float-right"></i></a>
+        <div class="card-body cuntent text-center">
+          <a href="#" class="categories m-3"> Fence Repair </a>
         </div>
       </div>
       <div class="col-md-3 mb-3 ">
@@ -47,8 +47,8 @@ function ChooseCategory() {
             </div>
           </div>
         </div>
-        <div class="card-body cuntent">
-          <a href="#" class="categories m-3"> Plumbing Services <i class="fas fa-angle-right float-right"></i></a>
+        <div class="card-body cuntent text-center">
+          <a href="#" class="categories m-3"> Plumbing Services</a>
         </div>
       </div>
       <div class="col-md-3 mb-3 ">
@@ -59,26 +59,23 @@ function ChooseCategory() {
             </div>
           </div>
         </div>
-        <div class="card-body cuntent">
-          <a href="#" class="categories m-3"> Pest Control <i class="fas fa-angle-right float-right"></i></a>
+        <div class="card-body cuntent text-center">
+          <a href="#" class="categories m-3"> Pest Control</a>
         </div>
       </div>
     </div>
   </div>
-  <div class="container ">
+  <div class="container pt-1 ">
     <div class="row">
-      <div class="col-md-3 mb-3 gutter ">
+    <div class="col-md-3 mb-3 ">
         <div class="card">
-          <div class="card-body categories a">
-            <img src="assets/images/Gutter Services.png" alt="" class="categories rounded mx-auto d-block" />
-
-
-          </div>
-          <div class="card-body cuntent white">
-            <a href="#" class="categories a m-3"> Gutter Services <i class="fas fa-angle-right float-right"></i></a>
+          <div class="card-body categories">
+          <img src="assets/images/Gutter Services.png" alt="" class="categories rounded mx-auto d-block" />
           </div>
         </div>
-
+        <div class="card-body cuntent text-center">
+          <a href="#" class="categories m-3">  Gutter Services </a>
+        </div>
       </div>
       <div class="col-md-3 mb-3 ">
         <div class="card">
@@ -86,8 +83,8 @@ function ChooseCategory() {
             <img src="assets/images/Roof Repair.png" alt="" class="categories rounded mx-auto d-block" />
           </div>
         </div>
-        <div class="card-body cuntent">
-          <a href="#" class="categories m-3"> Roof Repair <i class="fas fa-angle-right float-right"></i></a>
+        <div class="card-body cuntent text-center">
+          <a href="#" class="categories m-3"> Roof Repair </a>
         </div>
       </div>
       <div class="col-md-3 mb-3 ">
@@ -96,8 +93,8 @@ function ChooseCategory() {
             <img src="assets/images/Home Cleaning.png" alt="" class="categories rounded mx-auto d-block" />
           </div>
         </div>
-        <div class="card-body cuntent">
-          <a href="#" class="categories m-3"> Home Cleaning <i class="fas fa-angle-right float-right"></i></a>
+        <div class="card-body cuntent text-center">
+          <a href="#" class="categories m-3"> Home Cleaning </a>
         </div>
       </div>
       <div class="col-md-3 mb-3 ">
@@ -106,14 +103,14 @@ function ChooseCategory() {
             <img src="assets/images/Decks & Porches.png" alt="" class="categories rounded mx-auto d-block" />
           </div>
         </div>
-        <div class="card-body cuntent">
-          <a href="#" class="categories m-3"> Decks & Porches <i class="fas fa-angle-right float-right"></i></a>
+        <div class="card-body cuntent text-center">
+          <a href="#" class="categories m-3"> Decks & Porches</a>
         </div>
       </div>
     </div>
   </div>
   <div class="container">
-    <div class="col-md-12  text-center">
+    <div class="col-md-12  text-center text-center">
       <button class="btn Categoryies-btn align-self-center " href="services.html">More Categories</button>
     </div>
   </div>    

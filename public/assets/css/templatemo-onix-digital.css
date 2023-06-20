@@ -1001,7 +1001,7 @@ Banner Style
 
 .main-banner .item p {
   margin: 20px 0px;
-  opacity: 60%;
+  opacity: 70%;
 }
 
 .main-banner .item .down-buttons {
@@ -2138,8 +2138,7 @@ responsive
   }
 
   img.card-img-top {
-    height: 70px !important;
-    width: 70px !important;
+   
   }
 
   .profile-card-body {
@@ -2246,7 +2245,7 @@ responsive
   }
 
   body {
-    background-color: #D9D9D9 !important;
+   
   }
 }
 

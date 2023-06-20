@@ -37,8 +37,8 @@ function Signup() {
         <div class="col-md-4 pr-0">
           <div class="details">
             <h3 class="text-light">Welcome</h3>
-            <p class="text-light mb-5">to keep connected with us please </p>
-              <p>sign-up with your personal info</p>
+            <p class="text-light mb-5">to keep connected with us please
+sign-up with your personal info </p>
             <a class="text-light" href="login.html">already have an Account<i class="ml-3 fas fa-arrow-right"></i></a>
           </div>
         </div>

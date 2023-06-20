@@ -9,12 +9,7 @@ function Worker() {
           <div class="worker-text">
             <h5 class="text-light">Find The Best <b class="text-dark">Workers</b>
               Here </h5>
-            <p class="text-light">Lorem ipsum dolor sit amet, consectetur  
-              adipiscing elit. Ut erat bibendum ornare urna, cursus eget
-              convallis. Feugiat imperdiet posuere justo, ultrices interdum 
-              sed orci nunc, mattis. Ipsum viverra viverra neque adipiscing 
-              arcu, quam  dictum. Dui mi viverra dui, sit accumsan, 
-              tincidunt massa. Dui cras magnis.
+            <p class="text-light">Search and Filters: Our advanced search and filtering options let you narrow down your search based on criteria such as skills, location, availability, and more. This saves you time by presenting you with the most relevant candidates.
             </p>
           </div>
         </div>

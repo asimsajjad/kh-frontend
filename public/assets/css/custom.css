@@ -64,10 +64,13 @@ body {
 
 .carousel-btn-left {
     border-radius: 100px;
+    margin-top: 30px;
+    float:right;
 }
 
 .carousel-btn-right {
     border-radius: 100px;
+    margin-top: 30px;
 }
 
 .carousel-btn-left:hover {
@@ -91,19 +94,20 @@ body {
 .carousel-card {
     border: 1px solid #673AB7;
     border-radius: 20px;
-    height: 250px;
+    height: 190px;
+    width: 165px;
     
 }
 
 .carousel-card img {
-        width: 120px;
+        width: 110px;
         padding-top: 25px;
         margin-bottom: 25px;
-        height: 160px;
+        height: 100px;
     }
 
 .carousel-card .card-body p {
-    font-size: 25px;
+    font-size: 20px;
     color: #673AB7;
     font-weight: 500;
 }
@@ -151,11 +155,20 @@ body {
     width: 700px;
     height: 50px;
 }
-
+@font-face{
+    font-family: myFont;
+    src: url(Poppins-Regular.ttf);
+}
+.main-banner .item h2{
+    font-family: myFont;
+}
+h2{
+    font-family: myFont;
+}
 .search-btn {
     border: none;
     width: 130px;
-    height: 51px;
+    height: 52px;
     background-color: #673AB7;
     color: #fff;
     /* border-bottom-right-radius: 5px; */
@@ -178,12 +191,23 @@ body {
 
 .list-unstyled a {
     color: #ffffff;
+    line-height: 27px;
 }
 
 .list-unstyled a:hover {
     color: black;
 }
+a.navbar-brand.logo {
 
+    padding-left: 4.5rem !important;
+}
+
+.ltr{
+direction: ltr;
+}
+.rtl{
+    direction: rtl;
+}
 .Categoryies-btn {
     background-color: #673AB7;
     width: 200px;
@@ -387,7 +411,7 @@ form h2 {
     height: 100%;
     text-align: center;
     margin: auto;
-    padding-top: 200px;
+    padding-top: 135px;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
 }
