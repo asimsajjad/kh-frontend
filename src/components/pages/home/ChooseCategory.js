@@ -1,5 +1,15 @@
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 function ChooseCategory() {
-    return <>
+  const [myData, setMyData] = useState([]);
+  const [isError, setIsError] = useState("");
+  useEffect(() => {
+    axios
+      .get("http://localhost/khadim-hazir/api/employeesListing")
+      .then((response) => console.log(response.data))
+      .catch((error) => setIsError(error.message));
+  }, []);
+  return <>
     <div class="container mb-5">
     <h1 class="Category">Choose Different <span style={{color: "#673AB7"}}> Category</span> </h1>
   </div>
@@ -7,7 +17,7 @@ function ChooseCategory() {
     <div class="row">
       <div class="col-md-3 mb-3 ">
         <div class="card">
-          <div class="card-body categories">
+          <div className="card-body categories">
             <img src="assets/images/Appliance Repair.png" alt="" class="categories rounded mx-auto d-block" />
             <div class="row">
             </div>
@@ -108,5 +118,10 @@ function ChooseCategory() {
     </div>
   </div>    
     </>;
-  }
+
+};
+
+
+
+
   export default ChooseCategory;
