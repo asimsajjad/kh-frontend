@@ -1,3 +1,6 @@
+import React, { useState, useEffect, useMemo } from 'react';
+import axios from 'axios';
+
 import Banner from './Banner';
 import Search from './Search';
 
@@ -15,3 +18,5 @@ function index() {
     </>;
   }
   export default index;
+
+ 

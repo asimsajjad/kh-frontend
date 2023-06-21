@@ -7,7 +7,7 @@ import {
   Switch
 } from 'react-router-dom';
 import Header from './components/shared/Header';
-import Home from './components/pages/home/Home';
+import Home from './components/pages/home';
 import Login from './components/pages/login/Login';
 import Categories from './components/pages/category/Categories';
 import Services from './components/pages/service/Services';
