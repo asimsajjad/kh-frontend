@@ -1,44 +1,66 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import axios from '../../../config/axios';
 
 function Contact() {
 
-  // const [myData, setMyData] = useState([]);
-  // const [isError, setIsError] = useState("");
-  // useEffect(() => {
-  //   axios
-  //     .get("http://localhost/khadim-hazir/api/employeesListing")
-  //     .then((response) => console.log(response.data))
-  //     .catch((error) => setIsError(error.message));
-  // }, []);
+  const [data, setData] = useState({
+    email: "",
+    name: "",
+    comment:""
+  });
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const userData = {
+      email: data.email,
+      name: data.name, 
+      comment:data.comment
+    };
+    axios
+      .post("", userData)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        if (error.response) {
+          console.log(error.response);
+          console.log("server responded");
+        } else if (error.request) {
+          console.log("network error");
+        } else {
+          console.log(error);
+        }
+      });
+  };
 
-    return <section class="login-section pl-3">
-    <div class="container mt-5">
-      <div class="row height500">
-        <div class="col-md-8 login-form1">
-          <form action="">
-            <h2 class="text-center">Contact Us</h2>
-            <div class="name-input mb-4 d-flex">
-              <label for="formGroupExampleInput" class="form-label">Name</label>
-              <input type="name" class="form-control" id="formGroupExampleInput" />
+
+
+    return <section className="login-section pl-3">
+    <div className="container mt-5">
+      <div className="row height500">
+        <div className="col-md-8 login-form1">
+          <form onSubmit={handleSubmit}>
+            <h2 className="text-center">Contact Us</h2>
+            <div className="name-input mb-4 d-flex">
+              <label for="formGroupExampleInput" className="form-label">Name</label>
+              <input type="name" className="form-control" id="formGroupExampleInput" />
             </div>
-            <div class="password-input d-flex">
-              <label for="formGroupExampleInput2" class="form-label ">Email</label>
-              <input type="email" class="form-control" id="formGroupExampleInput2" />
+            <div className="password-input d-flex">
+              <label for="formGroupExampleInput2" className="form-label ">Email</label>
+              <input type="email" className="form-control" id="formGroupExampleInput2" />
             </div>
-            <div class="row">
-              <div class="col-12 text-left mt-3">
-                <label class="text-left comment" for="floatingTextarea2">What can we help you with?</label>
-                 <textarea class="form-control" id="floatingTextarea2"></textarea>
+            <div className="row">
+              <div className="col-12 text-left mt-3">
+                <label className="text-left comment" for="floatingTextarea2">What can we help you with?</label>
+                 <textarea className="form-control" id="floatingTextarea2"></textarea>
               </div>              
             </div>
-             <button class="btn login-btn">Submit</button>
+             <button className="btn login-btn">Submit</button>
           </form>
         </div>
-        <div class="col-md-4 pl-0">
-          <div class="login-details">
-            <h3 class="text-light ">Welcome Back</h3>
-            <p class="text-light mb-5 mt-5">to keep connected with us please
+        <div className="col-md-4 pl-0">
+          <div className="login-details">
+            <h3 className="text-light ">Welcome Back</h3>
+            <p className="text-light mb-5 mt-5">to keep connected with us please
 Login with your personal info </p>
                       
           </div>
