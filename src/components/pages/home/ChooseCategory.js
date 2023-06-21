@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { BrowserRouter as Router,Routes, Route, Link } from 'react-router-dom';
 
 
 function ChooseCategory() {
   const [posts, setPosts] = useState([]);
-
+  const url=process.env.REACT_APP_API_BASE_URL+'api/sevenCategories';
   useEffect(() => {
-    axios.get('http://localhost/khadim-hazir/api/sevenCategories')
+    axios.get(`${url}`)
       .then(response => {
         setPosts(response.data.data.en);
       })
@@ -14,7 +15,6 @@ function ChooseCategory() {
         console.error(error);
       });
   }, []);
-console.log(posts, process.env.API_BASE_URL);
   return (<>
     <div class="container mb-5">
       <h1 class="Category">Choose Different <span style={{color: "#673AB7"}}> Category</span> </h1>
@@ -25,16 +25,22 @@ console.log(posts, process.env.API_BASE_URL);
       <div class="col-md-3 mb-3 ">
         <div class="card">
           <div class="card-body categories">
-            <img src="http://localhost/khadim-hazir/uploads/category/11.png" alt="" class="categories rounded mx-auto d-block" />            
+            <img src={`${process.env.REACT_APP_API_BASE_URL}uploads/category/${post.image}`}
+             alt={post.image} class="categories rounded mx-auto d-block" />            
           </div>
         </div>
         <div class="card-body cuntent text-center">
-          <a href="#" class="categories m-3"> {post.name}</a>
+          <Link to="/category" class="categories m-3"> {post.name}</Link>
         </div>
       </div> 
       ))}
       </div>
     </div>
+    <div class="container">
+    <div class="col-md-12  text-center text-center">
+    <Link to="/category"><button class="btn Categoryies-btn align-self-center">More Categories</button></Link>
+    </div>
+  </div> 
     </>
   );
 }

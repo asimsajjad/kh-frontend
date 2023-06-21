@@ -18,7 +18,7 @@ function Header() {
             <Link to="/category" className="nav-link text-light" >Find Work</Link>
           </li>
           <li className="nav-item">
-            <Link to="/service" className="nav-link text-light">Find Freelancers</Link>
+            <Link to="/service" className="nav-link text-light">Find Labours</Link>
           </li>
           <li className="nav-item">
             <Link to="/login" className="nav-link text-light">Log In</Link>
