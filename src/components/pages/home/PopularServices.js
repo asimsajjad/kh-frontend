@@ -1,30 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React from "react"
 
-function PopularServices() {
-  const [myData, setMyData] = useState([]);
-  const [isError, setIsError] = useState("");
-  useEffect(() => {
-    axios
-      .get("http://localhost/khadim-hazir/api/sevenCategories")
-      .then((response) => console.log(response.data.data.en))
-      .then((response) => setMyData(response.data.data.en))
-      .catch((error) => setIsError(error.message));
-  }, []);
+export default function PopularServices(props) {
+console.log(props.note)
+return(
+  <>
+  </>
+)
+    // return <section class="pt-5 pb-5 worker-carousel mb-5">
 
-    return <section class="pt-5 pb-5 worker-carousel mb-5">
-      
-    {myData.slice(0, 9).map((post) => {
-          const { name, id, image } = post;
-          return (
-            <div key={id}>
-              <h2>{image.slice(0, 15).toUpperCase()}</h2>
-              <p>{name.slice(0, 100)}</p>
-            </div>
-          );
-        })}
-
-    <div class="container">
+    {/* <div class="container">
       <div class="row">
         <div class="col-md-6 mb-5">
           <h2 class="mb-3 categories">Popular Services </h2>
@@ -201,6 +185,6 @@ function PopularServices() {
         </div>
       </div>
     </div>
-  </section>;
+  </section>; */}
   }
-  export default PopularServices;
+  // export default PopularServices;
