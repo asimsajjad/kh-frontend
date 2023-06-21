@@ -14,14 +14,18 @@ function Footer() {
           <ul class="list-unstyled ml-5">
           <li><Link to="/" >Home</Link></li>
           <li><Link to="/category">Find Work</Link></li>
-          <li><Link to="/service">Find Freelancers</Link></li>
+          <li><Link to="/service">Find Labours</Link></li>
           <li><Link to="/contact" >Contact Us</Link></li>
           </ul>
         </div>
         <div class="col-lg-3">
-          <h4 class="text-white mb-4">For Freelancers</h4>
-          <p class="foot">Find Work</p>
-          <p class="foot">Create Account</p>
+          <h4 class="text-white mb-4">For Labours</h4>
+          <ul class="list-unstyled ml-5">
+          <li><Link to="/signup" class="foot" >Create Account</Link></li>
+          <li><Link to="/login">Sign in</Link></li>
+          <li><Link to="/category">Find Work</Link></li>
+          <li><Link to="/contact" >Contact Us</Link></li>
+          </ul>
         </div>
         <div class="col-lg-3">
           <h4 class="text-white mb-4">Call Us</h4>
