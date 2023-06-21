@@ -1,6 +1,45 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+
+
 function ChooseCategory() {
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    axios.get('http://localhost/khadim-hazir/api/sevenCategories')
+      .then(response => {
+        setPosts(response.data.data.en);
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  }, []);
+console.log(posts, process.env.API_BASE_URL);
+  return (<>
+    <div class="container mb-5">
+      <h1 class="Category">Choose Different <span style={{color: "#673AB7"}}> Category</span> </h1>
+    </div>
+    <div class="container"> 
+    <div class="row">
+    {posts.map(post => (
+      <div class="col-md-3 mb-3 ">
+        <div class="card">
+          <div class="card-body categories">
+            <img src="http://localhost/khadim-hazir/uploads/category/11.png" alt="" class="categories rounded mx-auto d-block" />            
+          </div>
+        </div>
+        <div class="card-body cuntent text-center">
+          <a href="#" class="categories m-3"> {post.name}</a>
+        </div>
+      </div> 
+      ))}
+      </div>
+    </div>
+    </>
+  );
+}
+
+function ChooseCategory1() {
   // const [myData, setMyData] = useState([]);
   // const [isError, setIsError] = useState("");
   // useEffect(() => {

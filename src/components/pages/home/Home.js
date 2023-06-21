@@ -8,20 +8,6 @@ import PopularServices from './PopularServices';
 import ChooseCategory from './ChooseCategory';
 import Worker from './Worker';
 
-
-// function App(){
-//   const [myData, setMyData] = useState([]);
-//   const [isError, setIsError] = useState("");
-//   useEffect(() => {
-//     axios
-//       .get("http://localhost/khadim-hazir/api/employeesListing")
-//       .then((response) => console.log(response.data))
-//       .catch((error) => setIsError(error.message));
-//   }, []);
-// };
-
-//  export default App
-
 function Home() {
     return <>
     <Banner/>
@@ -33,4 +19,4 @@ function Home() {
   }
   export default Home;
 
-
+ 

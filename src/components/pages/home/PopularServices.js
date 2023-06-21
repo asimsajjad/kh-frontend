@@ -1,14 +1,9 @@
-import React from "react"
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
-export default function PopularServices(props) {
-console.log(props.note)
-return(
-  <>
-  </>
-)
-    // return <section class="pt-5 pb-5 worker-carousel mb-5">
-
-    {/* <div class="container">
+function PopularServices() {
+  return <section class="pt-5 pb-5 worker-carousel mb-5">
+     <div class="container">
       <div class="row">
         <div class="col-md-6 mb-5">
           <h2 class="mb-3 categories">Popular Services </h2>
@@ -185,6 +180,8 @@ return(
         </div>
       </div>
     </div>
-  </section>; */}
-  }
-  // export default PopularServices;
+  </section>; 
+}
+
+
+export default PopularServices;
