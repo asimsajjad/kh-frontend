@@ -3,53 +3,58 @@ import axios from '../../../config/axios';
 
 function Contact() {
 
-  // const [data, setData] = useState({
-  //   email: "",
-  //   name: "",
-  //   comment:""
-  // });
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   const userData = {
-  //     email: data.email,
-  //     name: data.name, 
-  //     comment:data.comment
-  //   };
-  //   axios
-  //     .post("", userData)
-  //     .then((response) => {
-  //       console.log(response);
-  //     })
-  //     .catch((error) => {
-  //       if (error.response) {
-  //         console.log(error.response);
-  //         console.log("server responded");
-  //       } else if (error.request) {
-  //         console.log("network error");
-  //       } else {
-  //         console.log(error);
-  //       }
-  //     });
-  // };
+  const [state, setState] = useState({
+    email:"",
+    name: "",
+    comments:""
+  });
+
+  const url='contactUs';
+ 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const userData = {
+      email: state.email,
+      name: state.name, 
+      comments:state.comments
+    };
+    // setState('');
+    axios
+      .post(`${url}` , userData)
+      .then((response) => {
+        setState(response.data.data);
+      });
+  };
+
+   const handleChange = (e) => {
+    const value=e.target.value;
+    setState({
+      ...state,
+      [e.target.name]: value
+    });
+  };
 
     return <section className="login-section pl-3">
     <div className="container mt-5">
       <div className="row height500">
         <div className="col-md-8 login-form1">
-          <form onSubmit=''>
+          <form onSubmit={handleSubmit}>
             <h2 className="text-center">Contact Us</h2>
             <div className="name-input mb-4 d-flex">
               <label for="formGroupExampleInput" className="form-label">Name</label>
-              <input type="name" className="form-control" id="formGroupExampleInput" />
+              <input type="text" name="name" className="form-control" id="formGroupExampleInput" value={state.name} onChange={handleChange}
+            />
             </div>
             <div className="password-input d-flex">
               <label for="formGroupExampleInput2" className="form-label ">Email</label>
-              <input type="email" className="form-control" id="formGroupExampleInput2" />
+              <input type="email" className="form-control" name="email" id="formGroupExampleInput2" value={state.email} onChange={handleChange}
+          />
             </div>
             <div className="row">
               <div className="col-12 text-left mt-3">
                 <label className="text-left comment" for="floatingTextarea2">What can we help you with?</label>
-                 <textarea className="form-control" id="floatingTextarea2"></textarea>
+                 <textarea className="form-control" name="comments" id="floatingTextarea2" value={state.comments} onChange={handleChange}
+            ></textarea>
               </div>              
             </div>
              <button className="btn login-btn">Submit</button>

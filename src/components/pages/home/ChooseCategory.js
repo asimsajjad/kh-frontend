@@ -28,8 +28,9 @@ function ChooseCategory() {
       <div className="col-md-3 mb-3 ">
         <div className="card">
           <div className="card-body categories">
+          <Link to={`/services/${post.name}`}>
             <img src={`${process.env.REACT_APP_RESOURCES_URL}uploads/category/${post.image}`}
-             alt={post.image} className="categories rounded mx-auto d-block" />            
+             alt={post.image} className="categories rounded mx-auto d-block" /></Link>       
           </div>
         </div>
         <div className="card-body cuntent text-center">

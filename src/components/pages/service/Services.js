@@ -45,7 +45,7 @@ import { BrowserRouter as Router,Routes, Route, Link } from 'react-router-dom';
             <div className="category-tabs d-flex justify-content-left">
                 <Link to="/services" className="btn tab-btn1 all " role="button">All</Link>
                 {category.map(post => (
-                <Link to={`/services/${post.name}`} className="btn plum tab-btn2" role="button">{post.name}</Link>
+                <Link to={`'/services/'${post.name}`} className="btn plum tab-btn2" role="button">{post.name}</Link>
                 ))}
             </div>
         </div>
@@ -65,7 +65,7 @@ import { BrowserRouter as Router,Routes, Route, Link } from 'react-router-dom';
                     </div>
                     <div className="available d-flex">
                         <a className="" href="">Available</a>
-                        <button className="btn profile-btn">View Profile</button>
+                        <Link to={`"/info/"${post.username}`} className="btn profile-btn" style={{ color: '#00F' }}>View Profile</Link>
                     </div>
                 </div>
             </div>

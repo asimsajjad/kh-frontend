@@ -36,7 +36,7 @@ function Categories() {
             </div>
           </div>
         <div className="card-body cuntent text-center">
-        <Link to={`/services/${post.name}`} activeClassName="current" > {post.name}</Link>
+        <Link to={`/services/${post.name}`} className="categories m-3"> {post.name}</Link>
         </div>
       </div>      
         ))} 
