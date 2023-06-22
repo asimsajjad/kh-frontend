@@ -13,9 +13,9 @@ function Footer() {
           <h4 class="text-white mb-4 ml-5">For Clients</h4>
           <ul class="list-unstyled ml-5">
           <li><Link to="/" >Home</Link></li>
-          <li><Link to="/category">Find Work</Link></li>
-          <li><Link to="/service">Find Labours</Link></li>
-          <li><Link to="/contact" >Contact Us</Link></li>
+          <li><Link to="/categories">Find Work</Link></li>
+          <li><Link to="/services">Find Labours</Link></li>
+          <li><Link to="/contact-us" >Contact Us</Link></li>
           </ul>
         </div>
         <div class="col-lg-3">
@@ -23,8 +23,8 @@ function Footer() {
           <ul class="list-unstyled ml-5">
           <li><Link to="/signup" class="foot" >Create Account</Link></li>
           <li><Link to="/login">Sign in</Link></li>
-          <li><Link to="/category">Find Work</Link></li>
-          <li><Link to="/contact" >Contact Us</Link></li>
+          <li><Link to="/categories">Find Work</Link></li>
+          <li><Link to="/contact-us" >Contact Us</Link></li>
           </ul>
         </div>
         <div class="col-lg-3">

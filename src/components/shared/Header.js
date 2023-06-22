@@ -15,10 +15,10 @@ function Header() {
             <Link to="/" className="nav-link active text-light" aria-current="page" >Home</Link>
           </li>
           <li className="nav-item">
-            <Link to="/category" className="nav-link text-light" >Find Work</Link>
+            <Link to="/categories" className="nav-link text-light" >Find Work</Link>
           </li>
           <li className="nav-item">
-            <Link to="/service" className="nav-link text-light">Find Labours</Link>
+            <Link to="/services" className="nav-link text-light">Find Labours</Link>
           </li>
           <li className="nav-item">
             <Link to="/login" className="nav-link text-light">Log In</Link>
@@ -27,7 +27,7 @@ function Header() {
             <Link to="/signup" className="nav-link text-light">Sign Up</Link>
           </li>
           <li className="nav-item">
-            <Link to="/contact" className="nav-link text-light">Contact Us</Link>
+            <Link to="/contact-us" className="nav-link text-light">Contact Us</Link>
           </li>          
           </ul>
       </div>

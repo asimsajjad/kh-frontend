@@ -11,7 +11,7 @@ function Categories() {
   useEffect(() => {
     axios.get(`${url}`)
       .then(response => {
-        setCategory(response.data.data.en);
+        setCategory(response?.data?.data?.en);
       })
       .catch(error => {
         console.error(error);
@@ -30,13 +30,13 @@ function Categories() {
         <div className="col-md-3 mb-3">
           <div className="card">
             <div className="card-body categories">
-            <Link to="/service">
+            <Link to={`/services/${post.name}`} activeClassName="current">
               <img src={`${process.env.REACT_APP_RESOURCES_URL}uploads/category/${post.image}`} alt={post.image} className="categories rounded mx-auto d-block"/>
               </Link>
             </div>
           </div>
         <div className="card-body cuntent text-center">
-        <Link to="/service" className="categories m-3"> {post.name}</Link>
+        <Link to={`/services/${post.name}`} activeClassName="current" > {post.name}</Link>
         </div>
       </div>      
         ))} 

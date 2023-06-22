@@ -23,7 +23,7 @@ import { BrowserRouter as Router,Routes, Route, Link } from 'react-router-dom';
          useEffect(() => {
             axios.post(`${url}`, userData)
               .then(response => {
-                setLabour(response.data.data);
+                setLabour(response?.data?.data);
               })
               .catch(error => {
                 console.error(error);
@@ -31,7 +31,7 @@ import { BrowserRouter as Router,Routes, Route, Link } from 'react-router-dom';
 
               axios.get(`${category_url}`)
           .then(response => {
-            setCategory(response.data.data.en);
+            setCategory(response?.data?.data?.en);
           })
           .catch(error => {
             console.error(error);
@@ -43,9 +43,9 @@ import { BrowserRouter as Router,Routes, Route, Link } from 'react-router-dom';
     <div className="row">
         <div className="col-md-12">
             <div className="category-tabs d-flex justify-content-left">
-                <Link to="/service" className="btn tab-btn1 all " role="button">All</Link>
+                <Link to="/services" className="btn tab-btn1 all " role="button">All</Link>
                 {category.map(post => (
-                <a className="btn plum tab-btn2" href={post.id} role="button">{post.name}</a>
+                <Link to={`/services/${post.name}`} className="btn plum tab-btn2" role="button">{post.name}</Link>
                 ))}
             </div>
         </div>

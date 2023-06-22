@@ -16,7 +16,7 @@ import ForgotPassword from './components/pages/forgot-password/ForgotPassword';
 import JobPost from './components/pages/job-post/JobPost';
 import Info from './components/pages/info/Info';
 
-import Contact from './components/pages/contact-us/Contact';
+import ContactUs from './components/pages/contact-us/ContactUs';
 
 
 import Footer from './components/shared/Footer';
@@ -27,13 +27,13 @@ function App() {
     <Switch>
       <Route path="/" exact><Home/></Route>
       <Route path="/login" exact><Login /></Route>
-      <Route path="/category" exact><Categories /></Route>
-      <Route path="/service" exact><Services /></Route>
+      <Route path="/categories" exact><Categories /></Route>
+      <Route path="/services" exact><Services /></Route>
       <Route path="/signup" exact><Signup /></Route>
       <Route path="/forgot-password" exact><ForgotPassword /></Route>
       <Route path="/info" exact><Info /></Route>
       <Route path="/jobPost" exact><JobPost /></Route>
-      <Route path="/contact" exact><Contact /></Route>
+      <Route path="/contact-us" exact><ContactUs /></Route>
       <Route path="/index" exact><Home /></Route>
       <Redirect to="/" />
       

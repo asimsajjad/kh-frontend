@@ -3,42 +3,40 @@ import axios from '../../../config/axios';
 
 function Contact() {
 
-  const [data, setData] = useState({
-    email: "",
-    name: "",
-    comment:""
-  });
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const userData = {
-      email: data.email,
-      name: data.name, 
-      comment:data.comment
-    };
-    axios
-      .post("", userData)
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((error) => {
-        if (error.response) {
-          console.log(error.response);
-          console.log("server responded");
-        } else if (error.request) {
-          console.log("network error");
-        } else {
-          console.log(error);
-        }
-      });
-  };
-
-
+  // const [data, setData] = useState({
+  //   email: "",
+  //   name: "",
+  //   comment:""
+  // });
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   const userData = {
+  //     email: data.email,
+  //     name: data.name, 
+  //     comment:data.comment
+  //   };
+  //   axios
+  //     .post("", userData)
+  //     .then((response) => {
+  //       console.log(response);
+  //     })
+  //     .catch((error) => {
+  //       if (error.response) {
+  //         console.log(error.response);
+  //         console.log("server responded");
+  //       } else if (error.request) {
+  //         console.log("network error");
+  //       } else {
+  //         console.log(error);
+  //       }
+  //     });
+  // };
 
     return <section className="login-section pl-3">
     <div className="container mt-5">
       <div className="row height500">
         <div className="col-md-8 login-form1">
-          <form onSubmit={handleSubmit}>
+          <form onSubmit=''>
             <h2 className="text-center">Contact Us</h2>
             <div className="name-input mb-4 d-flex">
               <label for="formGroupExampleInput" className="form-label">Name</label>

@@ -33,7 +33,7 @@ function ChooseCategory() {
           </div>
         </div>
         <div className="card-body cuntent text-center">
-          <Link to="/category" className="categories m-3"> {post.name}</Link>
+          <Link to={`/services/${post.name}`} className="categories m-3"> {post.name}</Link>
         </div>
       </div> 
       ))}
@@ -41,7 +41,7 @@ function ChooseCategory() {
     </div>
     <div className="container">
     <div className="col-md-12  text-center text-center">
-    <Link to="/category"><button className="btn Categoryies-btn align-self-center">More Categories</button></Link>
+    <Link to="/categories"><button className="btn Categoryies-btn align-self-center">More Categories</button></Link>
     </div>
   </div> 
     </>
