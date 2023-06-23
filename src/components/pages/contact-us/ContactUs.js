@@ -3,14 +3,19 @@ import axios from '../../../config/axios';
 
 function Contact() {
 
-  const [state, setState] = useState({
-    email:"",
-    name: "",
-    comments:""
-  });
+  const [state, setState] = useState('');
 
   const url='contactUs';
- 
+
+  const handleChange = (e) => {
+    const value=e.target.value;
+    // alert(value);
+    setState({
+      ...state,
+      [e.target.name]: value
+    });
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const userData = {
@@ -18,20 +23,12 @@ function Contact() {
       name: state.name, 
       comments:state.comments
     };
-    // setState('');
+    // alert(userData);
     axios
       .post(`${url}` , userData)
       .then((response) => {
-        setState(response.data.data);
+        console.log(response.data);
       });
-  };
-
-   const handleChange = (e) => {
-    const value=e.target.value;
-    setState({
-      ...state,
-      [e.target.name]: value
-    });
   };
 
     return <section className="login-section pl-3">
@@ -57,7 +54,7 @@ function Contact() {
             ></textarea>
               </div>              
             </div>
-             <button className="btn login-btn">Submit</button>
+             <button className="btn login-btn" type="submit">Submit</button>
           </form>
         </div>
         <div className="col-md-4 pl-0">
