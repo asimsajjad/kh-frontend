@@ -1,3 +1,6 @@
+import React from 'react';
+import { BrowserRouter as Router,Routes, Route, Link } from 'react-router-dom';
+
 function Signup() {
     return <section class="login-section pl-2">    
     <div class="container">
@@ -39,7 +42,7 @@ function Signup() {
             <h3 class="text-light">Welcome</h3>
             <p class="text-light mb-5">to keep connected with us please
 sign-up with your personal info </p>
-            <a class="text-light" href="login.html">already have an Account<i class="ml-3 fas fa-arrow-right"></i></a>
+            <Link class="text-light" to="/login">already have an Account<i class="ml-3 fas fa-arrow-right"></i></Link>
           </div>
         </div>
       </div>

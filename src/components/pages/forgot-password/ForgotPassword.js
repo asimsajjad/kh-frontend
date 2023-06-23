@@ -1,3 +1,6 @@
+import React from 'react';
+import { BrowserRouter as Router,Routes, Route, Link } from 'react-router-dom';
+
 function ForgotPassword() {
     return <section class="login-section pl-3">
     <div class="container">
@@ -24,7 +27,7 @@ function ForgotPassword() {
             <h3 class="text-light">Welcome Back</h3>
             <p class="text-light mb-5">to keep connected with us please </p>
             <p>Login with your personal info</p>
-            <a class="text-light" href="sign-up.html">Already have account<i class="ml-3 bi bi-arrow-right"></i></a>
+            <Link class="text-light" to="/login">Already have account<i class="ml-3 bi bi-arrow-right"></i></Link>
           </div>
         </div>
       </div>

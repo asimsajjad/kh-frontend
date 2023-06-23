@@ -1,4 +1,6 @@
 import React from 'react';
+import { BrowserRouter as Router,Routes, Route, Link } from 'react-router-dom';
+
 function Login() {
     return  <section class="login-section pl-3">
     <div class="container mt-5">
@@ -25,7 +27,7 @@ function Login() {
                 <label for="vehicle1">Remember me</label>
               </div>
               <div class="col-6 text-right mt-2">
-                <a href="forget-password.php">Forget Password<i class="ml-3 bi bi-arrow-right"></i></a>
+                <Link to="/forgot-password">Forget Password<i class="ml-3 bi bi-arrow-right"></i></Link>
               </div>
             </div>
             <button class="btn login-btn">Log in</button>
@@ -36,7 +38,7 @@ function Login() {
             <h3 class="text-light">Welcome Back</h3>
             <p class="text-light mb-5">to keep connected with us please
 register with your personal info </p>
-            <a class="text-light" href="sign-up.html">don't have an Account<i class="ml-3 fas fa-arrow-right"></i></a>
+            <Link  class="text-light" to="/signup">don't have an Account<i class="ml-3 fas fa-arrow-right"></i></Link>
           </div>
         </div>
       </div>
