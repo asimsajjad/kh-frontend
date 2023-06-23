@@ -5,13 +5,13 @@ import { BrowserRouter as Router,Routes, Route, Link } from 'react-router-dom';
 
 
 function ChooseCategory() {
-  const [posts, setPosts] = useState([]);
+  const [categories, setcategories] = useState([]);
   //const url=process.env.REACT_APP_API_BASE_URL+'api/sevenCategories';
   useEffect(() => {
     axios.get('sevenCategories')
       .then(response => {
         console.log("Hello here");
-        setPosts(response?.data?.data?.en);
+        setcategories(response?.data?.data?.en);
       })
       .catch(error => {
         console.error(error);
@@ -24,17 +24,17 @@ function ChooseCategory() {
     </div>
     <div className="container"> 
     <div className="row">
-    {posts.map(post => (
+    {categories.map(category => (
       <div className="col-md-3 mb-3 ">
         <div className="card">
           <div className="card-body categories">
-          <Link to={`/services/${post.name}`}>
-            <img src={`${process.env.REACT_APP_RESOURCES_URL}uploads/category/${post.image}`}
-             alt={post.image} className="categories rounded mx-auto d-block" /></Link>       
+          <Link to={`/labours/${category.name}`}>
+            <img src={`${process.env.REACT_APP_RESOURCES_URL}uploads/category/${category.image}`}
+             alt={category.image} className="categories rounded mx-auto d-block" /></Link>       
           </div>
         </div>
         <div className="card-body cuntent text-center">
-          <Link to={`/services/${post.name}`} className="categories m-3"> {post.name}</Link>
+          <Link to={`/labours/${category.name}`} className="categories m-3"> {category.name}</Link>
         </div>
       </div> 
       ))}

@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function Banner() {
     return <div className="main-banner" id="top">
     <div className="container">
@@ -9,7 +11,7 @@ function Banner() {
               a moment's notice</p>
             <div className="down-buttons">
               <div className="main-blue-button-hover pt-5">
-                <a href="#contact" className="banner-btn ">Hire a worker</a>
+                <Link to="/labours" className="banner-btn ">Hire a worker</Link>
               </div>
             </div>
           </div>
