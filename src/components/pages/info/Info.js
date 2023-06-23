@@ -1,4 +1,11 @@
+import React, { useState, useEffect } from 'react';
+import axios from '../../../config/axios';
+import { BrowserRouter as Router,Routes, Route, Link, useParams  } from 'react-router-dom';
+
 function Info() {
+    const [profile, setProfile] = useState('');
+    const url='profileData';
+
     return <div className="container pt-5">
     <div className="row pl-2">
         <div className="col-lg-3">

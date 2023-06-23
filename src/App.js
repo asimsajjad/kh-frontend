@@ -28,15 +28,16 @@ function App() {
       <Route path="/" exact><Home/></Route>
       <Route path="/login" exact><Login /></Route>
       <Route path="/categories" exact><Categories /></Route>
-      <Route path="/labours" exact><Labours /></Route>
 
-      <Route path="/labours/:type">
-        <Labours />
-      </Route>
+      <Route path="/labours" exact><Labours /></Route>
+      <Route path="/labours/:type"><Labours /></Route>
 
       <Route path="/signup" exact><Signup /></Route>
       <Route path="/forgot-password" exact><ForgotPassword /></Route>
       <Route path="/info" exact><Info /></Route>
+
+      <Route path="/info/:type" exact><Info /></Route>
+      
       <Route path="/contact-us" exact><ContactUs /></Route>
       <Route path="/index" exact><Home /></Route>
       <Redirect to="/" />
