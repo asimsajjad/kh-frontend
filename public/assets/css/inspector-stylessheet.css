@@ -770,8 +770,9 @@ h1.cat {
     border-radius: 10px;
     background-color: #673AB7;
 }
-a.btn.tab-btn1.all {
-    background-color: #673AB7;
+.active {
+    background-color: #673AB7 !important;
+    color:#FFFFFF;
 }
 .category-tabs a {
     margin-right: 30px;
