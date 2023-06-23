@@ -10,7 +10,7 @@ import Header from './components/shared/Header';
 import Home from './components/pages/home';
 import Login from './components/pages/login/Login';
 import Categories from './components/pages/category/Categories';
-import Services from './components/pages/service/Services';
+import Labours from './components/pages/labour/Services';
 import Signup from './components/pages/signup/Signup';
 import ForgotPassword from './components/pages/forgot-password/ForgotPassword';
 import JobPost from './components/pages/job-post/JobPost';
@@ -28,7 +28,7 @@ function App() {
       <Route path="/" exact><Home/></Route>
       <Route path="/login" exact><Login /></Route>
       <Route path="/categories" exact><Categories /></Route>
-      <Route path="/services" exact><Services /></Route>
+      <Route path="/labours" exact><Labours /></Route>
       <Route path="/signup" exact><Signup /></Route>
       <Route path="/forgot-password" exact><ForgotPassword /></Route>
       <Route path="/info" exact><Info /></Route>
