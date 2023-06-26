@@ -35,13 +35,18 @@ function Signup() {
           formData.append('password',  user.password,)
           formData.append('user_type',  user.employer,)
           formData.append('phone_no',  user.phone_no,)
+          formData.append('address',  user.address,)
+          formData.append('image',  user.image,)
           axios.post(`${url}`, formData)
           .then(response => {
             console.log(response?.data?.data)
           }).then(setUser(
             {username: "",
             email: "", 
-            password: ""})
+            password: "",
+            phone_no: "",
+            address: "",
+            image: "",})
           ).then(showAlert("Sign up Successful" , "success"))
           .catch(error => {
           console.error(error);
