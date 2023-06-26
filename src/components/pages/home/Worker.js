@@ -1,3 +1,4 @@
+import { BrowserRouter as Router,Routes, Route, Link} from 'react-router-dom';
 function Worker() {
     return  <div className="workers">
     <div className="container">
@@ -7,9 +8,8 @@ function Worker() {
         </div>
         <div className="col-md-6">
           <div className="worker-text">
-            <h5 className="text-light">Find The Best <b className="text-dark">Workers</b>
-              Here </h5>
-            <p className="text-light">Search and Filters: Our advanced search and filtering options let you narrow down your search based on criteria such as skills, location, availability, and more. This saves you time by presenting you with the most relevant candidates.
+            <Link to="/labours"><h5 className="text-light">Find The Best <b className="text-dark">Workers</b> Here </h5></Link>
+            <p className="text-light">Search and Filters: Our advanced search and filtering options let you narrow down your search based on criteria such as skills, location, availability, and more. We provide Access to a Vast Pool of Talent, Streamlined Recruitment Process, Customized and Reliable Workforce Solutions.
             </p>
           </div>
         </div>
