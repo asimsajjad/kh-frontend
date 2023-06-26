@@ -89,7 +89,7 @@ function Signup() {
             <div className="row">
               <div className="text-left mb-4">
                 <label className="text-left comment" for="floatingTextarea2">Write your address here</label>
-                 <textarea className="form-control" name="comments" id="floatingTextarea2" value={user.address} onChange={handleChange}
+                 <textarea className="form-control" name="address" id="floatingTextarea2" value={user.address} onChange={handleChange}
             ></textarea>
               </div>              
             </div>
