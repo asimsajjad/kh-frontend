@@ -1,9 +1,6 @@
 
 
 
-body {
-    font-family: 'Poppins' !important;
-}
 
 .bi-search {
     margin-right: 20px;
@@ -14,6 +11,7 @@ body {
 img.profile {
     width: 100px;
     border-radius: 100px;
+    margin-top: 10px;
 }
 
 .nav-links {
@@ -23,11 +21,45 @@ img.profile {
 .nav li a.active {
     font-family: 'Poppins';
 }
-
+.signup-select:after {
+    content: "";
+    position: absolute;
+    right: 10px;
+    top: 3px;
+}
+select#signup-sector {
+    height: 50px;
+    width: 650px;
+    margin-top: 25px;
+    border-radius: 10px;
+    border: none;
+}
+img.labour {
+    width: 50px;
+}
+.row.\.redio-buttons-image{
+    position: relative;
+    left: -45px
+}
+.form-check.form-check-inline.pl-5 {
+    position: relative;
+    left: 60px;
+}
 .btn-light {
     width: 140px;
 }
-
+svg.svg-inline--fa.fa-facebook {
+    height: 30px;
+    color: black;
+}
+svg.svg-inline--fa.fa-linkedin {
+    height: 30px;
+    color: black;
+}
+svg.svg-inline--fa.fa-google-plus {
+    height: 30px;
+    color: black;
+}
 .card-img {
     width: 110px;
 }

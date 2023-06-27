@@ -66,24 +66,35 @@ function Signup() {
       <div className="row login-form ">
         <div className="col-md-8">
           <form action="">
-            <h2 className="text-center pt-3">Create Account</h2>
+            <h2 className="text-center pt-4">Create Account</h2>
             <div className="social-media-links d-flex justify-content-center pt-3">
-              <Link to=""><img src="assets/images/facebook icon.png" alt=""/></Link>
-              <Link href=""><img src="assets/images/Linkdin.png" alt=""/></Link>
-              <Link href=""><img src="assets/images/Google icon.png" alt=""/></Link>
+              <Link to=""><i class="fa-brands fa-facebook"></i></Link>
+              <Link href=""><i class="fa-brands fa-linkedin"></i></Link>
+              <Link href=""><i class="fa-brands fa-google-plus"></i></Link>
             </div>
-            <Link href=""><img src="assets/images/images (5).jpg" alt="" class="profile pt-3"/></Link>
+            <Link href=""><img src="assets/images/images (5).jpg" alt="" class="profile"/></Link>
+            
             <div class="container pt-3">
+              
     <div class="row justify-content-center">
       <div class="col-auto">
       
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="radio-group" id="radio1" value="option1"/>
-          <label class="form-check-label" for="radio1">Labour </label>
+        <div class="form-check form-check-inline pl-5">
+          <input class="form-check-input m-4  " type="radio" name="radio-group" id="radio1" value="option1"/>
+          <div class="row .redio-buttons-image">
+          <Link href=""><img src="assets/images/labour.png" alt="" class=" labour"/></Link>
+          <label class="form-check-label" for="radio1"> Labour </label>
+          </div>
         </div>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="radio-group" id="radio2" value="option2"/>
+        
+        <div class="form-check form-check-inline pr-5">
+        
+          <input class="form-check-input m-4" type="radio" name="radio-group" id="radio2" value="option2"/>
+          <div class="row .redio-buttons-image">
+          <Link href=""><img src="assets/images/employee.png" alt="" class=" labour"/></Link>
           <label class="form-check-label" for="radio2">Employer</label>
+          </div>
+          
         </div>
     
     </div>
@@ -92,7 +103,7 @@ function Signup() {
             <p className="text-center pt-3">or use your email for register</p>
             
             <div className="name-input mb-4 d-flex">
-              <label for=""><i className="bi bi-person-fill"></i></label>
+              <label for=""><i className="fas fa-user"></i></label>
               <input className="" type="name" name='username' placeholder="Name" value={user.username} onChange={handleChange}/>
             </div>
             <div className="name-input mb-4 d-flex">
@@ -100,7 +111,7 @@ function Signup() {
               <input className="" type="email" name='email' placeholder="Email" value={user.email} onChange={handleChange}/>
             </div>
             <div className="name-input mb-4 d-flex">
-              <label for=""><i className="far fa-envelope"></i></label>
+              <label for=""><i className="fas fa-phone"></i></label>
               <input className="" type="number" name='phone_no' placeholder="Phone number" value={user.phone_no} onChange={handleChange}/>
             </div>
             <div className="row">
@@ -114,6 +125,16 @@ function Signup() {
               <label for=""><i className="fas fa-lock	"></i></label>
               <input className="password-input" type="password" name="password" id="" placeholder="Password" value={user.password} onChange={handleChange}/>
             </div>
+            <div class="form-group">
+            <div className="col-md-8">
+            <select id="signup-sector" name="signup-sector" class="signup-select">
+                        <option value="sector">Sector</option>
+                        <option value="volvo">Volvo</option>
+                        <option value="saab">Saab</option>
+                        <option value="mercedes">Mercedes</option>
+                    </select>
+                    </div>
+          </div>
             <div className="row">
               <div className="col-6 text-left mt-2">
                 <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"/>
