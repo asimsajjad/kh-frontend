@@ -55,9 +55,9 @@ function Signup() {
   
     function SubmitButton(){
       if (user.username && user.email && user.password){
-        return <button className="btn login-btn" type="submit" onClick={handleSubmit}>Sign-up</button>
+        return <button className="btn login-btn" type="submit" onClick={handleSubmit}>Sign Up</button>
       } else {
-        return <button className="btn login-btn"  onClick={handleSubmit} type="submit" disabled>Sign-up</button>
+        return <button className="btn login-btn"  onClick={handleSubmit} type="submit" disabled>Sign Up</button>
       };
     };
   
@@ -72,6 +72,7 @@ function Signup() {
               <Link href=""><i class="fa-brands fa-linkedin"></i></Link>
               <Link href=""><i class="fa-brands fa-google-plus"></i></Link>
             </div>
+            <p className="text-center">or use your email for registeration</p>
             <Link href=""><img src="assets/images/images (5).jpg" alt="" class="profile"/></Link>
             
             <div class="container pt-3">
@@ -80,19 +81,34 @@ function Signup() {
       <div class="col-auto">
       
         <div class="form-check form-check-inline pl-5">
-          <input class="form-check-input m-4  " type="radio" name="radio-group" id="radio1" value="option1"/>
+          <input class="form-check-input m-4  " type="radio" name="radio-group" id="radio1" value="employee"/>
           <div class="row .redio-buttons-image">
           <Link href=""><img src="assets/images/labour.png" alt="" class=" labour"/></Link>
-          <label class="form-check-label" for="radio1"> Labour </label>
+          <label>
+            <input
+              type="radio"
+              value="employer"
+              // checked={this.state.selectedOption === "Male"}
+              // onChange={this.onValueChange}
+            />
+            Labour
+          </label>
           </div>
         </div>
         
         <div class="form-check form-check-inline pr-5">
-        
-          <input class="form-check-input m-4" type="radio" name="radio-group" id="radio2" value="option2"/>
+          <input class="form-check-input m-4" type="radio" name="radio-group" id="radio2" value="employer"/>
           <div class="row .redio-buttons-image">
           <Link href=""><img src="assets/images/employee.png" alt="" class=" labour"/></Link>
-          <label class="form-check-label" for="radio2">Employer</label>
+          <label>
+            <input
+              type="radio"
+              value="em[ployee"
+              // checked={this.state.selectedOption === "employer"}
+              // onChange={this.onValueChange}
+            />
+            Employer
+          </label>
           </div>
           
         </div>
@@ -100,8 +116,16 @@ function Signup() {
     </div>
     </div>
   </div>
-            <p className="text-center pt-3">or use your email for register</p>
-            
+            <div class="form-group">
+            <div className="col-md-8 mb-4">
+            <select id="signup-sector" name="signup-sector" class="signup-select">
+                        <option value="sector">Sector</option>
+                        <option value="volvo">Volvo</option>
+                        <option value="saab">Saab</option>
+                        <option value="mercedes">Mercedes</option>
+                    </select>
+                    </div>
+          </div>
             <div className="name-input mb-4 d-flex">
               <label for=""><i className="fas fa-user"></i></label>
               <input className="" type="name" name='username' placeholder="Name" value={user.username} onChange={handleChange}/>
@@ -114,27 +138,17 @@ function Signup() {
               <label for=""><i className="fas fa-phone"></i></label>
               <input className="" type="number" name='phone_no' placeholder="Phone number" value={user.phone_no} onChange={handleChange}/>
             </div>
-            <div className="row">
-              <div className="text-left mb-4">
+            <div className="password-input d-flex">
+              <label for=""><i className="fas fa-lock	"></i></label>
+              <input className="password-input" type="password" name="password" id="" placeholder="Password" value={user.password} onChange={handleChange}/>
+            </div>
+          <div className="row">
+              <div className="text-left">
                 <label className="text-left comment" for="floatingTextarea2">Write your address here</label>
                  <textarea className="form-control" name="address" id="floatingTextarea2" value={user.address} onChange={handleChange}
             ></textarea>
               </div>              
             </div>
-            <div className="password-input d-flex">
-              <label for=""><i className="fas fa-lock	"></i></label>
-              <input className="password-input" type="password" name="password" id="" placeholder="Password" value={user.password} onChange={handleChange}/>
-            </div>
-            <div class="form-group">
-            <div className="col-md-8">
-            <select id="signup-sector" name="signup-sector" class="signup-select">
-                        <option value="sector">Sector</option>
-                        <option value="volvo">Volvo</option>
-                        <option value="saab">Saab</option>
-                        <option value="mercedes">Mercedes</option>
-                    </select>
-                    </div>
-          </div>
             <div className="row">
               <div className="col-6 text-left mt-2">
                 <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"/>
