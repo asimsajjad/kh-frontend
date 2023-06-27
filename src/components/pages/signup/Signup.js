@@ -66,13 +66,30 @@ function Signup() {
       <div className="row login-form ">
         <div className="col-md-8">
           <form action="">
-            <h2 className="text-center">Create Account</h2>
-            <div className="social-media-links d-flex justify-content-center">
+            <h2 className="text-center pt-3">Create Account</h2>
+            <div className="social-media-links d-flex justify-content-center pt-3">
               <Link to=""><img src="assets/images/facebook icon.png" alt=""/></Link>
               <Link href=""><img src="assets/images/Linkdin.png" alt=""/></Link>
               <Link href=""><img src="assets/images/Google icon.png" alt=""/></Link>
             </div>
-            <p className="text-center">or use your email for register</p>
+            <Link href=""><img src="assets/images/images (5).jpg" alt="" class="profile pt-3"/></Link>
+            <div class="container pt-3">
+    <div class="row justify-content-center">
+      <div class="col-auto">
+      
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="radio-group" id="radio1" value="option1"/>
+          <label class="form-check-label" for="radio1">Labour </label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="radio-group" id="radio2" value="option2"/>
+          <label class="form-check-label" for="radio2">Employer</label>
+        </div>
+    
+    </div>
+    </div>
+  </div>
+            <p className="text-center pt-3">or use your email for register</p>
             
             <div className="name-input mb-4 d-flex">
               <label for=""><i className="bi bi-person-fill"></i></label>

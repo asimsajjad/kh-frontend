@@ -67,7 +67,7 @@ function PopularServices() {
                   </div>
                 </div>
                 <div className="carousel-item">
-                  <div className="row">
+                  <div className="row ">
                     <div className="col-lg-1 pt-5">
                       <a className="btn carousel-btn-left mb-3 mr-1" href="#carouselExampleIndicators2" role="button" data-slide="prev">
                         <i className="fa fa-arrow-left"></i>
@@ -121,7 +121,7 @@ function PopularServices() {
                   </div>
                 </div>
                 <div className="carousel-item">
-                  <div className="row">
+                  <div className="row ">
                     <div className="col-lg-1 pt-5">
                       <a className="btn carousel-btn-left mb-3 mr-1" href="#carouselExampleIndicators2" role="button" data-slide="prev">
                         <i className="fa fa-arrow-left"></i>

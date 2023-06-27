@@ -8,6 +8,13 @@ body {
 .bi-search {
     margin-right: 20px;
 }
+.carousel-item {
+     background-color: white !important;
+}
+img.profile {
+    width: 100px;
+    border-radius: 100px;
+}
 
 .nav-links {
     font-family: 'Poppins';
@@ -337,13 +344,13 @@ form {
 form h2 {
     color: #673AB7;
     font-weight: 700;
-    margin-top: 50px;
-    margin-bottom: 50px;
+    margin-top: 10px;
+   
 }
 
 .social-media-links a {
     margin-right: 20px;
-    margin-bottom: 60px;
+    
 }
 
 .login-btn {
