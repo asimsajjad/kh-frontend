@@ -3,11 +3,12 @@ import axios from '../../../config/axios';
 import { BrowserRouter as Router,Routes, Route, Link, useParams  } from 'react-router-dom';
 
 
-  function Labours() {
+  function Categories() {
         const [labour, setLabour] = useState([]);
         const [category, setCategory] = useState([]);
         const {type} = useParams();
         console.log(type, 'type');
+        
         const [state, setState] = useState({
             user_id: "",
             category_id: ""
@@ -22,9 +23,13 @@ import { BrowserRouter as Router,Routes, Route, Link, useParams  } from 'react-r
             console.error(error);
           });
           
-       }, []);
+       }, []
+       
+       
+       );
 
     function loadEmployees(){
+        
         console.log(type, 'typedd');
         const formData = new FormData()
         formData.append('user_id', '')
@@ -40,15 +45,18 @@ import { BrowserRouter as Router,Routes, Route, Link, useParams  } from 'react-r
         console.error(error);
         });
     }
+ 
+
 
     return (<>
         <div className="container top-btns pt-5">
             <div className="row">
                 <div className="col-md-12">
-                    <div className="category-tabs  ">
-                        <Link to="/labours" className={`btn tab-btn2 col-md-1 ${!type ? "active" : ""}`} role="button">All</Link>
+                    <div className="category-tabs d-flex justify-content-left">
+                        <Link to="/labours" className={`btn tab-btn2 ${!type ? "active" : ""}`} 
+                        onClick={loadEmployees}  role="button">All</Link>
                         {category.map(post => (
-                        <Link to={`/labours/${post.slug}`} className={`btn plum tab-btn2 col-md-1  ${(type===post.slug) ? "active" : ""}`}
+                        <Link key={post.id} to={`/labours/${post.slug}`} className={`btn plum tab-btn2 ${(type===post.slug) ? "active" : ""}`}
                         role="button" onClick={loadEmployees} >{post.name}</Link>
                         ))}
                     </div>
@@ -69,7 +77,7 @@ import { BrowserRouter as Router,Routes, Route, Link, useParams  } from 'react-r
                             </div>
                             <div className="available d-flex">
                                 <Link className="" to="">Available</Link>
-                                <Link to={`/info/${post.username}`} className="btn profile-btn">View Profile</Link>
+                                <Link key={post.id} to={`/profile/${post.slug}`} className="btn profile-btn">View Profile</Link>
                             </div>
                         </div>
                     </div>
@@ -79,4 +87,4 @@ import { BrowserRouter as Router,Routes, Route, Link, useParams  } from 'react-r
         </div>
     </>);
  }
- export default Labours;
+ export default Categories;
