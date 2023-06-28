@@ -10,7 +10,7 @@ import Header from './components/shared/Header';
 import Home from './components/pages/home';
 import Login from './components/pages/login/Login';
 import Categories from './components/pages/category/Categories';
-import Labours from './components/pages/labour/Services';
+import Labours from './components/pages/labour/Category';
 import Signup from './components/pages/signup/Signup';
 import ForgotPassword from './components/pages/forgot-password/ForgotPassword';
 import JobPost from './components/pages/job-post/JobPost';
