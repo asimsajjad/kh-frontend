@@ -3,33 +3,33 @@ import axios from '../../../config/axios';
 import { BrowserRouter as Router,Routes, Route, Link, useParams  } from 'react-router-dom';
 
 function Info() {
-    const [profile, setProfile] = useState('');
+    const [profile, setProfile] = useState([]);
+    const {type} = useParams();
     const url='profileData';
 
-//     useEffect(() => {
-//     const formData = new FormData()
-//     // formData.append('user_id', '')
-//     formData.append('user_slug', type)
-//     axios.post(`${url}`, formData)
-    
-//     .then(response => {
-//     setLabour(response?.data?.data);
-//     })
-//     .catch(error => {
-//     console.error(error);
-//     });
-//    }, []
-//    );
+    useEffect(() => {
+    const formData = new FormData()
+    formData.append('user_slug', type)
+    axios.post(`${url}`, formData)
+     .then(response => {
+    setProfile(response?.data?.data);
+    })
+    .catch(error => {
+    console.error(error);
+    });
+   }, []
+   );
 
 
     return <div className="container pt-5">
+        {profile.map(info => (
     <div className="row pl-2">
         <div className="col-lg-3">
             <img src="assets/images/Rectangle 54.png" alt="" className="img-fluid profile" />
         </div>
         <div className="col-lg-3 ">
-            <p className="p1">Jeremy rose </p>
-            <p className="p2">Plumber</p>
+            <p className="p1">{info.username}</p>
+            <p className="p2">{info.category_name}</p>
             <div className="col-lg-6 pt-5">
                 <button type="button" className="btn btn-success">Call Now</button>
             </div>
@@ -49,6 +49,7 @@ function Info() {
         </div>
 
     </div>
+     ))}
     <div className="col-12 pt-5">
         <h1>Description</h1>
     </div>

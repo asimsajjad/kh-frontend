@@ -8,6 +8,11 @@ import { BrowserRouter as Router,Routes, Route, Link, useParams  } from 'react-r
         const [category, setCategory] = useState([]);
         const {type} = useParams();
         console.log(type, 'type');
+
+        const [currentPage, setCurrenPage] = useState(1);
+        const recordsPerPage= 10;
+        const lastIndex = currentPage * recordsPerPage;
+        const firstIndex = lastIndex - recordsPerPage;
         
         const [state, setState] = useState({
             user_id: "",
@@ -24,8 +29,6 @@ import { BrowserRouter as Router,Routes, Route, Link, useParams  } from 'react-r
           }); 
           
        }, []
-       
-       
        );
 
     function loadEmployees(){
@@ -46,7 +49,25 @@ import { BrowserRouter as Router,Routes, Route, Link, useParams  } from 'react-r
         });
     }
  
-
+    const records = labour.slice(firstIndex, lastIndex);
+    const npage = Math.ceil(labour.length/recordsPerPage);
+    const numbers = [...Array(npage + 1).keys()].slice(1); 
+  
+    function prePage(){
+      if(currentPage !== 1){
+      setCurrenPage(currentPage-1);
+      }
+      }
+      function changeCpage(id){
+      setCurrenPage(id);
+      }
+      function nextPage(){
+        if(currentPage === npage){
+          setCurrenPage(1);
+        }else{
+          setCurrenPage(currentPage+1);
+        }
+      }
 
     return (<>
         <div className="container top-btns pt-5">
@@ -65,7 +86,7 @@ import { BrowserRouter as Router,Routes, Route, Link, useParams  } from 'react-r
         </div>
         <div className="container pt-4">
             <div className="row">
-            {labour.map(post => (
+            {records.map(post => (
                 <div className="col-md-6 mt-4">
                     <div className="profile-card d-flex">
                         <img src={`${process.env.REACT_APP_RESOURCES_URL}images/${post.image}`} className="card-img-top rounded-circle" alt="User 1"/>
@@ -85,6 +106,22 @@ import { BrowserRouter as Router,Routes, Route, Link, useParams  } from 'react-r
                 ))}
             </div>
         </div>
+        <ul className='pagination' style={{justifyContent: 'center'}}>
+      <li className='page-item'>
+      <Link to="/labours" className="page-link" onClick={prePage}>Prev</Link>
+      </li>
+      {
+        numbers.map((n, i) =>(
+          <li className={`page-item ${currentPage === n ? 'active' : ''}`} key={i}>
+            <Link to="/labours" className="page-link" onClick={()=> changeCpage(n)}>{n}</Link>
+          </li>
+        ))
+      }
+       <li className='page-item'>
+      <Link to="/labours" className="page-link" onClick={nextPage}>Next</Link>
+      </li>
+    </ul>
+  
     </>);
  }
  export default Categories;

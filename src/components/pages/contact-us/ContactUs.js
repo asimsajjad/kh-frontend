@@ -48,9 +48,9 @@ function Contact() {
 
   function SubmitButton(){
     if (contact.name && contact.email && contact.comments){
-      return <button className="btn login-btn" type="submit" onClick={handleSubmit}>Button</button>
+      return <button className="btn login-btn" type="submit">Button</button>
     } else {
-      return <button className="btn login-btn"  onClick={handleSubmit} type="submit" disabled>Button</button>
+      return <button className="btn login-btn" type="submit" disabled>Button</button>
     };
   };
     return <section className="login-section pl-3">  
