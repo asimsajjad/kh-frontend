@@ -14,7 +14,7 @@ import Labours from './components/pages/labour/Category';
 import Signup from './components/pages/signup/Signup';
 import ForgotPassword from './components/pages/forgot-password/ForgotPassword';
 import JobPost from './components/pages/job-post/JobPost';
-import Info from './components/pages/profile/Profile';
+import Profile from './components/pages/profile/Profile';
 
 import ContactUs from './components/pages/contact-us/ContactUs';
 
@@ -34,9 +34,9 @@ function App() {
 
       <Route path="/signup" exact><Signup /></Route>
       <Route path="/forgot-password" exact><ForgotPassword /></Route>
-      <Route path="/profile" exact><Info /></Route>
+      <Route path="/profile" exact><Profile /></Route>
 
-      <Route path="/profile/:type" exact><Info /></Route>
+      <Route path="/profile/:type" exact><Profile /></Route>
       
       <Route path="/contact-us" exact><ContactUs /></Route>
       <Route path="/index" exact><Home /></Route>

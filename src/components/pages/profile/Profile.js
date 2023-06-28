@@ -25,7 +25,7 @@ function Info() {
         {profile.map(info => (
     <div className="row pl-2">
         <div className="col-lg-3">
-            <img src="assets/images/Rectangle 54.png" alt="" className="img-fluid profile" />
+            <img src={`${process.env.REACT_APP_RESOURCES_URL}images/${info.image}`} alt="" className="img-fluid profile" />
         </div>
         <div className="col-lg-3 ">
             <p className="p1">{info.username}</p>
