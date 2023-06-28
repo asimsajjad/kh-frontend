@@ -704,6 +704,7 @@ h1.cat {
     color: #673AB7;
     border-radius: 10px;
     font-weight: 600;
+    
 }
 
 .tab-btn2:hover {
@@ -752,8 +753,7 @@ h1.cat {
 }
 .active {
     background-color: #673AB7 !important;
-    color:#FFFFFF;
-    height: 55px;
+    color:#FFFFFF;  
 }
 .category-tabs a {
     
