@@ -313,9 +313,9 @@ h5.text-light {
 b.text-dark {
     color: #673AB7 !important;
 }
-footer.text-white.py-2.mt-5 {
+footer.text-white.py-2.mt-2 {
     background-color: #673AB7;
-    height: 250px;
+    height: 300px;
 }
 img.categories {
     height: 100px;
