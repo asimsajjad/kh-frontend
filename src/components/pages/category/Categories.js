@@ -5,7 +5,7 @@ import { BrowserRouter as Router,Routes, Route, Link } from 'react-router-dom';
 function Categories() {
   const [categories, setCategories] = useState([]);
   const [currentPage, setCurrenPage] = useState(1);
-  const recordsPerPage= 5;
+  const recordsPerPage= 20;
   const lastIndex = currentPage * recordsPerPage;
   const firstIndex = lastIndex - recordsPerPage;
   

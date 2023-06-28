@@ -21,7 +21,7 @@ function ForgotPassword() {
     e.preventDefault();
         const formData = new FormData()
         formData.append('email',  email.email,)
-        axios.post(`https://kh.ratedsolution.com/api/forgotPassword`, formData)
+        axios.post(`${url}`, formData)
         .then(response => {
           console.log(response?.data?.data)
         })
@@ -46,7 +46,7 @@ function ForgotPassword() {
       <div className="row ">
         <div className="col-md-8 login-form1">
         <Alert alert={alert}/>
-          <form action="">
+          <form onSubmit={handleSubmit}>
             <h2 className="text-center">Forget Password</h2>
             <div className="social-media-links d-flex justify-content-center">
               <Link to=""><img src="assets/images/facebook icon.png" alt=""/></Link>
@@ -57,7 +57,7 @@ function ForgotPassword() {
               <label for=""><i className="far fa-envelope"></i></label>
               <input className="" type="email" name='email' value={email.email} placeholder="Enter you registered Email here. We will send you a password on it." onChange={handleChange}/>
             </div>
-           <button className="btn login-btn" onClick={handleSubmit} type='submit' disabled={!email.email}>Submit</button>
+           <button className="btn login-btn" type='submit' disabled={!email.email}>Submit</button>
           </form>
         </div>
         <div className="col-md-4 pl-0">
