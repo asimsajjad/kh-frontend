@@ -6,6 +6,22 @@ function Info() {
     const [profile, setProfile] = useState('');
     const url='profileData';
 
+//     useEffect(() => {
+//     const formData = new FormData()
+//     // formData.append('user_id', '')
+//     formData.append('user_slug', type)
+//     axios.post(`${url}`, formData)
+    
+//     .then(response => {
+//     setLabour(response?.data?.data);
+//     })
+//     .catch(error => {
+//     console.error(error);
+//     });
+//    }, []
+//    );
+
+
     return <div className="container pt-5">
     <div className="row pl-2">
         <div className="col-lg-3">

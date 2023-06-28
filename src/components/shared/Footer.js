@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router,Routes, Route, Link } from 'react-router-dom';
 function Footer() {
+  const currentYear = new Date().getFullYear();
     return    <footer className="text-white py-2 mt-2">
     <div className="container mt-5 ">
       <div className="row">
@@ -37,9 +38,11 @@ function Footer() {
         </div>
       </div>
       <div className="text-center mt-3">
-        <p className="footer mt-2">&copy; 2023 Your Website. All rights reserved.</p>
+        <Link to=".com/terms" style={{ color: 'white'}} hover={{color: 'black'}}>Terms of use</Link> | <Link className="foot" style={{color: 'white'}}>Privacy Policy</Link>
+        <p className="footer">&copy; Copyright 2022-{currentYear}, Khadim Hazir. All rights reserved.</p>
       </div>
     </div>
+    import React from 'react';
   </footer>;
   }
   export default Footer;
