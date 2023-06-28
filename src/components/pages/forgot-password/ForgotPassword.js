@@ -42,18 +42,18 @@ function ForgotPassword() {
     }, 30000);
   }
     return <section className="login-section pl-3">
-    <div className="container">
+    <div className="container mt-5">
       <div className="row ">
         <div className="col-md-8 login-form1">
         <Alert alert={alert}/>
           <form action="">
-            <h2 className="text-center">Forget Password</h2>
-            <div className="social-media-links d-flex justify-content-center">
-              <Link to=""><img src="assets/images/facebook icon.png" alt=""/></Link>
-              <Link to=""><img src="assets/images/Linkdin.png" alt=""/></Link>
-              <Link to=""><img src="assets/images/Google icon.png" alt=""/></Link>
+            <h2 className="text-center pt-4">Forget Password</h2>
+            <div className="social-media-links d-flex justify-content-center pt-3">
+            <Link to=""><i class="fa-brands fa-facebook"></i></Link>
+              <Link href=""><i class="fa-brands fa-linkedin"></i></Link>
+              <Link href=""><i class="fa-brands fa-google-plus"></i></Link>
             </div>
-            <div className="name-input mb-4 d-flex">
+            <div className="name-input mb-4 d-flex mt-3">
               <label for=""><i className="far fa-envelope"></i></label>
               <input className="" type="email" name='email' value={email.email} placeholder="Enter you registered Email here. We will send you a password on it." onChange={handleChange}/>
             </div>

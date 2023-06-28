@@ -45,10 +45,10 @@ import { BrowserRouter as Router,Routes, Route, Link, useParams  } from 'react-r
         <div className="container top-btns pt-5">
             <div className="row">
                 <div className="col-md-12">
-                    <div className="category-tabs d-flex justify-content-left">
-                        <Link to="/labours" className={`btn tab-btn2 ${!type ? "active" : ""}`} role="button">All</Link>
+                    <div className="category-tabs  ">
+                        <Link to="/labours" className={`btn tab-btn2 col-md-1 ${!type ? "active" : ""}`} role="button">All</Link>
                         {category.map(post => (
-                        <Link to={`/labours/${post.slug}`} className={`btn plum tab-btn2 ${(type===post.slug) ? "active" : ""}`}
+                        <Link to={`/labours/${post.slug}`} className={`btn plum tab-btn2 col-md-1  ${(type===post.slug) ? "active" : ""}`}
                         role="button" onClick={loadEmployees} >{post.name}</Link>
                         ))}
                     </div>

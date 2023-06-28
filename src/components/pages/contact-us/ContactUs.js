@@ -59,8 +59,8 @@ function Contact() {
         <div className="col-md-8 login-form1">
         <Alert alert={alert}/>
           <form> 
-            <h2 className="text-center">Contact Us</h2>
-            <div className="name-input mb-4 d-flex">
+            <h2 className="text-center pt-3">Contact Us</h2>
+            <div className="name-input mb-4 d-flex mt-3">
               <label for="formGroupExampleInput" className="form-label">Name : </label>
               <input type="text" name="name" placeholder='Enter your name here' className="form-control" id="formGroupExampleInput" value={contact.name} onChange={handleChange}
             />
@@ -72,7 +72,7 @@ function Contact() {
             </div>
             <div className="row">
               <div className="col-12 text-left mt-3">
-                <label className="text-left comment" for="floatingTextarea2">What can we help you with?</label>
+                <label className="text-left comment" for="floatingTextarea2" >What can we help you with?</label>
                  <textarea className="form-control" name="comments" id="floatingTextarea2" value={contact.comments} onChange={handleChange}
             ></textarea>
               </div>              

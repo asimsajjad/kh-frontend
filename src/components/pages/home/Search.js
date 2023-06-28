@@ -16,7 +16,7 @@ function Search() {
         <div className="card border-0 ">
           <div className="mx-auto">
             <img src="assets/images/svgviewer-png-output.png" className="card-img-top  mx-auto " alt="..."/>
-            <p className="card-title text-center services pt-2 ">Handy person</p>
+            <p className="card-title text-center services pt-3 ">Handy person</p>
 
           </div>
 

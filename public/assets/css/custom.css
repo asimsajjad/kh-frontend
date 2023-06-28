@@ -37,6 +37,39 @@ select#signup-sector {
 img.labour {
     width: 50px;
 }
+.col-md-6.best {
+    background-image: url(../images/best.png);
+    background-repeat: no-repeat;
+    height: 590px;
+    width: 607px;
+}
+.card-body.categories {
+    border-top: 1px solid #eeeeee;
+    border-left: 1px solid #eeeeee;
+    border-right: 1px solid #eeeeee;
+}
+.col-md-4.banner1 {
+    border: 1px solid #eeeeee ;
+    border-radius: 10px;
+    margin-top: 110px;
+
+}
+.col-md-6.banner {
+    border: 1px solid #eeeeee ;
+    border-radius: 10px;
+    width: 115px;
+    margin-top: 100px;
+    
+}
+a.btn.plum.tab-btn2.col-md-1 {
+    height: 55px;
+    width: 90px;
+    margin-left: 4px;
+}
+.col-md-6.find {
+    width: 555px;
+}
+
 .row.\.redio-buttons-image{
     position: relative;
     left: -45px
@@ -79,7 +112,6 @@ svg.svg-inline--fa.fa-google-plus {
 
 .workers {
     background-color: #ffffff;
-    padding-top: 70px;
     
 }
 
@@ -88,7 +120,6 @@ svg.svg-inline--fa.fa-google-plus {
 }
 
 .worker-text {
-    text-align: end;
     margin-top: 50px;
 }
 
@@ -241,7 +272,6 @@ direction: ltr;
     margin: auto;
     font-size: 20px;
     color: #fff;
-    margin-top: 100px;
 }
 
 .Categoryies-btn:hover {
@@ -274,7 +304,9 @@ direction: ltr;
 .profile-card {
     border-radius: 20px;
     border: 1px solid #673AB7;
-    padding: 50px;
+    height: 189px;
+    padding-left:66px;
+    padding-top: 35px;
 }
 
 nav {
@@ -361,6 +393,7 @@ form {
     background-color: #fff;
     padding-left: 10px;
     border: none;
+    font-size: 15px;
 }
 
 .password-input input {
@@ -398,11 +431,6 @@ form h2 {
     background-color: #673AB7;
     color: #fff;
 }
-
-.login-section {
-    margin-top: 110px;
-}
-
 .name-input label {
     margin-top: 15px;
 }
@@ -415,6 +443,7 @@ form h2 {
     background-color: #fff;
     border-radius: 10px;
     padding-left: 15px;
+    height: 50px;
 }
 
 .password-input {

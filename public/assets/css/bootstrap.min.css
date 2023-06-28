@@ -348,8 +348,7 @@ optgroup,
 select,
 textarea {
     margin: 0;
-    font-family: 'Poppins';
-    font-size: inherit;
+    font-size: 15px;
     line-height: inherit
 }
 
@@ -4698,7 +4697,6 @@ fieldset:disabled .btn {
     flex-direction: column;
     min-width: 0;
     word-wrap: break-word;
-    background-color:;
     background-clip: border-box;
     border: 1px solid rgba(0, 0, 0, .125);
     border-radius: .25rem

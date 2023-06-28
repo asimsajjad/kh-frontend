@@ -16,12 +16,12 @@ function Categories() {
   }, []);
 
   return (<>
-    <div className="container">
-      <div className="col-12">
+    <div className="container mt-5">
+      <div className="col-md-12">
           <h1 className="cat text-center">Categories</h1>
       </div>
       </div>
-      <div className="container ">
+      <div className="container pt-3 ">
       <div className="row">
        {categories.map(category => (
         <div className="col-md-3 mb-3">

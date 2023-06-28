@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 function Banner() {
     return <div className="main-banner" id="top">
-    <div className="container">
+    <div className="container banner">
       <div className="row">
         <div className="col-md-6">
           <div className="item header-text">
