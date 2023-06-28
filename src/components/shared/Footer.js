@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router,Routes, Route, Link } from 'react-router-dom';
+
 function Footer() {
   const currentYear = new Date().getFullYear();
     return    <footer className="text-white py-2 mt-2">
@@ -42,7 +43,6 @@ function Footer() {
         <p className="footer">&copy; Copyright 2022-{currentYear}, Khadim Hazir. All rights reserved.</p>
       </div>
     </div>
-    import React from 'react';
   </footer>;
   }
   export default Footer;

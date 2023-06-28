@@ -9,14 +9,6 @@ button.btn.btn-light {
 
 
 }
-
-
-div#top {
-   /* background-image: url(../images/Rectangle\ 4.jpg);*/
-   position: relative;
-   top: -80px;
-}
-
 .login-form1{
     background-color: #D9D9D9;
     border-top-left-radius: 10px;
@@ -54,11 +46,6 @@ a.banner-btn {
     top: -215px;
     font-size: 24px;
     line-height: 36px;
-}
-
-img.img-banner {
-    position: relative;
-    top: -215px;
 }
 
 /* .form-control {
@@ -326,9 +313,9 @@ h5.text-light {
 b.text-dark {
     color: #673AB7 !important;
 }
-footer.text-white.py-2.mt-2 {
+footer.text-white.py-2.mt-5 {
     background-color: #673AB7;
-    height: 300px;
+    height: 250px;
 }
 img.categories {
     height: 100px;
@@ -345,14 +332,9 @@ img.categories {
 p.pera-banner {
     position: relative;
     top: -215px;
-    font-family: Poppins;
-    
-        font-size: 24px;
-        line-height: 36px;
-       
-    
+    font-size: 24px;
+    line-height: 36px; 
 }
-
 a.categories.a.m-3 {
     color: #0F0F0F;
 }
@@ -706,7 +688,6 @@ footer.bg-dark.text-white.py-5 {
 }
 
 h1.cat {
-    padding-top: 80px;
     color: #673AB7;
     font-size: 50px;
     font-family: 'Poppins';
@@ -720,7 +701,6 @@ h1.cat {
 }
 
 .tab-btn2 {
-    font-family: 'Poppins';
     color: #673AB7;
     border-radius: 10px;
     font-weight: 600;
@@ -773,9 +753,10 @@ h1.cat {
 .active {
     background-color: #673AB7 !important;
     color:#FFFFFF;
+    height: 55px;
 }
 .category-tabs a {
-    margin-right: 30px;
+    
     background-color: #CFCECE;
 }
 
@@ -797,7 +778,6 @@ img.d-flex {
 
 h5.card-title.plum.s {
     font-size: 30px;
-    font-family: 'Poppins';
     margin-left: 20px;
 }
 
@@ -807,7 +787,7 @@ h5.card-title.plum.s {
 }
 
 .available a {
-    color: #20951D !important;
+   
     margin-right: 80px;
 }
 
@@ -887,7 +867,6 @@ p.pt-3.description {
 p.card-title.text-center.services {
     font-size: 15px;
     line-height: 10px;
-    font-family: Poppins;
     color: #000000;
 }
 

@@ -4,11 +4,6 @@ import { BrowserRouter as Router,Routes, Route, Link} from 'react-router-dom';
 
 function Categories() {
   const [categories, setCategories] = useState([]);
-  const [currentPage, setCurrenPage] = useState(1);
-  const recordsPerPage= 20;
-  const lastIndex = currentPage * recordsPerPage;
-  const firstIndex = lastIndex - recordsPerPage;
-  
   const url='';
   useEffect(() => {
     axios.get(`${url}`)
@@ -20,35 +15,15 @@ function Categories() {
       });
   }, []);
 
-  const records = categories.slice(firstIndex, lastIndex);
-  const npage = Math.ceil(categories.length/recordsPerPage);
-  const numbers = [...Array(npage + 1).keys()].slice(1); 
-
-  function prePage(){
-    if(currentPage !== 1){
-    setCurrenPage(currentPage-1);
-    }
-    }
-    function changeCpage(id){
-    setCurrenPage(id);
-    }
-    function nextPage(){
-      if(currentPage === npage){
-        setCurrenPage(1);
-      }else{
-        setCurrenPage(currentPage+1);
-      }
-    }
-
   return (<>
-    <div className="container">
-      <div className="col-12">
+    <div className="container mt-5">
+      <div className="col-md-12">
           <h1 className="cat text-center">Categories</h1>
       </div>
       </div>
-      <div className="container ">
+      <div className="container pt-3 ">
       <div className="row">
-       {records.map(category => (
+       {categories.map(category => (
         <div className="col-md-3 mb-3">
           <div className="card">
             <div className="card-body categories">
@@ -63,25 +38,8 @@ function Categories() {
       </div>      
         ))} 
     </div>
-    <ul className='pagination' style={{justifyContent: 'center'}}>
-      <li className='page-item'>
-      <Link to="/categories" className="page-link" onClick={prePage}>Prev</Link>
-      </li>
-      {
-        numbers.map((n, i) =>(
-          <li className={`page-item ${currentPage === n ? 'active' : ''}`} key={i}>
-            <Link to="/categories" className="page-link" onClick={()=> changeCpage(n)}>{n}</Link>
-          </li>
-        ))
-      }
-       <li className='page-item'>
-      <Link to="/categories" className="page-link" onClick={nextPage}>Next</Link>
-      </li>
-    </ul>
   </div> 
   
   </>);
- 
 }
-
   export default Categories;

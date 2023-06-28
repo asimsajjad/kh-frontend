@@ -7,13 +7,13 @@ function Login() {
       <div className="row ">
         <div className="col-md-8 login-form1">
           <form action="">
-            <h2 className="text-center">Login to your Account</h2>
-            <div className="social-media-links d-flex justify-content-center">
-              <Link to="/login"><img src="assets/images/facebook icon.png" alt="" /></Link>
-              <Link to=""><img src="assets/images/Linkdin.png" alt=""/></Link>
-              <Link to=""><img src="assets/images/Google icon.png" alt=""/></Link>
+            <h2 className="text-center pt-4">Login to your Account</h2>
+            <div className="social-media-links d-flex justify-content-center pt-3">
+            <Link to=""><i class="fa-brands fa-facebook"></i></Link>
+              <Link href=""><i class="fa-brands fa-linkedin"></i></Link>
+              <Link href=""><i class="fa-brands fa-google-plus"></i></Link>
             </div>
-            <div className="name-input mb-4 d-flex">
+            <div className="name-input mb-3 d-flex mt-5">
               <label for=""><i className="far fa-envelope"></i></label>
               <input className="" type="email" placeholder="Email"/>
             </div>

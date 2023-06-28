@@ -48,9 +48,9 @@ function Contact() {
 
   function SubmitButton(){
     if (contact.name && contact.email && contact.comments){
-      return <button className="btn login-btn" type="submit">Submit</button>
+      return <button className="btn login-btn" type="submit" onClick={handleSubmit}>Button</button>
     } else {
-      return <button className="btn login-btn" type="submit" disabled>Submit</button>
+      return <button className="btn login-btn"  onClick={handleSubmit} type="submit" disabled>Button</button>
     };
   };
     return <section className="login-section pl-3">  
@@ -72,7 +72,7 @@ function Contact() {
             </div>
             <div className="row">
               <div className="col-12 text-left mt-3">
-                <label className="text-left comment" for="floatingTextarea2">What can we help you with?</label>
+                <label className="text-left comment" for="floatingTextarea2" >What can we help you with?</label>
                  <textarea className="form-control" name="comments" id="floatingTextarea2" value={contact.comments} onChange={handleChange}
             ></textarea>
               </div>              

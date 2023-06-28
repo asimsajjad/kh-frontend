@@ -40,7 +40,7 @@ function ChooseCategory() {
       ))}
       </div>
     </div>
-    <div className="container">
+    <div className="container mt-3">
     <div className="col-md-12  text-center text-center">
     <Link to="/categories"><button className="btn Categoryies-btn align-self-center">More Categories</button></Link>
     </div>

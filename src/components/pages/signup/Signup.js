@@ -102,16 +102,16 @@ function Signup() {
         return <button className="btn login-btn"  onClick={handleSubmit} type="submit" disabled>Sign Up</button>
       };
     };
-
-    return <section className="login-section pl-2">    
-    <div className="container">
+  
+    return <section className="login-section pl-3">    
+    <div className="container mt-5">
       <div className="row login-form ">
         <div className="col-md-8">
         <Alert alert={alert}/>
           <form action="" >
             <h2 className="text-center pt-4">Create Account</h2>
             <div className="social-media-links d-flex justify-content-center pt-3">
-              <Link to=""><i class="fa-brands fa-facebook"></i></Link>
+            <Link to=""><i class="fa-brands fa-facebook"></i></Link>
               <Link href=""><i class="fa-brands fa-linkedin"></i></Link>
               <Link href=""><i class="fa-brands fa-google-plus"></i></Link>
             </div>

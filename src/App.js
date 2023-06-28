@@ -10,8 +10,7 @@ import Header from './components/shared/Header';
 import Home from './components/pages/home';
 import Login from './components/pages/login/Login';
 import Categories from './components/pages/category/Categories';
-import Labours from './components/pages/labour/Category';
-import CategoryLabours from './components/pages/labour/CategoryDetail';
+import Labours from './components/pages/labour/Services';
 import Signup from './components/pages/signup/Signup';
 import ForgotPassword from './components/pages/forgot-password/ForgotPassword';
 import JobPost from './components/pages/job-post/JobPost';
@@ -35,9 +34,9 @@ function App() {
 
       <Route path="/signup" exact><Signup /></Route>
       <Route path="/forgot-password" exact><ForgotPassword /></Route>
-      <Route path="/profile" exact><Info /></Route>
+      <Route path="/info" exact><Info /></Route>
 
-      <Route path="/profile/:type" exact><Info /></Route>
+      <Route path="/info/:type" exact><Info /></Route>
       
       <Route path="/contact-us" exact><ContactUs /></Route>
       <Route path="/index" exact><Home /></Route>
