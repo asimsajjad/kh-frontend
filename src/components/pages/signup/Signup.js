@@ -94,15 +94,16 @@ function Signup() {
         const regex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
         const error = {};
         if(regex.test(user.email)){
-          return <button className="btn login-btn" type="submit" onClick={handleSubmit}>Sign Up</button>
+          return <button className="btn login-btn" type="submit" onClick={handleSubmit} >Sign Up</button>
         }else{
-          error.email="Email is not valid";
+          //error.email="Email is not valid";
+          return <button className="btn login-btn" type="submit" onClick={handleSubmit} disabled >Sign Up</button>
+
         }
       } else {
         return <button className="btn login-btn"  onClick={handleSubmit} type="submit" disabled>Sign Up</button>
       };
-    };
-  
+    };  
     return <section className="login-section pl-3">    
     <div className="container mt-5">
       <div className="row login-form ">
@@ -110,23 +111,23 @@ function Signup() {
         <Alert alert={alert}/>
           <form action="" >
             <h2 className="text-center pt-4">Create Account</h2>
-            <div className="social-media-links d-flex justify-content-center pt-3">
+            {/* <div className="social-media-links d-flex justify-content-center pt-3">
             <Link to=""><i class="fa-brands fa-facebook"></i></Link>
               <Link href=""><i class="fa-brands fa-linkedin"></i></Link>
               <Link href=""><i class="fa-brands fa-google-plus"></i></Link>
             </div>
-            <p className="text-center">Or use your email for registeration</p>
+            <p className="text-center">Or use your email for registeration</p> */}
             <div class="container pt-3">
               <div class="row justify-content-center">
                 <div class="col-auto">
-                  <input class="form-check-input m-4  " type="radio" name="usertype" id="radio1" value="employee" checked={selected === 'yes'} onChange={handleSelect}/>
+                  <input class="form-check-input m-4  " type="radio" name="usertype" id="radio1" value="employee" />
                   <div class="form-check form-check-inline">
                     <div class="row .redio-buttons-image">
                       <a><img src="assets/images/labour.png" alt="" class=" labour"/></a>
                       <label>Labour</label>
                     </div>
                 </div>
-              <input class="form-check-input m-4" type="radio" name="usertype" id="radio2" value="employer" checked={selected === 'No'} onChange={handleSelect}/>
+              <input class="form-check-input m-4" type="radio" name="usertype" id="radio2" value="employer" />
               <div class="form-check form-check-inline pr-5">
                 <div class="row .redio-buttons-image">
                   <a><img src="assets/images/employee.png" alt="" class=" labour"/></a>
