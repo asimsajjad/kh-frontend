@@ -42,7 +42,7 @@ import { BrowserRouter as Router,Routes, Route, Link, useParams  } from 'react-r
         axios.post(`${url}`, formData)
         
         .then(response => {
-        console.log(response?.data?.data);
+        setLabour(response?.data?.data);
         })
         .catch(error => {
         console.error(error);
