@@ -21,7 +21,7 @@ function Footer() {
           </ul>
         </div>
         <div className="col-lg-3">
-          <h4 className="text-white mb-4">For Labours</h4>
+          <h4 className="text-white mb-4 ml-5">For Labours</h4>
           <ul className="list-unstyled ml-5">
           <li><Link to="/signup" className="foot" >Create Account</Link></li>
           <li><Link to="/login">Sign in</Link></li>

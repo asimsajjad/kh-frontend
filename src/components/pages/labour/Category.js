@@ -58,7 +58,7 @@ import { BrowserRouter as Router,Routes, Route, Link, useParams  } from 'react-r
       setCurrenPage(currentPage-1);
       }
       }
-      function changeCpage(id){
+      function      changeCpage(id){
       setCurrenPage(id);
       }
       function nextPage(){

@@ -510,6 +510,17 @@ form h2 {
     color: #fff;
 }
 
+element.style {
+    justify-content: center;
+    padding-top: 30px;
+}
+ul.pagination {
+    padding-top: 30px;
+}
+.workers {
+    position: relative;
+    top: 51px;
+}
 .submit-btn {
     background-color: #673AB7;
     color: #fff;
