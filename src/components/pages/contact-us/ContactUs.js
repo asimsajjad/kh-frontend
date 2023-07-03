@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from '../../../config/axios';
 import Alert from '../../Alerts/alert';
+import { BrowserRouter as Router,Routes, Route, Link  } from 'react-router-dom';
 
 function Contact() {
 
@@ -48,9 +49,9 @@ function Contact() {
 
   function SubmitButton(){
     if (contact.name && contact.email && contact.comments){
-      return <button className="btn login-btn" type="submit">Button</button>
+      return <button className="btn login-btn" type="submit">Submit</button>
     } else {
-      return <button className="btn login-btn" type="submit" disabled>Button</button>
+      return <button className="btn login-btn" type="submit" disabled>Submit</button>
     };
   };
     return <section className="login-section pl-3">  
@@ -83,8 +84,9 @@ function Contact() {
         </div>
         <div className="col-md-4 pl-0">
           <div className="login-details">
-            <h3 className="text-light ">Welcome Back</h3>
-            <p className="text-light mb-5 mt-5">to keep connected with us please Login with your personal info </p>         
+            <h3 className="text-light ">Welcome to Khadim Hazir</h3>
+            <p className="text-light mb-5 mt-5">If you want to find more features
+            <Link to="/signup"> login </Link> or <Link to=""> visit our site </Link></p>         
           </div>
         </div>
       </div>
