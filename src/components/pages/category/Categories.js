@@ -63,6 +63,10 @@ function Categories() {
         ))} 
     </div>
   </div> 
+
+  {(() => {
+        if (npage>1) {
+          return (
   <ul className='pagination' style={{justifyContent: 'center'}}>
       <li className='page-item'>
       <Link to="/categories" className="page-link" onClick={prePage}>Prev</Link>
@@ -78,6 +82,9 @@ function Categories() {
       <Link to="/categories" className="page-link" onClick={nextPage}>Next</Link>
       </li>
     </ul>
+          )
+    } 
+  })()}
   
   </>);
 }

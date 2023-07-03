@@ -13,7 +13,7 @@ import { BrowserRouter as Router,Routes, Route, Link, useParams  } from 'react-r
         const recordsPerPage= 10;
         const lastIndex = currentPage * recordsPerPage;
         const firstIndex = lastIndex - recordsPerPage;
-        
+            
         const [state, setState] = useState({
             user_id: "",
             category_id: ""
@@ -106,6 +106,10 @@ import { BrowserRouter as Router,Routes, Route, Link, useParams  } from 'react-r
                 ))}
             </div>
         </div>
+        <div>
+        {(() => {
+        if (npage>1) {
+          return (
         <ul className='pagination' style={{justifyContent: 'center'}}>
       <li className='page-item'>
       <Link to="/labours" className="page-link" onClick={prePage}>Prev</Link>
@@ -121,7 +125,10 @@ import { BrowserRouter as Router,Routes, Route, Link, useParams  } from 'react-r
       <Link to="/labours" className="page-link" onClick={nextPage}>Next</Link>
       </li>
     </ul>
-  
+    )
+  } 
+})()}
+</div>
     </>);
  }
  export default Categories;

@@ -22,36 +22,33 @@ function Info() {
    }, []
    );
 
-
-    return <div className="container pt-5">
-        {profile.map(info => (
-    <div className="row pl-2">
-        <div className="col-lg-3">
-            <img src={`${process.env.REACT_APP_RESOURCES_URL}images/${info.image}`} alt="" className="img-fluid profile" />
-        </div>
-        <div className="col-lg-3 ">
-            <p className="p1">{info.username}</p>
-            <p className="p2">{info.category_name}</p>
-            <div className="col-lg-6 pt-5">
-                <button type="button" className="btn btn-success">Call Now</button>
+    return <div>
+{profile.map(info => (
+    <div className="container pt-5">
+               
+                <div className="row pl-2">
+                    <div className="col-lg-3">
+                        <img src={`${process.env.REACT_APP_RESOURCES_URL}images/${info.image}`} alt="" className="img-fluid profile" />
+                    </div>
+                    <div className="col-lg-3 ">
+                        <p className="p1">{info.username}</p>
+                        <p className="p2">{info.category_name}</p>
+                        <div className="col-lg-6 pt-5">
+                            <button type="button" className="btn btn-success">Call Now</button>
+                        </div>
+                    </div>
+                    <div className="col-lg-1 pt-3">
+                        <div className="row">
+                            <div className="col-lg-6">
+                                <i className="fa fa-map-marker fa-3x" aria-hidden="true"></i>
+                            </div>
+                        <div className="col-lg-6">
+                            <p className="p1">Pakistan</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div className="col-lg-1 pt-3">
-            <div className="row">
-            <div className="col-lg-6">
-            <i className="fa fa-map-marker " aria-hidden="true"></i>
-        </div>
-        <div className="col-lg-6">
-        <p >Pakistan</p>
-        </div>
            
-         
-            </div>
-        
-        </div>
-
-    </div>
-     ))}
     <div className="col-12 pt-5">
         <h1>Description</h1>
     </div>
@@ -74,7 +71,7 @@ function Info() {
                 <p className="p4">Phone:</p>
             </div>
             <div className="col-md-3">
-                <p className="p4">+ 13203173560 </p>
+                <p className="p4">{info.phone_no}</p>
             </div>
         </div>
 
@@ -85,8 +82,7 @@ function Info() {
                 <p className="p4">Address:</p>
             </div>
             <div className="col-md-9">
-                <p className="p4">Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/5311 (KHTML, like Gecko)
-                    Chrome/36.0.814.0 Mobile Safari/5311 </p>
+                <p className="p4">{info.address}</p>
             </div>
         </div>
 
@@ -97,23 +93,13 @@ function Info() {
                 <p className="p4">Email:</p>
             </div>
             <div className="col-md-3">
-                <p className="p4">mailto:jagew46732@andorem.com</p>
+                <p className="p4">{info.email}</p>
             </div>
         </div>
 
     </div>
-    <div className="col">
-        <div className="row pt-3">
-            <div className="col-md-3">
-                <p className="p4">Birthday:</p>
-            </div>
-            <div className="col-md-3">
-                <p className="p4">June, 25, 1992 </p>
-            </div>
-        </div>
-
-    </div>
-
 </div>
+ ))}
+ </div>
 }
 export default Info;
