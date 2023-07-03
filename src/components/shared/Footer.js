@@ -3,7 +3,7 @@ import { BrowserRouter as Router,Routes, Route, Link } from 'react-router-dom';
 
 function Footer() {
   const currentYear = new Date().getFullYear();
-    return    <footer className="text-white py-2 mt-2">
+    return    <footer className="text-white py-2 mt-5">
     <div className="container mt-5 ">
       <div className="row">
         <div className="col-md-3">

@@ -1174,7 +1174,6 @@
         this.cycle();
       }
     }
-
     // Getters
     static get Default() {
       return Default$b;

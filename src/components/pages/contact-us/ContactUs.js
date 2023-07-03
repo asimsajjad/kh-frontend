@@ -60,7 +60,7 @@ function Contact() {
         <Alert alert={alert}/>
           <form onSubmit={handleSubmit}> 
             <h2 className="text-center">Contact Us</h2>
-            <div className="name-input mb-4 d-flex">
+            <div className="name-input mb-4 d-flex mt-3">
               <label for="formGroupExampleInput" className="form-label">Name: </label>
               <input type="text" name="name" placeholder='Enter your name here' className="form-control" id="formGroupExampleInput" value={contact.name} onChange={handleChange}
             />

@@ -313,7 +313,7 @@ h5.text-light {
 b.text-dark {
     color: #673AB7 !important;
 }
-footer.text-white.py-2.mt-2 {
+footer.text-white.py-2.mt-5 {
     background-color: #673AB7;
     height: 300px;
 }
