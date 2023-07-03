@@ -17,6 +17,7 @@ import JobPost from './components/pages/job-post/JobPost';
 import Profile from './components/pages/profile/Profile';
 
 import ContactUs from './components/pages/contact-us/ContactUs';
+import Terms from './terms/Terms.js';
 
 
 import Footer from './components/shared/Footer';
@@ -37,7 +38,9 @@ function App() {
       <Route path="/profile" exact><Profile /></Route>
 
       <Route path="/profile/:type" exact><Profile /></Route>
-      
+
+      <Route path="/terms" exact><Terms/></Route>
+
       <Route path="/contact-us" exact><ContactUs /></Route>
       <Route path="/index" exact><Home /></Route>
       <Redirect to="/" />

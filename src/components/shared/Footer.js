@@ -39,7 +39,7 @@ function Footer() {
         </div>
       </div>
       <div className="text-center mt-3">
-        <Link to="" style={{ color: 'white'}} hover={{color: 'black'}}>Terms of use</Link> | <Link to="" className="foot" style={{color: 'white'}}>Privacy Policy</Link>
+        <Link to="/terms" style={{ color: 'white'}} hover={{color: 'black'}}>Terms of use</Link> | <Link to="/terms" className="foot" style={{color: 'white'}}>Privacy Policy</Link>
         <p className="footer">&copy; Copyright 2022-{currentYear}, Khadim Hazir. All rights reserved.</p>
       </div>
     </div>

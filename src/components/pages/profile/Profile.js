@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from '../../../config/axios';
 import { BrowserRouter as Router,Routes, Route, Link, useParams  } from 'react-router-dom';
-
-function Info() {
+;function Info() {
     const [profile, setProfile] = useState([]);
     const {type} = useParams();
     console.log(type, 'type');
@@ -21,7 +20,15 @@ function Info() {
     });
    }, []
    );
+   const [isActive, setIsActive] = useState(false);
+   const [description, setDescription] = useState(false);
 
+   const handleClick = event => {
+     // 👇️ toggle isActive state on click
+     setIsActive(current => !current);
+     setDescription(true);
+    };
+   
     return <div>
 {profile.map(info => (
     <div className="container pt-5">
@@ -34,7 +41,7 @@ function Info() {
                         <p className="p1">{info.username}</p>
                         <p className="p2">{info.category_name}</p>
                         <div className="col-lg-6 pt-5">
-                            <button type="button" className="btn btn-success">Call Now</button>
+                            <button type="button" className={isActive ? 'btn btn-success-hide' : 'btn btn-success'} style={isActive ? {display : 'none'} : {display : 'block'}}  onClick={handleClick}>Call Now</button>{description && (<p><b>{info.phone_no}</b></p>)}
                         </div>
                     </div>
                     <div className="col-lg-1 pt-3">
