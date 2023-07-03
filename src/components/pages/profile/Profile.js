@@ -5,9 +5,11 @@ import { BrowserRouter as Router,Routes, Route, Link, useParams  } from 'react-r
 function Info() {
     const [profile, setProfile] = useState([]);
     const {type} = useParams();
+    console.log(type, 'type');
     const url='profileData';
 
     useEffect(() => {
+        console.log(type, 'typedd');
     const formData = new FormData()
     formData.append('user_slug', type)
     axios.post(`${url}`, formData)

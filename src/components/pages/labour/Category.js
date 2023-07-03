@@ -42,7 +42,7 @@ import { BrowserRouter as Router,Routes, Route, Link, useParams  } from 'react-r
         axios.post(`${url}`, formData)
         
         .then(response => {
-        setLabour(response?.data?.data);
+        console.log(response?.data?.data);
         })
         .catch(error => {
         console.error(error);
@@ -76,9 +76,9 @@ import { BrowserRouter as Router,Routes, Route, Link, useParams  } from 'react-r
                     <div className="category-tabs justify-content-left">
                         <Link to="/labours" className={`btn tab-btn2 ml-2 ${!type ? "active" : ""}`} 
                         onClick={loadEmployees}  role="button">All</Link>
-                        {category.map(post => (
-                        <Link key={post.id} to={`/labours/${post.slug}`} className={`btn plum tab-btn2 ml-2 ${(type===post.slug) ? "active" : ""}`}
-                        role="button" onClick={loadEmployees} >{post.name}</Link>
+                        {category.map(category_data => (
+                        <Link key={category_data.id} to={`/labours/${category_data.slug}`} className={`btn plum tab-btn2 ml-2 ${(type===category_data.slug) ? "active" : ""}`}
+                        role="button" onClick={loadEmployees} >{category_data.name}</Link>
                         ))}
                     </div>
                 </div>
@@ -86,19 +86,19 @@ import { BrowserRouter as Router,Routes, Route, Link, useParams  } from 'react-r
         </div>
         <div className="container pt-4">
             <div className="row">
-            {records.map(post => (
+            {records.map(labour_data => (
                 <div className="col-md-6 mt-4">
                     <div className="profile-card d-flex">
-                        <img src={`${process.env.REACT_APP_RESOURCES_URL}images/${post.image}`} className="card-img-top rounded-circle" alt="User 1"/>
+                        <img src={`${process.env.REACT_APP_RESOURCES_URL}images/${labour_data.image}`} className="card-img-top rounded-circle" alt="User 1"/>
                         <div className="profile-card-body">
-                            <h5 className="card-title plum s">{post.category_name}</h5>
+                            <h5 className="card-title plum s">{labour_data.category_name}</h5>
                             <div className="name d-flex">
-                                <p className="name-para"><i className="bi mr-2 bi-person-fill fas fa-user"></i>{post.username}</p>
+                                <p className="name-para"><i className="bi mr-2 bi-person-fill fas fa-user"></i>{labour_data.username}</p>
                                 <p><i className="bi mr-2 bi-geo-alt-fill fas fa-location-arrow"></i>Pakistan</p>
                             </div>
                             <div className="available d-flex">
                                 <Link className="" to="">Available</Link>
-                                <Link key={post.id} to={`/profile/${post.slug}`} className="btn profile-btn">View Profile</Link>
+                                <Link to={`/profile/${labour_data.slug}`} className="btn profile-btn">View Profile</Link>
                             </div>
                         </div>
                     </div>
