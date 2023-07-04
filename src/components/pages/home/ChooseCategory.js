@@ -10,7 +10,6 @@ function ChooseCategory() {
   useEffect(() => {
     axios.get('sevenCategories')
       .then(response => {
-        console.log("Hello here");
         setcategories(response?.data?.data?.en);
       })
       .catch(error => {

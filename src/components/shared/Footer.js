@@ -33,7 +33,7 @@ function Footer() {
           <h4 className="text-white mb-4">Call Us</h4>
           <p className="foot"><i className="mr-2 fa fa-map-marker"></i>Pakistan: New Defense View Housing Scheme , Dera Ghazi Khan, Punjab 32200.</p>
           <p className="foot"><i className="mr-2 fa fa-phone"></i>+92 3346929604</p>
-          <p className="foot"><i className="mr-2 fa fa-envelope"></i>demo@example.com</p>
+          <a href='mailto:demo@example.com'><p className="foot"><i className="mr-2 fa fa-envelope"></i>demo@example.com</p></a>
         </div>
       </div>
       <div className="text-center mt-3">

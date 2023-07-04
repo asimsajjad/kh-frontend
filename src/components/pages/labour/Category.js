@@ -7,7 +7,6 @@ import { BrowserRouter as Router,Routes, Route, Link, useParams  } from 'react-r
         const [labour, setLabour] = useState([]);
         const [category, setCategory] = useState([]);
         const {type} = useParams();
-        console.log(type, 'type');
 
         const [currentPage, setCurrenPage] = useState(1);
         const recordsPerPage= 10;
@@ -33,7 +32,6 @@ import { BrowserRouter as Router,Routes, Route, Link, useParams  } from 'react-r
 
     function loadEmployees(){
         
-        console.log(type, 'typedd');
         const formData = new FormData()
         formData.append('user_id', '')
         formData.append('category_id', '')
