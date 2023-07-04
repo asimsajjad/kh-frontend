@@ -8,7 +8,7 @@ function Footer() {
       <div className="row">
         <div className="col-md-3">
           <a className="navbar-brand  " href="index.php"><img src="assets/images/logo.png" className="footer" alt=""/></a>
-          <p className="foot">Career Growth: We believe in nurturing talent and providing opportunities for professional growth and development
+          <p className="foot">Khadim Hazir is designed to streamline the process of connecting employers with skilled workers, making it easier than ever to find the right talent for your business.
           </p>
         </div>
         <div className="col-lg-3">
@@ -31,11 +31,9 @@ function Footer() {
         </div>
         <div className="col-lg-3">
           <h4 className="text-white mb-4">Call Us</h4>
-          <p className="foot"><i className="mr-2 fa fa-map-marker"></i>Kenya</p>
-          <p className="foot"><i className="mr-2 fa fa-phone"></i>+25470000000</p>
-          <p className="foot"><i className="mr-2 fa fa-envelope"></i>
-            bluelance@gmail.com
-          </p>
+          <p className="foot"><i className="mr-2 fa fa-map-marker"></i>Pakistan: New Defense View Housing Scheme , Dera Ghazi Khan, Punjab 32200.</p>
+          <p className="foot"><i className="mr-2 fa fa-phone"></i>+92 3346929604</p>
+          <p className="foot"><i className="mr-2 fa fa-envelope"></i>demo@example.com</p>
         </div>
       </div>
       <div className="text-center mt-3">

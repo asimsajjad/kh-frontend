@@ -85,8 +85,8 @@ function Contact() {
         <div className="col-md-4 pl-0">
           <div className="login-details">
             <h3 className="text-light ">Welcome to Khadim Hazir</h3>
-            <p className="text-light mb-5 mt-5">If you want to find more features
-            <Link to="/signup"> login </Link> or <Link to=""> visit our site </Link></p>         
+            <p className="text-light mb-5 mt-5">If you want to find more features please
+            <Link to="/signup"><h5> Login </h5></Link> or <Link to=""><h5> Visit Our Site </h5></Link></p>         
           </div>
         </div>
       </div>
