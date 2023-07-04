@@ -536,9 +536,9 @@ ul.pagination {
     margin-top: 150px;
 }
 .pt10{padding-top: 10px;}
-h6.contact {
+p.contact {
     color: white;
 }
-h6.contact:hover {
+p.contact:hover {
     color: rgb(0, 0, 0);
 }

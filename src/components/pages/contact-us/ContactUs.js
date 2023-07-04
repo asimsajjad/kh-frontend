@@ -86,7 +86,7 @@ function Contact() {
           <div className="login-details">
             <h3 className="text-light ">Welcome to Khadim Hazir</h3>
             <p className="text-light mb-5 mt-5">If you want to find more features please
-            <Link to="/signup"><h6 className='contact'> Login </h6></Link> or <Link to=""><h6 className='contact'> Visit Our Site </h6></Link></p>         
+            <Link to="/signup"><p className='contact'> Login </p></Link> or <Link to=""><p className='contact'> Visit Our Site </p></Link></p>         
           </div>
         </div>
       </div>
