@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from '../../../config/axios';
-import { BrowserRouter as Router,Routes, Route, Link, useParams  } from 'react-router-dom';
+import { BrowserRouter as Router,Routes, Route, Link, useParams, Redirect   } from 'react-router-dom';
 import Alert from '../../Alerts/alert';
 
 function Signup() {
@@ -25,7 +25,7 @@ function Signup() {
 
     const handleChange = (e) => {
       const value=e.target.value;
-      // alert(value);
+      //console.log(value);
       setUser({
         ...user,
         [e.target.name]: value
@@ -64,17 +64,33 @@ function Signup() {
     const handleSubmit = (e) => {
       e.preventDefault();
           const formData = new FormData()
+          const config = {
+            headers: { 'content-type': 'multipart/form-data' }
+           }
           formData.append('username',  user.username,)
           formData.append('email',  user.email,)
           formData.append('password',  user.password,)
           formData.append('user_type',  user.usertype,)
           formData.append('phone_no',  user.phone_no,)
           formData.append('address',  user.address,)
-          formData.append('category_id',  category.id,)
+          formData.append('category_id',  user.category,)
           formData.append('image',  user.image,)
-          axios.post(`${url}`, formData)
+
+          axios.post(`${url}`, formData, config)
           .then(response => {
-            console.log(response?.data?.data)
+
+            if(response?.data?.message?.success){
+              return <Redirect to='/categories'  />
+
+              console.log(response?.data?.data[0].usertype)
+              if(response?.data?.data[0].usertype=='employee'){
+                return <Redirect to='/categories'  />
+              }else{
+                return <Redirect to='/labours'  />
+              }
+
+            }
+            
           }).then(setUser(
             {username: "",
             email: "", 
@@ -120,20 +136,20 @@ function Signup() {
             <div class="container pt-3">
               <div class="row justify-content-center">
                 <div class="col-auto">
-                  <input class="form-check-input m-4  " type="radio" name="usertype" id="radio1" value="employee" />
-                  <div class="form-check form-check-inline">
+                <input class="form-check-input m-4" type="radio" name="usertype" id="radio2" value="employer" defaultChecked={true} onChange={handleChange} />
+                  <div class="form-check form-check-inline pr-5">
                     <div class="row .redio-buttons-image">
-                      <a><img src="assets/images/labour.png" alt="" class=" labour"/></a>
-                      <label>Labour</label>
+                      <a><img src="assets/images/employee.png" alt="" class=" labour"/></a>
+                      <label>Employer</label>
                     </div>
                 </div>
-              <input class="form-check-input m-4" type="radio" name="usertype" id="radio2" value="employer" />
-              <div class="form-check form-check-inline pr-5">
-                <div class="row .redio-buttons-image">
-                  <a><img src="assets/images/employee.png" alt="" class=" labour"/></a>
-                  <label>Employer</label>
-                </div>
-              </div>
+                    <input class="form-check-input m-4" type="radio" name="usertype" id="radio1" value="employee" onChange={handleChange}/>
+                    <div class="form-check form-check-inline">
+                      <div class="row .redio-buttons-image">
+                        <a><img src="assets/images/labour.png" alt="" class=" labour"/></a>
+                        <label>Labour</label>
+                      </div>
+                    </div>                  
             </div>
           </div>
         </div>
@@ -153,31 +169,31 @@ function Signup() {
           <label for=""><i className="fas fa-phone"></i></label>
           <input className="" type="number" name='phone_no' placeholder="Phone number" value={user.phone_no} onChange={handleChange}/>
         </div>
-          <div className="row">
-              <div className="text-left mb-4">
-                <label className="text-left comment" for="floatingTextarea2">Write your address here</label>
-                 <textarea className="form-control" name="address" id="floatingTextarea2" value={user.address} onChange={handleChange}
-            ></textarea>
-              </div>              
-            </div>
+          
             {(() => {
         if (user.usertype !== "employer") {
           return (
             <div class="form-group">
             <div className="col-md-8 mb-4">
-            <select id="signup-sector" name="signup-sector" class="signup-select">
-            {category.map(categories => ( <option name="id" value={categories.id} onChange={handleCategoryId}>{categories.name}</option>))}
+            <select id="signup-sector" name="category" class="signup-select" onChange={handleChange}> 
+            {category.map(categories => ( <option key={categories.id} value={categories.id} >{categories.name}</option>))}
             </select>
             </div>
           </div>
           )
         } 
       })()}
+           <div className="row mb-4">
+              <div className="text-left">
+                 <textarea className="form-control" name="address" id="floatingTextarea2" 
+                 value={user.address} onChange={handleChange} placeholder='Write your address here'></textarea>
+              </div>              
+            </div>
            <div className="name-input d-flex">
               <label for=""><i className="fas fa-user"></i></label>
-              <input className="" type="file" name='image' placeholder="Upload image" value={user.image} onChange={handleChange}/>
+              <input className="pt10" type="file" name='image' placeholder="Upload image" value={user.image} onChange={handleChange}/>
             </div>
-            <div className="row">
+            <div className="row pt10">
               <div className="col-6 text-left">
                 <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"/>
                 <label for="vehicle1">Remember me</label>
