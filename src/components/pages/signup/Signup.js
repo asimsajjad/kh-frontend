@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from '../../../config/axios';
-import { BrowserRouter as Router,Routes, Route, Link, useParams, Redirect   } from 'react-router-dom';
+import { BrowserRouter as Router,Routes, Route, Link, useParams, Redirect, useHistory    } from 'react-router-dom';
 import Alert from '../../Alerts/alert';
 
 function Signup() {
@@ -11,6 +11,7 @@ function Signup() {
     const [formErrors, setFormErrors] = useState({});
     
     const url='createUser';
+    const history = useHistory();
 
 
     const showAlert = (message, type) => {
@@ -78,15 +79,12 @@ function Signup() {
 
           axios.post(`${url}`, formData, config)
           .then(response => {
-
             if(response?.data?.message?.success){
-              return <Redirect to='/categories'  />
-
-              console.log(response?.data?.data[0].usertype)
+              sessionStorage.setItem('user', response?.data?.data[0].user_id)
               if(response?.data?.data[0].usertype=='employee'){
-                return <Redirect to='/categories'  />
-              }else{
-                return <Redirect to='/labours'  />
+                history.push('/categories');
+              }else{                
+                history.push('/labours');
               }
 
             }

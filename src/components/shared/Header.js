@@ -1,7 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router,Routes, Route, Link } from 'react-router-dom';
 function Header() {
-    return <nav className="navbar navbar-expand-lg">
+  console.log('Session  header', sessionStorage.getItem('user'));
+  return <nav className="navbar navbar-expand-lg">
     <div className="container-fluid navbar">    
       <Link to="/" className="navbar-brand logo pl-4" href="index.html">
         <img src="assets/images/logo.png" alt="" width="253px"/></Link>
