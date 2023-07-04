@@ -55,7 +55,7 @@ function ForgotPassword() {
             </div>
             <div className="name-input mb-4 d-flex mt-5">
               <label for=""><i className="far fa-envelope"></i></label>
-              <input className="form-control" type="email" name='email' value={email.email} placeholder="Enter you registered email here." id="formGroupExampleInput2" onChange={handleChange}/>
+              <input className="form-control" type="email" name='email' value={email.email} placeholder="Enter your registered email here." id="formGroupExampleInput2" onChange={handleChange}/>
             </div>
            <button className="btn login-btn mt-5" type='submit' disabled={!email.email}>Submit</button>
           </form>
