@@ -27,8 +27,15 @@ import { BrowserRouter as Router,Routes, Route, Link, useParams  } from 'react-r
      // 👇️ toggle isActive state on click
      setIsActive(current => !current);
      setDescription(true);
+
     };
+    const handleButton = event => {
+        // 👇️ toggle isActive state on click
+        setIsActive(current => !current);
+        setDescription(false);
    
+       };
+
     return <div>
 {profile.map(info => (
     <div className="container pt-5">
@@ -41,7 +48,8 @@ import { BrowserRouter as Router,Routes, Route, Link, useParams  } from 'react-r
                         <p className="p1">{info.username}</p>
                         <p className="p2">{info.category_name}</p>
                         <div className="col-lg-6 pt-5">
-                            <button type="button" className={isActive ? 'btn btn-success-hide' : 'btn btn-success'} style={isActive ? {display : 'none'} : {display : 'block'}}  onClick={handleClick}>Call Now</button>{description && (<p><b>{info.phone_no}</b></p>)}
+                            <button type="button" className={isActive ? 'btn btn-success-hide' : 'btn btn-success'} style={isActive ? {display : 'none'} : {display : 'block'}}  onClick={handleClick}>Call Now</button>
+                            {description && (<button type="button" style={{background:'none', border:'none'}} onClick={handleButton}><p><b>{info.phone_no}</b></p></button>)}
                         </div>
                     </div>
                     <div className="col-lg-1 pt-3">

@@ -10,7 +10,7 @@ function Signup() {
     const [alert, setAlert] = useState(null);
     const [selected, setSelected] = useState('yes');
     const [formErrors, setFormErrors] = useState({});
-    
+    const [selectedImage, setSelectedImage] = useState(null);
     const url='createUser';
     const history = useHistory();
 
@@ -52,6 +52,11 @@ function Signup() {
       });
     };
 
+    const handleImageUpload = (e) => {
+      console.log(e.target.files)
+    setSelectedImage(e.target.files[0]);
+    };
+
     const category_url='';
         useEffect(() => {
             axios.get(`${category_url}`).then(response => {
@@ -76,7 +81,7 @@ function Signup() {
           formData.append('phone_no',  user.phone_no,)
           formData.append('address',  user.address,)
           formData.append('category_id',  user.category,)
-          formData.append('image',  user.image,)
+          formData.append('image',  selectedImage)
 
           axios.post(`${url}`, formData, config)
           .then(response => {
@@ -192,7 +197,8 @@ function Signup() {
             </div>
            <div className="name-input d-flex">
               <label><i className="fas fa-user"></i></label>
-              <input className="pt10" type="file" name='image' placeholder="Upload image" value={user.image} onChange={handleChange}/>
+              {/* <input className="pt10" type="file" name='image' placeholder="Upload image" value={user.image} onChange={handleChange}/> */}
+              <input className="pt10" type="file" name='file' placeholder="Upload image" value={user.files} onChange={handleImageUpload}/>
             </div>
             <div className="row pt10">
               <div className="col-6 text-left">
