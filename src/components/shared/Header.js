@@ -24,14 +24,14 @@ function Header() {
             <Link to="/labours" className="nav-link text-light">Find Labours</Link>
           </li>
           <li className="nav-item">
-            <Link to="/login" className="nav-link text-light">Log In</Link>
-          </li>
-          <li className="nav-item">
-            <Link to="/signup" className="nav-link text-light">Sign Up</Link>
-          </li>
-          <li className="nav-item">
             <Link to="/contact-us" className="nav-link text-light">Contact Us</Link>
-          </li>          
+          </li> 
+          <li className="nav-item">
+            <Link to="/profile-update" className="nav-link text-light">Profile</Link>
+          </li>  
+          <li className="nav-item">
+            <Link to="/login" className="nav-link text-light">Log In</Link>
+          </li>       
           </ul>
       </div>
     </div>

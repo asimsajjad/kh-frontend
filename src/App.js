@@ -15,10 +15,9 @@ import Signup from './components/pages/signup/Signup';
 import ForgotPassword from './components/pages/forgot-password/ForgotPassword';
 import JobPost from './components/pages/job-post/JobPost';
 import Profile from './components/pages/profile/Profile';
-
 import ContactUs from './components/pages/contact-us/ContactUs';
 import Terms from './terms/Terms.js';
-
+import ProfileUpdate from './components/pages/profile-update/ProfileUpdate';
 
 import Footer from './components/shared/Footer';
 
@@ -38,6 +37,8 @@ function App() {
       <Route path="/profile" exact><Profile /></Route>
 
       <Route path="/profile/:type" exact><Profile /></Route>
+
+      <Route path="/profile-update" exact><ProfileUpdate /></Route>
 
       <Route path="/terms" exact><Terms/></Route>
 
