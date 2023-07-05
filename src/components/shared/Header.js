@@ -1,7 +1,9 @@
 import React from 'react';
+import UserProfile from './UserProfile';
+
 import { BrowserRouter as Router,Routes, Route, Link } from 'react-router-dom';
 function Header() {
-  console.log('Session  header', sessionStorage.getItem('user'));
+  console.log('Session -- header', UserProfile.getName());
   return <nav className="navbar navbar-expand-lg">
     <div className="container-fluid navbar">    
       <Link to="/" className="navbar-brand logo pl-4" href="index.html">

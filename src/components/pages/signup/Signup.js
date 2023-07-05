@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from '../../../config/axios';
 import { BrowserRouter as Router,Routes, Route, Link, useParams, Redirect, useHistory    } from 'react-router-dom';
 import Alert from '../../Alerts/alert';
+import UserProfile from '../../shared/UserProfile';
 
 function Signup() {
     const [user, setUser]=useState('');
@@ -80,6 +81,8 @@ function Signup() {
           axios.post(`${url}`, formData, config)
           .then(response => {
             if(response?.data?.message?.success){
+              UserProfile.setName(response?.data?.data[0].user_id);
+
               sessionStorage.setItem('user', response?.data?.data[0].user_id)
               if(response?.data?.data[0].usertype=='employee'){
                 history.push('/categories');
@@ -126,25 +129,25 @@ function Signup() {
           <form action="" >
             <h2 className="text-center pt-4">Create Account</h2>
             {/* <div className="social-media-links d-flex justify-content-center pt-3">
-            <Link to=""><i class="fa-brands fa-facebook"></i></Link>
-              <Link href=""><i class="fa-brands fa-linkedin"></i></Link>
-              <Link href=""><i class="fa-brands fa-google-plus"></i></Link>
+            <Link to=""><i className="fa-brands fa-facebook"></i></Link>
+              <Link href=""><i className="fa-brands fa-linkedin"></i></Link>
+              <Link href=""><i className="fa-brands fa-google-plus"></i></Link>
             </div>
             <p className="text-center">Or use your email for registeration</p> */}
-            <div class="container pt-3">
-              <div class="row justify-content-center">
-                <div class="col-auto">
-                <input class="form-check-input m-4" type="radio" name="usertype" id="radio2" value="employer" defaultChecked={true} onChange={handleChange} />
-                  <div class="form-check form-check-inline pr-5">
-                    <div class="row .redio-buttons-image">
-                      <a><img src="assets/images/employee.png" alt="" class=" labour"/></a>
+            <div className="container pt-3">
+              <div className="row justify-content-center">
+                <div className="col-auto">
+                <input className="form-check-input m-4" type="radio" name="usertype" id="radio2" value="employer" defaultChecked={true} onChange={handleChange} />
+                  <div className="form-check form-check-inline pr-5">
+                    <div className="row .redio-buttons-image">
+                      <a><img src="assets/images/employee.png" alt="" className=" labour"/></a>
                       <label>Employer</label>
                     </div>
                 </div>
-                    <input class="form-check-input m-4" type="radio" name="usertype" id="radio1" value="employee" onChange={handleChange}/>
-                    <div class="form-check form-check-inline">
-                      <div class="row .redio-buttons-image">
-                        <a><img src="assets/images/labour.png" alt="" class=" labour"/></a>
+                    <input className="form-check-input m-4" type="radio" name="usertype" id="radio1" value="employee" onChange={handleChange}/>
+                    <div className="form-check form-check-inline">
+                      <div className="row .redio-buttons-image">
+                        <a><img src="assets/images/labour.png" alt="" className=" labour"/></a>
                         <label>Labour</label>
                       </div>
                     </div>                  
@@ -152,28 +155,28 @@ function Signup() {
           </div>
         </div>
         <div className="name-input mb-4 d-flex">
-          <label for=""><i className="fas fa-user"></i></label>
+          <label><i className="fas fa-user"></i></label>
           <input className="" type="name" name='username' placeholder="Name" value={user.username} onChange={handleChange}/>
         </div>
         <div className="name-input mb-4 d-flex">
-          <label for=""><i className="far fa-envelope"></i></label>
+          <label><i className="far fa-envelope"></i></label>
           <input className="" type="email" name='email' placeholder="Email" value={user.email} onChange={handleChange}/>    
         </div>
         <div className="password-input mb-4 d-flex">
-          <label for=""><i className="fas fa-lock	"></i></label>
+          <label><i className="fas fa-lock	"></i></label>
           <input className="password-input" type="password" name="password" id="" placeholder="Password" value={user.password} onChange={handleChange}/>
         </div>
         <div className="name-input mb-4 d-flex">
-          <label for=""><i className="fas fa-phone"></i></label>
+          <label><i className="fas fa-phone"></i></label>
           <input className="" type="number" name='phone_no' placeholder="Phone number" value={user.phone_no} onChange={handleChange}/>
         </div>
           
             {(() => {
         if (user.usertype !== "employer") {
           return (
-            <div class="form-group">
+            <div className="form-group">
             <div className="col-md-8 mb-4">
-            <select id="signup-sector" name="category" class="signup-select" onChange={handleChange}> 
+            <select id="signup-sector" name="category" className="signup-select" onChange={handleChange}> 
             {category.map(categories => ( <option key={categories.id} value={categories.id} >{categories.name}</option>))}
             </select>
             </div>
@@ -188,20 +191,20 @@ function Signup() {
               </div>              
             </div>
            <div className="name-input d-flex">
-              <label for=""><i className="fas fa-user"></i></label>
+              <label><i className="fas fa-user"></i></label>
               <input className="pt10" type="file" name='image' placeholder="Upload image" value={user.image} onChange={handleChange}/>
             </div>
             <div className="row pt10">
               <div className="col-6 text-left">
                 <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"/>
-                <label for="vehicle1">Remember me</label>
+                <label>Remember me</label>
               </div>
             </div>
             
             <SubmitButton/>
           </form>
         </div>
-        <Link className="text-center mb-3 mobile-screen d-none" href="">Already have an Account<i
+        <Link className="text-center mb-3 mobile-screen d-none" to="/login">Already have an Accountt<i
             className="ml-3 bi bi-arrow-right"></i></Link>
         <div className="col-md-4 pr-0">
           <div className="details">
