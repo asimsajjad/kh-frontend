@@ -4,26 +4,20 @@ function Worker() {
     <div className="container">
       <div className="row">
         <div className="col-md-6 best">
-        <div className="row">
-        <div className="col-md-6">
-        
-        </div>
-        <div className="col-md-6 banner text-center">
+        <div class="card">
+  <img class="" src="assets/images/best.png"  alt="Card image"/>
+  <div class="card-img-overlay">
+  <div className="col-md-6 banner text-center">
         <h1>500+</h1>
           <p>Workers</p>
         </div>
-        <div className="col-md-8 mt-5">
-
-          </div>
         <div className="col-md-4 banner1 text-center">
         <h1>300+</h1>
           <p>freelance work Posted</p>
         </div>
-       </div>
-       
-          
-          
-        </div>
+  </div>
+</div>
+</div>
         <div className="col-md-6 find">
           <div className="worker-text ">
             <Link to="/labours"><h5 className="text-light">Find The Best <br/> <b className="text-dark">Workers</b> Here </h5></Link>

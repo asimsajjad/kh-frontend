@@ -37,12 +37,7 @@ select#signup-sector {
 img.labour {
     width: 50px;
 }
-.col-md-6.best {
-    background-image: url(../images/best.png);
-    background-repeat: no-repeat;
-    height: 590px;
-    width: 607px;
-}
+
 .card-body.categories {
     border-top: 1px solid #eeeeee;
     border-left: 1px solid #eeeeee;
@@ -51,14 +46,16 @@ img.labour {
 .col-md-4.banner1 {
     border: 1px solid #eeeeee ;
     border-radius: 10px;
-    margin-top: 110px;
+    margin-top: 98px;
+   float: right;
 
 }
 .col-md-6.banner {
     border: 1px solid #eeeeee ;
     border-radius: 10px;
     width: 115px;
-    margin-top: 100px;
+    margin-top: 64px;
+    margin-left: 14rem;
     
 }
 a.btn.plum.tab-btn2.col-md-1 {
@@ -541,4 +538,21 @@ p.contact {
 }
 p.contact:hover {
     color: rgb(0, 0, 0);
+}
+
+
+
+@media (max-width:600px){
+
+    .col-md-6.banner{
+        position: absolute;
+        left: 10px;
+    }
+    .col-md-4.banner1{
+        position: absolute;
+        left: 233px;
+        top: 64px;
+    }
+
+
 }
