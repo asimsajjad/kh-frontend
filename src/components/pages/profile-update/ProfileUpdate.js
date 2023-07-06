@@ -6,24 +6,26 @@ import Alert from '../../Alerts/alert';
 
 function ProfileUpdate() {
     const [profile, setProfile]=useState([]);
-    const [profileupdate, setProfileUpdate]=useState('');
+    const [profileupdate, setProfileUpdate]=useState();
     const [category, setCategory] = useState([]);
     const [selectedImage, setSelectedImage] = useState(null);
 
     const profile_url='profileData';
     const update_url='updateProfile';
 
-    const handleChange = (e) => {
-      const value=e.target.value;
-      //console.log(value);
-      setProfile({
-        ...profile,
-        [e.target.name]: value
-      });
-    };
+    // const handleChange = (e) => {
+    //   const value=e.target.value;
+    //   //console.log(value);
+    //   setProfile({
+    //     ...profile,
+    //     [e.target.name]: value
+    //   });
+    // };
+
+    
 
     const handleImageUpload = (e) => {
-      console.log(e.target.files)
+      // console.log(e.target.files)
     setSelectedImage(e.target.files[0]);
     };
 
@@ -51,17 +53,24 @@ function ProfileUpdate() {
     console.error(error);
     });
 }
+const handleEdit = (index, field, value) => {
+  const newItems = [...profile];
+  newItems[index][field] = value;
+  setProfileUpdate(newItems);
+  
+};
     const handleSubmit = (e) => {
       e.preventDefault();
+      console.log(profileupdate);
           const formData = new FormData()
           const config = {
             headers: { 'content-type': 'multipart/form-data' }
            }
-           formData.append('user_id', '200',)
-          formData.append('username',  profile.username,)
-          formData.append('phone_no',  profile.phone_no,)
-          formData.append('address',  profile.address,)
-          formData.append('category_id',  profile.category,)
+           formData.append('user_id', '196',)
+          formData.append('username',  profileupdate[0].username,)
+          formData.append('phone_no',  profileupdate[0].phone_no,)
+          formData.append('address',  profileupdate[0].address,)
+          formData.append('category_id',  profileupdate[0].category_id,)
           formData.append('image',  selectedImage)
 
           axios.post(`${update_url}`, formData, config)
@@ -70,10 +79,12 @@ function ProfileUpdate() {
           });
 
     };
+
+   
   
     function SubmitButton(){
       // if (profile.username){
-        return <button className="btn login-btn" type="submit" onClick={handleSubmit} >Update</button>  
+        return <button className="btn login-btn" type="submit">Update</button>  
       // } 
       // else {
         // return <button className="btn login-btn"  onClick={handleSubmit} type="submit" disabled>Update</button>
@@ -82,11 +93,11 @@ function ProfileUpdate() {
     return <div>
      
     <section className="login-section pl-3"> 
-    {profile.map(info => (   
+    {profile.map((info, index) => (   
     <div className="container mt-5">
       <div className="row login-form ">
         <div className="col-md-8">
-          <form action="" >
+          <form onSubmit={handleSubmit}  >
             <h2 className="text-center pt-4">Profile Update</h2>
             {/* <div className="social-media-links d-flex justify-content-center pt-3">
             <Link to=""><i className="fa-brands fa-facebook"></i></Link>
@@ -96,11 +107,11 @@ function ProfileUpdate() {
             <p className="text-center">Or use your email for registeration</p> */}
         <div className="name-input mb-4 d-flex">
           <label><i className="fas fa-user"></i></label>
-          <input className="" type="name" name='username' placeholder="Name" value={info.username} onChange={handleChange}/>
+          <input className="" type="name" name='username' placeholder="Name" value={info.username} onChange={(event) => handleEdit(index, 'username', event.target.value)}/>
         </div>
         <div className="name-input mb-4 d-flex">
           <label><i className="fas fa-phone"></i></label>
-          <input className="" type="number" name='phone_no' placeholder="Phone number" value={info.phone_no} onChange={handleChange}/>
+          <input className="" type="number" name='phone_no' placeholder="Phone number" value={info.phone_no} onChange={(event) => handleEdit(index, 'phone_no', event.target.value)}/>
         </div>
           
             {(() => {
@@ -108,7 +119,7 @@ function ProfileUpdate() {
           return (
             <div className="form-group">
             <div className="col-md-8 mb-4">
-            <select id="signup-sector" name="category" className="signup-select" onChange={handleChange}> 
+            <select id="signup-sector" name="category" className="signup-select" onChange={(event) => handleEdit(index, 'category_id', event.target.value)}> 
             {category.map(categories => ( <option key={categories.id} value={categories.id} >{categories.name}</option>))}
             </select>
             </div>
@@ -119,7 +130,7 @@ function ProfileUpdate() {
            <div className="row mb-4">
               <div className="text-left">
                  <textarea className="form-control" name="address" id="floatingTextarea2" 
-                 value={info.address} onChange={handleChange} placeholder='Write your address here'>{info.address}</textarea>
+                 value={info.address} onChange={(event) => handleEdit(index, 'address', event.target.value)} placeholder='Write your address here'></textarea>
               </div>              
             </div>
            <div className="name-input d-flex">

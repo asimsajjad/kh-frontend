@@ -6,9 +6,7 @@ function Header() {
 
   const UserIDString = sessionStorage.getItem('data');
           const data = JSON.parse(UserIDString);
-          console.log(data, 'data header here');
-
-  console.log('Session -- header', UserProfile.getName());
+          console.log(data, 'login');
   return <nav className="navbar navbar-expand-lg">
     <div className="container-fluid navbar">    
       <Link to="/" className="navbar-brand logo pl-4" href="index.html">
@@ -31,12 +29,18 @@ function Header() {
           <li className="nav-item">
             <Link to="/contact-us" className="nav-link text-light">Contact Us</Link>
           </li> 
-          <li className="nav-item">
-            <Link to="/profile-update" className="nav-link text-light">Profile</Link>
-          </li>  
-          <li className="nav-item">
-            <Link to="/login" className="nav-link text-light">Log In</Link>
-          </li>       
+          {(() => {
+            if(data == null){
+              return (
+              <li className="nav-item">
+              <Link to="/login" className="nav-link text-light">Log In</Link>
+            </li> )
+            } else {
+              return  (<li className="nav-item">
+                <Link to="/profile-update" className="nav-link text-light">Profile</Link>
+            </li>  )
+            }
+          })()}     
           </ul>
       </div>
     </div>

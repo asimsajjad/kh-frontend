@@ -1,12 +1,51 @@
-import React from 'react';
-import { BrowserRouter as Router,Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router,Routes, Route, Link, useParams, Redirect, useNavigate    } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import axios from '../../../config/axios';
+
 
 function Login() {
+  const [user, setUser]=useState('');
+  const navigate = useNavigate();
+  const url='loginUser';
+
+  const handleChange = (e) => {
+    const value=e.target.value;
+    //console.log(value);
+    setUser({
+      ...user,
+      [e.target.name]: value
+    });
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+        const formData = new FormData()
+        formData.append('email',  user.email,)
+        formData.append('password',  user.password,)
+        axios.post(`${url}`, formData)
+        .then(response => {
+          if(response?.data?.message?.success){
+            sessionStorage.setItem('user', response?.data?.data[0].user_id)
+            sessionStorage.setItem("data", JSON.stringify(response?.data?.data[0]));
+
+            if(response?.data?.data[0].usertype=='employee'){
+              navigate('/categories');
+            }else{                
+              navigate('/labours');
+            }
+          }
+          
+        })
+        .catch(error => {
+        console.error(error);
+        });
+
+  };
+
     return  <section className="login-section pl-3">
     <div className="container mt-5">
       <div className="row ">
         <div className="col-md-8 login-form1">
-          <form action="">
+          <form onSubmit={handleSubmit}>
             <h2 className="text-center pt-4">Login to your Account</h2>
             <div className="social-media-links d-flex justify-content-center pt-3">
             {/* <Link to=""><i class="fa-brands fa-facebook"></i></Link>
@@ -15,11 +54,11 @@ function Login() {
             </div>
             <div className="name-input mb-3 d-flex mt-5">
               <label><i className="far fa-envelope"></i></label>
-              <input className="" type="email" placeholder="Email"/>
+              <input className="" name="email" type="email" placeholder="Email" value={user.email} onChange={handleChange}/>
             </div>
             <div className="password-input d-flex">
               <label><i className="fas fa-lock	"></i></label>
-              <input className="password-input" type="password" name="" id="" placeholder="Password"/>
+              <input className="password-input" type="password" name="password" id="" placeholder="Password" value={user.password} onChange={handleChange}/>
             </div>
             <div className="row">
               <div className="col-6 text-left mt-2">
@@ -30,7 +69,7 @@ function Login() {
                 <Link to="/forgot-password">Forget Password<i className="ml-3 bi bi-arrow-right"></i></Link>
               </div>
             </div>
-            <button className="btn login-btn">Log in</button>
+            <button className="btn login-btn" type='submit'>Log in</button>
           </form>
         </div>
         <div className="col-md-4 pl-0">
