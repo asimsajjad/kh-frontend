@@ -3,6 +3,11 @@ import UserProfile from './UserProfile';
 
 import { BrowserRouter as Router,Routes, Route, Link } from 'react-router-dom';
 function Header() {
+
+  const UserIDString = sessionStorage.getItem('data');
+          const data = JSON.parse(UserIDString);
+          console.log(data, 'data header here');
+
   console.log('Session -- header', UserProfile.getName());
   return <nav className="navbar navbar-expand-lg">
     <div className="container-fluid navbar">    

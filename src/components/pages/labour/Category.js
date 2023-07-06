@@ -12,7 +12,26 @@ import { BrowserRouter as Router,Routes, Route, Link, useParams  } from 'react-r
         const recordsPerPage= 10;
         const lastIndex = currentPage * recordsPerPage;
         const firstIndex = lastIndex - recordsPerPage;
-            
+         
+        
+        const getUserID = () => {
+          const UserIDString = sessionStorage.getItem('data');
+          const data = JSON.parse(UserIDString);
+          console.log(data, 'data');
+          if(!data) return false;
+          if(data.user_id === undefined){
+            return false
+          }else{
+            return data.user_id;
+          }
+        }
+      
+        useEffect(() => {
+          console.log(getUserID(), 'UserID');
+      
+        }, [])
+
+        
         const [state, setState] = useState({
             user_id: "",
             category_id: ""

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from '../../../config/axios';
-import { BrowserRouter as Router,Routes, Route, Link, useParams, Redirect, useHistory    } from 'react-router-dom';
+import { BrowserRouter as Router,Routes, Route, Link, useParams, Redirect, useNavigate    } from 'react-router-dom';
 import Alert from '../../Alerts/alert';
-import UserProfile from '../../shared/UserProfile';
+
 
 function Signup() {
     const [user, setUser]=useState('');
@@ -12,7 +12,7 @@ function Signup() {
     const [formErrors, setFormErrors] = useState({});
     const [selectedImage, setSelectedImage] = useState(null);
     const url='createUser';
-    const history = useHistory();
+    const navigate = useNavigate();
 
 
     const showAlert = (message, type) => {
@@ -86,13 +86,13 @@ function Signup() {
           axios.post(`${url}`, formData, config)
           .then(response => {
             if(response?.data?.message?.success){
-              UserProfile.setName(response?.data?.data[0].user_id);
-
               sessionStorage.setItem('user', response?.data?.data[0].user_id)
+              sessionStorage.setItem("data", JSON.stringify(response?.data?.data[0]));
+
               if(response?.data?.data[0].usertype=='employee'){
-                history.push('/categories');
+                navigate('/categories');
               }else{                
-                history.push('/labours');
+                navigate('/labours');
               }
 
             }

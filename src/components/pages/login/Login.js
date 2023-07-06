@@ -14,17 +14,17 @@ function Login() {
               <Link href=""><i class="fa-brands fa-google-plus"></i></Link> */}
             </div>
             <div className="name-input mb-3 d-flex mt-5">
-              <label for=""><i className="far fa-envelope"></i></label>
+              <label><i className="far fa-envelope"></i></label>
               <input className="" type="email" placeholder="Email"/>
             </div>
             <div className="password-input d-flex">
-              <label for=""><i className="fas fa-lock	"></i></label>
+              <label><i className="fas fa-lock	"></i></label>
               <input className="password-input" type="password" name="" id="" placeholder="Password"/>
             </div>
             <div className="row">
               <div className="col-6 text-left mt-2">
                 <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"/>
-                <label for="vehicle1">Remember me</label>
+                <label>Remember me</label>
               </div>
               <div className="col-6 text-right mt-2">
                 <Link to="/forgot-password">Forget Password<i className="ml-3 bi bi-arrow-right"></i></Link>

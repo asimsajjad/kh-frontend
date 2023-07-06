@@ -62,18 +62,18 @@ function Contact() {
           <form onSubmit={handleSubmit}> 
             <h2 className="text-center">Contact Us</h2>
             <div className="name-input mb-4 d-flex mt-3">
-              <label for="formGroupExampleInput" className="form-label">Name: </label>
+              <label className="form-label">Name: </label>
               <input type="text" name="name" placeholder='Enter your name here' className="form-control" id="formGroupExampleInput" value={contact.name} onChange={handleChange}
             />
             </div>
             <div className="password-input d-flex">
-              <label for="formGroupExampleInput2" className="form-label ">Email: </label>
+              <label className="form-label ">Email: </label>
               <input type="email" className="form-control"  placeholder='Enter your email here' name="email" id="formGroupExampleInput2" value={contact.email} onChange={handleChange}
           />
             </div>
             <div className="row">
               <div className="col-12 text-left mt-3">
-                <label className="text-left comment" for="floatingTextarea2" >What can we help you with?</label>
+                <label className="text-left comment" >What can we help you with?</label>
                  <textarea className="form-control" name="comments" id="floatingTextarea2" value={contact.comments} onChange={handleChange}
             ></textarea>
               </div>              

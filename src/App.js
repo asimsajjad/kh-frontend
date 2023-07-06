@@ -1,10 +1,13 @@
 import logo from './logo.svg';
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   BrowserRouter as Router,
   Route,
   Redirect,
-  Switch
+  Switch,
+  Routes,
+  Link,
+  useNavigate
 } from 'react-router-dom';
 import Header from './components/shared/Header';
 import Home from './components/pages/home';
@@ -22,35 +25,32 @@ import ProfileUpdate from './components/pages/profile-update/ProfileUpdate';
 import Footer from './components/shared/Footer';
 
 function App() {  
-  return  <Router>
-    <Header/>
-    <Switch>
-      <Route path="/" exact><Home/></Route>
-      <Route path="/login" exact><Login /></Route>
-      <Route path="/categories" exact><Categories /></Route>
-
-      <Route path="/labours" exact><Labours /></Route>
-      <Route path="/labours/:type"><Labours /></Route>
-
-      <Route path="/signup" exact><Signup /></Route>
-      <Route path="/forgot-password" exact><ForgotPassword /></Route>
-      <Route path="/profile" exact><Profile /></Route>
-
-      <Route path="/profile/:type" exact><Profile /></Route>
-
-      <Route path="/profile-update" exact><ProfileUpdate /></Route>
-
-      <Route path="/terms" exact><Terms/></Route>
-
-      <Route path="/contact-us" exact><ContactUs /></Route>
-      <Route path="/index" exact><Home /></Route>
-      <Redirect to="/" />
-      
-    </Switch>
-    <Footer/>
-</Router>;
+  // const navigate = useNavigate()
+  
+  // useEffect(() => {
+  //   const testVar =  sessionStorage.getItem('user');
+  //   if (testVar) {
+  //     navigate("/login")
+  //   }
+  // console.log('Sessionn  app js', sessionStorage.getItem('user'));
+  // },[]);
+  return<>
+      <Header/>  
+      <Routes>
+      <Route path="/" exact element={<Home />}/> 
+      <Route path="/login" exact element={<Login />}/>
+      <Route path="/categories" exact element={<Categories />}/> 
+      <Route path="/labours" exact element={<Labours />}/>
+      <Route path="/labours/:type" element={<Labours />}/>
+      <Route path="/signup" exact element={<Signup />}/>
+      <Route path="/forgot-password" exact element={<ForgotPassword />}/>      
+      <Route path="/profile" exact element={<Profile />}/>
+      <Route path="/profile/:type" exact element={<Profile />}/>
+      <Route path="/profile-update" exact element={<ProfileUpdate/>} />
+      <Route path="/terms" exact element={<Terms/>}/>
+      <Route path="/contact-us" exact element={<ContactUs/>}/>
+      <Route path="/index" exact element={<Home/>}/> 
+      </Routes>        
+    <Footer/></> 
 }
-
 export default App;
-
-
