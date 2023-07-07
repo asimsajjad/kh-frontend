@@ -95,8 +95,7 @@ function Signup() {
                 navigate('/labours');
               }
 
-            }
-            
+            } 
           }).then(setUser(
             {username: "",
             email: "", 
@@ -210,13 +209,13 @@ function Signup() {
             <SubmitButton/>
           </form>
         </div>
-        <Link className="text-center mb-3 mobile-screen d-none" to="/login">Already have an Accountt<i
+        <Link className="text-center mb-3 mobile-screen d-none" to="/login">Already have an Account<i
             className="ml-3 bi bi-arrow-right"></i></Link>
         <div className="col-md-4 pr-0">
           <div className="details">
             <h3 className="text-light">Welcome</h3>
-            <p className="text-light mb-5">To keep connected with us please sign-up with your personal informations </p>
-            <Link className="text-light" to="/login">Already have an Account<i className="ml-3 fas fa-arrow-right"></i></Link>
+            <p className="text-light">To keep connected with us please sign-up with your personal informations </p>
+            <Link className="contact" to="/login">Already have an Account<i className="ml-3 fas fa-arrow-right"></i></Link>
           </div>
         </div>
       </div>

@@ -8,12 +8,12 @@ function Worker() {
   <img class="" src="assets/images/best.png"  alt="Card image"/>
   <div class="card-img-overlay">
   <div className="col-md-6 banner text-center">
-        <h1>500+</h1>
-          <p>Workers</p>
+        <Link to='/labours'><h1>500+</h1>
+          <p>Workers</p></Link>
         </div>
         <div className="col-md-4 banner1 text-center">
-        <h1>300+</h1>
-          <p>freelance work Posted</p>
+        <Link to='/categories'><h1>300+</h1>
+          <p>freelance work Posted</p></Link>
         </div>
   </div>
 </div>

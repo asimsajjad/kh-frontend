@@ -32,8 +32,8 @@ function Login() {
             }else{                
               navigate('/labours');
             }
-          }
-          
+
+          } 
         })
         .catch(error => {
         console.error(error);
@@ -76,7 +76,7 @@ function Login() {
           <div className="login-details">
             <h3 className="text-light">Welcome to Khadim Hazir</h3>
             <p className="text-light">To enjoy all features please login</p>
-            <Link className="text-light" to="/signup">Or Register here<i className="ml-3 fas fa-arrow-right"></i></Link>
+            <Link className="contact" to="/signup">Or Register here<i className="ml-3 fas fa-arrow-right"></i></Link>
           </div>
         </div>
       </div>

@@ -5,8 +5,11 @@ import { BrowserRouter as Router,Routes, Route, Link } from 'react-router-dom';
 function Header() {
 
   const UserIDString = sessionStorage.getItem('data');
-          const data = JSON.parse(UserIDString);
-          console.log(data, 'login');
+  const data = JSON.parse(UserIDString);
+  console.log(data, 'data header');
+
+console.log('Session -- header', UserProfile.getName());
+
   return <nav className="navbar navbar-expand-lg">
     <div className="container-fluid navbar">    
       <Link to="/" className="navbar-brand logo pl-4" href="index.html">
@@ -29,18 +32,21 @@ function Header() {
           <li className="nav-item">
             <Link to="/contact-us" className="nav-link text-light">Contact Us</Link>
           </li> 
-          {(() => {
-            if(data == null){
-              return (
+          {/* {(() => {
+            if(data.user_id == null){
+              return ( */}
               <li className="nav-item">
               <Link to="/login" className="nav-link text-light">Log In</Link>
-            </li> )
-            } else {
-              return  (<li className="nav-item">
+            </li> 
+             {/* )
+             } else {
+              return  (  */}
+              <li className="nav-item">
                 <Link to="/profile-update" className="nav-link text-light">Profile</Link>
-            </li>  )
+            </li>  
+             {/* )
             }
-          })()}     
+          })()} */}
           </ul>
       </div>
     </div>

@@ -1,14 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import axios from '../../../config/axios';
-import { BrowserRouter as Router,Routes, Route, Link} from 'react-router-dom';
+import { BrowserRouter as Router,Routes, Route, Link, useNavigate} from 'react-router-dom';
 import Alert from '../../Alerts/alert';
 
 
 function ProfileUpdate() {
+  // const UserIDString = sessionStorage.getItem('data');
+  // const data = JSON.parse(UserIDString);
+  // console.log(data.user_id, 'update frofile');
     const [profile, setProfile]=useState([]);
     const [profileupdate, setProfileUpdate]=useState();
     const [category, setCategory] = useState([]);
     const [selectedImage, setSelectedImage] = useState(null);
+    const navigate = useNavigate();
 
     const profile_url='profileData';
     const update_url='updateProfile';
@@ -43,7 +47,11 @@ function ProfileUpdate() {
 
    function loadProfile(){
     const formData = new FormData()
-    formData.append('user_slug', 'zain')
+    formData.append('user_id', '204')
+    // if(data.user_type === 'employer'){
+      // formData.append('category_id', '0',)
+    // }
+    
     // formData.append('category_slug', )
     axios.post(`${profile_url}`, formData)
      .then(response => {
@@ -66,7 +74,8 @@ const handleEdit = (index, field, value) => {
           const config = {
             headers: { 'content-type': 'multipart/form-data' }
            }
-           formData.append('user_id', '196',)
+           formData.append('user_id', '204',)
+          //  formData.append('category_slug', '0',)
           formData.append('username',  profileupdate[0].username,)
           formData.append('phone_no',  profileupdate[0].phone_no,)
           formData.append('address',  profileupdate[0].address,)
@@ -74,6 +83,9 @@ const handleEdit = (index, field, value) => {
           formData.append('image',  selectedImage)
 
           axios.post(`${update_url}`, formData, config)
+          .then(response =>{
+            navigate(`/profile/${profileupdate[0].user_slug}`);
+          })
           .catch(error => {
           console.error(error);
           });
@@ -135,7 +147,7 @@ const handleEdit = (index, field, value) => {
             </div>
            <div className="name-input d-flex">
            
-           <img src={`${process.env.REACT_APP_RESOURCES_URL}images/${info.image}`} alt="" className="img-fluid profile" />
+           <img src={`${process.env.REACT_APP_RESOURCES_URL}images/${info.image}`} alt="" className="img-fluid update" />
        
               {/* <input className="pt10" type="file" name='image' placeholder="Upload image" value={user.image} onChange={handleChange}/> */}
               <input className="pt10" type="file" name='file' placeholder="Upload image" value={info.files} onChange={handleImageUpload}/>
@@ -147,9 +159,9 @@ const handleEdit = (index, field, value) => {
             className="ml-3 bi bi-arrow-right"></i></Link>
         <div className="col-md-4 pr-0">
           <div className="details">
-            <h3 className="text-light">Welcome</h3>
-            <p className="text-light mb-5">To keep connected with us please sign-up with your personal informations </p>
-            <Link className="text-light" to="/login">Already have an Account<i className="ml-3 fas fa-arrow-right"></i></Link>
+            <h3 className="text-light">Welcome to Khaidm Hazir</h3>
+            <p className="text-light">If you do not want to do any changes</p>
+            <Link className="contact" to={`/profile/${info.user_slug}`}>See your profile here<i className="ml-3 fas fa-arrow-right"></i></Link>
           </div>
         </div>
       </div>

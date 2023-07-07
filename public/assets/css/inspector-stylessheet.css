@@ -392,6 +392,12 @@ img.img-fluid.profile {
     width: 300px;
     width: 300px;
 }
+
+img.img-fluid.update {
+    width: 57px;
+    /* width: 300px; */
+}
+
 p.p1 {
     font-size: 35px;
     line-height: 53px;
