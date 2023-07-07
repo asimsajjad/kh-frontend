@@ -47,7 +47,8 @@ function ProfileUpdate() {
 
    function loadProfile(){
     const formData = new FormData()
-    formData.append('user_id', '204')
+    const user_id = localStorage.getItem('user_id')
+    formData.append('user_id', user_id)
     // if(data.user_type === 'employer'){
       // formData.append('category_id', '0',)
     // }

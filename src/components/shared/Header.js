@@ -3,12 +3,8 @@ import UserProfile from './UserProfile';
 
 import { BrowserRouter as Router,Routes, Route, Link } from 'react-router-dom';
 function Header() {
-
-  const UserIDString = sessionStorage.getItem('data');
-  const data = JSON.parse(UserIDString);
-  console.log(data, 'data header');
-
-console.log('Session -- header', UserProfile.getName());
+  const user_id = localStorage.getItem('user_id');
+  console.log(user_id, 'data header');
 
   return <nav className="navbar navbar-expand-lg">
     <div className="container-fluid navbar">    
@@ -32,21 +28,21 @@ console.log('Session -- header', UserProfile.getName());
           <li className="nav-item">
             <Link to="/contact-us" className="nav-link text-light">Contact Us</Link>
           </li> 
-          {/* {(() => {
-            if(data.user_id == null){
-              return ( */}
-              <li className="nav-item">
-              <Link to="/login" className="nav-link text-light">Log In</Link>
-            </li> 
-             {/* )
-             } else {
-              return  (  */}
-              <li className="nav-item">
-                <Link to="/profile-update" className="nav-link text-light">Profile</Link>
-            </li>  
-             {/* )
-            }
-          })()} */}
+          {(() => {
+              if (user_id == null){
+                  return (
+                    <li className="nav-item">
+                    <Link to="/login" className="nav-link text-light">Log In</Link>
+                  </li>      
+                  )
+              }else{
+                return (
+                  <li className="nav-item">
+                  <Link to="/profile-update" className="nav-link text-light">Profile</Link>
+                  </li>     
+                )
+              }              
+            })()}
           </ul>
       </div>
     </div>

@@ -25,15 +25,7 @@ import ProfileUpdate from './components/pages/profile-update/ProfileUpdate';
 import Footer from './components/shared/Footer';
 
 function App() {  
-  // const navigate = useNavigate()
-  
-  // useEffect(() => {
-  //   const testVar =  sessionStorage.getItem('user');
-  //   if (testVar) {
-  //     navigate("/login")
-  //   }
-  // console.log('Sessionn  app js', sessionStorage.getItem('user'));
-  // },[]);
+
   return<>
       <Header/>  
       <Routes>
