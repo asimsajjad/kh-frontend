@@ -1,10 +1,12 @@
 import { BrowserRouter as Router,Routes, Route, Link, useParams, Redirect, useNavigate    } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import axios from '../../../config/axios';
+import Alert from '../../Alerts/alert';
 
 
 function Login() {
   const [user, setUser]=useState('');
+  const [alert, setAlert] = useState(null);
   const navigate = useNavigate();
   const url='loginUser';
 
@@ -16,6 +18,16 @@ function Login() {
       [e.target.name]: value
     });
   };
+
+  const showAlert = (message, type) => {
+    setAlert({
+      msg: message, 
+      type: type
+    })
+    setTimeout (() => {
+      setAlert(null);
+    }, 3000);
+  }
   const handleSubmit = (e) => {
     e.preventDefault();
         const formData = new FormData()
@@ -32,7 +44,8 @@ function Login() {
               //navigate('/labours');
               window.location.href = process.env.REACT_APP_BASE_URL+"labours";
             }
-
+          }else{
+            (showAlert("Email or password is incorrect" , "danger"))
           } 
         })
         .catch(error => {
@@ -45,6 +58,7 @@ function Login() {
     <div className="container mt-5">
       <div className="row ">
         <div className="col-md-8 login-form1">
+        <Alert alert={alert}/>
           <form onSubmit={handleSubmit}>
             <h2 className="text-center pt-4">Login to your Account</h2>
             <div className="social-media-links d-flex justify-content-center pt-3">

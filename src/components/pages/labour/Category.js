@@ -14,30 +14,30 @@ import { BrowserRouter as Router,Routes, Route, Link, useParams  } from 'react-r
         const firstIndex = lastIndex - recordsPerPage;
          
         const user_id = localStorage.getItem('user_id');
-        console.log(user_id, 'data header');
+        // console.log(user_id, 'data header');
 
-        const getUserID = () => {
-          const UserIDString = sessionStorage.getItem('data');
-          const data = JSON.parse(UserIDString);
-          console.log(data, 'data');
-          if(!data) return false;
-          if(data.user_id === undefined){
-            return false
-          }else{
-            return data.user_id;
-          }
-        }
+        // const getUserID = () => {
+        //   const UserIDString = sessionStorage.getItem('data');
+        //   const data = JSON.parse(UserIDString);
+        //   // console.log(data, 'data');
+        //   if(!data) return false;
+        //   if(data.user_id === undefined){
+        //     return false
+        //   }else{
+        //     return data.user_id;
+        //   }
+        // }
       
-        useEffect(() => {
-          console.log(getUserID(), 'UserID');
+        // useEffect(() => {
+        //   console.log(getUserID(), 'UserID');
       
-        }, [])
+        // }, [])
 
         
-        const [state, setState] = useState({
-            user_id: "",
-            category_id: ""
-        });       
+        // const [state, setState] = useState({
+        //     user_id: "",
+        //     category_id: ""
+        // });       
         
         const category_url='';
         useEffect(() => {
@@ -54,7 +54,7 @@ import { BrowserRouter as Router,Routes, Route, Link, useParams  } from 'react-r
     function loadEmployees(){
         
         const formData = new FormData()
-        formData.append('user_id', '')
+        formData.append('user_id', user_id)
         formData.append('category_id', '')
         formData.append('category_slug', type)
         const url='employeesListing';
@@ -77,7 +77,7 @@ import { BrowserRouter as Router,Routes, Route, Link, useParams  } from 'react-r
       setCurrenPage(currentPage-1);
       }
       }
-      function      changeCpage(id){
+      function changeCpage(id){
       setCurrenPage(id);
       }
       function nextPage(){
@@ -87,7 +87,7 @@ import { BrowserRouter as Router,Routes, Route, Link, useParams  } from 'react-r
           setCurrenPage(currentPage+1);
         }
       }
-console.log(records);
+// console.log(records);
     return (<>
         <div className="container top-btns pt-5">
             <div className="row">

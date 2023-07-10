@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import UserProfile from './UserProfile';
 
 import { BrowserRouter as Router,Routes, Route, Link } from 'react-router-dom';
 function Header() {
   const user_id = localStorage.getItem('user_id');
   console.log(user_id, 'data header');
+  
+  const Logout = (e) => {
+    localStorage.removeItem('user_id');
+    sessionStorage.removeItem('user_id');
+    window.location.href = process.env.REACT_APP_BASE_URL+"login";
+  };
 
   return <nav className="navbar navbar-expand-lg">
     <div className="container-fluid navbar">    
@@ -37,12 +43,17 @@ function Header() {
                   )
               }else{
                 return (
-                  <li className="nav-item">
-                  <Link to="/profile-update" className="nav-link text-light">Profile</Link>
-                  </li>     
+                  [
+                    <ul>
+                  <li className="nav-item"><Link to="/profile-update" className="nav-link text-light">Profile</Link></li> 
+                  <li className="nav-item"><Link to='login' className="nav-link text-light" onClick={Logout}>Logout</Link></li>
+                  </ul>
+                  ]
                 )
+                
               }              
             })()}
+              
           </ul>
       </div>
     </div>

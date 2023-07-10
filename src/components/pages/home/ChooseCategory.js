@@ -9,8 +9,7 @@ function ChooseCategory() {
   //const url=process.env.REACT_APP_API_BASE_URL+'api/sevenCategories';
   useEffect(() => {
     const formData = new FormData()
-    formData.append('category_slug', '8');
-    axios.get('sevenCategories', formData,)
+    axios.get('sevenCategories/8', formData,)
       .then(response => {
         setcategories(response?.data?.data?.en);
       }).then(console.log(categories))
