@@ -49,16 +49,19 @@ function Categories() {
       <div className="row">
        {records.map(category => (
         <div className="col-md-3 mb-3">
+          <Link to={`/labours/${category.slug}`} activeClassName="current">
           <div className="card">
+          
             <div className="card-body categories">
-            <Link to={`/labours/${category.slug}`} activeClassName="current">
               <img src={`${process.env.REACT_APP_RESOURCES_URL}uploads/category/${category.image}`} alt={category.image} className="categories rounded mx-auto d-block"/>
-              </Link>
             </div>
+            
           </div>
+          
         <div className="card-body cuntent text-center">
-        <Link to={`/labours/${category.slug}`} className={`categories m-3`}> {category.name}</Link>
+        <Link  className={`categories m-3`}> {category.name}</Link>
         </div>
+        </Link>
       </div>      
         ))} 
     </div>

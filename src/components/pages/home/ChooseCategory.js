@@ -26,17 +26,20 @@ function ChooseCategory() {
     <div className="row">
     {categories.map(category => (
       <div className="col-md-3 mb-3 ">
+        <Link to={`/labours/${category.slug}`}>
         <div className="card">
           <div className="card-body categories">
-          <Link to={`/labours/${category.name}`}>
+          
             <img src={`${process.env.REACT_APP_RESOURCES_URL}uploads/category/${category.image}`}
-             alt={category.image} className="categories rounded mx-auto d-block" /></Link>       
+             alt={category.image} className="categories rounded mx-auto d-block" />       
           </div>
         </div>
         <div className="card-body cuntent text-center">
-          <Link to={`/labours/${category.name}`} className="categories m-3"> {category.name}</Link>
+          <Link to={`/labours/${category.slug}`} className="categories m-3"> {category.name}</Link>
         </div>
+        </Link>
       </div> 
+
       ))}
       </div>
     </div>
