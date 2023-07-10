@@ -64,7 +64,7 @@ import { BrowserRouter as Router,Routes, Route, Link, useParams  } from 'react-r
                 </div>
             </div>
            
-    <div className="col-12 pt-5">
+    {/* <div className="col-12 pt-5">
         <h1>Description</h1>
     </div>
     <div className="col-12 pt-5">
@@ -76,7 +76,7 @@ import { BrowserRouter as Router,Routes, Route, Link, useParams  } from 'react-r
             urna. Curabitur vel bibendum lorem. Morbi convallis convallis diam sit amet lacinia. Aliquam in
             elementum tellus.
         </p>
-    </div>
+    </div> */}
     <div className="col-md-12 pt-5">
         <h1>About</h1>
     </div>
