@@ -9,29 +9,13 @@ function ProfileUpdate() {
   // const data = JSON.parse(UserIDString);
   // console.log(data.user_id, 'update frofile');
     const [profile, setProfile]=useState([]);
-    const [profileupdate, setProfileUpdate]=useState();
+    const [profileupdate, setProfileUpdate]=useState(null);
     const [category, setCategory] = useState([]);
     const [selectedImage, setSelectedImage] = useState(null);
     const navigate = useNavigate();
 
     const profile_url='profileData';
     const update_url='updateProfile';
-
-    // const handleChange = (e) => {
-    //   const value=e.target.value;
-    //   //console.log(value);
-    //   setProfile({
-    //     ...profile,
-    //     [e.target.name]: value
-    //   });
-    // };
-
-    
-
-    const handleImageUpload = (e) => {
-      // console.log(e.target.files)
-    setSelectedImage(e.target.files[0]);
-    };
 
     const category_url='';
         useEffect(() => {
@@ -49,11 +33,7 @@ function ProfileUpdate() {
     const formData = new FormData()
     const user_id = localStorage.getItem('user_id')
     formData.append('user_id', user_id)
-    // if(data.user_type === 'employer'){
-      // formData.append('category_id', '0',)
-    // }
-    
-    // formData.append('category_slug', )
+
     axios.post(`${profile_url}`, formData)
      .then(response => {
     setProfile(response?.data?.data);
@@ -66,8 +46,19 @@ const handleEdit = (index, field, value) => {
   const newItems = [...profile];
   newItems[index][field] = value;
   setProfileUpdate(newItems);
-  
 };
+
+const handleImageUpload = (e) => {
+  const value=e.target.value;
+  //console.log(value);
+  setProfileUpdate({
+    ...profile,
+    [e.target.name]: value
+  });
+  // console.log(e.target.files)
+setSelectedImage(e.target.files[0]);
+};
+console.log('',profileupdate);
     const handleSubmit = (e) => {
       e.preventDefault();
       console.log(profileupdate);
@@ -75,33 +66,45 @@ const handleEdit = (index, field, value) => {
           const config = {
             headers: { 'content-type': 'multipart/form-data' }
            }
-           formData.append('user_id', '204',)
+           formData.append('user_id', profileupdate[0].user_id,)
+           if(profileupdate[0].user_type === 'employer'){
+            formData.append('category_id', '0',)
+          }
           //  formData.append('category_slug', '0',)
           formData.append('username',  profileupdate[0].username,)
           formData.append('phone_no',  profileupdate[0].phone_no,)
           formData.append('address',  profileupdate[0].address,)
           formData.append('category_id',  profileupdate[0].category_id,)
-          formData.append('image',  selectedImage)
+          if(selectedImage){
+            formData.append('image',  selectedImage)
+            // console.log('this is update image', selectedImage);
+          }
 
-          axios.post(`${update_url}`, formData, config)
-          .then(response =>{
-            navigate(`/profile/${profileupdate[0].user_slug}`);
-          })
-          .catch(error => {
-          console.error(error);
-          });
+          const user=(profileupdate[0].username).replace(/ /g, '-');
+          const user_slug=user.toLowerCase();
+
+          // if(profileupdate[0].username === null && profileupdate[0].phone_no === null && profileupdate[0].address === null &&profileupdate[0].category_id === null && !selectedImage){
+          //   navigate(`/profile/${user_slug}`);
+          // }else{
+            axios.post(`${update_url}`, formData, config)
+            .then(response =>{
+              navigate(`/profile/${user_slug}`);
+            })
+            .catch(error => {
+            console.error(error);
+            });
+          // }
+         
 
     };
-
-   
-  
+    
     function SubmitButton(){
-      // if (profile.username){
-        return <button className="btn login-btn" type="submit">Update</button>  
-      // } 
-      // else {
-        // return <button className="btn login-btn"  onClick={handleSubmit} type="submit" disabled>Update</button>
-      // };
+      if (profileupdate === null){
+        return <button className="btn login-btn" type="submit" disabled>Update</button>  
+      } 
+      else {
+        return <button className="btn login-btn" type="submit">Update</button>
+      };
     };  
     return <div>
      
@@ -132,7 +135,7 @@ const handleEdit = (index, field, value) => {
           return (
             <div className="form-group">
             <div className="col-md-8 mb-4">
-            <select id="signup-sector" name="category" className="signup-select" onChange={(event) => handleEdit(index, 'category_id', event.target.value)}> 
+            <select id="signup-sector" name="category" className="signup-select" value={info.category_id} onChange={(event) => handleEdit(index, 'category_id', event.target.value)}> 
             {category.map(categories => ( <option key={categories.id} value={categories.id} >{categories.name}</option>))}
             </select>
             </div>
@@ -151,7 +154,7 @@ const handleEdit = (index, field, value) => {
            <img src={`${process.env.REACT_APP_RESOURCES_URL}images/${info.image}`} alt="" className="img-fluid update" />
        
               {/* <input className="pt10" type="file" name='image' placeholder="Upload image" value={user.image} onChange={handleChange}/> */}
-              <input className="pt10" type="file" name='file' placeholder="Upload image" value={info.files} onChange={handleImageUpload}/>
+              <input className="pt10" type="file" name='file' accept="image/*" placeholder="Upload image" onChange={handleImageUpload}/>
             </div>
             <SubmitButton/>
           </form>

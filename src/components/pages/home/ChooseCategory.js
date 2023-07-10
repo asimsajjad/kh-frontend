@@ -8,10 +8,12 @@ function ChooseCategory() {
   const [categories, setcategories] = useState([]);
   //const url=process.env.REACT_APP_API_BASE_URL+'api/sevenCategories';
   useEffect(() => {
-    axios.get('sevenCategories')
+    const formData = new FormData()
+    formData.append('category_slug', '8');
+    axios.get('sevenCategories', formData,)
       .then(response => {
         setcategories(response?.data?.data?.en);
-      })
+      }).then(console.log(categories))
       .catch(error => {
         console.error(error);
       });
@@ -19,7 +21,7 @@ function ChooseCategory() {
 
   return (<>
     <div className="container mb-5">
-      <h1 className="Category">Choose Different <span style={{color: "#673AB7"}}> Category</span> </h1>
+      <h1 className="Category">Choose a <Link to='/categories'><span style={{color: "#673AB7"}}> Category</span> </Link></h1>
     </div>
     <div className="container"> 
     <div className="row">

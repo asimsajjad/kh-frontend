@@ -24,13 +24,13 @@ function Login() {
         axios.post(`${url}`, formData)
         .then(response => {
           if(response?.data?.message?.success){
-            sessionStorage.setItem('user', response?.data?.data[0].user_id)
-            sessionStorage.setItem("data", JSON.stringify(response?.data?.data[0]));
-
+             localStorage.setItem('user_id', response?.data?.data[0].user_id)
             if(response?.data?.data[0].usertype=='employee'){
-              navigate('/categories');
+              //navigate('/categories');
+              window.location.href = process.env.REACT_APP_BASE_URL+"categories";
             }else{                
-              navigate('/labours');
+              //navigate('/labours');
+              window.location.href = process.env.REACT_APP_BASE_URL+"labours";
             }
 
           } 

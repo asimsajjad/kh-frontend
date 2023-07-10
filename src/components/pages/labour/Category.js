@@ -13,7 +13,9 @@ import { BrowserRouter as Router,Routes, Route, Link, useParams  } from 'react-r
         const lastIndex = currentPage * recordsPerPage;
         const firstIndex = lastIndex - recordsPerPage;
          
-        
+        const user_id = localStorage.getItem('user_id');
+        console.log(user_id, 'data header');
+
         const getUserID = () => {
           const UserIDString = sessionStorage.getItem('data');
           const data = JSON.parse(UserIDString);
@@ -85,7 +87,7 @@ import { BrowserRouter as Router,Routes, Route, Link, useParams  } from 'react-r
           setCurrenPage(currentPage+1);
         }
       }
-
+console.log(records);
     return (<>
         <div className="container top-btns pt-5">
             <div className="row">
@@ -103,10 +105,16 @@ import { BrowserRouter as Router,Routes, Route, Link, useParams  } from 'react-r
         </div>
         <div className="container pt-4">
             <div className="row">
-            {records.map(labour_data => (
-                <div className="col-md-6 mt-4">
+            {records.map((labour_data, index) => (
+                <div className="col-md-6 mt-4" key={labour_data.id}>
                     <div className="profile-card d-flex">
-                        <img src={`${process.env.REACT_APP_RESOURCES_URL}images/${labour_data.image}`} className="card-img-top rounded-circle" alt="User 1"/>
+                    {/* {(() => {
+                      if(labour_data[0].image){ */}
+                      <img key={index} src={`${process.env.REACT_APP_RESOURCES_URL}images/${labour_data.image}` || 'assets/images/manager.png'} className="card-img-top rounded-circle" />
+                      {/* }
+                    })} */}
+                      
+                        
                         <div className="profile-card-body">
                             <h5 className="card-title plum s">{labour_data.category_name}</h5>
                             <div className="name d-flex">
@@ -114,8 +122,18 @@ import { BrowserRouter as Router,Routes, Route, Link, useParams  } from 'react-r
                                 <p><i className="bi mr-2 bi-geo-alt-fill fas fa-location-arrow"></i>Pakistan</p>
                             </div>
                             <div className="available d-flex">
-                                <Link className="" to="">Available</Link>
-                                <Link to={`/profile/${labour_data.slug}`} className="btn profile-btn">View Profile</Link>
+                                <Link className="" to="">Available</Link> 
+                                {(() => {
+                                  if (user_id == null){
+                                    return (
+                                    <Link to="/login" className="btn profile-btn">Log In</Link>
+                                    )
+                                  }else{
+                                    return (
+                                    <Link to={`/profile/${labour_data.slug}`} className="btn profile-btn">Profile</Link>
+                                    )
+                                  }              
+                                })()}
                             </div>
                         </div>
                     </div>

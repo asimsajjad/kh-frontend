@@ -79,14 +79,13 @@ function Contact() {
               </div>              
             </div>
             <SubmitButton/>
-             {/* <button className="btn login-btn" type="submit" disabled={!contact.comments} onClick={handleSubmit}>Submit</button> */}
           </form>
         </div>
         <div className="col-md-4 pl-0">
           <div className="login-details">
             <h3 className="text-light ">Welcome to Khadim Hazir</h3>
             <p className="text-light mb-5">If you want to find more features please
-            <p><Link to="/signup" className='contact'> Login </Link></p><p className='text-light'>OR</p> <p><Link to="" className='contact'> Visit Our Site </Link></p></p>         
+            <p><Link to="/login" className='contact'> Login </Link></p><p className='text-light'>OR</p> <p><Link to="" className='contact'> Visit Our Site </Link></p></p>         
           </div>
         </div>
       </div>
