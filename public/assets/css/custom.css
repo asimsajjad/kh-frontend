@@ -547,7 +547,12 @@ p.contact {
 p.contact:hover {
     color: rgb(0, 0, 0);
 }
-
+a.policy {
+    color: #ffffff;
+}
+a.policy:hover {
+    color: #000000;
+}
 .container.footer.mt-5 {
     background-color:#673AB7 ;
 }
