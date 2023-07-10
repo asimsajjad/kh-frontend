@@ -17,77 +17,76 @@ function Search() {
   <div className=" container our-section rounded">
     <div className="row">
       <div className="col-lg-2 ">
+      <Link to='/labours/handy-person'>
         <div className="card border-0 ">
-          <Link to='/labours/handy-person'>
           <div className="mx-auto">
             <img src="assets/images/svgviewer-png-output.png" className="card-img-top  mx-auto " alt="..."/>
             <p className="card-title text-center services pt-3 ">Handy person</p>
           </div>
-          </Link>
         </div>
+        </Link>
       </div>
       <div className="col-lg-2 ">
+      <Link to='/labours/landscaping'>
         <div className="card border-0 ">
-          <Link to='/labours/landscaping'>
           <div className="mx-auto">
             <img src="assets/images/svgviewer-png-output (1).png" className="card-img-top  mx-auto " alt="..."/>
           </div>
           <div className="card-body">
             <p className="card-title text-center services ">Landscaping</p>
           </div>
-          </Link>
         </div>
+        </Link>
       </div>
       
       <div className="col-lg-2 ">
+      <Link to='/labours/plumbing-services'> 
         <div className="card border-0 ">
-        <Link to='/labours/plumbing-services'> 
         <div className="mx-auto">
           <img src="assets/images/svgviewer-png-output (2).png" className="card-img-top  mx-auto " alt="..." />
           </div>
           <div className="card-body">
            <p className="card-title text-center services ">Plumbing</p>
           </div>
-          </Link>
         </div>
+        </Link>
       </div>
       
       <div className="col-lg-2 ">
+      <Link to='/labours/elctrician'>
         <div className="card border-0 ">
-        <Link to='/labours/elctrician'>
           <div className="mx-auto">
             <img src="assets/images/svgviewer-png-output (3).png" className="card-img-top  mx-auto " alt="..." />
           </div>
           <div className="card-body">
             <p className="card-title text-center services ">Electrician</p>
           </div>
-          </Link>
         </div>
+        </Link>
       </div>
       <div className="col-lg-2">
+      <Link to='/labours/remodling'>
         <div className="card border-0">
-        <Link to='/labours/remodling'>
           <div className="mx-auto">
             <img src="assets/images/svgviewer-png-output.png" className="card-img-top  mx-auto " alt="..." />
           </div>
           <div className="card-body">
             <p className="card-title text-center services ">Remodeling</p>
           </div>
-          </Link>
         </div>
+        </Link>
       </div>
       <div className="col-lg-2">
+      <Link to='/labours/roof-work'>
         <div className="card border-0">
-        <Link to='/labours/roof-work'>
           <div className="mx-auto">
             <img src="assets/images/svgviewer-png-output (5).png" className="card-img-top  mx-auto" alt="..." />
           </div>
           <div className="card-body">
             <p className="card-title text-center services ">Roofing</p>
           </div>
-          </Link>
         </div>
-        
+        </Link>
       </div>
     </div>
   </div>

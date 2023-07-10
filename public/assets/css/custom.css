@@ -35,7 +35,7 @@ img.update {
 }
 select#signup-sector {
     height: 50px;
-    width: 650px;
+    width: 747px;
     margin-top: 25px;
     border-radius: 10px;
     border: none;
@@ -43,7 +43,9 @@ select#signup-sector {
 img.labour {
     width: 50px;
 }
-
+.color-text{
+     color: #673AB7;
+}
 .card-body.categories {
     border-top: 1px solid #eeeeee;
     border-left: 1px solid #eeeeee;
@@ -546,7 +548,9 @@ p.contact:hover {
     color: rgb(0, 0, 0);
 }
 
-
+.container.footer.mt-5 {
+    background-color:#673AB7 ;
+}
 
 @media (max-width:600px){
 
@@ -556,9 +560,7 @@ p.contact:hover {
     }
     .col-md-4.banner1{
         position: absolute;
-        left: 233px;
-        top: 64px;
+        left: 208px;
+        top: 54px;
     }
-
-
 }
