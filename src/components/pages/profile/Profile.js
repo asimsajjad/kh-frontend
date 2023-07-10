@@ -42,7 +42,7 @@ import { BrowserRouter as Router,Routes, Route, Link, useParams  } from 'react-r
                
                 <div className="row pl-2">
                     <div className="col-lg-3">
-                        <img src={`${process.env.REACT_APP_RESOURCES_URL}images/${info.image}`} alt="" className="img-fluid profile" />
+                        <img src={info.image ? `${process.env.REACT_APP_RESOURCES_URL}images/${info.image}` : "assets/images/manager.png"} className="img-fluid profile" />
                     </div>
                     <div className="col-lg-3 ">
                         <p className="p1">{info.username}</p>

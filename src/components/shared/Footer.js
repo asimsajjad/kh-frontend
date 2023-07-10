@@ -32,12 +32,12 @@ function Footer() {
         <div className="col-lg-3">
           <h4 className="text-white mb-4">Call Us</h4>
           <p className="foot"><i className="mr-2 fa fa-map-marker"></i>Pakistan: New Defense View Housing Scheme , Dera Ghazi Khan, Punjab 32200.</p>
-          <p className="foot"><i className="mr-2 fa fa-phone"></i>+92 3346929604</p>
+          <a href='https://wa.me/+923346929604'><p className='contact'><i className="mr-2 fa fa-phone"></i>+923346929604</p></a>
           <a href='mailto:demo@example.com'><p className="contact"><i className="mr-2 fa fa-envelope"></i>demo@example.com</p></a>
         </div>
       </div>
       <div className="text-center mt-3">
-        <Link to="/terms" className='policy'>Terms of use</Link> | <Link to="/terms" className="policy" >Privacy Policy</Link>
+        <Link to="/terms" className='policy'>Terms and conditions</Link>
         <p className="footer">&copy; Copyright 2022-{currentYear}, Khadim Hazir. All rights reserved.</p>
       </div>
     </div>

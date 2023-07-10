@@ -105,16 +105,10 @@ import { BrowserRouter as Router,Routes, Route, Link, useParams  } from 'react-r
         </div>
         <div className="container pt-4">
             <div className="row">
-            {records.map((labour_data, index) => (
+            {records.map((labour_data) => (
                 <div className="col-md-6 mt-4" key={labour_data.id}>
                     <div className="profile-card d-flex">
-                    {/* {(() => {
-                      if(labour_data[0].image){ */}
-                      <img key={index} src={`${process.env.REACT_APP_RESOURCES_URL}images/${labour_data.image}` || 'assets/images/manager.png'} className="card-img-top rounded-circle" />
-                      {/* }
-                    })} */}
-                      
-                        
+                      <img src={labour_data.image ? `${process.env.REACT_APP_RESOURCES_URL}images/${labour_data.image}` : "assets/images/manager.png"} className="card-img-top rounded-circle" />    
                         <div className="profile-card-body">
                             <h5 className="card-title plum s">{labour_data.category_name}</h5>
                             <div className="name d-flex">

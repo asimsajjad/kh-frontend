@@ -152,7 +152,7 @@ setSelectedImage(e.target.files[0]);
            
            <div className='row'>
              <div className='col-md-2 profile-image'>
-             <img src={`${process.env.REACT_APP_RESOURCES_URL}images/${info.image}`} alt="" className="img-fluid update m-0" />
+             <img src={info.image ? `${process.env.REACT_APP_RESOURCES_URL}images/${info.image}` : "assets/images/manager.png"} alt="" className="img-fluid update m-0" />
              </div>
              
            <div className='col-md-10 name-input placholder ml-2'>
