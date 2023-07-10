@@ -35,8 +35,10 @@ function Login() {
         formData.append('password',  user.password,)
         axios.post(`${url}`, formData)
         .then(response => {
+          console.log(response?.data?.data);
           if(response?.data?.message?.success){
              localStorage.setItem('user_id', response?.data?.data[0].user_id)
+             localStorage.setItem('user_name', response?.data?.data[0].username)
             if(response?.data?.data[0].usertype=='employee'){
               //navigate('/categories');
               window.location.href = process.env.REACT_APP_BASE_URL+"categories";

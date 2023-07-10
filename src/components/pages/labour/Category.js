@@ -126,7 +126,7 @@ import { BrowserRouter as Router,Routes, Route, Link, useParams  } from 'react-r
                                 {(() => {
                                   if (user_id == null){
                                     return (
-                                    <Link to="/login" className="btn profile-btn">Log In</Link>
+                                    <Link to="/login" className="btn profile-btn">Profile</Link>
                                     )
                                   }else{
                                     return (

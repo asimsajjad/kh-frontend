@@ -33,6 +33,9 @@ img.update {
     right: 10px;
     top: 3px;
 }
+.col-md-10.name-input.placholder {
+    margin-left: -12px;
+}
 select#signup-sector {
     height: 50px;
     width: 747px;
@@ -40,6 +43,10 @@ select#signup-sector {
     border-radius: 10px;
     border: none;
 }
+.col-md-2.profile-image {
+    margin-left: -20px;
+}
+
 img.labour {
     width: 50px;
 }

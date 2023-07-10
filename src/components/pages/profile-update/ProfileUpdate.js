@@ -58,7 +58,7 @@ const handleImageUpload = (e) => {
   // console.log(e.target.files)
 setSelectedImage(e.target.files[0]);
 };
-console.log('',profileupdate);
+// console.log('',profileupdate);
     const handleSubmit = (e) => {
       e.preventDefault();
       console.log(profileupdate);
@@ -149,12 +149,15 @@ console.log('',profileupdate);
                  value={info.address} onChange={(event) => handleEdit(index, 'address', event.target.value)} placeholder='Write your address here'></textarea>
               </div>              
             </div>
-           <div className="name-input d-flex">
            
-           <img src={`${process.env.REACT_APP_RESOURCES_URL}images/${info.image}`} alt="" className="img-fluid update" />
-       
-              {/* <input className="pt10" type="file" name='image' placeholder="Upload image" value={user.image} onChange={handleChange}/> */}
-              <input className="pt10" type="file" name='file' accept="image/*" placeholder="Upload image" onChange={handleImageUpload}/>
+           <div className='row'>
+             <div className='col-md-2 profile-image'>
+             <img src={`${process.env.REACT_APP_RESOURCES_URL}images/${info.image}`} alt="" className="img-fluid update m-0" />
+             </div>
+             
+           <div className='col-md-10 name-input placholder ml-2'>
+           <input className="pt10" type="file" name='file' accept="image/*" placeholder="Upload image" onChange={handleImageUpload}/>
+            </div>      
             </div>
             <SubmitButton/>
           </form>
