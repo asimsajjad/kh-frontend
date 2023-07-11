@@ -62,12 +62,13 @@ import { BrowserRouter as Router,Routes, Route, Link, useParams  } from 'react-r
         
         .then(response => {
         setLabour(response?.data?.data);
+        
         })
         .catch(error => {
         console.error(error);
         });
     }
- 
+    console.log(labour);
     const records = labour.slice(firstIndex, lastIndex);
     const npage = Math.ceil(labour.length/recordsPerPage);
     const numbers = [...Array(npage + 1).keys()].slice(1); 

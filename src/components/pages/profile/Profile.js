@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from '../../../config/axios';
 import { BrowserRouter as Router,Routes, Route, Link, useParams  } from 'react-router-dom';
-;function Info() {
+
+function Info() {
     const [profile, setProfile] = useState([]);
     const {type} = useParams();
     console.log(type, 'type');
@@ -55,7 +56,7 @@ import { BrowserRouter as Router,Routes, Route, Link, useParams  } from 'react-r
                     <div className="col-lg-1 pt-3">
                         <div className="row">
                             <div className="col-lg-6">
-                                <i className="fa fa-map-marker fa-3x" aria-hidden="true"></i>
+                            <img src={`${process.env.REACT_APP_BASE_URL}assets/images/location.png`} className='location_icon'></img>
                             </div>
                         <div className="col-lg-6">
                             <p className="p1">Pakistan</p>
