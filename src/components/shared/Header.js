@@ -1,13 +1,16 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter as Router,Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router,Routes, Route, Link, useNavigate } from 'react-router-dom';
 function Header() {
+  const navigate = useNavigate();
   const user_id = localStorage.getItem('user_id');
   console.log(user_id, 'data header');
   
   const Logout = (e) => {
     localStorage.removeItem('user_id');
     sessionStorage.removeItem('user_id');
-    window.location.href = process.env.REACT_APP_BASE_URL+"login";
+    // window.location.href = "login";
+    navigate("/login");
+    
   };
 
   return <nav className="navbar navbar-expand-lg">

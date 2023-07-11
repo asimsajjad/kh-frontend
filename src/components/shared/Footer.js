@@ -7,7 +7,9 @@ function Footer() {
     <div className="container footer mt-5 ">
       <div className="row">
         <div className="col-md-3">
-          <a className="navbar-brand  " href="index.php"><img src="assets/images/logo.png" className="footer" alt=""/></a>
+          {/* <a className="navbar-brand  " href="index.php"><img src="assets/images/logo.png" className="footer" alt=""/></a> */}
+          <Link to="/" className="navbar-brand" >
+        <img src="assets/images/kh-logo.png" alt="Logo"  className="footer"/></Link>
           <p className="foot">Khadim Hazir is designed to streamline the process of connecting employers with skilled workers, making it easier than ever to find the right talent for your business.
           </p>
         </div>

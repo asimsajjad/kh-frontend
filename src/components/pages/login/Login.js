@@ -37,9 +37,11 @@ function Login() {
           if(response?.data?.message?.success){
              localStorage.setItem('user_id', response?.data?.data[0].user_id)
             if(response?.data?.data[0].usertype=='employee'){
-              window.location.href = process.env.REACT_APP_BASE_URL+"categories";
+              // window.location.href = "categories";
+              navigate("/categories");
             }else{                
-              window.location.href = process.env.REACT_APP_BASE_URL+"labours";
+              // window.location.href = "labours";
+              navigate("/labours");
             }
           }else{
             (showAlert("Email or password is incorrect" , "danger"))
