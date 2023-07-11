@@ -13,7 +13,7 @@ function Header() {
   return <nav className="navbar navbar-expand-lg">
     <div className="container-fluid navbar">    
       <Link to="/" className="navbar-brand logo pl-4" >
-        <img src="assets/images/logo1.png" alt="Logo" /></Link>
+        <img src="assets/images/kh-logo.png" alt="Logo" /></Link>
       <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <img className="toogler-img" src="assets/images/download.svg" alt="" />
