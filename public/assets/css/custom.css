@@ -543,7 +543,18 @@ ul.pagination {
     background-color: #673AB7;
     color: #fff;
 }
-
+button.slick-next.slick-arrow {
+    background-color: #673AB7 !important;
+     height: 20px;
+    width: 20px;
+    border-radius: 55px;
+}
+button.slick-prev.slick-arrow {
+    background-color: #673AB7 !important;
+    height: 20px;
+    width: 20px;
+    border-radius: 55px;
+}
 .contact-page {
     margin-top: 150px;
 }
@@ -551,9 +562,17 @@ ul.pagination {
 p.contact {
     color: white;
 }
+.container.mx-auto.slid {
+    padding-left: 55px !important;
+}
 p.contact:hover {
     color: rgb(0, 0, 0);
 }
+button.slick-prev.slick-arrow:hover {
+    background-color: red;
+
+}
+
 a.policy {
     color: #ffffff;
 }
@@ -574,5 +593,8 @@ a.policy:hover {
         position: absolute;
         left: 208px;
         top: 54px;
+    }
+    .carousel-card {
+        width: 165px !important;
     }
 }
