@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from '../../../config/axios';
 import { BrowserRouter as Router,Routes, Route, Link, useParams  } from 'react-router-dom';
-
+import Slider from "react-slick";
 
   function Categories() {
         const [labour, setLabour] = useState([]);
@@ -88,18 +88,29 @@ import { BrowserRouter as Router,Routes, Route, Link, useParams  } from 'react-r
           setCurrenPage(currentPage+1);
         }
       }
-// console.log(records);
-    return (<>
+      var settings = {
+        dots: false,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 8,
+        slidesToScroll: 2,
+        variableWidth: true
+
+      };
+      return (<>
         <div className="container top-btns pt-5">
             <div className="row">
                 <div className="col-md-12">
                     <div className="category-tabs justify-content-left">
-                        <Link to="/labours" className={`btn tab-btn2 ml-2 ${!type ? "active" : ""}`} 
+                    <Slider {...settings}>
+                        <Link to="/labours" className={`btn tab-btn2 mr-5  ${!type ? "active" : ""}`} 
                         onClick={loadEmployees}  role="button">All</Link>
+                        
                         {category.map(category_data => (
-                        <Link key={category_data.id} to={`/labours/${category_data.slug}`} className={`btn plum tab-btn2 ml-2 ${(type===category_data.slug) ? "active" : ""}`}
+                        <Link key={category_data.id} to={`/labours/${category_data.slug}`} className={`btn plum tab-btn2 mr-5 ${(type===category_data.slug) ? "active" : ""}`}
                         role="button" onClick={loadEmployees} >{category_data.name}</Link>
                         ))}
+                        </Slider>
                     </div>
                 </div>
             </div>

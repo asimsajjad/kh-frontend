@@ -36,6 +36,9 @@ function ProfileUpdate() {
 
     axios.post(`${profile_url}`, formData)
      .then(response => {
+      if(!response?.data?.message.success){
+        navigate(`/login`);
+      }
     setProfile(response?.data?.data);
     })
     .catch(error => {
