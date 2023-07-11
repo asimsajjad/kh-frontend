@@ -150,14 +150,15 @@ setSelectedImage(e.target.files[0]);
               </div>              
             </div>
            
-           <div className='row'>
-             <div className='col-md-2 profile-image'>
-             <img src={info.image ? `${process.env.REACT_APP_RESOURCES_URL}images/${info.image}` : `${process.env.REACT_APP_BASE_URL}assets/images/manager.png`} alt="" className="img-fluid update m-0" />
-             </div>
-             
-           <div className='col-md-10 name-input placholder ml-2'>
-           <input className="pt10" type="file" name='file' accept="image/*" placeholder="Upload image" onChange={handleImageUpload}/>
-            </div>      
+            <div className='row'>
+                <div className='profile-image'>
+                  <img src={info.image ? `${process.env.REACT_APP_RESOURCES_URL}images/${info.image}` : `${process.env.REACT_APP_BASE_URL}assets/images/manager.png`} alt="" className="img-fluid update m-0" />
+                </div> 
+            </div>
+            <div className='row'>  
+               <div className='profile-image'>
+                 <input className="pt10" type="file" name='file' accept="image/*" placeholder="Upload image" onChange={handleImageUpload}/>
+            </div>
             </div>
             <SubmitButton/>
           </form>
