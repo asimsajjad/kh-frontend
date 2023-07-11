@@ -25,13 +25,11 @@ function Info() {
    const [description, setDescription] = useState(false);
 
    const handleClick = event => {
-     // 👇️ toggle isActive state on click
      setIsActive(current => !current);
      setDescription(true);
 
     };
     const handleButton = event => {
-        // 👇️ toggle isActive state on click
         setIsActive(current => !current);
         setDescription(false);
    

@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import axios from '../../../config/axios';
 import Slider from "react-slick";
 
-
 function PopularServices() {
     const [categories, setCategories] = useState([]);
 

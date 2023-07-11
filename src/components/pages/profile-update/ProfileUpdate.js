@@ -1,13 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from '../../../config/axios';
 import { BrowserRouter as Router,Routes, Route, Link, useNavigate} from 'react-router-dom';
-import Alert from '../../Alerts/alert';
-
 
 function ProfileUpdate() {
-  // const UserIDString = sessionStorage.getItem('data');
-  // const data = JSON.parse(UserIDString);
-  // console.log(data.user_id, 'update frofile');
     const [profile, setProfile]=useState([]);
     const [profileupdate, setProfileUpdate]=useState(null);
     const [category, setCategory] = useState([]);
@@ -80,15 +75,10 @@ setSelectedImage(e.target.files[0]);
           formData.append('category_id',  profileupdate[0].category_id,)
           if(selectedImage){
             formData.append('image',  selectedImage)
-            // console.log('this is update image', selectedImage);
           }
 
           const user=(profileupdate[0].username).replace(/ /g, '-');
           const user_slug=user.toLowerCase();
-
-          // if(profileupdate[0].username === null && profileupdate[0].phone_no === null && profileupdate[0].address === null &&profileupdate[0].category_id === null && !selectedImage){
-          //   navigate(`/profile/${user_slug}`);
-          // }else{
             axios.post(`${update_url}`, formData, config)
             .then(response =>{
               navigate(`/profile/${user_slug}`);
@@ -96,9 +86,6 @@ setSelectedImage(e.target.files[0]);
             .catch(error => {
             console.error(error);
             });
-          // }
-         
-
     };
     
     function SubmitButton(){

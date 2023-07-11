@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react';
-//import axios from 'axios';
 import axios from '../../../config/axios';
 import { BrowserRouter as Router,Routes, Route, Link } from 'react-router-dom';
 
 
 function ChooseCategory() {
   const [categories, setcategories] = useState([]);
-  //const url=process.env.REACT_APP_API_BASE_URL+'api/sevenCategories';
   useEffect(() => {
     const formData = new FormData()
     axios.get('sevenCategories/8', formData,)

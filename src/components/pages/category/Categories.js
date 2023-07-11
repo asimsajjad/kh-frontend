@@ -47,13 +47,13 @@ function Categories() {
       </div>
       <div className="container pt-3 ">
       <div className="row">
-       {records.map(category => (
+       {records.map((category) => (
         <div className="col-md-3 mb-3">
-          <Link to={`/labours/${category.slug}`} activeClassName="current">
+          <Link to={`/labours/${category.slug}`} activeclasscame="current">
           <div className="card">
           
             <div className="card-body categories">
-              <img src={`${process.env.REACT_APP_RESOURCES_URL}uploads/category/${category.image}`} alt={category.image} className="categories rounded mx-auto d-block"/>
+              <img key={category.id} src={`${process.env.REACT_APP_RESOURCES_URL}uploads/category/${category.image}`} alt={category.image} className="categories rounded mx-auto d-block"/>
             </div>
             
           </div>

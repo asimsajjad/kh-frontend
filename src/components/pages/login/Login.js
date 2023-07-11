@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 import axios from '../../../config/axios';
 import Alert from '../../Alerts/alert';
 
-
 function Login() {
   const [user, setUser]=useState('');
   const [alert, setAlert] = useState(null);
@@ -12,7 +11,6 @@ function Login() {
 
   const handleChange = (e) => {
     const value=e.target.value;
-    //console.log(value);
     setUser({
       ...user,
       [e.target.name]: value
@@ -39,10 +37,8 @@ function Login() {
           if(response?.data?.message?.success){
              localStorage.setItem('user_id', response?.data?.data[0].user_id)
             if(response?.data?.data[0].usertype=='employee'){
-              //navigate('/categories');
               window.location.href = process.env.REACT_APP_BASE_URL+"categories";
             }else{                
-              //navigate('/labours');
               window.location.href = process.env.REACT_APP_BASE_URL+"labours";
             }
           }else{

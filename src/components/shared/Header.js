@@ -1,6 +1,4 @@
 import React, { useEffect } from 'react';
-import UserProfile from './UserProfile';
-
 import { BrowserRouter as Router,Routes, Route, Link } from 'react-router-dom';
 function Header() {
   const user_id = localStorage.getItem('user_id');

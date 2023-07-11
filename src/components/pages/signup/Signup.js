@@ -87,15 +87,9 @@ function Signup() {
           .then(response => {
             if(response?.data?.message?.success){
                localStorage.setItem('user_id', response?.data?.data[0].user_id)
-              //sessionStorage.setItem('data-s', JSON.stringify(response?.data?.data[0]));
-              
-
               if(response?.data?.data[0].usertype=='employee'){
-                //navigate('/categories');
                 window.location.href = process.env.REACT_APP_BASE_URL+"categories";
-
               }else{                
-                //navigate('/labours');
                 window.location.href = process.env.REACT_APP_BASE_URL+"labours";
               }
 
@@ -200,7 +194,6 @@ function Signup() {
             </div>
            <div className="name-input d-flex">
               <label><i className="fas fa-user"></i></label>
-              {/* <input className="pt10" type="file" name='image' placeholder="Upload image" value={user.image} onChange={handleChange}/> */}
               <input className="pt10" type="file" name='file' placeholder="Upload image" value={user.files} onChange={handleImageUpload}/>
             </div>
             <div className="row pt10">

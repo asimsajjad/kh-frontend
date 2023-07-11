@@ -4,10 +4,10 @@ import Alert from '../../Alerts/alert';
 import { BrowserRouter as Router,Routes, Route, Link  } from 'react-router-dom';
 
 function Contact() {
-
   const [contact, setContact] = useState('');
   const [alert, setAlert] = useState(null);
   const url='contactUs';
+  const user_id = localStorage.getItem('user_id');
 
   const showAlert = (message, type) => {
     setAlert({
@@ -85,7 +85,19 @@ function Contact() {
           <div className="login-details">
             <h3 className="text-light ">Welcome to Khadim Hazir</h3>
             <p className="text-light mb-5">If you want to find more features please
-            <p><Link to="/login" className='contact'> Login </Link></p> </p>         
+            {(() => {
+              if (user_id == null){
+                  return (
+                    <p><Link to="/login" className='contact'> Login </Link></p>     
+                  )
+              }else{
+                return (
+                  <p><Link to="/" className='contact'> Visit Home Page </Link></p>
+                )
+                
+              }              
+            })()}
+             </p>         
           </div>
         </div>
       </div>
