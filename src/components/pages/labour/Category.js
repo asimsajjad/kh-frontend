@@ -67,7 +67,7 @@ import Slider from "react-slick";
         dots: false,
         infinite: true,
         speed: 500,
-        slidesToShow: 8,
+        slidesToShow: 7,
         slidesToScroll: 2,
         variableWidth: true
 
@@ -78,7 +78,7 @@ import Slider from "react-slick";
                 <div className="col-md-12">
                     <div className="category-tabs justify-content-left">
                     <Slider {...settings}>
-                        <Link to="/labours" className={`btn tab-btn2 mr-5  ${!type ? "active" : ""}`} 
+                        <Link to="/labours" className={`btn tab-btn2 mr-4 ml-4  ${!type ? "active" : ""}`} 
                         onClick={loadEmployees}  role="button">All</Link>
                         
                         {category.map(category_data => (

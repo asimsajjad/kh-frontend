@@ -34,7 +34,7 @@ function PopularServices() {
       <Slider {...settings}>
 
       {categories.map(category => (
-                        <div className="col-md-2 mb-3">
+                        <div className="col-md-2 mb-3 gridbox">
                             <Link to={`labours/${category.slug}`}>
                                 <div className="carousel-card text-center">
                                     <img className="img-fluid mx-auto rounded mx-auto d-block"

@@ -16,7 +16,7 @@ function Search() {
   </div>
   <div className=" container our-section rounded">
     <div className="row">
-      <div className="col-lg-2 ">
+      <div className="col-lg-2 col-sm-6">
       <Link to='/labours/handy-person'>
         <div className="card border-0 ">
           <div className="mx-auto">
@@ -26,7 +26,7 @@ function Search() {
         </div>
         </Link>
       </div>
-      <div className="col-lg-2 ">
+      <div className="col-lg-2 col-sm-6 ">
       <Link to='/labours/landscaping'>
         <div className="card border-0 ">
           <div className="mx-auto">
@@ -39,7 +39,7 @@ function Search() {
         </Link>
       </div>
       
-      <div className="col-lg-2 ">
+      <div className="col-lg-2 col-sm-6 ">
       <Link to='/labours/plumbing-services'> 
         <div className="card border-0 ">
         <div className="mx-auto">
@@ -52,7 +52,7 @@ function Search() {
         </Link>
       </div>
       
-      <div className="col-lg-2 ">
+      <div className="col-lg-2 col-sm-6 ">
       <Link to='/labours/elctrician'>
         <div className="card border-0 ">
           <div className="mx-auto">
@@ -64,7 +64,7 @@ function Search() {
         </div>
         </Link>
       </div>
-      <div className="col-lg-2">
+      <div className="col-lg-2 col-sm-6">
       <Link to='/labours/remodling'>
         <div className="card border-0">
           <div className="mx-auto">
@@ -76,7 +76,7 @@ function Search() {
         </div>
         </Link>
       </div>
-      <div className="col-lg-2">
+      <div className="col-lg-2 col-sm-6">
       <Link to='/labours/roof-work'>
         <div className="card border-0">
           <div className="mx-auto">
