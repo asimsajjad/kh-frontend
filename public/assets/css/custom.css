@@ -181,11 +181,13 @@ svg.svg-inline--fa.fa-google-plus {
 .carousel-card {
     border: 1px solid #673AB7;
     border-radius: 20px;
-    height: 190px;
-    width: 200px;
+    height: 190px !important;
+    width: 96%;
     
 }
-
+.container.mx-auto {
+    max-width: 1110px !important;
+}
 .carousel-card img {
         width: 110px;
         padding-top: 25px;
@@ -545,18 +547,12 @@ ul.pagination {
     background-color: #673AB7;
     color: #fff;
 }
-button.slick-next.slick-arrow {
-    background-color: #673AB7 !important;
-     height: 20px;
-    width: 20px;
-    border-radius: 55px;
+
+.slick-next:before, .slick-prev:before {
+    font-size: 30px !important;
+    color: #673AB7 !important;
 }
-button.slick-prev.slick-arrow {
-    background-color: #673AB7 !important;
-    height: 20px;
-    width: 20px;
-    border-radius: 55px;
-}
+
 .contact-page {
     margin-top: 150px;
 }
@@ -564,27 +560,23 @@ button.slick-prev.slick-arrow {
 p.contact {
     color: white;
 }
-.slick-next {
-    right: -4px !important;
-}
+
 .carousel-card.text-center:hover {
     background-color: #eeeeee !important;
 }
-.container.mx-auto.slid {
-    padding-left: 55px !important;
-}
+
+
+  
 p.contact:hover {
     transform: scale(1.1);
     display: block;
 
 }
-button.slick-prev.slick-arrow:hover {
-    background-color: red;
-
-}
-
 a.policy {
     color: #ffffff;
+}
+.slick-next {
+    right: -10px !important; 
 }
 
 .container.footer.mt-5 {
@@ -617,15 +609,7 @@ a.policy:hover {
         left: 208px;
         top: 54px;
     }
-    .carousel-card {
-        width: 165px !important;
-    }
-    .gridbox{
-        display: grid !important;
-        grid-template-columns: repeat(5, repeat(minmax(450px, 1fr))) !important;
-        grid-template-rows: repeat(1,repeat(minmax(300px, 1fr ))) !important;
-        grid-gap: 100px !important;
-    }
+  
 
     
 }
