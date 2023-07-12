@@ -578,7 +578,9 @@ a.policy {
 .slick-next {
     right: -10px !important; 
 }
-
+.slick-next, .slick-prev {
+    top: 40% !important;
+}
 .container.footer.mt-5 {
     background-color:#673AB7 ;
 }
@@ -589,8 +591,8 @@ a.btn.plum.tab-btn2.mr-5.active {
     margin-left: 31px;
 }
 a.btn.plum.tab-btn2.mr-5{
-    margin-left: 42px;
-    margin-right: 20px;
+    margin-left: 28px;
+    width: 97% !important;
 
 }
 a.policy:hover {
