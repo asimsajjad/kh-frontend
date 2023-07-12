@@ -362,8 +362,10 @@ p.footer {
 }
 img.footer {
     position: relative;
-    right: 29px;
-    top: -15px;
+    right: 5px;
+    top: -12px;
+    height: 55px;
+   
 }
 p.foot {
     color: #ffffff;

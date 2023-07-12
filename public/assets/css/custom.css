@@ -31,6 +31,10 @@ img.update {
     transform: scale(1.1);
     display: block;
 }
+a.policy:hover{
+    transform: scale(1.1);
+    display: block;
+}
 .signup-select:after {
     content: "";
     position: absolute;
@@ -194,14 +198,6 @@ svg.svg-inline--fa.fa-google-plus {
     color: #673AB7;
     font-weight: 500;
 }
-
-
-
-
-
-
-
-
 .image-wrapper {
     position: relative;
 }
@@ -269,7 +265,9 @@ svg.svg-inline--fa.fa-google-plus {
 }
 
 .list-unstyled a:hover {
-    font-weight: bold;
+    transform: scale(1.1);
+    display: block;
+
 }
 a.navbar-brand.logo {
 
@@ -576,7 +574,9 @@ p.contact {
     padding-left: 55px !important;
 }
 p.contact:hover {
-    font-weight: bold !important;
+    transform: scale(1.1);
+    display: block;
+
 }
 button.slick-prev.slick-arrow:hover {
     background-color: red;
@@ -586,9 +586,7 @@ button.slick-prev.slick-arrow:hover {
 a.policy {
     color: #ffffff;
 }
-a.policy:hover {
-    color: #000000;
-}
+
 .container.footer.mt-5 {
     background-color:#673AB7 ;
 }
@@ -603,7 +601,10 @@ a.btn.plum.tab-btn2.mr-5{
     margin-right: 20px;
 
 }
-
+a.policy:hover {
+    transform: scale(1.1);
+    display: block;
+}
 
 @media (max-width:600px){
 
