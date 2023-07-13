@@ -2,18 +2,18 @@ import React, { useState, useEffect } from 'react';
 import axios from '../../../config/axios';
 import { BrowserRouter as Router,Routes, Route, Link, useParams, Redirect, useNavigate    } from 'react-router-dom';
 import Alert from '../../Alerts/alert';
-
+import LoadingSpinner from "../../loader/LoadingSpinner";
 
 function Signup() {
     const [user, setUser]=useState('');
     const [category, setCategory] = useState([]);
     const [alert, setAlert] = useState(null);
-    const [selected, setSelected] = useState('yes');
-    const [formErrors, setFormErrors] = useState({});
+    const [usertype, setUserType] = useState('employer');
+  
     const [selectedImage, setSelectedImage] = useState(null);
     const url='createUser';
     const navigate = useNavigate();
-
+    const [isLoading, setIsLoading] = useState(false);
 
     const showAlert = (message, type) => {
       setAlert({
@@ -32,25 +32,21 @@ function Signup() {
         ...user,
         [e.target.name]: value
       });
+      
     };
 
     const handleSelect = (e) => {
-      const value=e.target.value;
-      setUser({
-        ...user,
-        [e.target.name]: value
-      });
-      setSelected(e.target.value);
+      setUserType(e.target.value);
     };
 
-    const handleCategoryId = (e) => {
-      const value=e.target.value;
-      // alert(value);
-      setCategory({
-        ...category,
-        [e.target.name]: value
-      });
-    };
+    // const handleCategoryId = (e) => {
+    //   const value=e.target.value;
+    //   // alert(value);
+    //   setCategory({
+    //     ...category,
+    //     [e.target.name]: value
+    //   });
+    // };
 
     const handleImageUpload = (e) => {
       console.log(e.target.files)
@@ -59,16 +55,21 @@ function Signup() {
 
     const category_url='';
         useEffect(() => {
+          setIsLoading(true);
             axios.get(`${category_url}`).then(response => {
             setCategory(response?.data?.data?.en);
+            setIsLoading(false);
             }).catch(error => {
             console.error(error);
+            setIsLoading(false);
           });
           
        }, []
        );
+    // const [selectcategory, setSelectCategory]=useState(category);
 
     const handleSubmit = (e) => {
+      setIsLoading(true);
       e.preventDefault();
           const formData = new FormData()
           const config = {
@@ -77,7 +78,7 @@ function Signup() {
           formData.append('username',  user.username,)
           formData.append('email',  user.email,)
           formData.append('password',  user.password,)
-          formData.append('user_type',  user.usertype,)
+          formData.append('user_type',  usertype,)
           formData.append('phone_no',  user.phone_no,)
           formData.append('address',  user.address,)
           formData.append('category_id',  user.category,)
@@ -85,6 +86,7 @@ function Signup() {
 
           axios.post(`${url}`, formData, config)
           .then(response => {
+            setIsLoading(false);
             if(response?.data?.message?.success){
                localStorage.setItem('user_id', response?.data?.data[0].user_id)
               if(response?.data?.data[0].usertype=='employee'){
@@ -94,8 +96,13 @@ function Signup() {
                 //window.location.href ="labours";
                 navigate("/labours");
               }
-
             } 
+            if(!response?.data?.message?.success?.false){
+              showAlert( response?.data?.message?.msg, "danger")
+            }else{
+              showAlert("Sign up Successful" , "success")
+            }
+            
           }).then(setUser(
             {username: "",
             email: "", 
@@ -103,9 +110,10 @@ function Signup() {
             phone_no: "",
             address: "",
             image: "",})
-          ).then(showAlert("Sign up Successful" , "success"))
+          )
           .catch(error => {
           console.error(error);
+          setIsLoading(false);
           });
 
     };
@@ -125,7 +133,8 @@ function Signup() {
         return <button className="btn login-btn"  onClick={handleSubmit} type="submit" disabled>Sign Up</button>
       };
     };  
-    return <section className="login-section pl-3">    
+
+    const renderUser=(<section className="login-section pl-3">    
     <div className="container mt-5">
       <div className="row login-form ">
         <div className="col-md-8">
@@ -141,14 +150,14 @@ function Signup() {
             <div className="container pt-3">
               <div className="row justify-content-center">
                 <div className="col-auto">
-                <input className="form-check-input m-4" type="radio" name="usertype" id="radio2" value="employer" defaultChecked={true} onChange={handleChange} />
+                <input className="form-check-input m-4" type="radio" name="usertype" id="radio2" value="employer" defaultChecked={true} checked={usertype === 'employer'} onChange={handleSelect} />
                   <div className="form-check form-check-inline pr-5">
                     <div className="row .redio-buttons-image">
                       <a><img src="assets/images/employee.png" alt="" className=" labour"/></a>
                       <label>Employer</label>
                     </div>
                 </div>
-                    <input className="form-check-input m-4" type="radio" name="usertype" id="radio1" value="employee" onChange={handleChange}/>
+                    <input className="form-check-input m-4" type="radio" name="usertype" id="radio1" value="employee" checked={usertype === 'employee'} onChange={handleSelect}/>
                     <div className="form-check form-check-inline">
                       <div className="row .redio-buttons-image">
                         <a><img src="assets/images/labour.png" alt="" className=" labour"/></a>
@@ -176,7 +185,7 @@ function Signup() {
         </div>
           
             {(() => {
-        if (user.usertype !== "employer") {
+        if (usertype !== "employer") {
           return (
             <div className="form-group">
             <div className="col-md-8 mb-4">
@@ -219,6 +228,9 @@ function Signup() {
         </div>
       </div>
     </div>
-  </section>;
+  </section>);
+    return <>
+    {isLoading ? <LoadingSpinner /> : renderUser}
+    </>
   }
   export default Signup;

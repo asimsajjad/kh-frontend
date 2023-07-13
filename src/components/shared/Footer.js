@@ -18,7 +18,7 @@ function Footer() {
           <ul className="list-unstyled ml-5">
           <li><Link to="/" >Home</Link></li>
           <li><Link to="/categories">Find Work</Link></li>
-          <li><Link to="/services">Find Labours</Link></li>
+          <li><Link to="/labours">Find Labours</Link></li>
           <li><Link to="/contact-us" >Contact Us</Link></li>
           </ul>
         </div>

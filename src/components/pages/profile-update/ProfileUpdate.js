@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from '../../../config/axios';
 import { BrowserRouter as Router,Routes, Route, Link, useNavigate} from 'react-router-dom';
+import LoadingSpinner from "../../loader/LoadingSpinner";
 
 function ProfileUpdate() {
     const [profile, setProfile]=useState([]);
@@ -8,6 +9,7 @@ function ProfileUpdate() {
     const [category, setCategory] = useState([]);
     const [selectedImage, setSelectedImage] = useState(null);
     const navigate = useNavigate();
+    const [isLoading, setIsLoading] = useState(false);
 
     const profile_url='profileData';
     const update_url='updateProfile';
@@ -28,16 +30,18 @@ function ProfileUpdate() {
     const formData = new FormData()
     const user_id = localStorage.getItem('user_id')
     formData.append('user_id', user_id)
-
+    setIsLoading(true);
     axios.post(`${profile_url}`, formData)
      .then(response => {
       if(!response?.data?.message.success){
         navigate(`/login`);
       }
     setProfile(response?.data?.data);
+    setIsLoading(false);
     })
     .catch(error => {
     console.error(error);
+    setIsLoading(false);
     });
 }
 const handleEdit = (index, field, value) => {
@@ -60,6 +64,7 @@ setSelectedImage(e.target.files[0]);
     const handleSubmit = (e) => {
       e.preventDefault();
       console.log(profileupdate);
+      setIsLoading(true);
           const formData = new FormData()
           const config = {
             headers: { 'content-type': 'multipart/form-data' }
@@ -82,9 +87,11 @@ setSelectedImage(e.target.files[0]);
             axios.post(`${update_url}`, formData, config)
             .then(response =>{
               navigate(`/profile/${user_slug}`);
+              setIsLoading(false);
             })
             .catch(error => {
             console.error(error);
+            setIsLoading(false);
             });
     };
     
@@ -96,9 +103,8 @@ setSelectedImage(e.target.files[0]);
         return <button className="btn login-btn" type="submit">Update</button>
       };
     };  
-    return <div>
-     
-    <section className="login-section pl-3"> 
+
+    const renderUser =(<section className="login-section pl-3"> 
     {profile.map((info, index) => (   
     <div className="container mt-5">
       <div className="row login-form ">
@@ -165,8 +171,10 @@ setSelectedImage(e.target.files[0]);
       </div>
     </div>
     ))}
-  </section>;
-  
+  </section>);
+
+    return <div>
+     {isLoading ? <LoadingSpinner /> : renderUser}
   </div>
   }
   export default ProfileUpdate;

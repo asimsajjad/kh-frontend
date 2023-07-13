@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react';
 import axios from '../../../config/axios';
 import { BrowserRouter as Router,Routes, Route, Link, useParams  } from 'react-router-dom';
 import Slider from "react-slick";
+import LoadingSpinner from "../../loader/LoadingSpinner";
 
   function Categories() {
         const [labour, setLabour] = useState([]);
         const [category, setCategory] = useState([]);
         const {type} = useParams();
+        const [isLoading, setIsLoading] = useState(false);
 
         const [currentPage, setCurrenPage] = useState(1);
         const recordsPerPage= 10;
@@ -16,18 +18,21 @@ import Slider from "react-slick";
         const user_id = localStorage.getItem('user_id');
         const category_url='';
         useEffect(() => {
+          setIsLoading(true);
             axios.get(`${category_url}`).then(response => {
             setCategory(response?.data?.data?.en);
+            setIsLoading(false);
             loadEmployees();
             }).catch(error => {
             console.error(error);
+            setIsLoading(false);
           }); 
           
        }, []
        );
 
     function loadEmployees(){
-        
+      setIsLoading(true);
         const formData = new FormData()
         formData.append('user_id', user_id)
         formData.append('category_id', '')
@@ -37,13 +42,13 @@ import Slider from "react-slick";
         
         .then(response => {
         setLabour(response?.data?.data);
-        
+        setIsLoading(false);
         })
         .catch(error => {
         console.error(error);
+        setIsLoading(false);
         });
     }
-    console.log(labour);
     const records = labour.slice(firstIndex, lastIndex);
     const npage = Math.ceil(labour.length/recordsPerPage);
     const numbers = [...Array(npage + 1).keys()].slice(1); 
@@ -67,12 +72,13 @@ import Slider from "react-slick";
         dots: false,
         infinite: true,
         speed: 500,
-        slidesToShow: 7,
+        slidesToShow: 6,
         slidesToScroll: 2,
         variableWidth: true
 
       };
-      return (<>
+
+      const renderUser=(<div>
         <div className="container top-btns pt-5">
             <div className="row">
                 <div className="col-md-12">
@@ -145,6 +151,9 @@ import Slider from "react-slick";
   } 
 })()}
 </div>
-    </>);
+</div>);
+      return <>
+       {isLoading ? <LoadingSpinner /> : renderUser}  
+    </>;
  }
  export default Categories;

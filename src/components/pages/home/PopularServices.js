@@ -63,15 +63,17 @@ function PopularServices() {
 
       {categories.map(category => (
                         <div className="col-md-2">
-                            <Link to={`labours/${category.slug}`}>
+                            
                                 <div className="carousel-card text-center">
+                                <Link to={`labours/${category.slug}`}>
                                     <img className="img-fluid mx-auto rounded mx-auto d-block"
                                         src={`${process.env.REACT_APP_RESOURCES_URL}uploads/category/${category.image}`} alt={category.slug} />
                                     <div className="card-body">
                                         <p>{category.name}</p>
                                     </div>
+                                    </Link>
                                 </div>
-                            </Link>
+                            
                     </div>
                         ))}
 

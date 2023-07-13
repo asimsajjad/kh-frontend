@@ -1,22 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import axios from '../../../config/axios';
 import { BrowserRouter as Router,Routes, Route, Link} from 'react-router-dom';
+import LoadingSpinner from "../../loader/LoadingSpinner";
 
 function Categories() {
   const [categories, setCategories] = useState([]);
   const [currentPage, setCurrenPage] = useState(1);
+  const [isLoading, setIsLoading] = useState(false);
   const recordsPerPage= 20;
   const lastIndex = currentPage * recordsPerPage;
   const firstIndex = lastIndex - recordsPerPage;
 
   const url='';
   useEffect(() => {
+    setIsLoading(true)
     axios.get(`${url}`)
       .then(response => {
         setCategories(response?.data?.data?.en);
+        setIsLoading(false)
       })
       .catch(error => {
         console.error(error);
+        setIsLoading(false)
       });
   }, []);
 
@@ -39,8 +44,8 @@ function Categories() {
           setCurrenPage(currentPage+1);
         }
       }
-  return (<>
-    <div className="container mt-5">
+      const renderUser = (<div>
+        <div className="container mt-5">
       <div className="col-md-12">
           <h1 className="cat text-center">Categories</h1>
       </div>
@@ -88,7 +93,9 @@ function Categories() {
           )
     } 
   })()}
-  
+ </div> );
+  return (<>
+    {isLoading ? <LoadingSpinner /> : renderUser}
   </>);
 }
   export default Categories;
