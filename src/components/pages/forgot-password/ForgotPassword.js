@@ -60,7 +60,7 @@ function ForgotPassword() {
             <Link href=""><i class="fa-brands fa-google-plus"></i></Link> */}
           </div>
           <div className="name-input mb-4 d-flex mt-5">
-            <label for=""><i className="far fa-envelope"></i></label>
+            <label htmlFor=""><i className="far fa-envelope"></i></label>
             <input className="form-control" type="email" name='email' value={email.email} placeholder="Enter your registered email here." id="formGroupExampleInput2" onChange={handleChange}/>
           </div>
          <button className="btn login-btn mt-5" type='submit' disabled={!email.email}>Submit</button>
@@ -70,7 +70,7 @@ function ForgotPassword() {
         <div className="login-details">
           <h3 className="text-light">Welcome khadim Hazir</h3>
           <p className="text-light">Enter your registered email to get new password</p>
-          <Link className="text-light" to="/signup">Or Create new account<i className="ml-3 fas fa-arrow-right"></i></Link>
+          <Link className="contact" to="/signup">Or Create new account<i className="ml-3 fas fa-arrow-right"></i></Link>
         </div>
       </div>
     </div>

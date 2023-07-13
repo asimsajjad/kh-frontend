@@ -113,8 +113,10 @@ import LoadingSpinner from "../../loader/LoadingSpinner";
                         onClick={loadEmployees}  role="button">All</Link>
                         
                         {category.map(category_data => (
-                        <Link key={category_data.id} to={`/labours/${category_data.slug}`} className={`btn plum tab-btn2 mr-5 ${(type===category_data.slug) ? "active" : ""}`}
+                          <div key={category_data.id}>
+                        <Link to={`/labours/${category_data.slug}`} className={`btn plum tab-btn2 mr-5 ${(type===category_data.slug) ? "active" : ""}`}
                         role="button" onClick={loadEmployees} >{category_data.name}</Link>
+                        </div>
                         ))}
                         </Slider>
                     </div>
@@ -124,7 +126,7 @@ import LoadingSpinner from "../../loader/LoadingSpinner";
         <div className="container pt-4">
             <div className="row">
             {records.map((labour_data) => (
-                <div className="col-md-6 mt-4" key={labour_data.id}>
+                <div className="col-md-6 mt-4" key={labour_data.employee_id}>
                     <div className="profile-card d-flex">
                       <img src={labour_data.image ? `${process.env.REACT_APP_RESOURCES_URL}images/${labour_data.image}` : "assets/images/manager.png"} className="card-img-top rounded-circle" />    
                         <div className="profile-card-body">

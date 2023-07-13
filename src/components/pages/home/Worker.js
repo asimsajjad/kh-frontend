@@ -4,9 +4,9 @@ function Worker() {
     <div className="container">
       <div className="row">
         <div className="col-md-6 best">
-        <div class="card">
-  <img class="" src="assets/images/best.png"  alt="Card image"/>
-  <div class="card-img-overlay">
+        <div className="card">
+  <img className="" src="assets/images/best.png"  alt="Card image"/>
+  <div className="card-img-overlay">
   <div className="col-md-6 banner text-center">
         <Link to='/labours'><h1 className='color-text'>500+</h1>
           <p>Workers</p></Link>

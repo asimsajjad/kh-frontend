@@ -105,8 +105,8 @@ setSelectedImage(e.target.files[0]);
     };  
 
     const renderUser =(<section className="login-section pl-3"> 
-    {profile.map((info, index) => (   
-    <div className="container mt-5">
+    {profile.map((info, index) => ( 
+    <div className="container mt-5" key={info.user_id}>
       <div className="row login-form ">
         <div className="col-md-8">
           <form onSubmit={handleSubmit}  >

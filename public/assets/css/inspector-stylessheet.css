@@ -303,6 +303,11 @@ a.categories {
     font-size: 20px;
     line-height: 0px;
 }
+p.category {
+    color: #ffffff;
+    font-size: 20px;
+    line-height: 0px;
+}
 .card-body.categories.a {
     background-color: #ffffff;
 

@@ -45,7 +45,7 @@ function Header() {
               }else{
                 return (
                   [
-                    <ul className="navbar-nav me-auto mb-2 mb-lg-0 pr-5">
+                    <ul className="navbar-nav me-auto mb-2 mb-lg-0 pr-5" key={user_id}>
                   <li className="nav-item"><Link to="/profile-update" className="nav-link text-light">Profile</Link></li> 
                   <li className="nav-item"><Link to='login' className="nav-link text-light" onClick={Logout}>Logout</Link></li>
                   </ul>

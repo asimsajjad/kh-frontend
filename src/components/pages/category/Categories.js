@@ -53,18 +53,18 @@ function Categories() {
       <div className="container pt-3 ">
       <div className="row">
        {records.map((category) => (
-        <div className="col-md-3 mb-3">
+        <div className="col-md-3 mb-3" key={category.id}>
           <Link to={`/labours/${category.slug}`} activeclasscame="current">
           <div className="card">
           
             <div className="card-body categories">
-              <img key={category.id} src={`${process.env.REACT_APP_RESOURCES_URL}uploads/category/${category.image}`} alt={category.image} className="categories rounded mx-auto d-block"/>
+              <img src={`${process.env.REACT_APP_RESOURCES_URL}uploads/category/${category.image}`} alt={category.image} className="categories rounded mx-auto d-block"/>
             </div>
             
           </div>
           
         <div className="card-body cuntent text-center">
-        <Link  className={`categories m-3`}> {category.name}</Link>
+        <p className={`category m-3`} > {category.name}</p>
         </div>
         </Link>
       </div>      
@@ -82,7 +82,7 @@ function Categories() {
       {
         numbers.map((n, i) =>(
           <li className={`page-item ${currentPage === n ? 'active' : ''}`} key={i}>
-            <Link to="/categories" className="page-link" onClick={()=> changeCpage(n)}>{n}</Link>
+            <Link to="/categories" key={i} className="page-link" onClick={()=> changeCpage(n)}>{n}</Link>
           </li>
         ))
       }

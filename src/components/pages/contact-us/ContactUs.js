@@ -89,20 +89,20 @@ function Contact() {
       <div className="col-md-4 pl-0">
         <div className="login-details">
           <h3 className="text-light ">Welcome to Khadim Hazir</h3>
-          <p className="text-light mb-5">If you want to find more features please
+          <p className="text-light">If you want to find more features please</p>
           {(() => {
             if (user_id == null){
                 return (
-                  <p><Link to="/login" className='contact'> Login </Link></p>     
+                  <p><Link to="/login" className='contact'> Login<i className="ml-3 fas fa-arrow-right"></i></Link></p>     
                 )
             }else{
               return (
-                <p><Link to="/" className='contact'> Visit Home Page </Link></p>
+                <p><Link to="/" className='contact'> Visit Home Page<i className="ml-3 fas fa-arrow-right"></i></Link></p>
               )
               
             }              
           })()}
-           </p>         
+                    
         </div>
       </div>
     </div>

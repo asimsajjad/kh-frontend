@@ -23,7 +23,7 @@ function ChooseCategory() {
     <div className="container"> 
     <div className="row">
     {categories.map(category => (
-      <div className="col-md-3 mb-3 ">
+      <div className="col-md-3 mb-3" key={category.id}>
         <Link to={`/labours/${category.slug}`}>
         <div className="card">
           <div className="card-body categories">
@@ -33,7 +33,7 @@ function ChooseCategory() {
           </div>
         </div>
         <div className="card-body cuntent text-center">
-          <Link to={`/labours/${category.slug}`} className="categories m-3"> {category.name}</Link>
+          <p to={`/labours/${category.slug}`} className="categories m-3"> {category.name}</p>
         </div>
         </Link>
       </div> 

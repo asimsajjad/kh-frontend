@@ -156,7 +156,7 @@ function Signup() {
             <div className="container pt-3">
               <div className="row justify-content-center">
                 <div className="col-auto">
-                <input className="form-check-input m-4" type="radio" name="usertype" id="radio2" value="employer" defaultChecked={true} checked={usertype === 'employer'} onChange={handleSelect} />
+                <input className="form-check-input m-4" type="radio" name="usertype" id="radio2" value="employer" checked={usertype === 'employer'} onChange={handleSelect} />
                   <div className="form-check form-check-inline pr-5">
                     <div className="row .redio-buttons-image">
                       <a><img src="assets/images/employee.png" alt="" className=" labour"/></a>
@@ -196,7 +196,7 @@ function Signup() {
             <div className="form-group">
             <div className="col-md-8 mb-4">
             <select id="signup-sector" name="category" className="signup-select" placeholder='select a category' onChange={handleChange}>
-            <option disabled selected hidden>Select a category</option> 
+            <option value="" disabled selected hidden>Select a category</option> 
             {category.map(categories => ( <option key={categories.id} value={categories.id} >{categories.name}</option>))}
             </select>
             </div>
