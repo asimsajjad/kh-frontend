@@ -32,6 +32,7 @@ import LoadingSpinner from "../../loader/LoadingSpinner";
        );
 
     function loadEmployees(slug=type){
+      
       console.log(slug, 'param');
       setIsLoading(true);
         const formData = new FormData()
@@ -43,6 +44,7 @@ import LoadingSpinner from "../../loader/LoadingSpinner";
         
         .then(response => {
         setLabour(response?.data?.data);
+        setCurrenPage(1);
         setIsLoading(false);
         })
         .catch(error => {

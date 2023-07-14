@@ -4930,14 +4930,14 @@ fieldset:disabled .btn {
 }
 
 .page-link:hover {
-    z-index: 2;
+    
     color: #024dbc;
     background-color: #e9ecef;
     border-color: #dee2e6
 }
 
 .page-link:focus {
-    z-index: 3;
+    
     outline: 0;
     box-shadow: 0 0 0 .2rem rgba(13, 110, 253, .25)
 }
@@ -5135,9 +5135,37 @@ fieldset:disabled .btn {
 
 .logoutalert{
     margin-bottom: -39px;
-    margin-left: 145px;
-    width: 1300px;
+    margin-left: 104px;
+    max-width: 1143px;
 }
+@media (max-width:1200px){
+    .logoutalert{
+        max-width: 1040px;
+        margin-left: auto;
+    
+    }
+}
+@media (max-width:992px){
+    .logoutalert{
+        max-width: 910px;
+        margin-left: auto;
+    
+    }
+}
+@media (max-width:768px){
+    .logoutalert{
+        max-width: 734px;
+        margin-left: auto;
+    }
+}
+@media (max-width:576px){
+    .logoutalert{
+        max-width: 500px;
+        margin-left: auto;
+       
+    }
+}
+
 @-webkit-keyframes progress-bar-stripes {
     0% {
         background-position-x: 1rem

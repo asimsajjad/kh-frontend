@@ -38,13 +38,19 @@ function Contact() {
         formData.append('comments',  contact.comments,)
         axios.post(`${url}`, formData)
         .then(response => {
+          if(response?.data?.message?.success){
+            showAlert(response?.data?.message?.msg, "success")
+          }else{
+             showAlert(response?.data?.message?.msg, "danger")
+          }
           console.log(response?.data?.data)
           setIsLoading(false);
+         
         }).then(setContact(
           {name: "",
           email: "", 
           comments: ""})
-        ).then(showAlert("Your query has been submitted successfully" , "success"))
+        )
         .catch(error => {
         console.error(error);
         setIsLoading(false);
