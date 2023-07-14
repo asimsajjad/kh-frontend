@@ -8,11 +8,11 @@ function Header() {
   const user_id = localStorage.getItem('user_id');
   console.log(user_id, 'data header');
 
-  const showAlert = (message, type, logoutalert) => {
+  const showAlert = (message, type, styletype) => {
     setAlert({
       msg: message, 
       type: type, 
-      style: logoutalert,
+      style: styletype,
     })
     setTimeout (() => {
       setAlert(null);
@@ -23,7 +23,7 @@ function Header() {
     localStorage.removeItem('user_id');
     sessionStorage.removeItem('user_id');
     // window.location.href = "login";
-    showAlert("You have logout successfully", "success", "logoutalert")
+    showAlert("You have logout successfully", "success")
     navigate("/login");
     
   };
