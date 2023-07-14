@@ -1,9 +1,20 @@
 import React from 'react';
-import { BrowserRouter as Router,Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router,Routes, Route, Link, useNavigate} from 'react-router-dom';
 
 function Footer() {
+  const navigate = useNavigate();
   const currentYear = new Date().getFullYear();
-    return    <footer className="text-white py-2 mt-5">
+  const user_id = localStorage.getItem('user_id');
+  console.log(user_id, 'data header');
+  const Logout = (e) => {
+    localStorage.removeItem('user_id');
+    sessionStorage.removeItem('user_id');
+    // window.location.href = "login";
+    navigate("/login");
+    
+  };
+
+    return <footer className="text-white py-2 mt-5">
     <div className="container footer mt-5 ">
       <div className="row">
         <div className="col-md-3">
@@ -25,10 +36,34 @@ function Footer() {
         <div className="col-lg-3">
           <h4 className="text-white mb-4 ml-5">For Labours</h4>
           <ul className="list-unstyled ml-5">
-          <li><Link to="/signup" className="foot" >Create Account</Link></li>
-          <li><Link to="/login">Sign in</Link></li>
+          {(() => {
+              if (user_id == null){
+                  return (
+                    // <li className="nav-item">
+                    <li><Link to="/signup" className="foot" >Create Account</Link></li>
+                  // </li>      
+                  )
+              }else{
+                return (
+                  <li><Link to="/profile-update">Profile Update</Link></li>
+                )
+              }              
+            })()}
           <li><Link to="/categories">Find Work</Link></li>
           <li><Link to="/contact-us" >Contact Us</Link></li>
+          {(() => {
+              if (user_id == null){
+                  return (
+                    // <li className="nav-item">
+                   <li><Link to="/labours">Find Labours</Link></li>
+                  // </li>      
+                  )
+              }else{
+                return (
+                  <li><Link to='login' onClick={Logout}>Logout</Link></li>
+                )
+              }              
+            })()}
           </ul>
         </div>
         <div className="col-lg-3">

@@ -5133,6 +5133,11 @@ fieldset:disabled .btn {
     color: #040505
 }
 
+.logoutalert{
+    margin-bottom: -39px;
+    margin-left: 145px;
+    width: 1300px;
+}
 @-webkit-keyframes progress-bar-stripes {
     0% {
         background-position-x: 1rem

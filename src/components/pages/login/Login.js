@@ -10,6 +10,14 @@ function Login() {
   const navigate = useNavigate();
   const url='loginUser';
   const [isLoading, setIsLoading] = useState(false);
+  const user_id = localStorage.getItem('user_id');
+
+ 
+  useEffect(() => {
+    if(user_id != null){
+      navigate('/labours');
+    }
+  }, []);
 
   const handleChange = (e) => {
     const value=e.target.value;
@@ -40,6 +48,7 @@ function Login() {
           setIsLoading(false);
           if(response?.data?.message?.success){
              localStorage.setItem('user_id', response?.data?.data[0].user_id)
+             showAlert( response?.data?.message?.msg, "success")
             if(response?.data?.data[0].usertype=='employee'){
               // window.location.href = "categories";
               navigate("/categories");
@@ -48,7 +57,7 @@ function Login() {
               navigate("/labours");
             }
           }else{
-            (showAlert("Email or password is incorrect" , "danger"))
+            showAlert(response?.data?.message?.msg, "danger")
           } 
         })
         .catch(error => {
@@ -102,9 +111,11 @@ function Login() {
   </div>
 </section>
 );
-
-    return  <> 
+if(user_id == null){
+  return  <> 
     {isLoading ? <LoadingSpinner /> : renderUser}
     </>
+}
+  
   }
   export default Login;

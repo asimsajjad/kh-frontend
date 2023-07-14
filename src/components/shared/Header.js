@@ -1,19 +1,35 @@
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router,Routes, Route, Link, useNavigate } from 'react-router-dom';
+import Alert from '../../components/Alerts/alert';
+
 function Header() {
   const navigate = useNavigate();
+  const [alert, setAlert] = useState(null);
   const user_id = localStorage.getItem('user_id');
   console.log(user_id, 'data header');
+
+  const showAlert = (message, type, logoutalert) => {
+    setAlert({
+      msg: message, 
+      type: type, 
+      style: logoutalert,
+    })
+    setTimeout (() => {
+      setAlert(null);
+    }, 3000);
+  }
   
   const Logout = (e) => {
     localStorage.removeItem('user_id');
     sessionStorage.removeItem('user_id');
     // window.location.href = "login";
+    showAlert("You have logout successfully", "success", "logoutalert")
     navigate("/login");
     
   };
 
-  return <nav className="navbar navbar-expand-lg">
+  return <>
+  <nav className="navbar navbar-expand-lg">
     <div className="container-fluid navbar">    
       <Link to="/" className="navbar-brand logo pl-4" >
         <img src="assets/images/kh-logo.png" alt="Logo" /></Link>
@@ -59,5 +75,7 @@ function Header() {
       </div>
     </div>
   </nav>;
+   <Alert  alert={alert}/>
+   </>
   }
   export default Header;

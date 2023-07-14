@@ -28,9 +28,13 @@ function ForgotPassword() {
         .then(response => {
           setIsLoading(false);
           console.log(response?.data?.data)
+          if(response?.data?.message?.success){
+            showAlert( response?.data?.message?.msg, "success")
+          }else{
+            showAlert(response?.data?.message?.msg, "danger")
+          }
         })
         .then(setEmail({email: "",}))
-        .then(showAlert("We have sent a password to your email account. You can login with it and change it from profile" , "success"))
         .catch(error => {
         console.error(error);
         setIsLoading(false);

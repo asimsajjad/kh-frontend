@@ -9,11 +9,11 @@ function Signup() {
     const [category, setCategory] = useState([]);
     const [alert, setAlert] = useState(null);
     const [usertype, setUserType] = useState('employer');
-  
     const [selectedImage, setSelectedImage] = useState(null);
     const url='createUser';
     const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(false);
+    const user_id = localStorage.getItem('user_id');
 
     const showAlert = (message, type) => {
       setAlert({
@@ -55,6 +55,9 @@ function Signup() {
 
     const category_url='';
         useEffect(() => {
+          if(user_id != null){
+            navigate("/labours");
+          }
           setIsLoading(true);
             axios.get(`${category_url}`).then(response => {
             setCategory(response?.data?.data?.en);
@@ -97,10 +100,10 @@ function Signup() {
                 navigate("/labours");
               }
             } 
-            if(!response?.data?.message?.success?.false){
-              showAlert( response?.data?.message?.msg, "danger")
+            if(response?.data?.message?.success){
+              showAlert( response?.data?.message?.msg, "success")
             }else{
-              showAlert("Sign up Successful" , "success")
+              showAlert(response?.data?.message?.msg, "danger")
             }
             
           }).then(setUser(
@@ -236,8 +239,11 @@ function Signup() {
       </div>
     </div>
   </section>);
+  if(user_id == null){
     return <>
     {isLoading ? <LoadingSpinner /> : renderUser}
     </>
+  }
+    
   }
   export default Signup;
