@@ -7,7 +7,8 @@ import {
   Switch,
   Routes,
   Link,
-  useNavigate
+  useNavigate,
+  useLocation
 } from 'react-router-dom';
 import Header from './components/shared/Header';
 import Home from './components/pages/home';
@@ -23,6 +24,19 @@ import Terms from './terms/Terms.js';
 import ProfileUpdate from './components/pages/profile-update/ProfileUpdate';
 
 import Footer from './components/shared/Footer';
+
+const RedirectComponent = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  React.useEffect(() => {
+    if (location.pathname !== '/') {
+      navigate('/');
+    }
+  }, [location, navigate]);
+
+  return null;
+};
 
 function App() {  
 
@@ -41,6 +55,7 @@ function App() {
       <Route path="/profile-update" exact element={<ProfileUpdate/>} />
       <Route path="/terms" exact element={<Terms/>}/>
       <Route path="/contact-us" exact element={<ContactUs/>}/>
+      <Route path="*" exact element={<RedirectComponent />} />
       <Route path="/index" exact element={<Home/>}/> 
       </Routes>        
     <Footer/></> 

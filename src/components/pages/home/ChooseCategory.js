@@ -33,7 +33,7 @@ function ChooseCategory() {
           </div>
         </div>
         <div className="card-body cuntent text-center">
-          <p to={`/labours/${category.slug}`} className="categories m-3"> {category.name}</p>
+          <p to={`/labours/${category.slug}`} className="category m-3"> {category.name}</p>
         </div>
         </Link>
       </div> 
