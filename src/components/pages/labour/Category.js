@@ -22,21 +22,22 @@ import LoadingSpinner from "../../loader/LoadingSpinner";
             axios.get(`${category_url}`).then(response => {
             setCategory(response?.data?.data?.en);
             setIsLoading(false);
-            loadEmployees();
+            //loadEmployees(type);
             }).catch(error => {
             console.error(error);
             setIsLoading(false);
           }); 
-          
+          loadEmployees(type);
        }, []
        );
 
-    function loadEmployees(){
+    function loadEmployees(slug=type){
+      console.log(slug, 'param');
       setIsLoading(true);
         const formData = new FormData()
         formData.append('user_id', user_id)
         formData.append('category_id', '')
-        formData.append('category_slug', type)
+        formData.append('category_slug', slug)
         const url='employeesListing';
         axios.post(`${url}`, formData)
         
@@ -110,12 +111,14 @@ import LoadingSpinner from "../../loader/LoadingSpinner";
                     <div className="category-tabs justify-content-left">
                     <Slider {...settings}>
                         <Link to="/labours" className={`btn tab-btn2 mr-4 ml-4  ${!type ? "active" : ""}`} 
-                        onClick={loadEmployees}  role="button">All</Link>
+                        onClick={()=>loadEmployees('')}  role="button">All</Link>
                         
                         {category.map(category_data => (
                           <div key={category_data.id}>
-                        <Link to={`/labours/${category_data.slug}`} className={`btn plum tab-btn2 mr-5 ${(type===category_data.slug) ? "active" : ""}`}
-                        role="button" onClick={loadEmployees} >{category_data.name}</Link>
+                        <Link to={`/labours/${category_data.slug}`} 
+                        className={`btn plum tab-btn2 mr-5 ${(type===category_data.slug) ? "active" : ""}`}
+                        value={category_data.slug}
+                        role="button" onClick={()=>loadEmployees(category_data.slug)}  >{category_data.name}</Link>
                         </div>
                         ))}
                         </Slider>
