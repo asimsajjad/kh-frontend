@@ -264,11 +264,11 @@ svg.svg-inline--fa.fa-google-plus {
 .list-unstyled a {
     color: #ffffff;
     line-height: 27px;
-    opacity: 70%;
+    
 }
 .list-unstyled a:hover{
-    color: #ffffff;
-    opacity: 100%;
+    font-size: 17px;
+    
 }
 
 a.navbar-brand.logo {
@@ -559,7 +559,7 @@ ul.pagination {
 .pt10{padding-top: 10px;}
 p.contact {
     color: white;
-    opacity: 70%;
+    
 }
 
 .carousel-card.text-center:hover {
@@ -569,17 +569,14 @@ p.contact {
 
   
 p.contact:hover {
-  color: #ffffff;
-  opacity: 100%;
+  font-size: 16px;
 
 }
 a.policy {
     color: #ffffff;
-    opacity: 70%;
 }
 a.policy:hover{
-    color: #ffffff;
-    opacity: 100%;
+    font-size: 17px;
 }
 .slick-next {
     right: -10px !important; 
