@@ -601,7 +601,9 @@ a.btn.plum.tab-btn2.mr-5{
     width: 97% !important;
 
 }
-
+a.contact:hover {
+    color: #ffffff;
+}
 
 @media (max-width:600px){
 
