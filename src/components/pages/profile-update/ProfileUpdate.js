@@ -117,7 +117,7 @@ setSelectedImage(e.target.files[0]);
               <Link href=""><i className="fa-brands fa-google-plus"></i></Link>
             </div>
             <p className="text-center">Or use your email for registeration</p> */}
-        <div className="name-input mb-4 d-flex">
+        <div className="name-input mb-4 d-flex mt-4">
           <label><i className="fas fa-user"></i></label>
           <input className="" type="name" name='username' placeholder="Name" value={info.username} onChange={(event) => handleEdit(index, 'username', event.target.value)}/>
         </div>

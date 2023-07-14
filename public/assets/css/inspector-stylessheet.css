@@ -40,14 +40,18 @@ p.pera-banner {
     top: -215px;
     font-family: Poppins;
 }
-
+button.button.search-btn:hover {
+    background-color: #512e8d;
+}
 a.banner-btn {
     position: relative;
     top: -215px;
     font-size: 24px;
     line-height: 36px;
 }
-
+a.banner-btn:hover{
+    background-color: #512e8d;
+}
 /* .form-control {
     width: 94% !important;
     background-color: #D9D9D9;
@@ -282,7 +286,9 @@ h2.heading-banner {
 button.button.search-btn {
     border-radius: 0px 4px 4px 0px;
 }
-
+button.button.search-btn:hover{
+    background-color: #512e8d;
+}
 .contact-us-form {
     background-color: #eeeeee;
     height: 500px;
@@ -329,11 +335,11 @@ img.categories {
 .card-body.cuntent {
     background-color: #7A4EC8;
     height: 58px;
-    border-radius: 0px 0px 20px 20px;
-    
-    
+    border-radius: 0px 0px 20px 20px; 
 }
-
+.card-body.cuntent:hover{
+    background-color: #512e8d;
+}
 p.pera-banner {
     position: relative;
     top: -215px;
@@ -768,6 +774,7 @@ h1.cat {
     background-color: #673AB7 !important;
     color:#FFFFFF;  
 }
+
 .category-tabs a {
     
     background-color: #eeeeee;
@@ -991,6 +998,6 @@ h4.text-white.mb-4.justify-content-center.ml-5.h {
     padding-left: 45px;
 }
 img.location_icon{
-height: 70px;
-width: 60px;
+height: 40px;
+width: 40px;
 }

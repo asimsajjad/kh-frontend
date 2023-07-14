@@ -24,7 +24,7 @@ function Header() {
       <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
         <ul className="navbar-nav me-auto mb-2 mb-lg-0 pr-5">
           <li className="nav-item">
-            <Link to="/" className="nav-link active text-light" aria-current="page" >Home</Link>
+            <Link to="/" className="nav-link text-light" aria-current="page" >Home</Link>
           </li>
           <li className="nav-item">
             <Link to="/categories" className="nav-link text-light" >Find Work</Link>

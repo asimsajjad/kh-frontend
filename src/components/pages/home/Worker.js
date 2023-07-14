@@ -13,7 +13,7 @@ function Worker() {
         </div>
         <div className="col-md-4 banner1 text-center">
         <Link to='/categories'><h1 className='color-text'>300+</h1>
-          <p>freelance work Posted</p></Link>
+          <p>Jobs done</p></Link>
         </div>
   </div>
 </div>

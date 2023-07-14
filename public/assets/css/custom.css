@@ -28,12 +28,12 @@ img.update {
     font-family: 'Poppins';
 }
 .nav-item:hover{
-    transform: scale(1.1);
-    display: block;
+    background-color: #512e8d;
+    border-radius: 15px;
+  
 }
-a.policy:hover{
-    transform: scale(1.1);
-    display: block;
+.btn:hover{
+    background-color: #512e8d !important;
 }
 .signup-select:after {
     content: "";
@@ -264,13 +264,13 @@ svg.svg-inline--fa.fa-google-plus {
 .list-unstyled a {
     color: #ffffff;
     line-height: 27px;
+    opacity: 70%;
+}
+.list-unstyled a:hover{
+    color: #ffffff;
+    opacity: 100%;
 }
 
-.list-unstyled a:hover {
-    transform: scale(1.1);
-    display: block;
-
-}
 a.navbar-brand.logo {
 
     padding-left: 4.5rem !important;
@@ -559,6 +559,7 @@ ul.pagination {
 .pt10{padding-top: 10px;}
 p.contact {
     color: white;
+    opacity: 70%;
 }
 
 .carousel-card.text-center:hover {
@@ -568,12 +569,17 @@ p.contact {
 
   
 p.contact:hover {
-    transform: scale(1.1);
-    display: block;
+  color: #ffffff;
+  opacity: 100%;
 
 }
 a.policy {
     color: #ffffff;
+    opacity: 70%;
+}
+a.policy:hover{
+    color: #ffffff;
+    opacity: 100%;
 }
 .slick-next {
     right: -10px !important; 
@@ -595,10 +601,7 @@ a.btn.plum.tab-btn2.mr-5{
     width: 97% !important;
 
 }
-a.policy:hover {
-    transform: scale(1.1);
-    display: block;
-}
+
 
 @media (max-width:600px){
 
