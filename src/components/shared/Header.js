@@ -23,7 +23,7 @@ function Header() {
     localStorage.removeItem('user_id');
     sessionStorage.removeItem('user_id');
     // window.location.href = "login";
-    showAlert("You have logout successfully", "success")
+    showAlert("You have logout successfully", "success", "logoutalert")
     navigate("/login");
     
   };

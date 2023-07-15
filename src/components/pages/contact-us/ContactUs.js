@@ -50,7 +50,7 @@ function Contact() {
           {name: "",
           email: "", 
           comments: ""})
-        ).then(showAlert("Your query has been submitted successfully" , "success"))
+        )
         .catch(error => {
         console.error(error);
         setIsLoading(false);
