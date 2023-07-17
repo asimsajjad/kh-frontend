@@ -43,28 +43,23 @@ function Info() {
            <div>
            {profile.map(info => (
         <div className="container pt-5">
-                   
                     <div className="row pl-2">
                         <div className="col-lg-3">
                         <img src={info.image ? `${process.env.REACT_APP_RESOURCES_URL}images/${info.image}` : `${process.env.REACT_APP_BASE_URL}assets/images/manager.png`} className="img-fluid profile" />
                         </div>
-                        <div className="col-lg-3 ">
+                        <div className="col-lg-2 pt-5">
                             <p className="p1">{info.username}</p>
                             <p className="p2">{info.category_name}</p>
-                            <div className="col-lg-6 pt-5">
+                            <div className="col-lg-6 pt-3">
                                 <button type="button" className={isActive ? 'btn btn-success-hide' : 'btn btn-success'} style={isActive ? {display : 'none'} : {display : 'block'}}  onClick={handleClick}>Call Now</button>
                                 {description && (<button type="button" style={{background:'none', border:'none'}} onClick={handleButton}><p><b>{info.phone_no}</b></p></button>)}
                             </div>
                         </div>
-                        <div className="col-lg-1 pt-3">
-                            <div className="row">
-                                <div className="col-lg-6">
-                                <img src={`${process.env.REACT_APP_BASE_URL}assets/images/location.png`} className='location_icon'></img>
-                                </div>
-                            <div className="col-lg-6">
-                                <p className="p1">Pakistan</p>
-                            </div>
-                        </div>
+                        <div className="col-lg-2 pt-5">
+                        <p className='p1'> <img src={`${process.env.REACT_APP_BASE_URL}assets/images/location.png`} className='location_icon '></img>Pakistan</p>   
+                       </div>  
+                    <div className="col-lg-4 profile-text  pt-3">
+                        this 
                     </div>
                 </div>
                
