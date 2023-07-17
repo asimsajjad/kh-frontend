@@ -1,15 +1,40 @@
 import React, { useState, useEffect } from 'react';
 import axios from '../../../config/axios';
-import { BrowserRouter as Router,Routes, Route, Link, useParams  } from 'react-router-dom';
+import { BrowserRouter as Router,Routes, Route, Link, useNavigate  } from 'react-router-dom';
 
 function Search() {
+  const [searchQuery, setSearchQuery] = useState('');
+  const navigate=useNavigate();
+  // const [searchResults, setSearchResults] = useState([]);
+  const handleSearchChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
+  const url='index';
+
+  const handleSearch = () => {
+    const formData = new FormData();
+    axios.get(`${url}/${searchQuery}`, formData)
+      .then(response => {
+        // console.log(response?.data?.data)
+        navigate(`/labours/${response?.data?.data[0].slug}`)
+       })
+      .catch(error => {
+        console.error(error);
+      });
+   
+  };
+
+  
+  
     return <><div className="container pt-4">
     <div className="row">
       <div className="col-md-12 d-flex justify-content-center">
         <div className="input-box">
           <i className="fas fa-search mr-3 "></i>
-          <input type="text" className="search-input" placeholder="How can we help?" />
-          <button className="button search-btn">search</button>
+          <input type="text" 
+            onChange={handleSearchChange}  value={searchQuery} className="search-input" placeholder="How can we help?" />
+          <button onClick={handleSearch} className="button search-btn">search</button>
+        
         </div>
       </div>
     </div>

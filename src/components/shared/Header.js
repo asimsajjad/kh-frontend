@@ -6,7 +6,7 @@ function Header() {
   const navigate = useNavigate();
   const [alert, setAlert] = useState(null);
   const user_id = localStorage.getItem('user_id');
-  console.log(user_id, 'data header');
+  // console.log(user_id, 'data header');
 
   const showAlert = (message, type) => {
     setAlert({
@@ -26,7 +26,7 @@ function Header() {
     navigate("/login");
     
   };
-
+  
   return <>
   <nav className="navbar navbar-expand-lg">
     <div className="container-fluid navbar">    
