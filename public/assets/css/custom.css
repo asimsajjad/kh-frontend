@@ -1,7 +1,10 @@
 
 
 
-
+.row.pl-2 {
+    background-color: #eeeeee;
+    border-radius: 10px;
+}
 .bi-search {
     margin-right: 20px;
 }
@@ -400,7 +403,9 @@ form {
     text-align: center;
 
 }
-
+.container.pt-5.profile {
+    max-width: 1060px;
+}
 .name-input input {
     width: 100%;
     border-radius: 10px;
@@ -572,9 +577,9 @@ p.contact:hover {
   font-size: 16px;
 
 }
-.col-lg-4.profile-text.pt-3 {
+.col-lg-4.profile-text.pt-5 {
     background-color: #673AB7;
-    border-radius: 5px 0 0 5px;
+    border-radius: 0 5px 5px 0;
 }
 a.policy {
     color: #ffffff;

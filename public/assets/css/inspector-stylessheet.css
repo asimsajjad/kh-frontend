@@ -402,8 +402,8 @@ img.img-banner {
 } */
 
 img.img-fluid.profile {
-    width: 300px;
-    width: 300px;
+    
+    width: 200px;
 }
 
 img.img-fluid.update {
@@ -421,12 +421,13 @@ p.p2 {
     color: #673AB7;
 }
 button.btn.btn-success {
-    background-color: #20951D;
-    border-radius: 15px;
+    background-color: #673AB7;
+    border-radius: 8px;
+    border: none;
 }
 h5.card-title.text-center {
     color: #252525;
-    font-family: 'Poppins';
+    
     font-style: Medium;
     line-height: 45px;
     font-size: 30px;
@@ -434,12 +435,11 @@ h5.card-title.text-center {
 p.p3 {
     font-size: 20px;
     line-height: 30px;
-    font-family: 'Poppins';
-   
+    
 }
 p.p4 {
-    font-size: 20px;
-    font-family: 'Poppins';
+    font-size: 18px;
+   
     line-height: 30px;
 }
 
@@ -998,6 +998,6 @@ h4.text-white.mb-4.justify-content-center.ml-5.h {
     padding-left: 45px;
 }
 img.location_icon{
-height: 40px;
-width: 40px;
+height: 50px;
+width: 50px;
 }
