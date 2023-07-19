@@ -73,16 +73,6 @@ function Info() {
         </div>
         <div className="col">
             <div className="row pt-3">
-                <div className="col-md-3 ">
-                    <p className="p4">Address:</p>
-                </div>
-                <div className="col-md-9">
-                    <p className="p4">{info.address}</p>
-                </div>
-            </div>
-        </div>
-        <div className="col">
-            <div className="row ">
                 <div className="col-md-3">
                     <p className="p4">Email:</p>
                 </div>
@@ -99,9 +89,21 @@ function Info() {
                     <p className="p4">{info.phone_no}</p>
                 </div>
             </div>
+            <div className="col">
+            <div className="row">
+                <div className="col-md-3 ">
+                    <p className="p4">Address:</p>
+                </div>
+                <div className="col-md-9">
+                    <p className="p4">{info.address}</p>
+                </div>
+            </div>
+        </div>
                        </div>  
                     <div className="col-lg-4 profile-text  pt-5 text-center text-white">
                        <h3>Welcome to khadim hazir</h3> 
+                       <p className="text-light mt-3">You can contact with me on the phone number </p>
+                       <p className="text-light">shown in the about list</p>
                     </div>
                 </div> 
         {/* <div className="col-12 pt-5">

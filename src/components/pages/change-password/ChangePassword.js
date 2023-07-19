@@ -49,33 +49,29 @@ function ChangePassword() {
     .then(response =>{
     if(response?.data?.message?.success){
       showAlert( response?.data?.message?.msg, "success");
-      (setOldPassword(''));
-      (setNewPassword(''));
+      // (setOldPassword(''));
+      // (setNewPassword(''));
       setIsLoading(false);
-      if(response?.data?.data[0].usertype=='employee'){
-        // window.location.href = "categories";
-        navigate("/categories");
-      }else{                
-        // window.location.href = "labours";
-        navigate("/labours");
-      }
     }else{
       showAlert(response?.data?.message?.msg, "danger");
-      (setNewPassword(''))
+      // (setNewPassword(''))
       setIsLoading(false);
     } 
-    }).catch(error => {
+    }).then(
+      setNewPassword(''),
+      setOldPassword(''))
+    .catch(error => {
       console.error(error);
       setIsLoading(false);
     });    
   };
   
   function SubmitButton(){
-    if (oldpassword == null && newpassword == null){
-      return <button className="btn login-btn" type="submit" disabled>Update</button>  
+    if (oldpassword && newpassword){
+      return <button className="btn login-btn" type="submit">Update</button>  
     } 
     else {
-      return <button className="btn login-btn" type="submit">Update</button>
+      return <button className="btn login-btn" type="submit" disabled>Update</button>
     };
   };  
 
@@ -95,7 +91,7 @@ function ChangePassword() {
       <div className="name-input mb-4 d-flex">
         <label><i className="fas fa-lock"></i></label>
         <input
-          type="text"
+          type="password"
           id="oldpassword"
           name="oldpassword"
           placeholder="Enter your current password"
@@ -106,7 +102,7 @@ function ChangePassword() {
       <div className="name-input mb-4 d-flex">
         <label><i className="fas fa-lock"></i></label>
         <input
-          type="text"
+          type="password"
           id="newpassword"
           name="newpassword"
           placeholder="Enter your New password"

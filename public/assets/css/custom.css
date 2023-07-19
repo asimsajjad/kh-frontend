@@ -403,9 +403,18 @@ form {
     text-align: center;
 
 }
-.container.pt-5.profile {
-    max-width: 1060px;
+.col-md-7.category-list {
+    margin-left: 255px;
+    cursor: pointer;
 }
+.category-item:hover{
+    /* background-color: #673AB7; */
+    /* color: #ffffff; */
+    font-size: 17px;
+}
+/* .container.pt-5.profile {
+    max-width: 1060px;
+} */
 .name-input input {
     width: 100%;
     border-radius: 10px;
