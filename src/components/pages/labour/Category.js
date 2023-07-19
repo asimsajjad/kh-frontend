@@ -32,9 +32,7 @@ import LoadingSpinner from "../../loader/LoadingSpinner";
        );
 
     function loadEmployees(slug=type){
-      
-      console.log(slug, 'param');
-      setIsLoading(true);
+        setIsLoading(true);
         const formData = new FormData()
         formData.append('user_id', user_id)
         formData.append('category_id', '')

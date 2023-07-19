@@ -22,6 +22,7 @@ import Profile from './components/pages/profile/Profile';
 import ContactUs from './components/pages/contact-us/ContactUs';
 import Terms from './terms/Terms.js';
 import ProfileUpdate from './components/pages/profile-update/ProfileUpdate';
+import ChangePassword from './components/pages/change-password/ChangePassword';
 
 import Footer from './components/shared/Footer';
 
@@ -55,6 +56,7 @@ function App() {
       <Route path="/profile-update" exact element={<ProfileUpdate/>} />
       <Route path="/terms" exact element={<Terms/>}/>
       <Route path="/contact-us" exact element={<ContactUs/>}/>
+      <Route path="/change-password" exact element={<ChangePassword/>}/>
       <Route path="*" exact element={<RedirectComponent />} />
       <Route path="/index" exact element={<Home/>}/> 
       </Routes>        

@@ -74,7 +74,7 @@ function ForgotPassword() {
         <div className="login-details">
           <h3 className="text-light">Welcome khadim Hazir</h3>
           <p className="text-light">Enter your registered email to get new password</p>
-          <Link className="contact" to="/signup">Or Create new account<i className="ml-3 fas fa-arrow-right"></i></Link>
+          <Link className="contact" to="/login">Or Login<i className="ml-3 fas fa-arrow-right"></i></Link>
         </div>
       </div>
     </div>

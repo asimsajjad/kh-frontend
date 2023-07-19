@@ -220,7 +220,7 @@ function Signup() {
             <div className="row pt10">
               <div className="col-6 text-left">
                 <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"/>
-                <label>Remember me</label>
+                <label>&nbsp;&nbsp;Remember me</label>
               </div>
             </div>
             

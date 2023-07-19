@@ -91,10 +91,10 @@ function Login() {
           <div className="row">
             <div className="col-6 text-left mt-2">
               <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"/>
-              <label>Remember me</label>
+              <label>&nbsp;&nbsp;Remember me</label>
             </div>
             <div className="col-6 text-right mt-2">
-              <Link to="/forgot-password">Forget Password<i className="ml-3 bi bi-arrow-right"></i></Link>
+              <Link to="/forgot-password">Forgot Password<i className="ml-3 bi bi-arrow-right"></i></Link>
             </div>
           </div>
           <button className="btn login-btn" type='submit'>Log in</button>

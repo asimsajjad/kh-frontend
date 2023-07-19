@@ -86,7 +86,12 @@ setSelectedImage(e.target.files[0]);
           const user_slug=user.toLowerCase();
             axios.post(`${update_url}`, formData, config)
             .then(response =>{
-              navigate(`/profile/${user_slug}`);
+              if(profile[0].user_type === 'employer'){
+                navigate('/labours');
+              }else{
+                navigate('/categories');
+              }
+              // navigate(`/profile/${user_slug}`);
               setIsLoading(false);
             })
             .catch(error => {
@@ -164,8 +169,8 @@ setSelectedImage(e.target.files[0]);
         <div className="col-md-4 pr-0">
           <div className="details">
             <h3 className="text-light">Welcome to Khaidm Hazir</h3>
-            <p className="text-light">If you do not want to do any changes</p>
-            <Link className="contact" to={`/profile/${info.user_slug}`}>See your profile here<i className="ml-3 fas fa-arrow-right"></i></Link>
+            <p className="text-light">If you want change your password go to</p>
+            <Link className="contact" to='/change-password'>Password Update<i className="ml-3 fas fa-arrow-right"></i></Link>
           </div>
         </div>
       </div>

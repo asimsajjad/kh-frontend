@@ -5,7 +5,6 @@ function Footer() {
   const navigate = useNavigate();
   const currentYear = new Date().getFullYear();
   const user_id = localStorage.getItem('user_id');
-  console.log(user_id, 'data header');
   const Logout = (e) => {
     localStorage.removeItem('user_id');
     sessionStorage.removeItem('user_id');

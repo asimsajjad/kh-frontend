@@ -6,25 +6,24 @@ import LoadingSpinner from "../../loader/LoadingSpinner";
 function Info() {
     const [profile, setProfile] = useState([]);
     const {type} = useParams();
-    console.log(type, 'type');
+    const user_id = localStorage.getItem('user_id')
     const url='profileData';
     const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
         setIsLoading(true);
-    const formData = new FormData()
-    formData.append('user_slug', type)
-    axios.post(`${url}`, formData)
-     .then(response => {
-    setProfile(response?.data?.data);
-    setIsLoading(false);
-    })
-    .catch(error => {
-    console.error(error);
-    setIsLoading(false);
-    });
-   }, []
-   );
+        const formData = new FormData()
+        formData.append('user_slug', type)
+        axios.post(`${url}`, formData)
+        .then(response => {
+        setProfile(response?.data?.data);
+        setIsLoading(false);
+        })
+        .catch(error => {
+        console.error(error);
+        setIsLoading(false);
+        });
+    }, []);
    const [isActive, setIsActive] = useState(false);
    const [description, setDescription] = useState(false);
 
@@ -36,7 +35,6 @@ function Info() {
     const handleButton = event => {
         setIsActive(current => !current);
         setDescription(false);
-   
        };
 
        const renderUser=(
@@ -50,10 +48,16 @@ function Info() {
                         <div className="col-lg-2 pt-5">
                             <p className="p1">{info.username}</p>
                             <p className="p2">{info.category_name}</p>
-                            <div className="col-lg-6 pt-3">
-                                <button type="button" className={isActive ? 'btn btn-success-hide' : 'btn btn-success'} style={isActive ? {display : 'none'} : {display : 'block'}}  onClick={handleClick}>Call Now</button>
-                                {description && (<button type="button" style={{background:'none', border:'none'}} onClick={handleButton}><p><b>{info.phone_no}</b></p></button>)}
-                            </div>
+                            {(() => {
+                                if (user_id == info.user_id){
+                                    return (<p></p>)
+                                }else{
+                                    return (
+                                    <div className="col-lg-6 pt-3">
+                                    <button type="button" className={isActive ? 'btn btn-success-hide' : 'btn btn-success'} style={isActive ? {display : 'none'} : {display : 'block'}}  onClick={handleClick}>Call Now</button>
+                                    {description && (<button type="button" style={{background:'none', border:'none'}} onClick={handleButton}><p><b>{info.phone_no}</b></p></button>)}
+                                    </div>)}              
+                            })()}
                         </div>
                         <div className="col-lg-2 pt-5">
                         <p className='p1'> <img src={`${process.env.REACT_APP_BASE_URL}assets/images/location.png`} className='location_icon '></img>Pakistan</p>   

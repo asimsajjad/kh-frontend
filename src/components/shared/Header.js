@@ -26,6 +26,10 @@ function Header() {
     navigate("/login");
     
   };
+
+  const Labours = () =>{
+  window.location.href= "/labours";
+  }
   
   return <>
   <nav className="navbar navbar-expand-lg">
@@ -45,7 +49,7 @@ function Header() {
             <Link to="/categories" className="nav-link text-light" >Find Work</Link>
           </li>
           <li className="nav-item">
-            <Link to="/labours" className="nav-link text-light">Find Labours</Link>
+            <Link onClick={Labours} className="nav-link text-light">Find Labours</Link>
           </li>
           <li className="nav-item">
             <Link to="/contact-us" className="nav-link text-light">Contact Us</Link>
