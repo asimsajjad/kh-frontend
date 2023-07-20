@@ -85,7 +85,7 @@ function Search() {
   }, []);
 
   const renderUser = (<div>
-  <div className="container pt-4">
+  <div className="container search pt-4">
         <div className="row">
           <div className="col-md-12 d-flex justify-content-center">
             <div className="input-box" ref={searchRef}>
@@ -105,26 +105,31 @@ function Search() {
               )}
             </div>
           </div>
-          {showList && (
-                <div className="col-md-7 category-list">
+          
+        </div>
+        {showList && (
+                <div className="col-lg-9 col-sm-6 category-list">
                 {filteredCategories.map((category) => (
                   <div
                     key={category.id}
                     className=""
                     onClick={() => handleCategorySelect(category.name)}
                   >
-                    <ul className=" col-md-12 auto_ul">
+                    
                     <li>
                       <div className="ul_box pt-2">
                         <span className='text'>{category.name}</span>
                       </div></li>
-                    </ul>
+                    
                   </div>
                 ))}
               </div>
               )}
-        </div>
+              
+       
       </div>
+     
+     
   <div className=" container our-section rounded">
     <div className="row">
       <div className="col-lg-2 col-sm-6">

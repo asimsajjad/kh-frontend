@@ -89,7 +89,7 @@ p.card-text.text-center {
 
 span {
     color: #000000;
-    padding-left: 54px;
+    padding-left: 48px;
 }
 span.text:hover {
     color: #000000;
@@ -923,7 +923,6 @@ button.button.search {
 
 .container.search {
     position: relative;
-    top: -80px;
 }
 
 .container.our-section.shadow.p-3.mb-5.bg-white.rounded {
@@ -1010,10 +1009,7 @@ height: 50px;
 width: 50px;
 }
 .ul_box {
-    padding-top: 0.5rem !important;
-    /* border-bottom: 1px solid #dbd8d8; */
-    padding-bottom: 0.5rem !important;
-    margin-right: -13px;
+   
 }
 .ul_box:hover {
     padding-top: 0.5rem !important;

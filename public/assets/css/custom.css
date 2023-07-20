@@ -403,18 +403,17 @@ form {
     text-align: center;
 
 }
-.col-md-7.category-list {
-    /* margin-left: 255px;
-    cursor: pointer; */
-    margin-left: 256px;
+.col-lg-9.category-list {
+   
+    margin-left: 52px;
     cursor: pointer;
     z-index: 1;
     position: absolute;
-    margin-top: 57px;
+   
     background-color: #ffffff;
     left: 93px;
-    width: 886px;
-    padding-left: 0px;
+    
+   
     border-radius: 9px;
     border: 1px solid rgb(253, 252, 252);
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
@@ -643,9 +642,28 @@ a.contact:hover {
         left: 208px;
         top: 54px;
     }
-  
+    .col-lg-9.category-list{
+        margin-left: auto;
+        display: block;
+        position: absolute;
+        left: 65px;
+    }
 
     
+}
+@media ( min-width: 576px) and ( max-width: 575px){
+    .col-lg-9.category-list{
+        margin-left: -50;
+        display: block;  position: absolute;
+        left: 65px;
+    }
+
+}
+@media (max-width: 1200px) and (min-width: 767px){
+    .col-lg-9.category-list{
+        margin-left: auto;
+        display: block;
+    }
 }
 .widthauto{width: auto !important;}
 
