@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from '../../../config/axios';
 import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from 'react-router-dom';
+import LoadingSpinner from "../../loader/LoadingSpinner";
 
 function Search() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -8,6 +9,7 @@ function Search() {
   const [filteredCategories, setFilteredCategories] = useState([]);
   const [showList, setShowList] = useState(false);
   const [categoryAvailable, setCategoryAvailable] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   const categories_url = 'index';
@@ -45,6 +47,7 @@ function Search() {
   };
 
   const handleSearch = () => {
+    setIsLoading(true);
     const formData = new FormData();
     // console.log(searchQuery);
     const user=(searchQuery).replace(/ /g, '-');
@@ -58,9 +61,11 @@ function Search() {
         } else {
           setCategoryAvailable(false);
         }
+        setIsLoading(false);
       })
       .catch((error) => {
         console.error(error);
+        setIsLoading(false);
       });
   };
 
@@ -79,9 +84,8 @@ function Search() {
     };
   }, []);
 
-  return (
-    <>
-      <div className="container pt-4">
+  const renderUser = (<div>
+  <div className="container pt-4">
         <div className="row">
           <div className="col-md-12 d-flex justify-content-center">
             <div className="input-box" ref={searchRef}>
@@ -197,6 +201,10 @@ function Search() {
       </div>
     </div>
   </div>
+  </div>
+  );
+  return (<>
+      {isLoading ? <LoadingSpinner /> : renderUser} 
   </> );
   }
   export default Search;
