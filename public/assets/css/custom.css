@@ -404,8 +404,20 @@ form {
 
 }
 .col-md-7.category-list {
-    margin-left: 255px;
+    /* margin-left: 255px;
+    cursor: pointer; */
+    margin-left: 256px;
     cursor: pointer;
+    z-index: 1;
+    position: absolute;
+    margin-top: 57px;
+    background-color: #ffffff;
+    left: 93px;
+    width: 886px;
+    padding-left: 52px;
+    border-radius: 9px;
+    border: 1px solid rgb(253, 252, 252);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
 }
 .category-item:hover{
     /* background-color: #673AB7; */
@@ -453,7 +465,7 @@ form h2 {
     color: #fff;
     width: 300px;
     font-size: 20px;
-    margin-top: 30px;
+    margin-top: 6px;
     margin-bottom: 50px;
 }
 

@@ -90,7 +90,10 @@ p.card-text.text-center {
 span {
     color: #000000;
 }
-
+span.text:hover {
+    color: #000000;
+    font-size: 17px;
+}
 .container-fluid.find-workers {
     background-color: #673AB7;
     height: 542px;
@@ -667,8 +670,12 @@ p.plum3 {
 }
 
 h1.Category {
+    
     font-size: 56px;
     line-height: 84px;
+    margin-top: 3rem;
+    margin-bottom: -2rem;
+    /*text-align: center; */
 }
 
 .card-body.Category {
@@ -1000,4 +1007,9 @@ h4.text-white.mb-4.justify-content-center.ml-5.h {
 img.location_icon{
 height: 50px;
 width: 50px;
+}
+.ul_box {
+    padding-top: 0.5rem !important;
+    /* border-bottom: 1px solid #dbd8d8; */
+    padding-bottom: 0.5rem !important;
 }

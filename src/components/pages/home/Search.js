@@ -46,8 +46,11 @@ function Search() {
 
   const handleSearch = () => {
     const formData = new FormData();
+    // console.log(searchQuery);
+    const user=(searchQuery).replace(/ /g, '-');
+          const user_slug=user.toLowerCase();
     axios
-      .get(`${categories_url}/${searchQuery}`, formData)
+      .get(`${categories_url}/${user_slug}`, formData)
       .then((response) => {
         if (response?.data?.data[0]) {
           navigate(`/labours/${response?.data?.data[0].slug}`);
@@ -100,16 +103,21 @@ function Search() {
           </div>
           {showList && (
                 <div className="col-md-7 category-list">
-                  {filteredCategories.map((category) => (
-                    <div
-                      key={category.id}
-                      className="category-item"
-                      onClick={() => handleCategorySelect(category.name)}
-                    >
-                      <p className="category-item">{category.name}</p>
-                    </div>
-                  ))}
-                </div>
+                {filteredCategories.map((category) => (
+                  <div
+                    key={category.id}
+                    className=""
+                    onClick={() => handleCategorySelect(category.name)}
+                  >
+                    <ul className=" col-md-12 auto_ul">
+                    <li>
+                      <div className="ul_box pt-2">
+                        <span className='text'>{category.name}</span>
+                      </div></li>
+                    </ul>
+                  </div>
+                ))}
+              </div>
               )}
         </div>
       </div>
