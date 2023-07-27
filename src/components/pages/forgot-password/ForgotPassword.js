@@ -6,7 +6,7 @@ import LoadingSpinner from "../../loader/LoadingSpinner";
 import { useTranslation } from 'react-i18next';
 
 function ForgotPassword() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [email, setEmail]=useState('');
   const [alert, setAlert] = useState(null);
   const url='forgotPassword';
@@ -31,9 +31,13 @@ function ForgotPassword() {
           setIsLoading(false);
           console.log(response?.data?.data)
           if(response?.data?.message?.success){
-            showAlert( response?.data?.message?.msg, "success")
+            const user=(response?.data?.message?.msg).replace(/ /g, '_');
+              showAlert(user, "success")
+            // showAlert( response?.data?.message?.msg, "success")
           }else{
-            showAlert(response?.data?.message?.msg, "danger")
+            const user=(response?.data?.message?.msg).replace(/ /g, '_');
+              showAlert(user, "danger")
+            // showAlert(response?.data?.message?.msg, "danger")
           }
         })
         .then(setEmail({email: "",}))
@@ -65,8 +69,9 @@ function ForgotPassword() {
             <Link href=""><i class="fa-brands fa-linkedin"></i></Link>
             <Link href=""><i class="fa-brands fa-google-plus"></i></Link> */}
           </div>
-          <div className="name-input mb-4 d-flex mt-5">
-            <label htmlFor=""><i className="far fa-envelope"></i></label>
+          
+          <div className="name-input mb-4 d-flex mt-5" dir={i18n.language === 'en' ? 'ltr' : 'rtl'}>
+            <label htmlFor="" className={i18n.language === 'en' ? "": "pr-3"}><i className="far fa-envelope"></i></label>
             <input className="form-control" type="email" name='email' value={email.email} placeholder={t("enterEmail")} id="formGroupExampleInput2" onChange={handleChange}/>
           </div>
          <button className="btn login-btn mt-5" type='submit' disabled={!email.email}>{t("submit")}</button>

@@ -6,7 +6,7 @@ import LoadingSpinner from "../../loader/LoadingSpinner";
 import { useTranslation } from 'react-i18next';
 
 function Login() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [user, setUser]=useState('');
   const [alert, setAlert] = useState(null);
   const navigate = useNavigate();
@@ -50,7 +50,8 @@ function Login() {
           setIsLoading(false);
           if(response?.data?.message?.success){
              localStorage.setItem('user_id', response?.data?.data[0].user_id)
-             showAlert( response?.data?.message?.msg, "success")
+            //  showAlert( response?.data?.message?.msg, "success")
+             showAlert("YouhaveLoggedInSuccesfully", "success")
             if(response?.data?.data[0].usertype=='employee'){
               // window.location.href = "categories";
               navigate("/categories");
@@ -59,7 +60,8 @@ function Login() {
               navigate("/labours");
             }
           }else{
-            showAlert(response?.data?.message?.msg, "danger")
+            // showAlert(response?.data?.message?.msg, "danger")
+            showAlert("YourEmailOrPasswordIsWrong", "danger")
           } 
         })
         .catch(error => {
@@ -74,6 +76,7 @@ function Login() {
   <div className="container mt-5">
     <div className="row ">
       <div className="col-md-8 login-form1">
+        
       <Alert alert={alert}/>
         <form onSubmit={handleSubmit}>
           <h2 className="text-center pt-4">{t("loginToYourAccount")}</h2>
@@ -82,22 +85,24 @@ function Login() {
             <Link href=""><i class="fa-brands fa-linkedin"></i></Link>
             <Link href=""><i class="fa-brands fa-google-plus"></i></Link> */}
           </div>
+          <div dir={i18n.language === 'en' ? 'ltr' : 'rtl'}>
           <div className="name-input mb-3 d-flex mt-5">
-            <label><i className="far fa-envelope"></i></label>
+            <label  className={i18n.language === 'en' ? "": "pr-3 pl-2"}><i className="far fa-envelope"></i></label>
             <input className="" name="email" type="email" placeholder={t("email")} value={user.email} onChange={handleChange}/>
           </div>
           <div className="password-input d-flex">
-            <label><i className="fas fa-lock	"></i></label>
+            <label  className={i18n.language === 'en' ? "": "pr-3 pl-2"}><i className="fas fa-lock	"></i></label>
             <input className="password-input" type="password" name="password" id="" placeholder={t("password")} value={user.password} onChange={handleChange}/>
           </div>
           <div className="row">
-            <div className="col-6 text-left mt-2">
+            <div className={i18n.language === 'en' ? "col-6 text-left mt-2" : "col-6 text-right mt-2"}>
               <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"/>
               <label>&nbsp;&nbsp;{t("rememberMe")}</label>
             </div>
-            <div className="col-6 text-right mt-2">
+            <div className={i18n.language === 'en' ? "col-6 text-right mt-2" : "col-6 text-left mt-2"}>
               <Link to="/forgot-password">{t("forgotPassword")}<i className="ml-3 bi bi-arrow-right"></i></Link>
             </div>
+          </div>
           </div>
           <button className="btn login-btn" type='submit'>{t("login")}</button>
         </form>

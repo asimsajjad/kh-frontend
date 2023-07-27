@@ -6,7 +6,7 @@ import LoadingSpinner from "../../loader/LoadingSpinner";
 import { useTranslation } from 'react-i18next';
 
 function ChangePassword() {
-  const { t } = useTranslation();
+  const { t , i18n} = useTranslation();
   const [isLoading, setIsLoading] = useState(false);
   const [alert, setAlert] = useState(null);
   const navigate = useNavigate();
@@ -37,7 +37,7 @@ function ChangePassword() {
     })
     setTimeout (() => {
     setAlert(null);
-    }, 3000);
+    }, 300000);
   }
 
   const handleSubmit = (e) => {
@@ -50,12 +50,16 @@ function ChangePassword() {
     axios.post(`${changepassword_url}`, formData)
     .then(response =>{
     if(response?.data?.message?.success){
-      showAlert( response?.data?.message?.msg, "success");
+      // showAlert( response?.data?.message?.msg, "success");
+      showAlert("yourHaveSuccessfullyUpdatedYourPassword", "success");
+      
       // (setOldPassword(''));
       // (setNewPassword(''));
       setIsLoading(false);
     }else{
-      showAlert(response?.data?.message?.msg, "danger");
+      // showAlert(response?.data?.message?.msg, "danger");
+      showAlert("CurrentPasswordIsMismatchingTryAnotherPassword" , "danger");
+      
       // (setNewPassword(''))
       setIsLoading(false);
     } 
@@ -90,8 +94,9 @@ function ChangePassword() {
             <Link href=""><i className="fa-brands fa-google-plus"></i></Link>
           </div>
           <p className="text-center">Or use your email for registeration</p> */}
+          <div dir={i18n.language === 'en' ? 'ltr' : 'rtl'}>
       <div className="name-input mb-4 d-flex">
-        <label><i className="fas fa-lock"></i></label>
+        <label className={i18n.language === 'en' ? "": "pr-3 pl-2"}><i className="fas fa-lock"></i></label>
         <input
           type="password"
           id="oldpassword"
@@ -102,7 +107,7 @@ function ChangePassword() {
         />
       </div>
       <div className="name-input mb-4 d-flex">
-        <label><i className="fas fa-lock"></i></label>
+        <label className={i18n.language === 'en' ? "": "pr-3 pl-2"}><i className="fas fa-lock"></i></label>
         <input
           type="password"
           id="newpassword"
@@ -111,6 +116,7 @@ function ChangePassword() {
           value={newpassword}
           onChange={handlePasswordChange}
         />
+      </div>
       </div>
           <SubmitButton/>
         </form>

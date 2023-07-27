@@ -75,12 +75,12 @@ function Contact() {
         <form onSubmit={handleSubmit}> 
           <h2 className="text-center">{t("contactUs")}</h2>
           <div className="name-input mb-4 d-flex mt-3" dir={i18n.language === 'en' ? 'ltr' : 'rtl'}>
-            <label className="form-label" >{t("name")}</label>
+            <label className={i18n.language === 'en' ? 'form-label' : 'form-label mr-2'}>{t("name")}</label>
             <input type="text" name="name" placeholder={t("enterName")} className="form-control" id="formGroupExampleInput" value={contact.name} onChange={handleChange}
           />
           </div>
           <div className="password-input d-flex" dir={i18n.language === 'en' ? 'ltr' : 'rtl'}>
-            <label className="form-label ">{t("email")}</label>
+            <label className={i18n.language === 'en' ? 'form-label' : 'form-label mr-2'} style={{ width: '55px'}}>{t("email")}</label>
             <input type="email" className="form-control"  placeholder={t("enterEmail")} name="email" id="formGroupExampleInput2" value={contact.email} onChange={handleChange}
         />
           </div>

@@ -9,6 +9,7 @@ function Header() {
   const [alert, setAlert] = useState(null);
   const user_id = localStorage.getItem('user_id');
   const navigate = useNavigate();
+  
 
   const saveLanguagePreference = (lng) => {
     Cookies.set('language', lng, { expires: 365 }); // Set the cookie to expire in 365 days
@@ -66,8 +67,8 @@ function Header() {
           >
             <img className="toogler-img" src="assets/images/download.svg" alt="" />
           </button> */}
-          <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent"  dir={i18n.language === 'en' ? 'ltr' : 'rtl'}>
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0 pr-5">
+          <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+            <ul className={i18n.language === 'en' ? "navbar-nav me-auto mb-2 mb-lg-0 pr-5" : "navbar-nav me-auto mb-2 mb-lg-0 pl-5"}  dir={i18n.language === 'en' ? 'ltr' : 'rtl'}>
               <li className="nav-item">
                 <Link to="/" className="nav-link text-light" aria-current="page">
                   {t('home')}
@@ -91,16 +92,18 @@ function Header() {
               {(() => {
                 if (user_id == null) {
                   return (
+                    <ul className={i18n.language === "en" ? "navbar-nav me-auto mb-2 mb-lg-0" : "navbar-nav me-auto mb-2 mb-lg-0 pl-3"} key={user_id}>
                     <li className="nav-item">
                       <Link to="/login" className="nav-link text-light">
                         {t('login')}
                       </Link>
                     </li>
+                    </ul>
                   );
                 } else {
                   return (
                     [
-                      <ul className="navbar-nav me-auto mb-2 mb-lg-0 pr-5" key={user_id}>
+                      <ul className={i18n.language === "en" ? "navbar-nav me-auto mb-2 mb-lg-0" : "navbar-nav me-auto mb-2 mb-lg-0 pl-3"} key={user_id}>
                         <li className="nav-item">
                           <Link to="/profile-update" className="nav-link text-light">
                             {t('profile')}
@@ -116,16 +119,17 @@ function Header() {
                   );
                 }
               })()}
+             
+             <select
+                className="nav-link text-light select" // Add the custom-select class here
+                onChange={(e) => changeLanguage(e.target.value)}
+                value={i18n.language}>
+                <option className="option" value="en">English</option>
+                <option className="option" value="ar">العربية</option>
+                <option className="option" value="ur">اردو</option>
+              </select>
+          
             </ul>
-            {/* <button onClick={() => changeLanguage('en')}>English</button>
-          <button onClick={() => changeLanguage('ar')}>العربية</button>
-          <button onClick={() => changeLanguage('ur')}>اردو</button> */}
-          <select onChange={(e) => changeLanguage(e.target.value)} value={i18n.language}>
-            <option value="en">English</option>
-            <option value="ar">العربية</option>
-            <option value="ur">اردو</option>
-          </select>
-            
           </div>
         </div>
       </nav>

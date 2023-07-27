@@ -94,4 +94,17 @@ export default{
   electrician:"عامل الكهرباء",
   remodling:"إعادة تصميم",
   roofing:"تسقيف",
+  
+  Success:"نجاح",
+  Danger:"غير ناجح",
+  yourHaveSuccessfullyUpdatedYourPassword:"لقد قمت بتحديث كلمة المرور الخاصة بك بنجاح",
+  CurrentPasswordIsMismatchingTryAnotherPassword:"كلمة المرور الحالية غير متطابقة ، جرب كلمة مرور أخرى",
+  YouhaveLoggedInSuccesfully:"لقد قمت بتسجيل الدخول بنجاح",
+  YourEmailOrPasswordIsWrong:"البريد الإلكتروني أو كلمة المرور الخاصة بك خاطئة",
+
+  Already_signed_up:"اشترك بالفعل",
+  Registration_successful:"تم التسجيل بنجاح",
+  user_registration_error:"خطأ في تسجيل المستخدم",
+  We_have_sent_a_new_password_to_your_email:"لقد أرسلنا كلمة مرور جديدة إلى بريدك الإلكتروني",
+  This_user_is_not_registered_Kindly_register_first:"هذا المستخدم غير مسجل ، يرجى التسجيل أولاً",
 }

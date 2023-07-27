@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import Cookies from 'js-cookie';
 
 function ProfileUpdate() {
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
     const [profile, setProfile]=useState([]);
     const [profileupdate, setProfileUpdate]=useState(null);
     const [category, setCategory] = useState([]);
@@ -133,12 +133,13 @@ setSelectedImage(e.target.files[0]);
               <Link href=""><i className="fa-brands fa-google-plus"></i></Link>
             </div>
             <p className="text-center">Or use your email for registeration</p> */}
+          <div dir={i18n.language === 'en' ? 'ltr' : 'rtl'}>
         <div className="name-input mb-4 d-flex mt-4">
-          <label><i className="fas fa-user"></i></label>
+          <label className={i18n.language === 'en' ? "": "pr-3 pl-2"}><i className="fas fa-user"></i></label>
           <input className="" type="name" name='username' placeholder={t("name")} value={info.username} onChange={(event) => handleEdit(index, 'username', event.target.value)}/>
         </div>
         <div className="name-input mb-4 d-flex">
-          <label><i className="fas fa-phone"></i></label>
+          <label className={i18n.language === 'en' ? "": "pr-3 pl-2"}><i className="fas fa-phone"></i></label>
           <input className="" type="number" name='phone_no' placeholder={t("phoneNumber")} value={info.phone_no} onChange={(event) => handleEdit(index, 'phone_no', event.target.value)}/>
         </div>
           
@@ -147,7 +148,7 @@ setSelectedImage(e.target.files[0]);
           return (
             <div className="form-group">
             <div className="col-md-8 mb-4">
-            <select id="signup-sector" name="category" className="signup-select" value={info.category_id} onChange={(event) => handleEdit(index, 'category_id', event.target.value)}> 
+            <select id="signup-sector" name="category" className={i18n.language === 'en' ? "signup-select pl-2": "signup-select pr-2"} value={info.category_id} onChange={(event) => handleEdit(index, 'category_id', event.target.value)}> 
             {category.map(categories => ( <option key={categories.id} value={categories.id} >{categories.name}</option>))}
             </select>
             </div>
@@ -161,7 +162,7 @@ setSelectedImage(e.target.files[0]);
                  value={info.address} onChange={(event) => handleEdit(index, 'address', event.target.value)} placeholder={t("writeYourAddress")}></textarea>
               </div>              
             </div>
-           
+           </div>
             <div className='row'>
                 <div className='profile-image'>
                   <img src={info.image ? `${process.env.REACT_APP_RESOURCES_URL}images/${info.image}` : `${process.env.REACT_APP_BASE_URL}assets/images/manager.png`} alt="" className="img-fluid update m-0" />

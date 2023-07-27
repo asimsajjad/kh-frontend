@@ -94,4 +94,16 @@ export default{
   electrician:"Electrician",
   remodling:"Remodeling",
   roofing:"Roofing",
+
+  Success:"Success",
+  Danger:"Unsuccessful",
+  yourHaveSuccessfullyUpdatedYourPassword:"Your have successfully updated your password",
+  CurrentPasswordIsMismatchingTryAnotherPassword:"Current Password is mismatching, try another password",
+  YouhaveLoggedInSuccesfully:"You have logged in successfully",
+  YourEmailOrPasswordIsWrong:"Your Email or password is wrong",
+  Already_signed_up:"Already signed up",
+  Registration_successful:"Registration Successful",
+  user_registration_error:"User Registration Error",
+  We_have_sent_a_new_password_to_your_email:"We have sent a new password to your email",
+  This_user_is_not_registered_Kindly_register_first:"This user is not registered, Kindly register first",
 }

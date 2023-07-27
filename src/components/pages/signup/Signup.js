@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next';
 import Cookies from 'js-cookie';
 
 function Signup() {
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
     const [user, setUser]=useState('');
     const [category, setCategory] = useState([]);
     const [alert, setAlert] = useState(null);
@@ -112,9 +112,11 @@ function Signup() {
               }
             } 
             if(response?.data?.message?.success){
-              showAlert( response?.data?.message?.msg, "success")
+              const user=(response?.data?.message?.msg).replace(/ /g, '_');
+              showAlert(user, "success")
             }else{
-              showAlert(response?.data?.message?.msg, "danger")
+              const user=(response?.data?.message?.msg).replace(/ /g, '_');
+              showAlert(user, "danger")
             }
             
           }).then(setUser(
@@ -187,20 +189,21 @@ function Signup() {
             </div>
           </div>
         </div>
+        <div dir={i18n.language === 'en' ? 'ltr' : 'rtl'}>
         <div className="name-input mb-4 d-flex">
-          <label><i className="fas fa-user"></i></label>
+          <label className={i18n.language === 'en' ? "": "pr-3 pl-2"}><i className="fas fa-user"></i></label>
           <input className="" type="name" name='username' placeholder={t("name")} value={user.username} onChange={handleChange}/>
         </div>
         <div className="name-input mb-4 d-flex">
-          <label><i className="far fa-envelope"></i></label>
+          <label className={i18n.language === 'en' ? "": "pr-3 pl-2"}><i className="far fa-envelope"></i></label>
           <input className="" type="email" name='email' placeholder={t("email")} value={user.email} onChange={handleChange}/>    
         </div>
         <div className="password-input mb-4 d-flex">
-          <label><i className="fas fa-lock	"></i></label>
+          <label className={i18n.language === 'en' ? "": "pr-3 pl-2"}><i className="fas fa-lock	"></i></label>
           <input className="password-input" type="password" name="password" id="" placeholder={t("password")} value={user.password} onChange={handleChange}/>
         </div>
         <div className="name-input mb-4 d-flex">
-          <label><i className="fas fa-phone"></i></label>
+          <label className={i18n.language === 'en' ? "": "pr-3 pl-2"}><i className="fas fa-phone"></i></label>
           <input className="" type="number" name='phone_no' placeholder={t("phoneNumber")} value={user.phone_no} onChange={handleChange}/>
         </div>
           
@@ -220,21 +223,22 @@ function Signup() {
       })()}
            <div className="row mb-4">
               <div className="text-left">
+              {/* <label  className={i18n.language === 'en' ? "": "pr-3 pl-2"}><i class="fa fa-location-arrow" aria-hidden="true"></i></label> */}
                  <textarea className="form-control" name="address" id="floatingTextarea2" 
                  value={user.address} onChange={handleChange} placeholder={t("writeYourAddress")}></textarea>
               </div>              
             </div>
            <div className="name-input d-flex">
-              <label><i className="fas fa-user"></i></label>
+              <label  className={i18n.language === 'en' ? "": "pr-3 pl-2"}><i className="fas fa-user"></i></label>
               <input className="pt10" type="file" name='file' placeholder="Upload image" value={user.files} onChange={handleImageUpload}/>
             </div>
             <div className="row pt10">
-              <div className="col-6 text-left">
+              <div className={i18n.language === 'en' ? "col-6 text-left" : "col-6 text-right"} >
                 <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"/>
                 <label>&nbsp;&nbsp; {t("rememberMe")}</label>
               </div>
             </div>
-            
+            </div>
             <SubmitButton/>
           </form>
         </div>

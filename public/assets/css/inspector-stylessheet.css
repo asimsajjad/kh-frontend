@@ -1008,12 +1008,29 @@ img.location_icon{
 height: 50px;
 width: 50px;
 }
-.ul_box {
-   
-}
+
 .ul_box:hover {
     padding-top: 0.5rem !important;
     /* border-bottom: 1px solid #dbd8d8; */
     padding-bottom: 0.5rem !important;
     background-color: #e9e7e7;
 }
+.select {
+    height: 40px;
+    background-color: #673AB7;
+    border: hidden;
+    color: white;
+}
+.select:hover{
+    background-color: #512e8d;
+    border-radius: 15px;
+    cursor: pointer;
+}
+.select .option {
+    background-color: white;
+    color: black;
+    border: hidden;
+    z-index: -1px;
+}
+
+

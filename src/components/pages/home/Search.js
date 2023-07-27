@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import Cookies from 'js-cookie';
 
 function Search() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [searchQuery, setSearchQuery] = useState('');
   const [categories, setCategories] = useState([]);
   const [filteredCategories, setFilteredCategories] = useState([]);
@@ -104,7 +104,7 @@ function Search() {
     };
   }, []);
 
-  const renderUser = (<div>
+  const renderUser = (<div dir={i18n.language === 'en' ? 'ltr' : 'rtl'}>
   <div className="container search pt-4">
         <div className="row">
           <div className="col-md-12 d-flex justify-content-center">
