@@ -2,14 +2,25 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from '../../../config/axios';
 import Slider from "react-slick";
+import { useTranslation } from 'react-i18next';
+import Cookies from 'js-cookie';
 
 function PopularServices() {
-    const [categories, setCategories] = useState([]);
+  const { t, i18n } = useTranslation();
+  const [categories, setCategories] = useState([]);
 
     const url='popularCategories';
     useEffect(() => {
+      const storedLanguage = Cookies.get('language');
         axios.get(`${url}`).then(response => {
-        setCategories(response?.data?.data?.en);
+          if(storedLanguage === "en"){
+            setCategories(response?.data?.data?.en);
+          }else if(storedLanguage === "ur"){
+            setCategories(response?.data?.data?.ur);
+          }else if(storedLanguage === "ar"){
+            setCategories(response?.data?.data?.ar);
+          }
+       
         }).catch(error => {
         console.error(error);
       }); 
@@ -52,9 +63,9 @@ function PopularServices() {
       ]
     };
   return <section className="container-fluid services">
-          <div className='container'>
+          <div className='container'  dir={i18n.language === 'en' ? 'ltr' : 'rtl'}>
             <div className="col-md-6 mb-5">
-              <h2 className="mb-3 categories">Popular Services </h2>
+              <h2 className="mb-3 categories">{t("popular")}</h2>
             </div>
           </div>
           <div className="container mx-auto ">

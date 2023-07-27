@@ -2,8 +2,11 @@ import React, { useState, useEffect } from 'react';
 import axios from '../../../config/axios';
 import { BrowserRouter as Router,Routes, Route, Link, useNavigate} from 'react-router-dom';
 import LoadingSpinner from "../../loader/LoadingSpinner";
+import { useTranslation } from 'react-i18next';
+import Cookies from 'js-cookie';
 
 function ProfileUpdate() {
+    const { t } = useTranslation();
     const [profile, setProfile]=useState([]);
     const [profileupdate, setProfileUpdate]=useState(null);
     const [category, setCategory] = useState([]);
@@ -16,8 +19,16 @@ function ProfileUpdate() {
 
     const category_url='';
         useEffect(() => {
+          const storedLanguage = Cookies.get('language');
             axios.get(`${category_url}`).then(response => {
-            setCategory(response?.data?.data?.en);
+              if(storedLanguage === "en"){
+                setCategory(response?.data?.data?.en);
+              }else if(storedLanguage === "ur"){
+                setCategory(response?.data?.data?.ur);
+              }else if(storedLanguage === "ar"){
+                setCategory(response?.data?.data?.ar);
+              }
+            // setCategory(response?.data?.data?.en);
             loadProfile();
             }).catch(error => {
             console.error(error);
@@ -102,10 +113,10 @@ setSelectedImage(e.target.files[0]);
     
     function SubmitButton(){
       if (profileupdate === null){
-        return <button className="btn login-btn" type="submit" disabled>Update</button>  
+        return <button className="btn login-btn" type="submit" disabled>{t("update")}</button>  
       } 
       else {
-        return <button className="btn login-btn" type="submit">Update</button>
+        return <button className="btn login-btn" type="submit">{t("update")}</button>
       };
     };  
 
@@ -115,7 +126,7 @@ setSelectedImage(e.target.files[0]);
       <div className="row login-form ">
         <div className="col-md-8">
           <form onSubmit={handleSubmit}  >
-            <h2 className="text-center pt-4">Profile Update</h2>
+            <h2 className="text-center pt-4">{t("profileUpdate")}</h2>
             {/* <div className="social-media-links d-flex justify-content-center pt-3">
             <Link to=""><i className="fa-brands fa-facebook"></i></Link>
               <Link href=""><i className="fa-brands fa-linkedin"></i></Link>
@@ -124,11 +135,11 @@ setSelectedImage(e.target.files[0]);
             <p className="text-center">Or use your email for registeration</p> */}
         <div className="name-input mb-4 d-flex mt-4">
           <label><i className="fas fa-user"></i></label>
-          <input className="" type="name" name='username' placeholder="Name" value={info.username} onChange={(event) => handleEdit(index, 'username', event.target.value)}/>
+          <input className="" type="name" name='username' placeholder={t("name")} value={info.username} onChange={(event) => handleEdit(index, 'username', event.target.value)}/>
         </div>
         <div className="name-input mb-4 d-flex">
           <label><i className="fas fa-phone"></i></label>
-          <input className="" type="number" name='phone_no' placeholder="Phone number" value={info.phone_no} onChange={(event) => handleEdit(index, 'phone_no', event.target.value)}/>
+          <input className="" type="number" name='phone_no' placeholder={t("phoneNumber")} value={info.phone_no} onChange={(event) => handleEdit(index, 'phone_no', event.target.value)}/>
         </div>
           
             {(() => {
@@ -146,8 +157,8 @@ setSelectedImage(e.target.files[0]);
       })()}
            <div className="row mb-4">
               <div className="text-left">
-                 <textarea className="form-control" name="address" id="floatingTextarea2" 
-                 value={info.address} onChange={(event) => handleEdit(index, 'address', event.target.value)} placeholder='Write your address here'></textarea>
+                 <textarea className="form-control" type="name" name="address" id="floatingTextarea2" 
+                 value={info.address} onChange={(event) => handleEdit(index, 'address', event.target.value)} placeholder={t("writeYourAddress")}></textarea>
               </div>              
             </div>
            
@@ -164,13 +175,11 @@ setSelectedImage(e.target.files[0]);
             <SubmitButton/>
           </form>
         </div>
-        <Link className="text-center mb-3 mobile-screen d-none" to="/login">Already have an Accountt<i
-            className="ml-3 bi bi-arrow-right"></i></Link>
         <div className="col-md-4 pr-0">
           <div className="details">
-            <h3 className="text-light">Welcome to Khaidm Hazir</h3>
-            <p className="text-light">If you want change your password go to</p>
-            <Link className="contact" to='/change-password'>Password Update<i className="ml-3 fas fa-arrow-right"></i></Link>
+            <h3 className="text-light">{t("welcomeToKhadimHazir")}</h3>
+            <p className="text-light">{t("ifYouWantCahngePassword")}</p>
+            <Link className="contact" to='/change-password'>{t("passwordUpdate")}<i className="ml-3 fas fa-arrow-right"></i></Link>
           </div>
         </div>
       </div>

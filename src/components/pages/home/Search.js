@@ -2,8 +2,11 @@ import React, { useState, useEffect, useRef } from 'react';
 import axios from '../../../config/axios';
 import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from 'react-router-dom';
 import LoadingSpinner from "../../loader/LoadingSpinner";
+import { useTranslation } from 'react-i18next';
+import Cookies from 'js-cookie';
 
 function Search() {
+  const { t } = useTranslation();
   const [searchQuery, setSearchQuery] = useState('');
   const [categories, setCategories] = useState([]);
   const [filteredCategories, setFilteredCategories] = useState([]);
@@ -14,11 +17,26 @@ function Search() {
 
   const categories_url = 'index';
   useEffect(() => {
+    const storedLanguage = Cookies.get('language');
     axios
       .get(`${categories_url}`)
       .then((response) => {
-        setCategories(response?.data?.data?.en);
+        // setCategories(response?.data?.data?.en);
+        if(storedLanguage === "en"){
+          setCategories(response?.data?.data?.en);
+        }else if(storedLanguage === "ar"){
+          setCategories(response?.data?.data?.ar);
+        }else if(storedLanguage === "ur"){
+          setCategories(response?.data?.data?.ur);
+        }
         setFilteredCategories(response?.data?.data?.en);
+        // if(storedLanguage === "en"){
+        //   setFilteredCategories(response?.data?.data?.en);
+        // }else if(storedLanguage === "ar"){
+        //   setFilteredCategories(response?.data?.data?.ar);
+        // }else if(storedLanguage === "ur"){
+        //   setFilteredCategories(response?.data?.data?.ur);
+        // }
       })
       .catch((error) => {
         console.error(error);
@@ -49,13 +67,15 @@ function Search() {
   const handleSearch = () => {
     setIsLoading(true);
     const formData = new FormData();
-    // console.log(searchQuery);
+   
     const user=(searchQuery).replace(/ /g, '-');
           const user_slug=user.toLowerCase();
+          console.log(user_slug);
     axios
       .get(`${categories_url}/${user_slug}`, formData)
       .then((response) => {
         if (response?.data?.data[0]) {
+          // console.log(response?.data?.data[0].slug);
           navigate(`/labours/${response?.data?.data[0].slug}`);
           setCategoryAvailable(true);
         } else {
@@ -95,13 +115,12 @@ function Search() {
                 onChange={handleSearchChange}
                 value={searchQuery}
                 className="search-input"
-                placeholder="How can we help?"
-              />
+                placeholder={t("question1")}/>
               <button onClick={handleSearch} className="button search-btn">
-                search
+                {t("search")}
               </button>
               {!categoryAvailable && showList && ( // Hide the message when the list is not shown
-                <p className="category-not-available">This category is not available.</p>
+                <p className="category-not-available">{t("thisCategoryIsNotAvailible")}</p>
               )}
             </div>
           </div>
@@ -137,7 +156,7 @@ function Search() {
         <div className="card border-0 ">
           <div className="mx-auto">
             <img src="assets/images/svgviewer-png-output.png" className="card-img-top  mx-auto " alt="..."/>
-            <p className="card-title text-center services pt-3 ">Handy person</p>
+            <p className="card-title text-center services pt-3 ">{t("handyPerson")}</p>
           </div>
         </div>
         </Link>
@@ -149,7 +168,7 @@ function Search() {
             <img src="assets/images/svgviewer-png-output (1).png" className="card-img-top  mx-auto " alt="..."/>
           </div>
           <div className="card-body">
-            <p className="card-title text-center services ">Landscaping</p>
+            <p className="card-title text-center services ">{t("landscaping")}</p>
           </div>
         </div>
         </Link>
@@ -162,7 +181,7 @@ function Search() {
           <img src="assets/images/svgviewer-png-output (2).png" className="card-img-top  mx-auto " alt="..." />
           </div>
           <div className="card-body">
-           <p className="card-title text-center services ">Plumbing</p>
+           <p className="card-title text-center services ">{t("plumbing")}</p>
           </div>
         </div>
         </Link>
@@ -175,7 +194,7 @@ function Search() {
             <img src="assets/images/svgviewer-png-output (3).png" className="card-img-top  mx-auto " alt="..." />
           </div>
           <div className="card-body">
-            <p className="card-title text-center services ">Electrician</p>
+            <p className="card-title text-center services ">{t("electrician")}</p>
           </div>
         </div>
         </Link>
@@ -187,7 +206,7 @@ function Search() {
             <img src="assets/images/svgviewer-png-output.png" className="card-img-top  mx-auto " alt="..." />
           </div>
           <div className="card-body">
-            <p className="card-title text-center services ">Remodeling</p>
+            <p className="card-title text-center services ">{t("remodling")}</p>
           </div>
         </div>
         </Link>
@@ -199,7 +218,7 @@ function Search() {
             <img src="assets/images/svgviewer-png-output (5).png" className="card-img-top  mx-auto" alt="..." />
           </div>
           <div className="card-body">
-            <p className="card-title text-center services ">Roofing</p>
+            <p className="card-title text-center services ">{t("roofing")}</p>
           </div>
         </div>
         </Link>

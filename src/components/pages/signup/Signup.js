@@ -3,8 +3,11 @@ import axios from '../../../config/axios';
 import { BrowserRouter as Router,Routes, Route, Link, useParams, Redirect, useNavigate    } from 'react-router-dom';
 import Alert from '../../Alerts/alert';
 import LoadingSpinner from "../../loader/LoadingSpinner";
+import { useTranslation } from 'react-i18next';
+import Cookies from 'js-cookie';
 
 function Signup() {
+    const { t } = useTranslation();
     const [user, setUser]=useState('');
     const [category, setCategory] = useState([]);
     const [alert, setAlert] = useState(null);
@@ -55,12 +58,20 @@ function Signup() {
 
     const category_url='';
         useEffect(() => {
+          const storedLanguage = Cookies.get('language');
           if(user_id != null){
             navigate("/labours");
           }
           setIsLoading(true);
             axios.get(`${category_url}`).then(response => {
-            setCategory(response?.data?.data?.en);
+              if(storedLanguage === "en"){
+                setCategory(response?.data?.data?.en);
+              }else if(storedLanguage === "ur"){
+                setCategory(response?.data?.data?.ur);
+              }else if(storedLanguage === "ar"){
+                setCategory(response?.data?.data?.ar);
+              }
+            // setCategory(response?.data?.data?.en);
             setIsLoading(false);
             }).catch(error => {
             console.error(error);
@@ -127,19 +138,19 @@ function Signup() {
   
         if(regex.test(user.email)){
           if(usertype !== "employee"){
-            return <button className="btn login-btn" type="submit" onClick={handleSubmit} >Sign Up</button>
+            return <button className="btn login-btn" type="submit" onClick={handleSubmit} >{t("signUp")}</button>
           }else if(usertype !== "employer" && user.category){
-            return <button className="btn login-btn" type="submit" onClick={handleSubmit} >Sign Up</button>
+            return <button className="btn login-btn" type="submit" onClick={handleSubmit} >{t("signUp")}</button>
           }
           else{
-            return <button className="btn login-btn" type="submit" onClick={handleSubmit} disabled >Sign Up</button>
+            return <button className="btn login-btn" type="submit" onClick={handleSubmit} disabled >{t("signUp")}</button>
           }
         }else{
-          return <button className="btn login-btn" type="submit" onClick={handleSubmit} disabled >Sign Up</button>
+          return <button className="btn login-btn" type="submit" onClick={handleSubmit} disabled >{t("signUp")}</button>
         }
 
       } else {
-        return <button className="btn login-btn"  onClick={handleSubmit} type="submit" disabled>Sign Up</button>
+        return <button className="btn login-btn"  onClick={handleSubmit} type="submit" disabled>{t("signUp")}</button>
       };
     };  
 
@@ -149,7 +160,7 @@ function Signup() {
         <div className="col-md-8">
         <Alert alert={alert}/>
           <form action="" >
-            <h2 className="text-center pt-4">Create Account</h2>
+            <h2 className="text-center pt-4">{t("createAccount")}</h2>
             {/* <div className="social-media-links d-flex justify-content-center pt-3">
             <Link to=""><i className="fa-brands fa-facebook"></i></Link>
               <Link href=""><i className="fa-brands fa-linkedin"></i></Link>
@@ -163,14 +174,14 @@ function Signup() {
                   <div className="form-check form-check-inline pr-5">
                     <div className="row .redio-buttons-image">
                       <a><img src="assets/images/employee.png" alt="" className=" labour"/></a>
-                      <label>Employer</label>
+                      <label>{t("employer")}</label>
                     </div>
                 </div>
                     <input className="form-check-input m-4" type="radio" name="usertype" id="radio1" value="employee" checked={usertype === 'employee'} onChange={handleSelect}/>
                     <div className="form-check form-check-inline">
                       <div className="row .redio-buttons-image">
                         <a><img src="assets/images/labour.png" alt="" className=" labour"/></a>
-                        <label>Labour</label>
+                        <label>{t("labour")}</label>
                       </div>
                     </div>                  
             </div>
@@ -178,19 +189,19 @@ function Signup() {
         </div>
         <div className="name-input mb-4 d-flex">
           <label><i className="fas fa-user"></i></label>
-          <input className="" type="name" name='username' placeholder="Name" value={user.username} onChange={handleChange}/>
+          <input className="" type="name" name='username' placeholder={t("name")} value={user.username} onChange={handleChange}/>
         </div>
         <div className="name-input mb-4 d-flex">
           <label><i className="far fa-envelope"></i></label>
-          <input className="" type="email" name='email' placeholder="Email" value={user.email} onChange={handleChange}/>    
+          <input className="" type="email" name='email' placeholder={t("email")} value={user.email} onChange={handleChange}/>    
         </div>
         <div className="password-input mb-4 d-flex">
           <label><i className="fas fa-lock	"></i></label>
-          <input className="password-input" type="password" name="password" id="" placeholder="Password" value={user.password} onChange={handleChange}/>
+          <input className="password-input" type="password" name="password" id="" placeholder={t("password")} value={user.password} onChange={handleChange}/>
         </div>
         <div className="name-input mb-4 d-flex">
           <label><i className="fas fa-phone"></i></label>
-          <input className="" type="number" name='phone_no' placeholder="Phone number" value={user.phone_no} onChange={handleChange}/>
+          <input className="" type="number" name='phone_no' placeholder={t("phoneNumber")} value={user.phone_no} onChange={handleChange}/>
         </div>
           
             {(() => {
@@ -199,7 +210,7 @@ function Signup() {
             <div className="form-group">
             <div className="col-md-8 mb-4">
             <select id="signup-sector" name="category" className="signup-select" placeholder='select a category' onChange={handleChange}>
-            <option value="" disabled selected hidden>Select a category</option> 
+            <option value="" disabled selected hidden>{t("selectACategory")}</option> 
             {category.map(categories => ( <option key={categories.id} value={categories.id} >{categories.name}</option>))}
             </select>
             </div>
@@ -210,7 +221,7 @@ function Signup() {
            <div className="row mb-4">
               <div className="text-left">
                  <textarea className="form-control" name="address" id="floatingTextarea2" 
-                 value={user.address} onChange={handleChange} placeholder='Write your address here'></textarea>
+                 value={user.address} onChange={handleChange} placeholder={t("writeYourAddress")}></textarea>
               </div>              
             </div>
            <div className="name-input d-flex">
@@ -220,20 +231,20 @@ function Signup() {
             <div className="row pt10">
               <div className="col-6 text-left">
                 <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"/>
-                <label>&nbsp;&nbsp;Remember me</label>
+                <label>&nbsp;&nbsp; {t("rememberMe")}</label>
               </div>
             </div>
             
             <SubmitButton/>
           </form>
         </div>
-        <Link className="text-center mb-3 mobile-screen d-none" to="/login">Already have an Account<i
-            className="ml-3 bi bi-arrow-right"></i></Link>
+        {/* <Link className="text-center mb-3 mobile-screen d-none" to="/login">Already have an Account<i
+            className="ml-3 bi bi-arrow-right"></i></Link> */}
         <div className="col-md-4 pr-0">
           <div className="details">
-            <h3 className="text-light">Welcome</h3>
-            <p className="text-light">To keep connected with us please sign-up with your personal informations </p>
-            <Link className="contact" to="/login">Already have an Account<i className="ml-3 fas fa-arrow-right"></i></Link>
+            <h3 className="text-light">{t("welcomeToKhadimHazir")}</h3>
+            <p className="text-light">{t("toKeepConnected")}</p>
+            <Link className="contact" to="/login">{t("alreadyHaveAnAccount")}<i className="ml-3 fas fa-arrow-right"></i></Link>
           </div>
         </div>
       </div>

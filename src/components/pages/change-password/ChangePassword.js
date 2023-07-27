@@ -3,8 +3,10 @@ import React, { useState, useEffect } from 'react';
 import axios from '../../../config/axios';
 import Alert from '../../Alerts/alert';
 import LoadingSpinner from "../../loader/LoadingSpinner";
+import { useTranslation } from 'react-i18next';
 
 function ChangePassword() {
+  const { t } = useTranslation();
   const [isLoading, setIsLoading] = useState(false);
   const [alert, setAlert] = useState(null);
   const navigate = useNavigate();
@@ -68,10 +70,10 @@ function ChangePassword() {
   
   function SubmitButton(){
     if (oldpassword && newpassword){
-      return <button className="btn login-btn" type="submit">Update</button>  
+      return <button className="btn login-btn" type="submit">{t("update")}</button>  
     } 
     else {
-      return <button className="btn login-btn" type="submit" disabled>Update</button>
+      return <button className="btn login-btn" type="submit" disabled>{t("update")}</button>
     };
   };  
 
@@ -81,7 +83,7 @@ function ChangePassword() {
       <div className="col-md-8">
       <Alert alert={alert}/>
         <form onSubmit={handleSubmit}  method="POST">
-          <h2 className="text-center mb-4 pt-4">Password Update</h2>
+          <h2 className="text-center mb-4 pt-4">{t("passwordUpdate")}</h2>
           {/* <div className="social-media-links d-flex justify-content-center pt-3">
           <Link to=""><i className="fa-brands fa-facebook"></i></Link>
             <Link href=""><i className="fa-brands fa-linkedin"></i></Link>
@@ -94,7 +96,7 @@ function ChangePassword() {
           type="password"
           id="oldpassword"
           name="oldpassword"
-          placeholder="Enter your current password"
+          placeholder={t("enterCurrentPassword")}
           value={oldpassword}
           onChange={handleInputChange}
         />
@@ -105,7 +107,7 @@ function ChangePassword() {
           type="password"
           id="newpassword"
           name="newpassword"
-          placeholder="Enter your New password"
+          placeholder={t("enterNewPassword")}
           value={newpassword}
           onChange={handlePasswordChange}
         />
@@ -115,9 +117,9 @@ function ChangePassword() {
       </div>
       <div className="col-md-4 pl-0">
         <div className="login-details">
-          <h3 className="text-light">Welcome to Khadim Hazir</h3>
-          <p className="text-light">If you want to update your profile go to</p>
-          <Link className="contact" to="/profile-update">Profile Update<i className="ml-3 fas fa-arrow-right"></i></Link>
+          <h3 className="text-light">{t("welcomeToKhadimHazir")}</h3>
+          <p className="text-light">{t("ifYouWantToUpdateProfile")}</p>
+          <Link className="contact" to="/profile-update">{t("profileUpdate")}<i className="ml-3 fas fa-arrow-right"></i></Link>
         </div>
       </div>
     </div>

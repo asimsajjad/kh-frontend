@@ -1,21 +1,43 @@
+// index.js
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
+import { LanguageProvider } from './context/LanguageContext';
+
+import i18n from 'i18next';
+import { initReactI18next } from 'react-i18next';
+import enTranslation from './locales/en.js';
+import arTranslation from './locales/ar.js';
+import urTranslation from './locales/ur.js';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-root.render(
-  <React.StrictMode> 
+i18n
+  .use(initReactI18next)
+  .init({
+    resources: {
+      en: { translation: enTranslation },
+      ar: { translation: arTranslation },
+      ur: { translation: urTranslation },
+    },
+    lng: 'en', // Set the default language
+    fallbackLng: 'en', // If translation not found, fallback to English
+    interpolation: {
+      escapeValue: false, // React already escapes variables
+    },
+  });
+
+  root.render(
+  <React.StrictMode>
     <BrowserRouter>
-      <App/>
-    </BrowserRouter> 
-  </React.StrictMode>
+      <LanguageProvider>
+        <App />
+      </LanguageProvider>
+    </BrowserRouter>
+  </React.StrictMode>,
+  // document.getElementById('root')
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();

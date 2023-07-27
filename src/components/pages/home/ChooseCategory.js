@@ -1,16 +1,27 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from '../../../config/axios';
 import { BrowserRouter as Router,Routes, Route, Link } from 'react-router-dom';
-
+import { useTranslation } from 'react-i18next';
+import Cookies from 'js-cookie';
 
 function ChooseCategory() {
+  const { t, i18n } = useTranslation();
   const [categories, setcategories] = useState([]);
+  // const language  = useContext(LanguageContext);
+ 
   useEffect(() => {
+    const storedLanguage = Cookies.get('language');
     const formData = new FormData()
     axios.get('sevenCategories/8', formData,)
       .then(response => {
-        setcategories(response?.data?.data?.en);
-      }).then(console.log(categories))
+        if(storedLanguage === "en"){
+          setcategories(response?.data?.data?.en);
+        }else if(storedLanguage === "ar"){
+          setcategories(response?.data?.data?.ar);
+        }else if(storedLanguage === "ur"){
+          setcategories(response?.data?.data?.ur);
+        }
+      })
       .catch(error => {
         console.error(error);
       });
@@ -18,7 +29,7 @@ function ChooseCategory() {
 
   return (<>
     <div className="container mb-5">
-      <h1 className="Category">Choose a <Link to='/categories'><span style={{color: "#673AB7"}}> Category</span> </Link></h1>
+      <h1 className="Category" dir={i18n.language === 'en' ? 'ltr' : 'rtl'}>{t("choose")} </h1>
     </div>
     <div className="container"> 
     <div className="row">
@@ -43,7 +54,7 @@ function ChooseCategory() {
     </div>
     <div className="container mt-3">
     <div className="col-md-12  text-center text-center">
-    <Link to="/categories"><button className="btn Categoryies-btn align-self-center">More Categories</button></Link>
+    <Link to="/categories"><button className="btn Categoryies-btn align-self-center">{t("moreCategories")}</button></Link>
     </div>
   </div> 
     </>

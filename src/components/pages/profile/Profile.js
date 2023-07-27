@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import axios from '../../../config/axios';
 import { BrowserRouter as Router,Routes, Route, Link, useParams  } from 'react-router-dom';
 import LoadingSpinner from "../../loader/LoadingSpinner";
+import { useTranslation } from 'react-i18next';
 
 function Info() {
+    const { t } = useTranslation();
     const [profile, setProfile] = useState([]);
     const {type} = useParams();
     const user_id = localStorage.getItem('user_id')
@@ -49,7 +51,7 @@ function Info() {
                         </div>
                         <div className="col-lg-5 pt-3">
                         <div className="col-md-12 ">
-                                 <h1>About</h1>
+                                 <h1>{t("profile")}</h1>
                          <div className="row pt-3">
                          <div className="col-md-4 ">
                           <p className="p1">{info.username}</p>
@@ -58,23 +60,22 @@ function Info() {
             <p className='p1'> <img src={`${process.env.REACT_APP_BASE_URL}assets/images/location.png`} className='location_icon '></img>Pakistan</p> 
             </div>
             </div>
-                            <p className="p2">{info.category_name}</p>
-                            {(() => {
-                                if (user_id == info.user_id){
-                                    return (<p></p>)
-                                }else{
-                                    return (
-                                    <div className="col-lg-6">
-                                    <button type="button" className={isActive ? 'btn btn-success-hide' : 'btn btn-success'} style={isActive ? {display : 'none'} : {display : 'block'}}  onClick={handleClick}>Call Now</button>
-                                    {description && (<button type="button" style={{background:'none', border:'none'}} onClick={handleButton}><p><b>{info.phone_no}</b></p></button>)}
-                                    </div>)}  
-                                                
+            <p className="p2">{info.category_name}</p>
+                {(() => {
+                        if (user_id == info.user_id){
+                            return (<p></p>)
+                        }else{
+                            return (
+                            <div className="col-lg-6">
+                            <button type="button" className={isActive ? 'btn btn-success-hide' : 'btn btn-success'} style={isActive ? {display : 'none'} : {display : 'block'}}  onClick={handleClick}>{t("callNow")}</button>
+                            {description && (<button type="button" style={{background:'none', border:'none'}} onClick={handleButton}><p><b>{info.phone_no}</b></p></button>)}
+                            </div>)}                                              
                             })()}
         </div>
         <div className="col">
             <div className="row pt-3">
                 <div className="col-md-3">
-                    <p className="p4">Email:</p>
+                    <p className="p4">{t("email")}</p>
                 </div>
                 <div className="col-md-3 ml-5">
                     <p className="p4">{info.email}</p>
@@ -83,16 +84,17 @@ function Info() {
         </div>
                         <div className="row">
                 <div className="col-md-3">
-                    <p className="p4">Phone:</p>
+                    <p className="p4">{t("phone")}</p>
                 </div>
                 <div className="col-md-3 ml-5">
                     <p className="p4">{info.phone_no}</p>
+                    
                 </div>
             </div>
             <div className="col">
             <div className="row">
                 <div className="col-md-3 ">
-                    <p className="p4">Address:</p>
+                    <p className="p4">{t("employeeAdress")}</p>
                 </div>
                 <div className="col-md-9">
                     <p className="p4">{info.address}</p>
@@ -101,9 +103,9 @@ function Info() {
         </div>
                        </div>  
                     <div className="col-lg-4 profile-text  pt-5 text-center text-white">
-                       <h3>Welcome to khadim hazir</h3> 
-                       <p className="text-light mt-3">You can contact with me on the phone number </p>
-                       <p className="text-light">shown in the about list</p>
+                       <h3>{t("welcomeToKhadimHazir")}</h3> 
+                       <p className="text-light mt-3">{t("contactMe")} </p>
+                       <p className="text-light">{t("showInTheList")}</p>
                     </div>
                 </div> 
         {/* <div className="col-12 pt-5">

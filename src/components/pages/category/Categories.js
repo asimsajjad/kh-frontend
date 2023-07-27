@@ -2,8 +2,11 @@ import React, { useState, useEffect } from 'react';
 import axios from '../../../config/axios';
 import { BrowserRouter as Router,Routes, Route, Link} from 'react-router-dom';
 import LoadingSpinner from "../../loader/LoadingSpinner";
+import { useTranslation } from 'react-i18next';
+import Cookies from 'js-cookie';
 
 function Categories() {
+  const { t } = useTranslation();
   const [categories, setCategories] = useState([]);
   const [currentPage, setCurrenPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
@@ -13,10 +16,18 @@ function Categories() {
 
   const url='';
   useEffect(() => {
+    const storedLanguage = Cookies.get('language');
     setIsLoading(true)
     axios.get(`${url}`)
       .then(response => {
-        setCategories(response?.data?.data?.en);
+        if(storedLanguage === "en"){
+          setCategories(response?.data?.data?.en);
+        }else if(storedLanguage === "ur"){
+          setCategories(response?.data?.data?.ur);
+        }else if(storedLanguage === "ar"){
+          setCategories(response?.data?.data?.ar);
+        }
+        // setCategories(response?.data?.data?.en);
         setIsLoading(false)
       })
       .catch(error => {
@@ -47,7 +58,7 @@ function Categories() {
       const renderUser = (<div>
         <div className="container mt-5">
       <div className="col-md-12">
-          <h1 className="cat text-center">Categories</h1>
+          <h1 className="cat text-center">{t("categories")}</h1>
       </div>
       </div>
       <div className="container pt-3 ">

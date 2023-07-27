@@ -3,8 +3,10 @@ import axios from '../../../config/axios';
 import Alert from '../../Alerts/alert';
 import { BrowserRouter as Router,Routes, Route, Link  } from 'react-router-dom';
 import LoadingSpinner from "../../loader/LoadingSpinner";
+import { useTranslation } from 'react-i18next';
 
 function Contact() {
+  const { t, i18n } = useTranslation();
   const [contact, setContact] = useState('');
   const [alert, setAlert] = useState(null);
   const url='contactUs';
@@ -59,9 +61,9 @@ function Contact() {
 
   function SubmitButton(){
     if (contact.name && contact.email && contact.comments){
-      return <button className="btn login-btn" type="submit">Submit</button>
+      return <button className="btn login-btn" type="submit">{t("submit")}</button>
     } else {
-      return <button className="btn login-btn" type="submit" disabled>Submit</button>
+      return <button className="btn login-btn" type="submit" disabled>{t("submit")}</button>
     };
   };
 
@@ -71,20 +73,20 @@ function Contact() {
       <div className="col-md-8 login-form1">
       <Alert alert={alert}/>
         <form onSubmit={handleSubmit}> 
-          <h2 className="text-center">Contact Us</h2>
-          <div className="name-input mb-4 d-flex mt-3">
-            <label className="form-label">Name: </label>
-            <input type="text" name="name" placeholder='Enter your name here' className="form-control" id="formGroupExampleInput" value={contact.name} onChange={handleChange}
+          <h2 className="text-center">{t("contactUs")}</h2>
+          <div className="name-input mb-4 d-flex mt-3" dir={i18n.language === 'en' ? 'ltr' : 'rtl'}>
+            <label className="form-label" >{t("name")}</label>
+            <input type="text" name="name" placeholder={t("enterName")} className="form-control" id="formGroupExampleInput" value={contact.name} onChange={handleChange}
           />
           </div>
-          <div className="password-input d-flex">
-            <label className="form-label ">Email: </label>
-            <input type="email" className="form-control"  placeholder='Enter your email here' name="email" id="formGroupExampleInput2" value={contact.email} onChange={handleChange}
+          <div className="password-input d-flex" dir={i18n.language === 'en' ? 'ltr' : 'rtl'}>
+            <label className="form-label ">{t("email")}</label>
+            <input type="email" className="form-control"  placeholder={t("enterEmail")} name="email" id="formGroupExampleInput2" value={contact.email} onChange={handleChange}
         />
           </div>
           <div className="row">
-            <div className="col-12 text-left mt-3">
-              <label className="text-left comment" >What can we help you with?</label>
+            <div  className={i18n.language === 'en' ? 'col-12 text-left mt-3' : 'col-12 text-right mt-3'}>
+              <label className="text-left comment">{t("question1")}</label>
                <textarea className="form-control" name="comments" id="floatingTextarea2" value={contact.comments} onChange={handleChange}
           ></textarea>
             </div>              
@@ -94,16 +96,16 @@ function Contact() {
       </div>
       <div className="col-md-4 pl-0">
         <div className="login-details">
-          <h3 className="text-light ">Welcome to Khadim Hazir</h3>
-          <p className="text-light">If you want to find more features please</p>
+          <h3 className="text-light ">{t("welcomeToKhadimHazir")}</h3>
+          <p className="text-light">{t("moreFeatures")}</p>
           {(() => {
             if (user_id == null){
                 return (
-                  <p><Link to="/login" className='contact'> Login<i className="ml-3 fas fa-arrow-right"></i></Link></p>     
+                  <p><Link to="/login" className='contact'>{t("login")}<i className="ml-3 fas fa-arrow-right"></i></Link></p>     
                 )
             }else{
               return (
-                <p><Link to="/" className='contact'> Visit Home Page<i className="ml-3 fas fa-arrow-right"></i></Link></p>
+                <p><Link to="/" className='contact'>{t("visitOurPage")}<i className="ml-3 fas fa-arrow-right"></i></Link></p>
               )
               
             }              

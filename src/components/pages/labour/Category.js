@@ -3,24 +3,33 @@ import axios from '../../../config/axios';
 import { BrowserRouter as Router,Routes, Route, Link, useParams  } from 'react-router-dom';
 import Slider from "react-slick";
 import LoadingSpinner from "../../loader/LoadingSpinner";
+import { useTranslation } from 'react-i18next';
+import Cookies from 'js-cookie';
 
   function Categories() {
-        const [labour, setLabour] = useState([]);
-        const [category, setCategory] = useState([]);
-        const {type} = useParams();
-        const [isLoading, setIsLoading] = useState(false);
-
-        const [currentPage, setCurrenPage] = useState(1);
-        const recordsPerPage= 10;
-        const lastIndex = currentPage * recordsPerPage;
-        const firstIndex = lastIndex - recordsPerPage;
-         
-        const user_id = localStorage.getItem('user_id');
-        const category_url='';
+    const { t } = useTranslation();
+    const [labour, setLabour] = useState([]);
+    const [category, setCategory] = useState([]);
+    const {type} = useParams();
+    const [isLoading, setIsLoading] = useState(false);
+    const [currentPage, setCurrenPage] = useState(1);
+    const recordsPerPage= 10;
+    const lastIndex = currentPage * recordsPerPage;
+    const firstIndex = lastIndex - recordsPerPage;
+    const user_id = localStorage.getItem('user_id');
+    const category_url='';
         useEffect(() => {
           setIsLoading(true);
+          const storedLanguage = Cookies.get('language');
             axios.get(`${category_url}`).then(response => {
-            setCategory(response?.data?.data?.en);
+              if(storedLanguage === "en"){
+                setCategory(response?.data?.data?.en);
+              }else if(storedLanguage === "ur"){
+                setCategory(response?.data?.data?.ur);
+              }else if(storedLanguage === "ar"){
+                setCategory(response?.data?.data?.ar);
+              }
+            // setCategory(response?.data?.data?.en);
             setIsLoading(false);
             //loadEmployees(type);
             }).catch(error => {
@@ -32,16 +41,24 @@ import LoadingSpinner from "../../loader/LoadingSpinner";
        );
 
     function loadEmployees(slug=type){
+      const storedLanguage = Cookies.get('language');
         setIsLoading(true);
         const formData = new FormData()
         formData.append('user_id', user_id)
         formData.append('category_id', '')
         formData.append('category_slug', slug)
         const url='employeesListing';
-        axios.post(`${url}`, formData)
+        axios.post(`${url}/multilang`, formData)
         
         .then(response => {
-        setLabour(response?.data?.data);
+        // setLabour(response?.data?.data);
+        if(storedLanguage === "en"){
+          setLabour(response?.data?.data?.en);
+        }else if(storedLanguage === "ur"){
+          setLabour(response?.data?.data?.ur);
+        }else if(storedLanguage === "ar"){
+          setLabour(response?.data?.data?.ar);
+        }
         setCurrenPage(1);
         setIsLoading(false);
         })
@@ -50,6 +67,7 @@ import LoadingSpinner from "../../loader/LoadingSpinner";
         setIsLoading(false);
         });
     }
+    
     const records = labour.slice(firstIndex, lastIndex);
     const npage = Math.ceil(labour.length/recordsPerPage);
     const numbers = [...Array(npage + 1).keys()].slice(1); 
@@ -111,7 +129,7 @@ import LoadingSpinner from "../../loader/LoadingSpinner";
                     <div className="category-tabs justify-content-left">
                     <Slider {...settings}>
                         <Link to="/labours" className={`btn tab-btn2 mr-4 ml-4  ${!type ? "active" : ""}`} 
-                        onClick={()=>loadEmployees('')}  role="button">All</Link>
+                        onClick={()=>loadEmployees('')}  role="button">{t("all")}</Link>
                         
                         {category.map(category_data => (
                           <div key={category_data.id}>
@@ -139,15 +157,15 @@ import LoadingSpinner from "../../loader/LoadingSpinner";
                                 <p><i className="bi mr-2 bi-geo-alt-fill fas fa-location-arrow"></i>Pakistan</p>
                             </div>
                             <div className="available d-flex">
-                                <Link className="" to="">Available</Link> 
+                                <Link className="" to="">{t("availible")}</Link> 
                                 {(() => {
                                   if (user_id == null){
                                     return (
-                                    <Link to="/login" className="btn profile-btn">Profile</Link>
+                                    <Link to="/login" className="btn profile-btn">{t("profile")}</Link>
                                     )
                                   }else{
                                     return (
-                                    <Link to={`/profile/${labour_data.slug}`} className="btn profile-btn">Profile</Link>
+                                    <Link to={`/profile/${labour_data.slug}`} className="btn profile-btn">{t("profile")}</Link>
                                     )
                                   }              
                                 })()}
@@ -164,7 +182,7 @@ import LoadingSpinner from "../../loader/LoadingSpinner";
           return (
         <ul className='pagination' style={{justifyContent: 'center'}}>
       <li className='page-item'>
-      <Link to="/labours" className="page-link" onClick={prePage}>Prev</Link>
+      <Link to="/labours" className="page-link" onClick={prePage}>{t("previous")}</Link>
       </li>
       {
         numbers.map((n, i) =>(
@@ -174,7 +192,7 @@ import LoadingSpinner from "../../loader/LoadingSpinner";
         ))
       }
        <li className='page-item'>
-      <Link to="/labours" className="page-link" onClick={nextPage}>Next</Link>
+      <Link to="/labours" className="page-link" onClick={nextPage}>{t("next")}</Link>
       </li>
     </ul>
     )

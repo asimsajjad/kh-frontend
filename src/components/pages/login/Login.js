@@ -3,8 +3,10 @@ import React, { useState, useEffect } from 'react';
 import axios from '../../../config/axios';
 import Alert from '../../Alerts/alert';
 import LoadingSpinner from "../../loader/LoadingSpinner";
+import { useTranslation } from 'react-i18next';
 
 function Login() {
+  const { t } = useTranslation();
   const [user, setUser]=useState('');
   const [alert, setAlert] = useState(null);
   const navigate = useNavigate();
@@ -74,7 +76,7 @@ function Login() {
       <div className="col-md-8 login-form1">
       <Alert alert={alert}/>
         <form onSubmit={handleSubmit}>
-          <h2 className="text-center pt-4">Login to your Account</h2>
+          <h2 className="text-center pt-4">{t("loginToYourAccount")}</h2>
           <div className="social-media-links d-flex justify-content-center pt-3">
           {/* <Link to=""><i class="fa-brands fa-facebook"></i></Link>
             <Link href=""><i class="fa-brands fa-linkedin"></i></Link>
@@ -82,29 +84,29 @@ function Login() {
           </div>
           <div className="name-input mb-3 d-flex mt-5">
             <label><i className="far fa-envelope"></i></label>
-            <input className="" name="email" type="email" placeholder="Email" value={user.email} onChange={handleChange}/>
+            <input className="" name="email" type="email" placeholder={t("email")} value={user.email} onChange={handleChange}/>
           </div>
           <div className="password-input d-flex">
             <label><i className="fas fa-lock	"></i></label>
-            <input className="password-input" type="password" name="password" id="" placeholder="Password" value={user.password} onChange={handleChange}/>
+            <input className="password-input" type="password" name="password" id="" placeholder={t("password")} value={user.password} onChange={handleChange}/>
           </div>
           <div className="row">
             <div className="col-6 text-left mt-2">
               <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"/>
-              <label>&nbsp;&nbsp;Remember me</label>
+              <label>&nbsp;&nbsp;{t("rememberMe")}</label>
             </div>
             <div className="col-6 text-right mt-2">
-              <Link to="/forgot-password">Forgot Password<i className="ml-3 bi bi-arrow-right"></i></Link>
+              <Link to="/forgot-password">{t("forgotPassword")}<i className="ml-3 bi bi-arrow-right"></i></Link>
             </div>
           </div>
-          <button className="btn login-btn" type='submit'>Log in</button>
+          <button className="btn login-btn" type='submit'>{t("login")}</button>
         </form>
       </div>
       <div className="col-md-4 pl-0">
         <div className="login-details">
-          <h3 className="text-light">Welcome to Khadim Hazir</h3>
-          <p className="text-light">To enjoy all features please login</p>
-          <Link className="contact" to="/signup">Or Register here<i className="ml-3 fas fa-arrow-right"></i></Link>
+          <h3 className="text-light">{t("welcomeToKhadimHazir")}</h3>
+          <p className="text-light">{t("toEnjoyAllFeatures")}</p>
+          <Link className="contact" to="/signup">{t("orRegisterHere")}<i className="ml-3 fas fa-arrow-right"></i></Link>
         </div>
       </div>
     </div>
