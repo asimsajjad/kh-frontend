@@ -73,12 +73,12 @@ function ChangePassword() {
   };
   
   function SubmitButton(){
-    if (oldpassword && newpassword){
+    // if (oldpassword && newpassword){
       return <button className="btn login-btn" type="submit">{t("update")}</button>  
-    } 
-    else {
-      return <button className="btn login-btn" type="submit" disabled>{t("update")}</button>
-    };
+    // } 
+    // else {
+      // return <button className="btn login-btn" type="submit" disabled>{t("update")}</button>
+    // };
   };  
 
   const renderUser =(<section className="login-section pl-3">  
@@ -104,6 +104,7 @@ function ChangePassword() {
           placeholder={t("enterCurrentPassword")}
           value={oldpassword}
           onChange={handleInputChange}
+          required
         />
       </div>
       <div className="name-input mb-4 d-flex">
@@ -114,7 +115,7 @@ function ChangePassword() {
           name="newpassword"
           placeholder={t("enterNewPassword")}
           value={newpassword}
-          onChange={handlePasswordChange}
+          onChange={handlePasswordChange} required
         />
       </div>
       </div>

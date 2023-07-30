@@ -666,3 +666,41 @@ a.contact:hover {
     }
 }
 .widthauto{width: auto !important;}
+
+.rtl {
+    margin-left: -20px;
+    border-radius: 4px 0px 0px 4px;
+}
+
+/* :required {
+    background: red;
+  } */
+  /* input:required {
+    box-shadow: 4px 4px 20px rgba(200, 0, 0, 0.85);
+  } */
+  
+  /**
+   * style input elements that have a required
+   * attribute and a focus state
+   */
+input:required:focus {
+    border: 1px solid red;
+    outline: none;
+  }
+ textarea:required:focus {
+    border: 1px solid red;
+    outline: none;
+  }
+  
+  select#signup-sector:required:focus {
+    border: 1px solid red;
+    outline: none;
+  }
+  
+  /**
+   * style input elements that have a required
+   * attribute and a hover state
+   */
+  input:required:hover {
+    opacity: 1;
+  }

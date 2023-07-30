@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from '../../../config/axios';
-import { BrowserRouter as Router,Routes, Route, Link, useParams  } from 'react-router-dom';
+import { BrowserRouter as Router,Routes, Route, Link, useParams, useNavigate  } from 'react-router-dom';
 import Slider from "react-slick";
 import LoadingSpinner from "../../loader/LoadingSpinner";
 import { useTranslation } from 'react-i18next';
@@ -8,6 +8,7 @@ import Cookies from 'js-cookie';
 
   function Categories() {
     const { t } = useTranslation();
+    const navigate = useNavigate();
     const [labour, setLabour] = useState([]);
     const [category, setCategory] = useState([]);
     const {type} = useParams();
@@ -17,6 +18,9 @@ import Cookies from 'js-cookie';
     const lastIndex = currentPage * recordsPerPage;
     const firstIndex = lastIndex - recordsPerPage;
     const user_id = localStorage.getItem('user_id');
+    const employer_latitude = localStorage.getItem('employer_latitude');
+    const employer_longitude = localStorage.getItem('employer_longitude');
+
     const category_url='';
         useEffect(() => {
           setIsLoading(true);
@@ -43,10 +47,22 @@ import Cookies from 'js-cookie';
     function loadEmployees(slug=type){
       const storedLanguage = Cookies.get('language');
         setIsLoading(true);
+        
         const formData = new FormData()
-        formData.append('user_id', user_id)
+        if(!user_id){
+          formData.append('user_id', '')
+        }else{
+          formData.append('user_id', user_id)
+        }
         formData.append('category_id', '')
         formData.append('category_slug', slug)
+        if(employer_latitude != null){
+        //   formData.append('employer_latitude', '')
+        //   formData.append('employer_longitude', '')
+        // }else{
+          formData.append('employer_latitude', employer_latitude)
+          formData.append('employer_longitude', employer_longitude)
+        }
         const url='employeesListing';
         axios.post(`${url}/multilang`, formData)
         
@@ -54,6 +70,7 @@ import Cookies from 'js-cookie';
         // setLabour(response?.data?.data);
         if(storedLanguage === "en"){
           setLabour(response?.data?.data?.en);
+          // console.log(response?.data?.data?.en);
         }else if(storedLanguage === "ur"){
           setLabour(response?.data?.data?.ur);
         }else if(storedLanguage === "ar"){
@@ -121,7 +138,8 @@ import Cookies from 'js-cookie';
           }
         ]
       };
-
+      
+      // console.log(labour);
       const renderUser=(<div>
         <div className="container top-btns pt-5">
             <div className="row">
@@ -151,11 +169,25 @@ import Cookies from 'js-cookie';
                     <div className="profile-card d-flex">
                       <img src={labour_data.image ? `${process.env.REACT_APP_RESOURCES_URL}images/${labour_data.image}` : "assets/images/manager.png"} className="card-img-top rounded-circle" />    
                         <div className="profile-card-body">
-                            <h5 className="card-title plum s">{labour_data.category_name}</h5>
-                            <div className="name d-flex">
-                                <p className="name-para"><i className="bi mr-2 bi-person-fill fas fa-user"></i>{labour_data.username}</p>
-                                <p><i className="bi mr-2 bi-geo-alt-fill fas fa-location-arrow"></i>Pakistan</p>
-                            </div>
+                        
+                                <h5 className="card-title plum s"><i className="bi mr-2 bi-person-fill fas fa-user"></i>{labour_data.username}</h5>
+                                <div className="name d-flex">
+                            <p className="name-para">{labour_data.category_name}</p>
+                                {(() => {
+                                  if (!labour_data.country){
+                                    return (
+                                      
+                            <p><i className="bi mr-2 bi-geo-alt-fill fas fa-location-arrow"></i>Pakistan</p>
+                                    )
+                                  }else if(!labour_data.distance){
+                                    return (
+                            <p><i className="bi mr-2 bi-geo-alt-fill fas fa-location-arrow"></i>{labour_data.country}</p>
+                                    )
+                                  }else{
+                                    return (<p><i className="bi mr-2 bi-geo-alt-fill fas fa-location-arrow"></i>{labour_data.country}, {(labour_data.distance)} km</p>)
+                                  }
+                                })()}
+                                </div>  
                             <div className="available d-flex">
                                 <Link className="" to="">{t("availible")}</Link> 
                                 {(() => {

@@ -4,6 +4,7 @@ import { BrowserRouter as Router,Routes, Route, Link, useNavigate} from 'react-r
 import LoadingSpinner from "../../loader/LoadingSpinner";
 import { useTranslation } from 'react-i18next';
 import Cookies from 'js-cookie';
+import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
 
 function ProfileUpdate() {
     const { t, i18n } = useTranslation();
@@ -13,7 +14,23 @@ function ProfileUpdate() {
     const [selectedImage, setSelectedImage] = useState(null);
     const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(false);
+    const [addressInput, setAddressInput] = useState('');
+    // const [selectedAddress, setSelectedAddress] = useState('');
+    const [coordinates, setCoordinates] = useState({ lat: 0, lng: 0 });
 
+    // Handler for address suggestions selection
+    const handleSelectAddress = async (address) => {
+      try {
+        const results = await geocodeByAddress(address);
+        const latLng = await getLatLng(results[0]);
+        // Do something with latLng if needed.
+        setAddressInput(address); // Update the address input value
+        setCoordinates(latLng);
+        handleEdit(0, 'address', address); // Update the address field in the profile state
+      } catch (error) {
+        console.error('Error selecting address', error);
+      }
+    };
     const profile_url='profileData';
     const update_url='updateProfile';
 
@@ -89,12 +106,14 @@ setSelectedImage(e.target.files[0]);
           formData.append('phone_no',  profileupdate[0].phone_no,)
           formData.append('address',  profileupdate[0].address,)
           formData.append('category_id',  profileupdate[0].category_id,)
+          formData.append('latitude', coordinates.lat,)
+          formData.append('longitude', coordinates.lng,)
           if(selectedImage){
             formData.append('image',  selectedImage)
           }
 
           const user=(profileupdate[0].username).replace(/ /g, '-');
-          const user_slug=user.toLowerCase();
+          // const user_slug=user.toLowerCase();
             axios.post(`${update_url}`, formData, config)
             .then(response =>{
               if(profile[0].user_type === 'employer'){
@@ -156,13 +175,56 @@ setSelectedImage(e.target.files[0]);
           )
         } 
       })()}
-           <div className="row mb-4">
+           {/* <div className="row mb-4">
               <div className="text-left">
                  <textarea className="form-control" type="name" name="address" id="floatingTextarea2" 
                  value={info.address} onChange={(event) => handleEdit(index, 'address', event.target.value)} placeholder={t("writeYourAddress")}></textarea>
+                 
               </div>              
-            </div>
-           </div>
+    </div>*/}
+            <div className="row mb-4">
+          <div className="text-left">
+          <PlacesAutocomplete
+              value={addressInput}
+              onChange={setAddressInput}
+              onSelect={handleSelectAddress}
+            >
+              {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
+                <div>
+                  {/* Corrected: Pass inputProps to input element */}
+                  <input
+                    {...getInputProps({
+                      placeholder: 'Enter Your Address',
+                      className: 'form-control', // Add the necessary class for proper styling
+                    })}
+                    type="name"
+                    name="address"
+                    id="floatingTextarea2"
+                    value={addressInput}
+                  />
+                  <div>
+                    {loading && <div>Loading...</div>}
+                    {suggestions.map((suggestion, index) => {
+                      const style = {
+                        backgroundColor: suggestion.active ? '#41b6e6' : '#fff',
+                        cursor: 'pointer',
+                      };
+                      return (
+                        <div
+                          key={index}
+                          {...getSuggestionItemProps(suggestion, { style })}
+                        >
+                          {suggestion.description}
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
+            </PlacesAutocomplete>
+          </div>
+        </div>
+           </div> 
             <div className='row'>
                 <div className='profile-image'>
                   <img src={info.image ? `${process.env.REACT_APP_RESOURCES_URL}images/${info.image}` : `${process.env.REACT_APP_BASE_URL}assets/images/manager.png`} alt="" className="img-fluid update m-0" />

@@ -59,10 +59,11 @@ export default{
   labour:"Labour",
   phoneNumber:"Phone number",
   selectACategory:"Select a category",
-  writeYourAddress:"Write your address here",
+  writeYourAddress:"Write your address here (required)",
   toKeepConnected:"To keep connected with us please sign-up with your personal informations ",
   alreadyHaveAnAccount:"Already have an Account",
   signUp:"Sign Up",
+  selectACountry:"Select a country",
 
   profile:"Profile",
   callNow:"Call Now",

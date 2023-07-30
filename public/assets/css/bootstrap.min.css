@@ -7016,6 +7016,12 @@ button.close {
 .w-50 {
     width: 50% !important
 }
+.w-66 {
+    width: 66% !important
+}
+.w-67 {
+    width: 67% !important
+}
 
 .w-75 {
     width: 75% !important
@@ -7268,7 +7274,13 @@ button.close {
 .m-5 {
     margin: 3rem !important
 }
+.ml-8 {
+    margin-left: 8.2rem !important
+}
 
+.ml-7 {
+    margin-left: 7.9rem !important
+}
 .m-auto {
     margin: auto !important
 }
@@ -7366,7 +7378,9 @@ button.close {
 .mt-5 {
     margin-top: 3rem !important
 }
-
+.mt-6 {
+    margin-top: 3.5rem !important
+}
 .mt-auto {
     margin-top: auto !important
 }

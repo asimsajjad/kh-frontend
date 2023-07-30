@@ -4,6 +4,7 @@ import axios from '../../../config/axios';
 import Alert from '../../Alerts/alert';
 import LoadingSpinner from "../../loader/LoadingSpinner";
 import { useTranslation } from 'react-i18next';
+// import { geocodeByAddress, getLatLng } from 'react-google-places-autocomplete'; // Import the necessary functions from the library
 
 function Login() {
   const { t, i18n } = useTranslation();
@@ -14,7 +15,31 @@ function Login() {
   const [isLoading, setIsLoading] = useState(false);
   const user_id = localStorage.getItem('user_id');
 
- 
+  const [userLocation, setUserLocation] = useState(null);
+
+  useEffect(() => {
+    if ("geolocation" in navigator) {
+      // const options = {
+      //   enableHighAccuracy: true,
+      //   timeout: 5000,
+      //   maximumAge: 0,
+      // };
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude } = position.coords;
+          setUserLocation({ latitude, longitude });
+        },
+        (error) => {
+          console.error(error.message);
+        },
+        // options
+      );
+    } else {
+      console.log("Geolocation is not available in this browser.");
+    }
+  }, []);
+
+// console.log(userLocation); 
   useEffect(() => {
     if(user_id != null){
       navigate('/labours');
@@ -46,7 +71,7 @@ function Login() {
         formData.append('password',  user.password,)
         axios.post(`${url}`, formData)
         .then(response => {
-          // console.log(response?.data?.data);
+          // console.log(userLocation);
           setIsLoading(false);
           if(response?.data?.message?.success){
              localStorage.setItem('user_id', response?.data?.data[0].user_id)
@@ -58,6 +83,8 @@ function Login() {
             }else{                
               // window.location.href = "labours";
               navigate("/labours");
+               localStorage.setItem('employer_latitude', userLocation.latitude)
+             localStorage.setItem('employer_longitude', userLocation.longitude)
             }
           }else{
             // showAlert(response?.data?.message?.msg, "danger")
@@ -88,11 +115,11 @@ function Login() {
           <div dir={i18n.language === 'en' ? 'ltr' : 'rtl'}>
           <div className="name-input mb-3 d-flex mt-5">
             <label  className={i18n.language === 'en' ? "": "pr-3 pl-2"}><i className="far fa-envelope"></i></label>
-            <input className="" name="email" type="email" placeholder={t("email")} value={user.email} onChange={handleChange}/>
+            <input className="" name="email" type="email" placeholder={t("email")} value={user.email} onChange={handleChange} required pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"/>
           </div>
           <div className="password-input d-flex">
             <label  className={i18n.language === 'en' ? "": "pr-3 pl-2"}><i className="fas fa-lock	"></i></label>
-            <input className="password-input" type="password" name="password" id="" placeholder={t("password")} value={user.password} onChange={handleChange}/>
+            <input className="password-input" type="password" name="password" id="" placeholder={t("password")} value={user.password} onChange={handleChange} required/>
           </div>
           <div className="row">
             <div className={i18n.language === 'en' ? "col-6 text-left mt-2" : "col-6 text-right mt-2"}>

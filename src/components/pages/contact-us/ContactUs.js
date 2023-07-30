@@ -60,11 +60,11 @@ function Contact() {
   };
 
   function SubmitButton(){
-    if (contact.name && contact.email && contact.comments){
+    // if (contact.name && contact.email && contact.comments){
       return <button className="btn login-btn" type="submit">{t("submit")}</button>
-    } else {
-      return <button className="btn login-btn" type="submit" disabled>{t("submit")}</button>
-    };
+    // } else {
+      // return <button className="btn login-btn" type="submit" disabled>{t("submit")}</button>
+    // };
   };
 
   const renderUser =(<section className="login-section pl-3">  
@@ -76,18 +76,18 @@ function Contact() {
           <h2 className="text-center">{t("contactUs")}</h2>
           <div className="name-input mb-4 d-flex mt-3" dir={i18n.language === 'en' ? 'ltr' : 'rtl'}>
             <label className={i18n.language === 'en' ? 'form-label' : 'form-label mr-2'}>{t("name")}</label>
-            <input type="text" name="name" placeholder={t("enterName")} className="form-control" id="formGroupExampleInput" value={contact.name} onChange={handleChange}
+            <input type="text" name="name" placeholder={`${t("enterName")} (required)`} className="form-control" id="formGroupExampleInput" value={contact.name} onChange={handleChange} required
           />
           </div>
           <div className="password-input d-flex" dir={i18n.language === 'en' ? 'ltr' : 'rtl'}>
             <label className={i18n.language === 'en' ? 'form-label' : 'form-label mr-2'} style={{ width: '55px'}}>{t("email")}</label>
-            <input type="email" className="form-control"  placeholder={t("enterEmail")} name="email" id="formGroupExampleInput2" value={contact.email} onChange={handleChange}
+            <input type="email" className="form-control"  placeholder={`${t("enterEmail")} (required)`} name="email" id="formGroupExampleInput2" value={contact.email} onChange={handleChange} pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?" required
         />
           </div>
           <div className="row">
             <div  className={i18n.language === 'en' ? 'col-12 text-left mt-3' : 'col-12 text-right mt-3'}>
-              <label className="text-left comment">{t("question1")}</label>
-               <textarea className="form-control" name="comments" id="floatingTextarea2" value={contact.comments} onChange={handleChange}
+              {/* <label className="text-left comment">{t("question1")}</label> */}
+               <textarea className="form-control" name="comments" id="floatingTextarea2" placeholder={t("question1")} value={contact.comments} onChange={handleChange} required
           ></textarea>
             </div>              
           </div>

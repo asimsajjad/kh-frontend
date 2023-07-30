@@ -1,65 +1,118 @@
-import logo from './logo.svg';
-import React, { useEffect } from 'react';
-import {
-  BrowserRouter as Router,
-  Route,
-  Redirect,
-  Switch,
-  Routes,
-  Link,
-  useNavigate,
-  useLocation
-} from 'react-router-dom';
+import React, { lazy, Suspense, startTransition } from 'react';
+import { BrowserRouter as Router, Route, Redirect, Switch, Routes, useNavigate, useLocation } from 'react-router-dom';
 import Header from './components/shared/Header';
-import Home from './components/pages/home';
-import Login from './components/pages/login/Login';
-import Categories from './components/pages/category/Categories';
-import Labours from './components/pages/labour/Category';
-import Signup from './components/pages/signup/Signup';
-import ForgotPassword from './components/pages/forgot-password/ForgotPassword';
-import JobPost from './components/pages/job-post/JobPost';
-import Profile from './components/pages/profile/Profile';
-import ContactUs from './components/pages/contact-us/ContactUs';
-import Terms from './terms/Terms.js';
-import ProfileUpdate from './components/pages/profile-update/ProfileUpdate';
-import ChangePassword from './components/pages/change-password/ChangePassword';
-
 import Footer from './components/shared/Footer';
 
+// Lazy load the Home component
+const Home = lazy(() => import('./components/pages/home'));
+const Login = lazy(() => import('./components/pages/login/Login'));
+const Categories = lazy(() => import('./components/pages/category/Categories'));
+const Labours = lazy(() => import('./components/pages/labour/Category'));
+const Signup = lazy(() => import('./components/pages/signup/Signup'));
+const ForgotPassword = lazy(() => import('./components/pages/forgot-password/ForgotPassword'));
+const JobPost = lazy(() => import('./components/pages/job-post/JobPost'));
+const Profile = lazy(() => import('./components/pages/profile/Profile'));
+const ContactUs = lazy(() => import('./components/pages/contact-us/ContactUs'));
+const Terms = lazy(() => import('./terms/Terms'));
+const ProfileUpdate = lazy(() => import('./components/pages/profile-update/ProfileUpdate'));
+const ChangePassword = lazy(() => import('./components/pages/change-password/ChangePassword'));
+
+// Component to redirect to the Home page if the route doesn't match any other route
 const RedirectComponent = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
   React.useEffect(() => {
-    if (location.pathname !== '/') {
-      navigate('/');
-    }
+    startTransition(() => {
+      if (location.pathname !== '/') {
+        navigate('/');
+      }
+    });
   }, [location, navigate]);
 
   return null;
 };
 
-function App() {  
-
-  return<>
-      <Header/>  
+function App() {
+  return (
+    <>
+      <Header />
       <Routes>
-      <Route path="/" exact element={<Home />}/> 
-      <Route path="/login" exact element={<Login />}/>
-      <Route path="/categories" exact element={<Categories />}/> 
-      <Route path="/labours" exact element={<Labours />}/>
-      <Route path="/labours/:type" element={<Labours />}/>
-      <Route path="/signup" exact element={<Signup />}/>
-      <Route path="/forgot-password" exact element={<ForgotPassword />}/>      
-      <Route path="/profile" exact element={<Profile />}/>
-      <Route path="/profile/:type" exact element={<Profile />}/>
-      <Route path="/profile-update" exact element={<ProfileUpdate/>} />
-      <Route path="/terms" exact element={<Terms/>}/>
-      <Route path="/contact-us" exact element={<ContactUs/>}/>
-      <Route path="/change-password" exact element={<ChangePassword/>}/>
-      <Route path="*" exact element={<RedirectComponent />} />
-      <Route path="/index" exact element={<Home/>}/> 
-      </Routes>        
-    <Footer/></> 
+        <Route path="/" exact element={
+          <Suspense fallback={<div>Loading...</div>}>
+            <Home />
+          </Suspense>
+        } />
+        <Route path="/login" exact element={
+          <Suspense fallback={<div>Loading...</div>}>
+            <Login />
+          </Suspense>
+        } />
+        <Route path="/categories" exact element={
+          <Suspense fallback={<div>Loading...</div>}>
+            <Categories />
+          </Suspense>
+        } />
+        <Route path="/labours" exact element={
+          <Suspense fallback={<div>Loading...</div>}>
+            <Labours />
+          </Suspense>
+        } />
+        <Route path="/labours/:type" element={
+          <Suspense fallback={<div>Loading...</div>}>
+            <Labours />
+          </Suspense>
+        } />
+        <Route path="/signup" exact element={
+          <Suspense fallback={<div>Loading...</div>}>
+            <Signup />
+          </Suspense>
+        } />
+        <Route path="/forgot-password" exact element={
+          <Suspense fallback={<div>Loading...</div>}>
+            <ForgotPassword />
+          </Suspense>
+        } />
+        <Route path="/profile" exact element={
+          <Suspense fallback={<div>Loading...</div>}>
+            <Profile />
+          </Suspense>
+        } />
+        <Route path="/profile/:type" exact element={
+          <Suspense fallback={<div>Loading...</div>}>
+            <Profile />
+          </Suspense>
+        } />
+        <Route path="/profile-update" exact element={
+          <Suspense fallback={<div>Loading...</div>}>
+            <ProfileUpdate />
+          </Suspense>
+        } />
+        <Route path="/terms" exact element={
+          <Suspense fallback={<div>Loading...</div>}>
+            <Terms />
+          </Suspense>
+        } />
+        <Route path="/contact-us" exact element={
+          <Suspense fallback={<div>Loading...</div>}>
+            <ContactUs />
+          </Suspense>
+        } />
+        <Route path="/change-password" exact element={
+          <Suspense fallback={<div>Loading...</div>}>
+            <ChangePassword />
+          </Suspense>
+        } />
+        <Route path="*" exact element={<RedirectComponent />} />
+        <Route path="/index" exact element={
+          <Suspense fallback={<div>Loading...</div>}>
+            <Home />
+          </Suspense>
+        } />
+      </Routes>
+      <Footer />
+    </>
+  );
 }
+
 export default App;

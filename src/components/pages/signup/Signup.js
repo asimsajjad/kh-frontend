@@ -5,6 +5,7 @@ import Alert from '../../Alerts/alert';
 import LoadingSpinner from "../../loader/LoadingSpinner";
 import { useTranslation } from 'react-i18next';
 import Cookies from 'js-cookie';
+import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
 
 function Signup() {
     const { t, i18n } = useTranslation();
@@ -17,6 +18,28 @@ function Signup() {
     const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(false);
     const user_id = localStorage.getItem('user_id');
+    const [coordinates, setCoordinates] = useState({ lat: 0, lng: 0 });
+    const [countryname, setCountryName]=useState('');
+    const [userLocation, setUserLocation] = useState(null);
+
+  const handlePlaceSelect = async (address) => {
+    try {
+      const results = await geocodeByAddress(address);
+      const latLng = await getLatLng(results[0]);
+      let country = '';
+      for (const component of results[0].address_components) {
+        if (component.types.includes('country')) {
+          country = component.long_name;
+          setCountryName(country);
+          break;
+        }
+      }
+      setCoordinates(latLng);
+      setUser((prevUser) => ({ ...prevUser, address: address }));
+    } catch (error) {
+      console.error('Error while geocoding address:', error);
+    }
+  };
 
     const showAlert = (message, type) => {
       setAlert({
@@ -41,15 +64,6 @@ function Signup() {
     const handleSelect = (e) => {
       setUserType(e.target.value);
     };
-
-    // const handleCategoryId = (e) => {
-    //   const value=e.target.value;
-    //   // alert(value);
-    //   setCategory({
-    //     ...category,
-    //     [e.target.name]: value
-    //   });
-    // };
 
     const handleImageUpload = (e) => {
       console.log(e.target.files)
@@ -80,11 +94,33 @@ function Signup() {
           
        }, []
        );
+       useEffect(() => {
+        if ("geolocation" in navigator) {
+          // const options = {
+          //   enableHighAccuracy: true,
+          //   timeout: 5000,
+          //   maximumAge: 0,
+          // };
+          navigator.geolocation.getCurrentPosition(
+            (position) => {
+              const { latitude, longitude } = position.coords;
+              setUserLocation({ latitude, longitude });
+            },
+            (error) => {
+              console.error(error.message);
+            },
+            // options
+          );
+        } else {
+          console.log("Geolocation is not available in this browser.");
+        }
+      }, []);
     // const [selectcategory, setSelectCategory]=useState(category);
 
     const handleSubmit = (e) => {
       setIsLoading(true);
       e.preventDefault();
+      // console.log(coordinates.lat);
           const formData = new FormData()
           const config = {
             headers: { 'content-type': 'multipart/form-data' }
@@ -97,6 +133,9 @@ function Signup() {
           formData.append('address',  user.address,)
           formData.append('category_id',  user.category,)
           formData.append('image',  selectedImage)
+          formData.append('latitude', coordinates.lat,)
+          formData.append('longitude', coordinates.lng,)
+          formData.append('country', countryname,)
 
           axios.post(`${url}`, formData, config)
           .then(response => {
@@ -106,7 +145,9 @@ function Signup() {
               if(response?.data?.data[0].usertype=='employee'){
                 // window.location.href ="categories";
                 navigate("/categories");
-              }else{                
+              }else{              
+                localStorage.setItem('employer_latitude', userLocation.latitude)
+                localStorage.setItem('employer_longitude', userLocation.longitude)  
                 //window.location.href ="labours";
                 navigate("/labours");
               }
@@ -135,25 +176,25 @@ function Signup() {
     };
   
     function SubmitButton(){
-      if (user.username && user.email && user.password){
-        const regex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+      // if (user.username && user.email && user.password){
+      //   const regex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
   
-        if(regex.test(user.email)){
-          if(usertype !== "employee"){
-            return <button className="btn login-btn" type="submit" onClick={handleSubmit} >{t("signUp")}</button>
-          }else if(usertype !== "employer" && user.category){
-            return <button className="btn login-btn" type="submit" onClick={handleSubmit} >{t("signUp")}</button>
-          }
-          else{
-            return <button className="btn login-btn" type="submit" onClick={handleSubmit} disabled >{t("signUp")}</button>
-          }
-        }else{
-          return <button className="btn login-btn" type="submit" onClick={handleSubmit} disabled >{t("signUp")}</button>
-        }
+      //   if(regex.test(user.email)){
+      //     if(usertype !== "employee"){
+      //       return <button className="btn login-btn" type="submit" onClick={handleSubmit} >{t("signUp")}</button>
+      //     }else if(usertype !== "employer" && user.category){
+      //       return <button className="btn login-btn" type="submit" onClick={handleSubmit} >{t("signUp")}</button>
+      //     }
+      //     else{
+      //       return <button className="btn login-btn" type="submit" onClick={handleSubmit} disabled >{t("signUp")}</button>
+      //     }
+      //   }else{
+      //     return <button className="btn login-btn" type="submit" onClick={handleSubmit} disabled >{t("signUp")}</button>
+      //   }
 
-      } else {
-        return <button className="btn login-btn"  onClick={handleSubmit} type="submit" disabled>{t("signUp")}</button>
-      };
+      // } else {
+        return <button className="btn login-btn" type="submit">{t("signUp")}</button>
+      // };
     };  
 
     const renderUser=(<section className="login-section pl-3">    
@@ -161,7 +202,7 @@ function Signup() {
       <div className="row login-form ">
         <div className="col-md-8">
         <Alert alert={alert}/>
-          <form action="" >
+          <form action="" onSubmit={handleSubmit} >
             <h2 className="text-center pt-4">{t("createAccount")}</h2>
             {/* <div className="social-media-links d-flex justify-content-center pt-3">
             <Link to=""><i className="fa-brands fa-facebook"></i></Link>
@@ -192,19 +233,19 @@ function Signup() {
         <div dir={i18n.language === 'en' ? 'ltr' : 'rtl'}>
         <div className="name-input mb-4 d-flex">
           <label className={i18n.language === 'en' ? "": "pr-3 pl-2"}><i className="fas fa-user"></i></label>
-          <input className="" type="name" name='username' placeholder={t("name")} value={user.username} onChange={handleChange}/>
+          <input className="" type="name" name='username' placeholder={`${t("name")} (required)`} value={user.username} onChange={handleChange} required title="Please enter your username. This field is required."/>
         </div>
         <div className="name-input mb-4 d-flex">
           <label className={i18n.language === 'en' ? "": "pr-3 pl-2"}><i className="far fa-envelope"></i></label>
-          <input className="" type="email" name='email' placeholder={t("email")} value={user.email} onChange={handleChange}/>    
+          <input className="" type="email" name='email' placeholder={`${t("email")} (required)`} value={user.email} onChange={handleChange} pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?" required/>    
         </div>
         <div className="password-input mb-4 d-flex">
           <label className={i18n.language === 'en' ? "": "pr-3 pl-2"}><i className="fas fa-lock	"></i></label>
-          <input className="password-input" type="password" name="password" id="" placeholder={t("password")} value={user.password} onChange={handleChange}/>
+          <input className="password-input" type="password" name="password" id="" placeholder={`${t("password")} (required)`} value={user.password} onChange={handleChange} required/>
         </div>
         <div className="name-input mb-4 d-flex">
           <label className={i18n.language === 'en' ? "": "pr-3 pl-2"}><i className="fas fa-phone"></i></label>
-          <input className="" type="number" name='phone_no' placeholder={t("phoneNumber")} value={user.phone_no} onChange={handleChange}/>
+          <input className="" type="number" name='phone_no' placeholder={`${t("phoneNumber")} (required)`} value={user.phone_no} onChange={handleChange} required/>
         </div>
           
             {(() => {
@@ -212,8 +253,8 @@ function Signup() {
           return (
             <div className="form-group">
             <div className="col-md-8 mb-4">
-            <select id="signup-sector" name="category" className="signup-select" placeholder='select a category' onChange={handleChange}>
-            <option value="" disabled selected hidden>{t("selectACategory")}</option> 
+            <select id="signup-sector" name="category" className="signup-select" placeholder='select a category' onChange={handleChange} required>
+            <option value="" disabled selected hidden>{`${t("selectACategory")} (required)`}</option> 
             {category.map(categories => ( <option key={categories.id} value={categories.id} >{categories.name}</option>))}
             </select>
             </div>
@@ -221,16 +262,44 @@ function Signup() {
           )
         } 
       })()}
+           {/* Use PlacesAutocomplete for Places Autocomplete */}
            <div className="row mb-4">
-              <div className="text-left">
-              {/* <label  className={i18n.language === 'en' ? "": "pr-3 pl-2"}><i class="fa fa-location-arrow" aria-hidden="true"></i></label> */}
-                 <textarea className="form-control" name="address" id="floatingTextarea2" 
-                 value={user.address} onChange={handleChange} placeholder={t("writeYourAddress")}></textarea>
-              </div>              
-            </div>
+                  <div className="text-left">
+                    <PlacesAutocomplete
+                      value={user.address}
+                      onChange={(address) => setUser((prevUser) => ({ ...prevUser, address: address }))}
+                      onSelect={handlePlaceSelect}
+                      searchOptions={{ types: ['address']}} //componentRestrictions: { country: 'pk' } Set the country code if you want to limit the results to a specific country
+                      >
+                      {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
+                        <div>
+                          <textarea
+                            {...getInputProps({
+                              className: "form-control",
+                              placeholder: t("writeYourAddress")
+                            })}
+                            required></textarea>
+                          <div>
+                            {loading ? <div>Loading...</div> : null}
+                            {suggestions.map((suggestion) => {
+                              const style = {
+                                backgroundColor: suggestion.active ? '#41b6e6' : '#fff',
+                              };
+                              return (
+                                <div {...getSuggestionItemProps(suggestion, { style })}>
+                                  {suggestion.description}
+                                </div>
+                              );
+                            })}
+                          </div>
+                        </div>
+                      )}
+                    </PlacesAutocomplete>
+                  </div>
+                </div>
            <div className="name-input d-flex">
               <label  className={i18n.language === 'en' ? "": "pr-3 pl-2"}><i className="fas fa-user"></i></label>
-              <input className="pt10" type="file" name='file' placeholder="Upload image" value={user.files} onChange={handleImageUpload}/>
+              <input className="pt10" type="file" name='file' placeholder="Upload image" value={user.files} onChange={handleImageUpload} required/>
             </div>
             <div className="row pt10">
               <div className={i18n.language === 'en' ? "col-6 text-left" : "col-6 text-right"} >

@@ -72,9 +72,9 @@ function ForgotPassword() {
           
           <div className="name-input mb-4 d-flex mt-5" dir={i18n.language === 'en' ? 'ltr' : 'rtl'}>
             <label htmlFor="" className={i18n.language === 'en' ? "": "pr-3"}><i className="far fa-envelope"></i></label>
-            <input className="form-control" type="email" name='email' value={email.email} placeholder={t("enterEmail")} id="formGroupExampleInput2" onChange={handleChange}/>
+            <input className="form-control" type="email" name='email' value={email.email} placeholder={t("enterEmail")} id="formGroupExampleInput2" onChange={handleChange} required/>
           </div>
-         <button className="btn login-btn mt-5" type='submit' disabled={!email.email}>{t("submit")}</button>
+         <button className="btn login-btn mt-5" type='submit'>{t("submit")}</button>
         </form>
       </div>
       <div className="col-md-4 pl-0">

@@ -8,12 +8,14 @@ function Header() {
   const { t, i18n } = useTranslation();
   const [alert, setAlert] = useState(null);
   const user_id = localStorage.getItem('user_id');
+  // const employer_latitude = localStorage.getItem('employer_latitude');
+  // const employer_longitude = localStorage.getItem('employer_longitude');
   const navigate = useNavigate();
   
 
-  const saveLanguagePreference = (lng) => {
-    Cookies.set('language', lng, { expires: 365 }); // Set the cookie to expire in 365 days
-  };
+  // const saveLanguagePreference = (lng) => {
+    Cookies.set('language', 'en', { expires: 365 }); // Set the cookie to expire in 365 days
+  // };
 
   const showAlert = (message, type) => {
     setAlert({
@@ -27,6 +29,8 @@ function Header() {
 
   const Logout = (e) => {
     localStorage.removeItem('user_id');
+    localStorage.removeItem('employer_latitude');
+    localStorage.removeItem('employer_longitude');
     sessionStorage.removeItem('user_id');
     showAlert(t('youHaveLoggedOut'), 'success');
     navigate('/login');
@@ -37,7 +41,7 @@ function Header() {
     }
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng);
-    saveLanguagePreference(lng);
+    // saveLanguagePreference(lng);
     window.location.reload();
     // console.log(lng);
   };
@@ -76,7 +80,7 @@ function Header() {
               </li>
               <li className="nav-item">
                 <Link to="/categories" className="nav-link text-light">
-                  {t('findWork')}
+                  {t('categories')}
                 </Link>
               </li>
               <li className="nav-item">
@@ -120,14 +124,14 @@ function Header() {
                 }
               })()}
              
-             <select
+             {/* <select
                 className="nav-link text-light select" // Add the custom-select class here
                 onChange={(e) => changeLanguage(e.target.value)}
                 value={i18n.language}>
                 <option className="option" value="en">English</option>
                 <option className="option" value="ar">العربية</option>
                 <option className="option" value="ur">اردو</option>
-              </select>
+              </select> */}
           
             </ul>
           </div>

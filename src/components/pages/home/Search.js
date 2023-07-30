@@ -14,6 +14,9 @@ function Search() {
   const [categoryAvailable, setCategoryAvailable] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
+  const [columntosearch, setColumnToSearch] = useState('');
+  // const column_to_search='ur_name';
+  // const storedLanguage = Cookies.get('language');
 
   const categories_url = 'index';
   useEffect(() => {
@@ -24,19 +27,14 @@ function Search() {
         // setCategories(response?.data?.data?.en);
         if(storedLanguage === "en"){
           setCategories(response?.data?.data?.en);
+          setColumnToSearch('name');
         }else if(storedLanguage === "ar"){
           setCategories(response?.data?.data?.ar);
+          setColumnToSearch('ar_name');
         }else if(storedLanguage === "ur"){
           setCategories(response?.data?.data?.ur);
+          setColumnToSearch('ur_name');
         }
-        setFilteredCategories(response?.data?.data?.en);
-        // if(storedLanguage === "en"){
-        //   setFilteredCategories(response?.data?.data?.en);
-        // }else if(storedLanguage === "ar"){
-        //   setFilteredCategories(response?.data?.data?.ar);
-        // }else if(storedLanguage === "ur"){
-        //   setFilteredCategories(response?.data?.data?.ur);
-        // }
       })
       .catch((error) => {
         console.error(error);
@@ -67,15 +65,15 @@ function Search() {
   const handleSearch = () => {
     setIsLoading(true);
     const formData = new FormData();
-   
     const user=(searchQuery).replace(/ /g, '-');
-          const user_slug=user.toLowerCase();
-          console.log(user_slug);
+    formData.append('category_slug', user,)
+    
+
     axios
-      .get(`${categories_url}/${user_slug}`, formData)
+      .post(`${categories_url}/${columntosearch}`, formData)
       .then((response) => {
         if (response?.data?.data[0]) {
-          // console.log(response?.data?.data[0].slug);
+          console.log(response?.data?.data[0].slug);
           navigate(`/labours/${response?.data?.data[0].slug}`);
           setCategoryAvailable(true);
         } else {
@@ -114,20 +112,21 @@ function Search() {
                 type="text"
                 onChange={handleSearchChange}
                 value={searchQuery}
-                className="search-input"
+                className={i18n.language === 'en' ? "search-input" : "search-input pr-2"}
                 placeholder={t("question1")}/>
-              <button onClick={handleSearch} className="button search-btn">
+              <button onClick={handleSearch} className={i18n.language === 'en' ? "button search-btn " : "button search-btn rtl"}>
                 {t("search")}
               </button>
               {!categoryAvailable && showList && ( // Hide the message when the list is not shown
                 <p className="category-not-available">{t("thisCategoryIsNotAvailible")}</p>
               )}
             </div>
-          </div>
+          
           
         </div>
         {showList && (
-                <div className="col-lg-9 col-sm-6 category-list">
+                <div className={i18n.language === 'en' ? "col-lg-9 col-sm-6 category-list mt-6 w-67 ml-7 " : "col-lg-9 col-sm-6 category-list mt-6 w-66 ml-8"}>
+                  <div className='list-box'>
                 {filteredCategories.map((category) => (
                   <div
                     key={category.id}
@@ -142,10 +141,11 @@ function Search() {
                     
                   </div>
                 ))}
+                </div>
               </div>
               )}
               
-       
+              </div>
       </div>
      
      

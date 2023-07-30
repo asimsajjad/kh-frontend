@@ -288,6 +288,9 @@ h2.heading-banner {
     
 }
 button.button.search-btn {
+    border-radius: 4px 0px 0px 4px;
+}
+button.button.search-btn.rtl {
     border-radius: 0px 4px 4px 0px;
 }
 button.button.search-btn:hover{
@@ -1032,5 +1035,8 @@ width: 50px;
     border: hidden;
     z-index: -1px;
 }
-
-
+.col-lg-9.col-sm-6.category-list{
+    /* margin-left: 122px; */
+    /* width: 888px; */
+    /* margin-top: 56px; */
+}
