@@ -34,78 +34,84 @@ const RedirectComponent = () => {
 };
 
 function App() {
+  const divStyle = {
+    minHeight: 'calc(100vh - 100px)',
+     display: 'flex', 
+     justifyContent: 'center', 
+     alignItems: 'center'
+  };
   return (
     <>
       <Header />
       <Routes>
         <Route path="/" exact element={
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<div style={divStyle}>Loading...</div>}>
             <Home />
           </Suspense>
         } />
         <Route path="/login" exact element={
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<div style={divStyle}>Loading...</div>}>
             <Login />
           </Suspense>
         } />
         <Route path="/categories" exact element={
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<div style={divStyle}>Loading...</div>}>
             <Categories />
           </Suspense>
         } />
         <Route path="/labours" exact element={
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<div style={divStyle}>Loading...</div>}>
             <Labours />
           </Suspense>
         } />
         <Route path="/labours/:type" element={
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<div style={divStyle}>Loading...</div>}>
             <Labours />
           </Suspense>
         } />
         <Route path="/signup" exact element={
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<div style={divStyle}>Loading...</div>}>
             <Signup />
           </Suspense>
         } />
         <Route path="/forgot-password" exact element={
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<div style={divStyle}>Loading...</div>}>
             <ForgotPassword />
           </Suspense>
         } />
         <Route path="/profile" exact element={
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<div style={divStyle}>Loading...</div>}>
             <Profile />
           </Suspense>
         } />
         <Route path="/profile/:type" exact element={
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<div style={divStyle}>Loading...</div>}>
             <Profile />
           </Suspense>
         } />
         <Route path="/profile-update" exact element={
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<div style={divStyle}>Loading...</div>}>
             <ProfileUpdate />
           </Suspense>
         } />
         <Route path="/terms" exact element={
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<div style={divStyle}>Loading...</div>}>
             <Terms />
           </Suspense>
         } />
         <Route path="/contact-us" exact element={
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<div style={divStyle}>Loading...</div>}>
             <ContactUs />
           </Suspense>
         } />
         <Route path="/change-password" exact element={
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<div style={divStyle}>Loading...</div>}>
             <ChangePassword />
           </Suspense>
         } />
         <Route path="*" exact element={<RedirectComponent />} />
         <Route path="/index" exact element={
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<div style={divStyle}>Loading...</div>}>
             <Home />
           </Suspense>
         } />
