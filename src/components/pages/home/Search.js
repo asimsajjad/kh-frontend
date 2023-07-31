@@ -125,7 +125,7 @@ function Search() {
           
         </div>
         {showList && (
-                <div className={i18n.language === 'en' ? "col-lg-9 col-sm-6 category-list mt-6 w-67 ml-7 " : "col-lg-9 col-sm-6 category-list mt-6 w-66 ml-8"}>
+                <div className={i18n.language === 'en' ? "col-lg-9 col-sm-6 category-list  " : "col-lg-9 col-sm-6 category-list mt-6 w-66 ml-8"}>
                   <div className='list-box'>
                 {filteredCategories.map((category) => (
                   <div
