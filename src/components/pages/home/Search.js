@@ -106,27 +106,25 @@ function Search() {
   <div className="container search pt-4 mt-4">
         <div className="row">
           <div className="col-md-12 d-flex justify-content-center">
-            <div className="input-box" ref={searchRef}>
-              <i className="fas fa-search mr-3 "></i>
+            <div className="" ref={searchRef}>
+            <div classNae="search-box mb-1" style={{border : "2px solid #673AB7"}}>
+              <i className="fas fa-search pl-2 "></i>
               <input
                 type="text"
                 onChange={handleSearchChange}
                 value={searchQuery}
-                className={i18n.language === 'en' ? "search-input" : "search-input pr-2"}
+                className={i18n.language === 'en' ? "search-input pl-2" : "search-input pr-2"}
                 placeholder={t("question1")}/>
               <button onClick={handleSearch} className={i18n.language === 'en' ? "button search-btn " : "button search-btn rtl"}>
                 {t("search")}
               </button>
+              </div>
               {!categoryAvailable && showList && ( // Hide the message when the list is not shown
                 <p className="category-not-available">{t("thisCategoryIsNotAvailible")}</p>
               )}
-            </div>
-          
-          
-        </div>
-        {showList && (
-                <div className={i18n.language === 'en' ? "col-lg-9 col-sm-6 category-list  " : "col-lg-9 col-sm-6 category-list mt-6 w-66 ml-8"}>
-                  <div className='list-box'>
+              <div className="search-select-box">
+              {showList && (
+                <div className="">
                 {filteredCategories.map((category) => (
                   <div
                     key={category.id}
@@ -134,17 +132,27 @@ function Search() {
                     onClick={() => handleCategorySelect(category.name)}
                   >
                     
-                    <li>
-                      <div className="ul_box pt-2">
-                        <span className='text'>{category.name}</span>
-                      </div></li>
+                    
+                      
+                        <p className='search-select'>{category.name}</p>
+                     
                     
                   </div>
                 ))}
-                </div>
+                
               </div>
               )}
-              
+              </div>
+
+            </div>
+          
+          
+        </div>
+        <div className="row">
+        <div className="">
+       
+              </div>
+              </div>
               </div>
       </div>
      
