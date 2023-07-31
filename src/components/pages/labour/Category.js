@@ -176,7 +176,7 @@ import Cookies from 'js-cookie';
                                 {(() => {
                                   if (!labour_data.country){
                                     return (
-                                      
+                                      // <p></p>
                             <p><i className="bi mr-2 bi-geo-alt-fill fas fa-location-arrow"></i>Pakistan</p>
                                     )
                                   }else if(!labour_data.distance){

@@ -47,12 +47,19 @@ function ProfileUpdate() {
               }
             // setCategory(response?.data?.data?.en);
             loadProfile();
+
             }).catch(error => {
             console.error(error);
           });
           
        }, []
        );
+       useEffect(() => {
+        // Set the initial value of addressInput to info.address
+        if (profile.length > 0) {
+          setAddressInput(profile[0].address);
+        }
+      }, [profile]);
 
    function loadProfile(){
     const formData = new FormData()
@@ -157,7 +164,7 @@ setSelectedImage(e.target.files[0]);
           <label className={i18n.language === 'en' ? "": "pr-3 pl-2"}><i className="fas fa-user"></i></label>
           <input className="" type="name" name='username' placeholder={t("name")} value={info.username} onChange={(event) => handleEdit(index, 'username', event.target.value)}/>
         </div>
-        <div className="name-input mb-4 d-flex">
+        <div className="name-input d-flex">
           <label className={i18n.language === 'en' ? "": "pr-3 pl-2"}><i className="fas fa-phone"></i></label>
           <input className="" type="number" name='phone_no' placeholder={t("phoneNumber")} value={info.phone_no} onChange={(event) => handleEdit(index, 'phone_no', event.target.value)}/>
         </div>
@@ -182,7 +189,8 @@ setSelectedImage(e.target.files[0]);
                  
               </div>              
     </div>*/}
-            <div className="row mb-4">
+     <div className="autocomplete-container">
+            <div className="row mt-4">
           <div className="text-left">
           <PlacesAutocomplete
               value={addressInput}
@@ -190,27 +198,27 @@ setSelectedImage(e.target.files[0]);
               onSelect={handleSelectAddress}
             >
               {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-                <div>
+                <div className="name-input mb-4">
                   {/* Corrected: Pass inputProps to input element */}
                   <input
                     {...getInputProps({
                       placeholder: 'Enter Your Address',
-                      className: 'form-control', // Add the necessary class for proper styling
+                      className: '', // Add the necessary class for proper styling
                     })}
                     type="name"
                     name="address"
                     id="floatingTextarea2"
                     value={addressInput}
                   />
-                  <div>
-                    {loading && <div>Loading...</div>}
+                  <div className='auto-address'>
+                    {loading && <div >Loading...</div>}
                     {suggestions.map((suggestion, index) => {
                       const style = {
                         backgroundColor: suggestion.active ? '#41b6e6' : '#fff',
                         cursor: 'pointer',
                       };
                       return (
-                        <div
+                        <div className=""
                           key={index}
                           {...getSuggestionItemProps(suggestion, { style })}
                         >
@@ -233,6 +241,7 @@ setSelectedImage(e.target.files[0]);
             <div className='row'>  
                <div className='profile-image'>
                  <input className="pt10" type="file" name='file' accept="image/*" placeholder="Upload image" onChange={handleImageUpload}/>
+            </div>
             </div>
             </div>
             <SubmitButton/>

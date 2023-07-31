@@ -77,7 +77,7 @@ function Info() {
                 <div className="col-md-3">
                     <p className="p4">{t("email")}</p>
                 </div>
-                <div className="col-md-3 ml-5">
+                <div className="col-md-3">
                     <p className="p4">{info.email}</p>
                 </div>
             </div>
@@ -86,9 +86,17 @@ function Info() {
                 <div className="col-md-3">
                     <p className="p4">{t("phone")}</p>
                 </div>
-                <div className="col-md-3 ml-5">
-                    <p className="p4">{info.phone_no}</p>
-                    
+                <div className="col-md-3">
+                {(() => {
+                        if (info.phone_no ===  "undefined"){
+                            return (<p></p>)
+                        }else{
+                            return (
+                                <p className="p4">{info.phone_no}</p>
+                            )
+                        }                                              
+                        }
+                )}
                 </div>
             </div>
             <div className="col">
@@ -97,7 +105,16 @@ function Info() {
                     <p className="p4">{t("employeeAdress")}</p>
                 </div>
                 <div className="col-md-9">
-                    <p className="p4">{info.address}</p>
+                {(() => {
+                        if (info.address ===  "undefined"){
+                            return (<p></p>)
+                        }else{
+                            return (
+                                <p className="p4">{info.address}</p>
+                            )
+                        }                                              
+                        }
+                )}
                 </div>
             </div>
         </div>

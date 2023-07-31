@@ -54,6 +54,14 @@ select#signup-sector {
     border-radius: 10px;
     border: none;
 }
+
+select#profileupdate-sector {
+    height: 50px;
+    width: 747px;
+    /* margin-top: 10px; */
+    border-radius: 10px;
+    border: none;
+}
 .col-md-2.profile-image {
     margin-left: -20px;
 }
@@ -703,4 +711,28 @@ input:required:focus {
    */
   input:required:hover {
     opacity: 1;
+  }
+
+
+.autocomplete-container {
+    position: relative;
+  }
+  
+  /* Style the autocomplete dropdown */
+  .auto-address {
+    /* Position the dropdown */
+    position: absolute;
+    top: 70%; /* Place it below the input */
+    left: 0;
+    right: 0;
+  
+    /* Add some padding and background color */
+    padding: 8px;
+    /* background-color: #ffffff; */
+    
+    /* Add box shadow for a nice visual effect */
+    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
+  
+    /* Set z-index to display it above other elements */
+    z-index: 9999;
   }

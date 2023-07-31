@@ -20,7 +20,7 @@ function Signup() {
     const user_id = localStorage.getItem('user_id');
     const [coordinates, setCoordinates] = useState({ lat: 0, lng: 0 });
     const [countryname, setCountryName]=useState('');
-    const [userLocation, setUserLocation] = useState(null);
+    // const [userLocation, setUserLocation] = useState(null);
 
   const handlePlaceSelect = async (address) => {
     try {
@@ -94,27 +94,27 @@ function Signup() {
           
        }, []
        );
-       useEffect(() => {
-        if ("geolocation" in navigator) {
-          // const options = {
-          //   enableHighAccuracy: true,
-          //   timeout: 5000,
-          //   maximumAge: 0,
-          // };
-          navigator.geolocation.getCurrentPosition(
-            (position) => {
-              const { latitude, longitude } = position.coords;
-              setUserLocation({ latitude, longitude });
-            },
-            (error) => {
-              console.error(error.message);
-            },
-            // options
-          );
-        } else {
-          console.log("Geolocation is not available in this browser.");
-        }
-      }, []);
+      //  useEffect(() => {
+      //   if ("geolocation" in navigator) {
+      //     // const options = {
+      //     //   enableHighAccuracy: true,
+      //     //   timeout: 5000,
+      //     //   maximumAge: 0,
+      //     // };
+      //     navigator.geolocation.getCurrentPosition(
+      //       (position) => {
+      //         const { latitude, longitude } = position.coords;
+      //         setUserLocation({ latitude, longitude });
+      //       },
+      //       (error) => {
+      //         console.error(error.message);
+      //       },
+      //       // options
+      //     );
+      //   } else {
+      //     console.log("Geolocation is not available in this browser.");
+      //   }
+      // }, []);
     // const [selectcategory, setSelectCategory]=useState(category);
 
     const handleSubmit = (e) => {
@@ -146,8 +146,8 @@ function Signup() {
                 // window.location.href ="categories";
                 navigate("/categories");
               }else{              
-                localStorage.setItem('employer_latitude', userLocation.latitude)
-                localStorage.setItem('employer_longitude', userLocation.longitude)  
+                localStorage.setItem('employer_latitude', coordinates.lat)
+                localStorage.setItem('employer_longitude', coordinates.lng)  
                 //window.location.href ="labours";
                 navigate("/labours");
               }
@@ -243,7 +243,7 @@ function Signup() {
           <label className={i18n.language === 'en' ? "": "pr-3 pl-2"}><i className="fas fa-lock	"></i></label>
           <input className="password-input" type="password" name="password" id="" placeholder={`${t("password")} (required)`} value={user.password} onChange={handleChange} required/>
         </div>
-        <div className="name-input mb-4 d-flex">
+        <div className="name-input d-flex">
           <label className={i18n.language === 'en' ? "": "pr-3 pl-2"}><i className="fas fa-phone"></i></label>
           <input className="" type="number" name='phone_no' placeholder={`${t("phoneNumber")} (required)`} value={user.phone_no} onChange={handleChange} required/>
         </div>
@@ -252,7 +252,7 @@ function Signup() {
         if (usertype !== "employer") {
           return (
             <div className="form-group">
-            <div className="col-md-8 mb-4">
+            <div className="col-md-8">
             <select id="signup-sector" name="category" className="signup-select" placeholder='select a category' onChange={handleChange} required>
             <option value="" disabled selected hidden>{`${t("selectACategory")} (required)`}</option> 
             {category.map(categories => ( <option key={categories.id} value={categories.id} >{categories.name}</option>))}
@@ -263,8 +263,9 @@ function Signup() {
         } 
       })()}
            {/* Use PlacesAutocomplete for Places Autocomplete */}
-           <div className="row mb-4">
+           <div className="row">
                   <div className="text-left">
+                  <div className="autocomplete-container">
                     <PlacesAutocomplete
                       value={user.address}
                       onChange={(address) => setUser((prevUser) => ({ ...prevUser, address: address }))}
@@ -272,14 +273,14 @@ function Signup() {
                       searchOptions={{ types: ['address']}} //componentRestrictions: { country: 'pk' } Set the country code if you want to limit the results to a specific country
                       >
                       {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-                        <div>
-                          <textarea
+                        <div className="name-input mb-4 mt-4">
+                          <input
                             {...getInputProps({
                               className: "form-control",
                               placeholder: t("writeYourAddress")
                             })}
-                            required></textarea>
-                          <div>
+                            required></input>
+                          <div className='auto-address'>
                             {loading ? <div>Loading...</div> : null}
                             {suggestions.map((suggestion) => {
                               const style = {
@@ -295,12 +296,14 @@ function Signup() {
                         </div>
                       )}
                     </PlacesAutocomplete>
+                    </div>
                   </div>
                 </div>
            <div className="name-input d-flex">
               <label  className={i18n.language === 'en' ? "": "pr-3 pl-2"}><i className="fas fa-user"></i></label>
-              <input className="pt10" type="file" name='file' placeholder="Upload image" value={user.files} onChange={handleImageUpload} required/>
+              <input className="pt10" type="file" name='file' placeholder="Upload image" value={user.files} onChange={handleImageUpload}/>
             </div>
+            
             <div className="row pt10">
               <div className={i18n.language === 'en' ? "col-6 text-left" : "col-6 text-right"} >
                 <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"/>

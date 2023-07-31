@@ -15,29 +15,29 @@ function Login() {
   const [isLoading, setIsLoading] = useState(false);
   const user_id = localStorage.getItem('user_id');
 
-  const [userLocation, setUserLocation] = useState(null);
+  // const [userLocation, setUserLocation] = useState(null);
 
-  useEffect(() => {
-    if ("geolocation" in navigator) {
-      // const options = {
-      //   enableHighAccuracy: true,
-      //   timeout: 5000,
-      //   maximumAge: 0,
-      // };
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          const { latitude, longitude } = position.coords;
-          setUserLocation({ latitude, longitude });
-        },
-        (error) => {
-          console.error(error.message);
-        },
-        // options
-      );
-    } else {
-      console.log("Geolocation is not available in this browser.");
-    }
-  }, []);
+  // useEffect(() => {
+  //   if ("geolocation" in navigator) {
+  //     // const options = {
+  //     //   enableHighAccuracy: true,
+  //     //   timeout: 5000,
+  //     //   maximumAge: 0,
+  //     // };
+  //     navigator.geolocation.getCurrentPosition(
+  //       (position) => {
+  //         const { latitude, longitude } = position.coords;
+  //         setUserLocation({ latitude, longitude });
+  //       },
+  //       (error) => {
+  //         console.error(error.message);
+  //       },
+  //       // options
+  //     );
+  //   } else {
+  //     console.log("Geolocation is not available in this browser.");
+  //   }
+  // }, []);
 
 // console.log(userLocation); 
   useEffect(() => {
@@ -74,6 +74,7 @@ function Login() {
           // console.log(userLocation);
           setIsLoading(false);
           if(response?.data?.message?.success){
+            // console.log
              localStorage.setItem('user_id', response?.data?.data[0].user_id)
             //  showAlert( response?.data?.message?.msg, "success")
              showAlert("YouhaveLoggedInSuccesfully", "success")
@@ -83,8 +84,8 @@ function Login() {
             }else{                
               // window.location.href = "labours";
               navigate("/labours");
-               localStorage.setItem('employer_latitude', userLocation.latitude)
-             localStorage.setItem('employer_longitude', userLocation.longitude)
+               localStorage.setItem('employer_latitude', (response?.data?.data[0].latitude))
+             localStorage.setItem('employer_longitude', (response?.data?.data[0].longitude))
             }
           }else{
             // showAlert(response?.data?.message?.msg, "danger")
