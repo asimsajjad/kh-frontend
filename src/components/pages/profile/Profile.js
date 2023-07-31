@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from '../../../config/axios';
-import { BrowserRouter as Router,Routes, Route, Link, useParams  } from 'react-router-dom';
+import { BrowserRouter as Router,Routes, Route, Link, useParams, useNavigate  } from 'react-router-dom';
 import LoadingSpinner from "../../loader/LoadingSpinner";
 import { useTranslation } from 'react-i18next';
 
@@ -9,9 +9,10 @@ function Info() {
     const [profile, setProfile] = useState([]);
     const {type} = useParams();
     const user_id = localStorage.getItem('user_id')
+    const navigate = useNavigate();
     const url='profileData';
     const [isLoading, setIsLoading] = useState(false);
-
+    
     useEffect(() => {
         setIsLoading(true);
         const formData = new FormData()
@@ -144,9 +145,13 @@ function Info() {
     </div>
      ))}
      </div>);
-
+ if(user_id != null){
     return <div>
 {isLoading ? <LoadingSpinner /> : renderUser}
  </div>
+}else{
+    navigate("/login");
 }
+}
+
 export default Info;

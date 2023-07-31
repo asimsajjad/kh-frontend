@@ -103,7 +103,7 @@ function Search() {
   }, []);
 
   const renderUser = (<div dir={i18n.language === 'en' ? 'ltr' : 'rtl'}>
-  <div className="container search pt-4">
+  <div className="container search pt-4 mt-4">
         <div className="row">
           <div className="col-md-12 d-flex justify-content-center">
             <div className="input-box" ref={searchRef}>
@@ -200,7 +200,7 @@ function Search() {
         </Link>
       </div>
       <div className="col-lg-2 col-sm-6">
-      <Link to='/labours/remodling'>
+      <Link to='/labours/remodeling'>
         <div className="card border-0">
           <div className="mx-auto">
             <img src="assets/images/svgviewer-png-output.png" className="card-img-top  mx-auto " alt="..." />

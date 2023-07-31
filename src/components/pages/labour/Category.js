@@ -189,7 +189,7 @@ import Cookies from 'js-cookie';
                                 })()}
                                 </div>  
                             <div className="available d-flex">
-                                <Link className="" to="">{t("availible")}</Link> 
+                                <p className="mr-5" style={{color: "blue"}}>{t("availible")}</p> 
                                 {(() => {
                                   if (user_id == null){
                                     return (
