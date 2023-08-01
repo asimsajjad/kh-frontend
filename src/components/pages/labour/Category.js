@@ -173,9 +173,13 @@ function Categories() {
 
                       <img src={labour_data.image ? `${process.env.REACT_APP_RESOURCES_URL}images/${labour_data.image}` : `${process.env.REACT_APP_BASE_URL}assets/images/manager.png`} placeholder="no image" className="card-img-top rounded-circle" />    
                         <div className="profile-card-body">
-                                <h5 className="card-title plum s"><i className="bi mr-2 bi-person-fill fas fa-user"></i>{labour_data.username}</h5>
+                                <h5 className="card-title plum s">{labour_data.username}</h5>
                                 <div className="name d-flex">
-                            <p className="name-para">{labour_data.category_name}</p>
+                                <div className="row">
+                                <div className="col-md-7 ">
+                                <p className="name-para">{labour_data.category_name}</p>
+                                </div>
+                                <div className="col-md-5 ">
                                 {(() => {
                                   if (!labour_data.country){
                                     return (
@@ -190,9 +194,17 @@ function Categories() {
                                     return (<p><i className="bi mr-2 bi-geo-alt-fill fas fa-location-arrow"></i>{labour_data.country}, {(labour_data.distance)} km</p>)
                                   }
                                 })()}
+                                </div>
+                                </div>
+                           
+                               
                                 </div>  
                             <div className="available d-flex">
+                             <div className="row">
+                                <div className="col-md-7 ">
                                 <p className="mr-5" style={{color: "blue"}}>{t("availible")}</p> 
+                                </div>
+                                <div className="col-md-5 ">
                                 {(() => {
                                   if (user_id == null){
                                     return (
@@ -204,6 +216,10 @@ function Categories() {
                                     )
                                   }              
                                 })()}
+                                </div>
+                                </div>
+                                
+                               
                             </div>
                         </div>
                     </div>
