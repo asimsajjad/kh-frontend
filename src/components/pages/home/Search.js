@@ -220,7 +220,7 @@ function Search() {
         </Link>
       </div>
       <div className="col-lg-2 col-sm-6">
-      <Link to='/labours/roof-work'>
+      <Link to='/labours/roof-works'>
         <div className="card border-0">
           <div className="mx-auto">
             <img src="assets/images/svgviewer-png-output (5).png" className="card-img-top  mx-auto" alt="..." />

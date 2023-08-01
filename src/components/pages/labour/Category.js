@@ -1,143 +1,146 @@
-import React, { useState, useEffect } from 'react';
-import axios from '../../../config/axios';
-import { BrowserRouter as Router,Routes, Route, Link, useParams, useNavigate  } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import axios from "../../../config/axios";
+import { Link, useParams } from "react-router-dom";
 import Slider from "react-slick";
 import LoadingSpinner from "../../loader/LoadingSpinner";
-import { useTranslation } from 'react-i18next';
-import Cookies from 'js-cookie';
+import { useTranslation } from "react-i18next";
+import Cookies from "js-cookie";
 
-  function Categories() {
-    const { t } = useTranslation();
-    const navigate = useNavigate();
-    const [labour, setLabour] = useState([]);
-    const [category, setCategory] = useState([]);
-    const {type} = useParams();
-    const [isLoading, setIsLoading] = useState(false);
-    const [currentPage, setCurrenPage] = useState(1);
-    const recordsPerPage= 10;
-    const lastIndex = currentPage * recordsPerPage;
-    const firstIndex = lastIndex - recordsPerPage;
-    const user_id = localStorage.getItem('user_id');
-    const employer_latitude = localStorage.getItem('employer_latitude');
-    const employer_longitude = localStorage.getItem('employer_longitude');
+function Categories() {
+  const { t } = useTranslation();
+  const [labour, setLabour] = useState([]);
+  const [category, setCategory] = useState([]);
+  const { type } = useParams();
+  const [isLoading, setIsLoading] = useState(false);
+  const [currentPage, setCurrenPage] = useState(1);
+  const recordsPerPage = 10;
+  const lastIndex = currentPage * recordsPerPage;
+  const firstIndex = lastIndex - recordsPerPage;
+  const user_id = localStorage.getItem("user_id");
+  const employer_latitude = localStorage.getItem("employer_latitude");
+  const employer_longitude = localStorage.getItem("employer_longitude");
 
-    const category_url='';
-        useEffect(() => {
-          setIsLoading(true);
-          const storedLanguage = Cookies.get('language');
-            axios.get(`${category_url}`).then(response => {
-              if(storedLanguage === "en"){
-                setCategory(response?.data?.data?.en);
-              }else if(storedLanguage === "ur"){
-                setCategory(response?.data?.data?.ur);
-              }else if(storedLanguage === "ar"){
-                setCategory(response?.data?.data?.ar);
-              }
-            // setCategory(response?.data?.data?.en);
-            setIsLoading(false);
-            //loadEmployees(type);
-            }).catch(error => {
-            console.error(error);
-            setIsLoading(false);
-          }); 
-          loadEmployees(type);
-       }, []
-       );
+  const category_url = "";
 
-    function loadEmployees(slug=type){
-      const storedLanguage = Cookies.get('language');
-        setIsLoading(true);
-        
-        const formData = new FormData()
-        if(!user_id){
-          formData.append('user_id', '')
-        }else{
-          formData.append('user_id', user_id)
+  useEffect(() => {
+    setIsLoading(true);
+    const storedLanguage = Cookies.get("language");
+    axios
+      .get(`${category_url}`)
+      .then((response) => {
+        if (storedLanguage === "en") {
+          setCategory(response?.data?.data?.en);
+        } else if (storedLanguage === "ur") {
+          setCategory(response?.data?.data?.ur);
+        } else if (storedLanguage === "ar") {
+          setCategory(response?.data?.data?.ar);
         }
-        formData.append('category_id', '')
-        formData.append('category_slug', slug)
-        if(employer_latitude != null){
-        //   formData.append('employer_latitude', '')
-        //   formData.append('employer_longitude', '')
-        // }else{
-          formData.append('employer_latitude', employer_latitude)
-          formData.append('employer_longitude', employer_longitude)
-        }
-        const url='employeesListing';
-        axios.post(`${url}/multilang`, formData)
-        
-        .then(response => {
-        // setLabour(response?.data?.data);
-        if(storedLanguage === "en"){
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        console.error(error);
+        setIsLoading(false);
+      });
+    loadEmployees(type);
+  }, [type]);
+
+  function loadEmployees(slug = type) {
+    const storedLanguage = Cookies.get("language");
+    setIsLoading(true);
+
+    const formData = new FormData();
+    if (!user_id) {
+      formData.append("user_id", "");
+    } else {
+      formData.append("user_id", user_id);
+    }
+    formData.append("category_id", "");
+    formData.append("category_slug", slug);
+    if (employer_latitude != null) {
+      formData.append("employer_latitude", employer_latitude);
+      formData.append("employer_longitude", employer_longitude);
+    }
+    const url = "employeesListing";
+    axios
+      .post(`${url}/multilang`, formData)
+      .then((response) => {
+        if (storedLanguage === "en") {
           setLabour(response?.data?.data?.en);
-          // console.log(response?.data?.data?.en);
-        }else if(storedLanguage === "ur"){
+        } else if (storedLanguage === "ur") {
           setLabour(response?.data?.data?.ur);
-        }else if(storedLanguage === "ar"){
+        } else if (storedLanguage === "ar") {
           setLabour(response?.data?.data?.ar);
         }
         setCurrenPage(1);
         setIsLoading(false);
-        })
-        .catch(error => {
+      })
+      .catch((error) => {
         console.error(error);
         setIsLoading(false);
-        });
+      });
+  }
+
+  const records = labour.slice(firstIndex, lastIndex);
+  const npage = Math.ceil(labour.length / recordsPerPage);
+  const numbers = [...Array(npage + 1).keys()].slice(1);
+
+  function prePage() {
+    if (currentPage !== 1) {
+      setCurrenPage(currentPage - 1);
     }
-    
-    const records = labour.slice(firstIndex, lastIndex);
-    const npage = Math.ceil(labour.length/recordsPerPage);
-    const numbers = [...Array(npage + 1).keys()].slice(1); 
-  
-    function prePage(){
-      if(currentPage !== 1){
-      setCurrenPage(currentPage-1);
-      }
-      }
-      function changeCpage(id){
-      setCurrenPage(id);
-      }
-      function nextPage(){
-        if(currentPage === npage){
-          setCurrenPage(1);
-        }else{
-          setCurrenPage(currentPage+1);
-        }
-      }
-      var settings = {
-        dots: false,
-        infinite: false,
-        speed: 500,
-        slidesToShow: 7,
-        slidesToScroll: 1,
-        initialSlide: 0,
-        responsive: [
-          {
-            breakpoint: 1024,
-            settings: {
-              slidesToShow: 3,
-              slidesToScroll: 3,
-              infinite: true,
-              dots: true
-            }
-          },
-          {
-            breakpoint: 600,
-            settings: {
-              slidesToShow: 2,
-              slidesToScroll: 2,
-              initialSlide: 2
-            }
-          },
-          {
-            breakpoint: 480,
-            settings: {
-              slidesToShow: 3,
-              slidesToScroll: 1
-            }
-          }
-        ]
-      };
+  }
+
+  function changeCpage(id) {
+    setCurrenPage(id);
+  }
+
+  function nextPage() {
+    if (currentPage === npage) {
+      setCurrenPage(1);
+    } else {
+      setCurrenPage(currentPage + 1);
+    }
+  }
+
+  const activeCategoryIndex = category.findIndex(
+    (category_data) => category_data.slug === type
+  );
+
+  var settings = {
+    dots: false,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 7,
+    slidesToScroll: 1,
+    initialSlide: activeCategoryIndex >= 0 ? activeCategoryIndex : 0,
+    // The initialSlide is set to the activeCategoryIndex, or 0 if activeCategoryIndex is not found.
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
       
       // console.log(labour);
       const renderUser=(<div>
@@ -167,9 +170,9 @@ import Cookies from 'js-cookie';
             {records.map((labour_data) => (
                 <div className="col-md-6 mt-4" key={labour_data.employee_id}>
                     <div className="profile-card d-flex">
-                      <img src={labour_data.image ? `${process.env.REACT_APP_RESOURCES_URL}images/${labour_data.image}` : "assets/images/manager.png"} className="card-img-top rounded-circle" />    
+
+                      <img src={labour_data.image ? `${process.env.REACT_APP_RESOURCES_URL}images/${labour_data.image}` : `${process.env.REACT_APP_BASE_URL}assets/images/manager.png`} placeholder="no image" className="card-img-top rounded-circle" />    
                         <div className="profile-card-body">
-                        
                                 <h5 className="card-title plum s"><i className="bi mr-2 bi-person-fill fas fa-user"></i>{labour_data.username}</h5>
                                 <div className="name d-flex">
                             <p className="name-para">{labour_data.category_name}</p>
