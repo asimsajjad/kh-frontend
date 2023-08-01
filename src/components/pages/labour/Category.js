@@ -13,7 +13,7 @@ function Categories() {
   const { type } = useParams();
   const [isLoading, setIsLoading] = useState(false);
   const [currentPage, setCurrenPage] = useState(1);
-  const recordsPerPage = 10;
+  const recordsPerPage = 20;
   const lastIndex = currentPage * recordsPerPage;
   const firstIndex = lastIndex - recordsPerPage;
   const user_id = localStorage.getItem("user_id");
