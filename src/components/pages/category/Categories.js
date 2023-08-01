@@ -16,24 +16,32 @@ function Categories() {
 
   const url='';
   useEffect(() => {
-    const storedLanguage = Cookies.get('language');
-    setIsLoading(true)
-    axios.get(`${url}`)
-      .then(response => {
-        if(storedLanguage === "en"){
-          setCategories(response?.data?.data?.en);
-        }else if(storedLanguage === "ur"){
-          setCategories(response?.data?.data?.ur);
-        }else if(storedLanguage === "ar"){
-          setCategories(response?.data?.data?.ar);
+    console.log("All categories");
+    const fetchCategories = async () => {
+      try {
+        setIsLoading(true);
+        const storedLanguage = Cookies.get('language');
+        const response = await axios.get(`${url}`);
+        let data = [];
+        console.log("All categories msg 2");
+
+        if (storedLanguage === "en") {
+          data = response?.data?.data?.en;
+        } else if (storedLanguage === "ur") {
+          data = response?.data?.data?.ur;
+        } else if (storedLanguage === "ar") {
+          data = response?.data?.data?.ar;
         }
-        // setCategories(response?.data?.data?.en);
-        setIsLoading(false)
-      })
-      .catch(error => {
+
+        setCategories(data);
+        setIsLoading(false);
+      } catch (error) {
         console.error(error);
-        setIsLoading(false)
-      });
+        setIsLoading(false);
+      }
+    };
+
+    fetchCategories();
   }, []);
 
   const records = categories.slice(firstIndex, lastIndex);

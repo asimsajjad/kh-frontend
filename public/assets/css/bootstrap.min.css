@@ -61,10 +61,6 @@ hr {
     opacity: .25
 }
 
-hr:not([size]) {
-   
-}
-
 .h1,
 .h2,
 .h3,
