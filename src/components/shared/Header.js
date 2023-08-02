@@ -55,9 +55,12 @@ function Header() {
 
   return (
     <>
-      <nav className="navbar navbar-expand-lg pl-3">
+      <nav className="navbar navbar-expand-lg pl-2">
         <div className="container-fluid navbar">
-          <Link to="/" className="navbar-brand logo pl-4">
+        <div className="row">
+        <div className="col-md-2">
+
+        <Link to="/" className="navbar-brand logo pl-4">
             <img src="assets/images/kh-logo.png" alt="Logo" />
           </Link>
           <button
@@ -71,7 +74,11 @@ function Header() {
           >
             <img className="toogler-img" src="assets/images/download.svg" alt="" />
           </button> 
-          <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+
+        </div>
+        <div className="col-md-9 ml-4">
+        
+        <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
             <ul className={i18n.language === 'en' ? "navbar-nav me-auto mb-2 mb-lg-0" : "navbar-nav me-auto mb-2 mb-lg-0 pl-5"}  dir={i18n.language === 'en' ? 'ltr' : 'rtl'}>
               <li className="nav-item">
                 <Link to="/" className="nav-link text-light" aria-current="page">
@@ -134,6 +141,12 @@ function Header() {
               </select>
           
           </div>
+
+        </div>
+
+        </div>
+        
+       
         </div>
       </nav>
       <Alert alert={alert} />
