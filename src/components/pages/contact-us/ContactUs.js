@@ -61,7 +61,7 @@ function Contact() {
 
   function SubmitButton(){
     // if (contact.name && contact.email && contact.comments){
-      return <button className="btn login-btn" type="submit">{t("submit")}</button>
+      return <button className="btn login-btn mt-3" type="submit">{t("submit")}</button>
     // } else {
       // return <button className="btn login-btn" type="submit" disabled>{t("submit")}</button>
     // };

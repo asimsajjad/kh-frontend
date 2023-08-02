@@ -64,7 +64,7 @@ function PopularServices() {
     };
   return <section className="container-fluid services">
           <div className='container'  dir={i18n.language === 'en' ? 'ltr' : 'rtl'}>
-            <div className="col-md-6 mb-5">
+            <div className="col-md-6 mb-3">
               <h2 className="mb-3 categories">{t("popular")}</h2>
             </div>
           </div>

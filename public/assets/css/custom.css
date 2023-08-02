@@ -52,9 +52,11 @@ select#signup-sector {
     width: 747px;
     margin-top: 25px;
     border-radius: 10px;
-    border: none;
+    border: none
 }
-
+select.signup-select option:hover {
+    font-size: 17px;
+}
 select#profileupdate-sector {
     height: 50px;
     width: 747px;
@@ -62,6 +64,8 @@ select#profileupdate-sector {
     border-radius: 10px;
     border: none;
 }
+
+
 .col-md-2.profile-image {
     margin-left: -20px;
 }
@@ -766,4 +770,12 @@ input:required:focus {
   
     /* Set z-index to display it above other elements */
     z-index: 9999;
+  }
+
+  .auto-address{
+      padding: 0px;
+  }
+  .auto-address-options:hover{
+      font-size: 17px;
+      background-color: #673AB7;
   }

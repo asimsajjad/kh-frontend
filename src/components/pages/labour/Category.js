@@ -45,9 +45,8 @@ function Categories() {
   }, [type]);
 
   function loadEmployees(slug = type) {
-    const storedLanguage = Cookies.get("language");
     setIsLoading(true);
-
+    const storedLanguage = Cookies.get("language");
     const formData = new FormData();
     if (!user_id) {
       formData.append("user_id", "");

@@ -254,11 +254,13 @@ function Signup() {
         if (usertype !== "employer") {
           return (
             <div className="form-group">
-            <div className="col-md-8">
-            <select id="signup-sector" name="category" className="signup-select" placeholder='select a category' onChange={handleChange} required>
+            <div className="col-md-12 d-flex">
+            <div className="custom-dropdown">
+            <select id="signup-sector" name="category" className="signup-select" placeholder='select a category' onChange={handleChange}  required>
             <option value="" disabled selected hidden>{`${t("selectACategory")} (${t("required")})`}</option> 
             {category.map(categories => ( <option key={categories.id} value={categories.id} >{categories.name}</option>))}
             </select>
+            </div>
             </div>
           </div>
           )
@@ -275,21 +277,22 @@ function Signup() {
                       searchOptions={{ types: ['address']}} //componentRestrictions: { country: 'pk' } Set the country code if you want to limit the results to a specific country
                       >
                       {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-                        <div className="name-input mb-4 mt-4">
+                        <div className="name-input mb-4 mt-4 pl-1">
                           <input
                             {...getInputProps({
                               className: "form-control",
                               placeholder: t("writeYourAddress")
                             })}
                             required></input>
-                          <div className='auto-address'>
+                          <div className='auto-address mt-3'>
                             {loading ? <div>Loading...</div> : null}
                             {suggestions.map((suggestion) => {
                               const style = {
-                                backgroundColor: suggestion.active ? '#41b6e6' : '#fff',
+                                backgroundColor: suggestion.active ? '#afabab' : '#fff',
+                                cursor: 'pointer',
                               };
                               return (
-                                <div {...getSuggestionItemProps(suggestion, { style })}>
+                                <div className='auto-address-options pl-3' {...getSuggestionItemProps(suggestion, { style })}>
                                   {suggestion.description}
                                 </div>
                               );

@@ -173,9 +173,9 @@ setSelectedImage(e.target.files[0]);
         if (info.user_type !== "employer") {
           return (
             <div className="form-group">
-            <div className="col-md-8 mb-4">
-            <select id="signup-sector" name="category" className={i18n.language === 'en' ? "signup-select pl-2": "signup-select pr-2"} value={info.category_id} onChange={(event) => handleEdit(index, 'category_id', event.target.value)}> 
-            {category.map(categories => ( <option key={categories.id} value={categories.id} >{categories.name}</option>))}
+            <div className="col-md-12 mb-4 d-flex">
+            <select id="signup-sector" name="category" className={i18n.language === 'en' ? "signup-select pl-2": "signup-select pr-2" } value={info.category_id} onChange={(event) => handleEdit(index, 'category_id', event.target.value)}> 
+            {category.map(categories => (<option key={categories.id} value={categories.id} >{categories.name}</option>))}
             </select>
             </div>
           </div>
@@ -198,7 +198,7 @@ setSelectedImage(e.target.files[0]);
               onSelect={handleSelectAddress}
             >
               {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-                <div className="name-input mb-4">
+                <div className={i18n.language === 'en' ? "name-input mb-4 pl-1" : "name-input mb-4 pr-2 " }>
                   {/* Corrected: Pass inputProps to input element */}
                   <input
                     {...getInputProps({
@@ -214,11 +214,11 @@ setSelectedImage(e.target.files[0]);
                     {loading && <div >Loading...</div>}
                     {suggestions.map((suggestion, index) => {
                       const style = {
-                        backgroundColor: suggestion.active ? '#41b6e6' : '#fff',
+                        backgroundColor: suggestion.active ? '#afabab' : '#fff',
                         cursor: 'pointer',
                       };
                       return (
-                        <div className=""
+                        <div className="auto-address-options pl-3"
                           key={index}
                           {...getSuggestionItemProps(suggestion, { style })}
                         >

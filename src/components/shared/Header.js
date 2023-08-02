@@ -55,7 +55,7 @@ function Header() {
 
   return (
     <>
-      <nav className="navbar navbar-expand-lg">
+      <nav className="navbar navbar-expand-lg pl-5">
         <div className="container-fluid navbar">
           <Link to="/" className="navbar-brand logo pl-4">
             <img src="assets/images/kh-logo.png" alt="Logo" />
@@ -72,7 +72,7 @@ function Header() {
             <img className="toogler-img" src="assets/images/download.svg" alt="" />
           </button> */}
           <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-            <ul className={i18n.language === 'en' ? "navbar-nav me-auto mb-2 mb-lg-0 pr-5" : "navbar-nav me-auto mb-2 mb-lg-0 pl-5"}  dir={i18n.language === 'en' ? 'ltr' : 'rtl'}>
+            <ul className={i18n.language === 'en' ? "navbar-nav me-auto mb-2 mb-lg-0" : "navbar-nav me-auto mb-2 mb-lg-0 pl-5"}  dir={i18n.language === 'en' ? 'ltr' : 'rtl'}>
               <li className="nav-item">
                 <Link to="/" className="nav-link text-light" aria-current="page">
                   {t('home')}
@@ -123,9 +123,9 @@ function Header() {
                   );
                 }
               })()}
-             
-             <select
-                className="nav-link text-light select" // Add the custom-select class here
+            </ul>
+            <select
+                className="nav-link text-light select pl-1 mt-1" // Add the custom-select class here
                 onChange={(e) => changeLanguage(e.target.value)}
                 value={i18n.language}>
                 <option className="option" value="en">English</option>
@@ -133,7 +133,6 @@ function Header() {
                 <option className="option" value="ur">اردو</option>
               </select>
           
-            </ul>
           </div>
         </div>
       </nav>
