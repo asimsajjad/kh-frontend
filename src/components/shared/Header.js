@@ -14,7 +14,7 @@ function Header() {
   
 
   const saveLanguagePreference = (lng) => {
-    Cookies.set('language', "en", { expires: 365 }); // Set the cookie to expire in 365 days
+    Cookies.set('language', lng, { expires: 365 }); // Set the cookie to expire in 365 days
   };
 
   const showAlert = (message, type) => {
@@ -124,14 +124,14 @@ function Header() {
                 }
               })()}
              
-             {/* <select
+             <select
                 className="nav-link text-light select" // Add the custom-select class here
                 onChange={(e) => changeLanguage(e.target.value)}
                 value={i18n.language}>
                 <option className="option" value="en">English</option>
                 <option className="option" value="ar">العربية</option>
                 <option className="option" value="ur">اردو</option>
-              </select> */}
+              </select>
           
             </ul>
           </div>

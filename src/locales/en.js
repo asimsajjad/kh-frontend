@@ -13,7 +13,7 @@ export default{
   forLabours:"For Labours",
   callUs:"Call Us",
   address:"Pakistan: New Defense View Housing Scheme , Dera Ghazi Khan, Punjab 32200.",
-  createAccount:"create account",
+  createAccount:"Create Account",
   termsAndConditions:"Terms and Conditions",
   allRightsReserved:"Khadim Hazir. All rights reserved",
   rightsReserved:"© Copyright",
@@ -107,4 +107,6 @@ export default{
   user_registration_error:"User Registration Error",
   We_have_sent_a_new_password_to_your_email:"We have sent a new password to your email",
   This_user_is_not_registered_Kindly_register_first:"This user is not registered, Kindly register first",
+
+  required:"required",
 }

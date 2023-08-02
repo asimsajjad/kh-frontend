@@ -59,7 +59,7 @@ export default{
   labour:"تَعَب",
   phoneNumber:"رقم التليفون",
   selectACategory:"اختر تصنيف",
-  writeYourAddress:"اكتب عنوانك هنا",
+  writeYourAddress:"اكتب عنوانك هنا (مطلوب)",
   toKeepConnected:"للبقاء على اتصال معنا ، يرجى التسجيل باستخدام معلوماتك الشخصية",
   alreadyHaveAnAccount:"هل لديك حساب",
   signUp:"اشتراك",
@@ -71,7 +71,7 @@ export default{
   contactMe:"يمكنك الاتصال بي على رقم الهاتف",
   showInTheList:"الموضح في القائمة ",
 
-  profileUpdate:"تحديث الملف الشخصي",
+  profileUpdate:"  تحديث الملف الشخصي",
   ifYouWantCahngePassword:"إذا كنت تريد تغيير كلمة المرور الخاصة بك انتقل إلى",
   passwordUpdate:"تحديث كلمة المرور",
   update:"تحديث",
@@ -107,4 +107,6 @@ export default{
   user_registration_error:"خطأ في تسجيل المستخدم",
   We_have_sent_a_new_password_to_your_email:"لقد أرسلنا كلمة مرور جديدة إلى بريدك الإلكتروني",
   This_user_is_not_registered_Kindly_register_first:"هذا المستخدم غير مسجل ، يرجى التسجيل أولاً",
+
+  required:"مطلوب",
 }

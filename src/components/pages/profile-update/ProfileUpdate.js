@@ -98,7 +98,7 @@ setSelectedImage(e.target.files[0]);
 // console.log('',profileupdate);
     const handleSubmit = (e) => {
       e.preventDefault();
-      console.log(profileupdate);
+      // console.log(profileupdate);
       setIsLoading(true);
           const formData = new FormData()
           const config = {
@@ -146,7 +146,7 @@ setSelectedImage(e.target.files[0]);
       };
     };  
 
-    const renderUser =(<section className="login-section pl-3"> 
+    const renderUser =(<section className="login-section pl-3" dir={i18n.language === 'en' ? 'ltr' : 'rtl'}> 
     {profile.map((info, index) => ( 
     <div className="container mt-5" key={info.user_id}>
       <div className="row login-form ">
@@ -159,7 +159,7 @@ setSelectedImage(e.target.files[0]);
               <Link href=""><i className="fa-brands fa-google-plus"></i></Link>
             </div>
             <p className="text-center">Or use your email for registeration</p> */}
-          <div dir={i18n.language === 'en' ? 'ltr' : 'rtl'}>
+          <div>
         <div className="name-input mb-4 d-flex mt-4">
           <label className={i18n.language === 'en' ? "": "pr-3 pl-2"}><i className="fas fa-user"></i></label>
           <input className="" type="name" name='username' placeholder={t("name")} value={info.username} onChange={(event) => handleEdit(index, 'username', event.target.value)}/>
@@ -247,11 +247,11 @@ setSelectedImage(e.target.files[0]);
             <SubmitButton/>
           </form>
         </div>
-        <div className="col-md-4 pr-0">
-          <div className="details">
+        <div className={i18n.language === 'en' ? "col-md-4 pr-0" : "col-md-4 pl-0"}>
+          <div className={i18n.language === 'en' ? "details" : "details-rtl"}>
             <h3 className="text-light">{t("welcomeToKhadimHazir")}</h3>
             <p className="text-light">{t("ifYouWantCahngePassword")}</p>
-            <Link className="contact" to='/change-password'>{t("passwordUpdate")}<i className="ml-3 fas fa-arrow-right"></i></Link>
+            <Link className="contact" to='/change-password'>{t("passwordUpdate")}<i className={i18n.language === 'en' ? 'ml-3 fas fa-arrow-right' : 'mr-3 fas fa-arrow-left'}></i></Link>
           </div>
         </div>
       </div>

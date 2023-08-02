@@ -67,21 +67,21 @@ function Contact() {
     // };
   };
 
-  const renderUser =(<section className="login-section pl-3">  
+  const renderUser =(<section className="login-section pl-3"  dir={i18n.language === 'en' ? 'ltr' : 'rtl'}>  
   <div className="container mt-5">
     <div className="row height500">
-      <div className="col-md-8 login-form1">
+      <div className={i18n.language === 'en' ? "col-md-8 login-form1" : "col-md-8 login-form1-rtl"}>
       <Alert alert={alert}/>
         <form onSubmit={handleSubmit}> 
           <h2 className="text-center">{t("contactUs")}</h2>
-          <div className="name-input mb-4 d-flex mt-3" dir={i18n.language === 'en' ? 'ltr' : 'rtl'}>
+          <div className="name-input mb-4 d-flex mt-3">
             <label className={i18n.language === 'en' ? 'form-label' : 'form-label mr-2'}>{t("name")}</label>
-            <input type="text" name="name" placeholder={`${t("enterName")} (required)`} className="form-control" id="formGroupExampleInput" value={contact.name} onChange={handleChange} required
+            <input type="text" name="name" placeholder={`${t("enterName")} (${t("required")})`} className="form-control" id="formGroupExampleInput" value={contact.name} onChange={handleChange} required
           />
           </div>
-          <div className="password-input d-flex" dir={i18n.language === 'en' ? 'ltr' : 'rtl'}>
+          <div className="password-input d-flex">
             <label className={i18n.language === 'en' ? 'form-label' : 'form-label mr-2'} style={{ width: '55px'}}>{t("email")}</label>
-            <input type="email" className="form-control"  placeholder={`${t("enterEmail")} (required)`} name="email" id="formGroupExampleInput2" value={contact.email} onChange={handleChange} pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?" required
+            <input type="email" className="form-control"  placeholder={`${t("enterEmail")} (${t("required")})`} name="email" id="formGroupExampleInput2" value={contact.email} onChange={handleChange} pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?" required
         />
           </div>
           <div className="row">
@@ -94,18 +94,18 @@ function Contact() {
           <SubmitButton/>
         </form>
       </div>
-      <div className="col-md-4 pl-0">
-        <div className="login-details">
+      <div className={i18n.language === 'en' ? "col-md-4 pl-0" : "col-md-4 pr-0"}>
+        <div className={i18n.language === 'en' ? "login-details" : "login-details-rtl"}>
           <h3 className="text-light ">{t("welcomeToKhadimHazir")}</h3>
           <p className="text-light">{t("moreFeatures")}</p>
           {(() => {
             if (user_id == null){
                 return (
-                  <p><Link to="/login" className='contact'>{t("login")}<i className="ml-3 fas fa-arrow-right"></i></Link></p>     
+                  <p><Link to="/login" className='contact'>{t("login")}<i  className={i18n.language === 'en' ? 'ml-3 fas fa-arrow-right' : 'mr-3 fas fa-arrow-left'}></i></Link></p>     
                 )
             }else{
               return (
-                <p><Link to="/" className='contact'>{t("visitOurPage")}<i className="ml-3 fas fa-arrow-right"></i></Link></p>
+                <p><Link to="/" className='contact'>{t("visitOurPage")}<i  className={i18n.language === 'en' ? 'ml-3 fas fa-arrow-right' : 'mr-3 fas fa-arrow-left'}></i></Link></p>
               )
               
             }              

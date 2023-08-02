@@ -107,8 +107,8 @@ function Search() {
         <div className="row">
           <div className="col-md-12 d-flex justify-content-center">
             <div className="" ref={searchRef}>
-            <div classNae="search-box mb-1" style={{border : "2px solid #673AB7"}}>
-              <i className="fas fa-search pl-2 "></i>
+            <div classNae={i18n.language === 'en' ? "search-box mb-1" : "search-box mb-1"} style={{border : "2px solid #673AB7"}}>
+              <i className="fas fa-search"></i>
               <input
                 type="text"
                 onChange={handleSearchChange}

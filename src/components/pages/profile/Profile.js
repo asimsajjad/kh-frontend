@@ -5,7 +5,7 @@ import LoadingSpinner from "../../loader/LoadingSpinner";
 import { useTranslation } from 'react-i18next';
 
 function Info() {
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
     const [profile, setProfile] = useState([]);
     const {type} = useParams();
     const user_id = localStorage.getItem('user_id')
@@ -41,7 +41,7 @@ function Info() {
        };
 
        const renderUser=(
-           <div>
+           <div  dir={i18n.language === 'en' ? 'ltr' : 'rtl'}>
            {profile.map(info => (
         <div className="container pt-5 profile">
                     <div className="row pl-2">
@@ -58,7 +58,7 @@ function Info() {
                           <p className="p1">{info.username}</p>
                         </div>
             <div className="col-md-8 ">
-            <p className='p1'> <img src={`${process.env.REACT_APP_BASE_URL}assets/images/location.png`} className='location_icon '></img>Pakistan</p> 
+            <p className='p1'> <img src={`${process.env.REACT_APP_BASE_URL}assets/images/location.png`} className='location_icon '></img>{info.country ? info.country : 'Pakistan'}</p> 
             </div>
             </div>
             <p className="p2">{info.category_name}</p>
@@ -88,16 +88,7 @@ function Info() {
                     <p className="p4">{t("phone")}</p>
                 </div>
                 <div className="col-md-3">
-                {(() => {
-                        if (info.phone_no ===  "undefined"){
-                            return (<p></p>)
-                        }else{
-                            return (
-                                <p className="p4">{info.phone_no}</p>
-                            )
-                        }                                              
-                        }
-                )}
+                    <p className="p4">{info.phone_no}</p>
                 </div>
             </div>
             <div className="col">
@@ -106,16 +97,7 @@ function Info() {
                     <p className="p4">{t("employeeAdress")}</p>
                 </div>
                 <div className="col-md-9">
-                {(() => {
-                        if (info.address ===  "undefined"){
-                            return (<p></p>)
-                        }else{
-                            return (
-                                <p className="p4">{info.address}</p>
-                            )
-                        }                                              
-                        }
-                )}
+                <p className="p4">{info.address}</p>
                 </div>
             </div>
         </div>

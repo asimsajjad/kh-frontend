@@ -197,7 +197,7 @@ function Signup() {
       // };
     };  
 
-    const renderUser=(<section className="login-section pl-3">    
+    const renderUser=(<section className="login-section pl-3" dir={i18n.language === 'en' ? 'ltr' : 'rtl'}>    
     <div className="container mt-5">
       <div className="row login-form ">
         <div className="col-md-8">
@@ -211,41 +211,43 @@ function Signup() {
             </div>
             <p className="text-center">Or use your email for registeration</p> */}
             <div className="container pt-3">
-              <div className="row justify-content-center">
-                <div className="col-auto">
+              <div className="row">
+                {/* <div className="col-md-12"> */}
+                <div className="col-md-6">
                 <input className="form-check-input m-4" type="radio" name="usertype" id="radio2" value="employer" checked={usertype === 'employer'} onChange={handleSelect} />
-                  <div className="form-check form-check-inline pr-5">
-                    <div className="row .redio-buttons-image">
-                      <a><img src="assets/images/employee.png" alt="" className=" labour"/></a>
+                  <div className="form-check form-check-inline">
+                    {/* <div className="row .redio-buttons-image"> */}
+                      <p><img src="assets/images/employee.png" alt="" className=" labour"/></p>
                       <label>{t("employer")}</label>
                     </div>
                 </div>
+                <div className="col-md-6">
                     <input className="form-check-input m-4" type="radio" name="usertype" id="radio1" value="employee" checked={usertype === 'employee'} onChange={handleSelect}/>
                     <div className="form-check form-check-inline">
-                      <div className="row .redio-buttons-image">
-                        <a><img src="assets/images/labour.png" alt="" className=" labour"/></a>
+                      {/* <div className="row .redio-buttons-image"> */}
+                        <p><img src="assets/images/labour.png" alt="" className=" labour"/></p>
                         <label>{t("labour")}</label>
                       </div>
                     </div>                  
-            </div>
+            {/* </div> */}
           </div>
         </div>
-        <div dir={i18n.language === 'en' ? 'ltr' : 'rtl'}>
+        <div>
         <div className="name-input mb-4 d-flex">
           <label className={i18n.language === 'en' ? "": "pr-3 pl-2"}><i className="fas fa-user"></i></label>
-          <input className="" type="name" name='username' placeholder={`${t("name")} (required)`} value={user.username} onChange={handleChange} required title="Please enter your username. This field is required."/>
+          <input className="" type="name" name='username' placeholder={`${t("name")} (${t("required")})`} value={user.username} onChange={handleChange} required title="Please enter your username. This field is required."/>
         </div>
         <div className="name-input mb-4 d-flex">
           <label className={i18n.language === 'en' ? "": "pr-3 pl-2"}><i className="far fa-envelope"></i></label>
-          <input className="" type="email" name='email' placeholder={`${t("email")} (required)`} value={user.email} onChange={handleChange} pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?" required/>    
+          <input className="" type="email" name='email' placeholder={`${t("email")} (${t("required")})`} value={user.email} onChange={handleChange} pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?" required/>    
         </div>
         <div className="password-input mb-4 d-flex">
           <label className={i18n.language === 'en' ? "": "pr-3 pl-2"}><i className="fas fa-lock	"></i></label>
-          <input className="password-input" type="password" name="password" id="" placeholder={`${t("password")} (required)`} value={user.password} onChange={handleChange} required/>
+          <input className="password-input" type="password" name="password" id="" placeholder={`${t("password")} (${t("required")})`} value={user.password} onChange={handleChange} required/>
         </div>
         <div className="name-input d-flex">
           <label className={i18n.language === 'en' ? "": "pr-3 pl-2"}><i className="fas fa-phone"></i></label>
-          <input className="" type="number" name='phone_no' placeholder={`${t("phoneNumber")} (required)`} value={user.phone_no} onChange={handleChange} required/>
+          <input className="" type="number" name='phone_no' placeholder={`${t("phoneNumber")} (${t("required")})`} value={user.phone_no} onChange={handleChange} required/>
         </div>
           
             {(() => {
@@ -254,7 +256,7 @@ function Signup() {
             <div className="form-group">
             <div className="col-md-8">
             <select id="signup-sector" name="category" className="signup-select" placeholder='select a category' onChange={handleChange} required>
-            <option value="" disabled selected hidden>{`${t("selectACategory")} (required)`}</option> 
+            <option value="" disabled selected hidden>{`${t("selectACategory")} (${t("required")})`}</option> 
             {category.map(categories => ( <option key={categories.id} value={categories.id} >{categories.name}</option>))}
             </select>
             </div>
@@ -316,11 +318,11 @@ function Signup() {
         </div>
         {/* <Link className="text-center mb-3 mobile-screen d-none" to="/login">Already have an Account<i
             className="ml-3 bi bi-arrow-right"></i></Link> */}
-        <div className="col-md-4 pr-0">
-          <div className="details">
+        <div className={i18n.language === 'en' ? "col-md-4 pr-0" : "col-md-4 pl-0"}>
+          <div className={i18n.language === 'en' ? "details" : "details-rtl"}>
             <h3 className="text-light">{t("welcomeToKhadimHazir")}</h3>
             <p className="text-light">{t("toKeepConnected")}</p>
-            <Link className="contact" to="/login">{t("alreadyHaveAnAccount")}<i className="ml-3 fas fa-arrow-right"></i></Link>
+            <Link className="contact" to="/login">{t("alreadyHaveAnAccount")}<i className={i18n.language === 'en' ? 'ml-3 fas fa-arrow-right' : 'mr-3 fas fa-arrow-left'}></i></Link>
           </div>
         </div>
       </div>

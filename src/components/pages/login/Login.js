@@ -100,10 +100,10 @@ function Login() {
   };
 
   const renderUser=(
-  <section className="login-section pl-3">
+  <section className="login-section pl-3"  dir={i18n.language === 'en' ? 'ltr' : 'rtl'}>
   <div className="container mt-5">
     <div className="row ">
-      <div className="col-md-8 login-form1">
+      <div className={i18n.language === 'en' ? "col-md-8 login-form1" : "col-md-8 login-form1-rtl"}>
         
       <Alert alert={alert}/>
         <form onSubmit={handleSubmit}>
@@ -113,7 +113,7 @@ function Login() {
             <Link href=""><i class="fa-brands fa-linkedin"></i></Link>
             <Link href=""><i class="fa-brands fa-google-plus"></i></Link> */}
           </div>
-          <div dir={i18n.language === 'en' ? 'ltr' : 'rtl'}>
+          <div>
           <div className="name-input mb-3 d-flex mt-5">
             <label  className={i18n.language === 'en' ? "": "pr-3 pl-2"}><i className="far fa-envelope"></i></label>
             <input className="" name="email" type="email" placeholder={t("email")} value={user.email} onChange={handleChange} required pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"/>
@@ -135,11 +135,11 @@ function Login() {
           <button className="btn login-btn" type='submit'>{t("login")}</button>
         </form>
       </div>
-      <div className="col-md-4 pl-0">
-        <div className="login-details">
+      <div className={i18n.language === 'en' ? "col-md-4 pl-0" : "col-md-4 pr-0"}>
+        <div className={i18n.language === 'en' ? "login-details" : "login-details-rtl"}>
           <h3 className="text-light">{t("welcomeToKhadimHazir")}</h3>
           <p className="text-light">{t("toEnjoyAllFeatures")}</p>
-          <Link className="contact" to="/signup">{t("orRegisterHere")}<i className="ml-3 fas fa-arrow-right"></i></Link>
+          <Link className="contact" to="/signup">{t("orRegisterHere")}<i className={i18n.language === 'en' ? 'ml-3 fas fa-arrow-right' : 'mr-3 fas fa-arrow-left'}></i></Link>
         </div>
       </div>
     </div>

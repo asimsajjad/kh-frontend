@@ -57,10 +57,10 @@ function ForgotPassword() {
     }, 3000);
   }
 
-  const renderUser = (<section className="login-section pl-3">
+  const renderUser = (<section className="login-section pl-3"  dir={i18n.language === 'en' ? 'ltr' : 'rtl'}>
   <div className="container mt-5">
     <div className="row ">
-      <div className="col-md-8 login-form1">
+      <div className={i18n.language === 'en' ? "col-md-8 login-form1" : "col-md-8 login-form1-rtl"}>
       <Alert alert={alert}/>
         <form onSubmit={handleSubmit}>
           <h2 className="text-center pt-4">{t("forgotPassword")}</h2>
@@ -70,18 +70,18 @@ function ForgotPassword() {
             <Link href=""><i class="fa-brands fa-google-plus"></i></Link> */}
           </div>
           
-          <div className="name-input mb-4 d-flex mt-5" dir={i18n.language === 'en' ? 'ltr' : 'rtl'}>
+          <div className="name-input mb-4 d-flex mt-5">
             <label htmlFor="" className={i18n.language === 'en' ? "": "pr-3"}><i className="far fa-envelope"></i></label>
             <input className="form-control" type="email" name='email' value={email.email} placeholder={t("enterEmail")} id="formGroupExampleInput2" onChange={handleChange} required/>
           </div>
          <button className="btn login-btn mt-5" type='submit'>{t("submit")}</button>
         </form>
       </div>
-      <div className="col-md-4 pl-0">
-        <div className="login-details">
+      <div className={i18n.language === 'en' ? "col-md-4 pl-0" : "col-md-4 pr-0"}>
+        <div className={i18n.language === 'en' ? "login-details" : "login-details-rtl"}>
           <h3 className="text-light">{t("welcomeToKhadimHazir")}</h3>
           <p className="text-light">{t("getNewPassword")}</p>
-          <Link className="contact" to="/login">{t("orLogin")}<i className="ml-3 fas fa-arrow-right"></i></Link>
+          <Link className="contact" to="/login">{t("orLogin")}<i className={i18n.language === 'en' ? 'ml-3 fas fa-arrow-right' : 'mr-3 fas fa-arrow-left'}></i></Link>
         </div>
       </div>
     </div>

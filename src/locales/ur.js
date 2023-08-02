@@ -59,7 +59,7 @@ export default{
   labour:"مزدور",
   phoneNumber:"فون نمبر",
   selectACategory:"ایک زمرہ منتخب کریں",
-  writeYourAddress:"اپنا پتہ یہاں لکھیں",
+  writeYourAddress:"اپنا پتہ یہاں لکھیں (ضروری)",
   toKeepConnected:"ہمارے ساتھ جڑے رہنے کے لیے براہ کرم اپنی ذاتی معلومات کے ساتھ سائن اپ کریں",
   alreadyHaveAnAccount:"پہلے سے ہی ایک اکاؤنٹ ہے",
   signUp:"سائن اپ",
@@ -71,7 +71,7 @@ export default{
   contactMe:"آپ فہرست میں دکھائے گئے فون نمبر پر مجھ سے",
   showInTheList:"رابطہ کر سکتے ہیں",
 
-  profileUpdate:"پروفائل اپ ڈیٹ",
+  profileUpdate:"  پروفائل اپ ڈیٹ",
   ifYouWantCahngePassword:"اگر آپ اپنا پاس ورڈ تبدیل کرنا چاہتے ہیں تو",
   passwordUpdate: "پاس ورڈ اپ ڈیٹ پر جائیں ",
   update:"اپ ڈیٹ",
@@ -107,4 +107,6 @@ export default{
   user_registration_error:"صارف کی رجسٹریشن کی خرابی",
   We_have_sent_a_new_password_to_your_email:"ہم نے آپ کے ای میل پر ایک نیا پاس ورڈ بھیجا ہے",
   This_user_is_not_registered_Kindly_register_first:"یہ صارف رجسٹرڈ نہیں ہے، براہ کرم پہلے رجسٹر کریں",
+
+  required:"ضروری",
 }
