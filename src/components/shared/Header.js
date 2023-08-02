@@ -55,12 +55,12 @@ function Header() {
 
   return (
     <>
-      <nav className="navbar navbar-expand-lg pl-5">
+      <nav className="navbar navbar-expand-lg pl-3">
         <div className="container-fluid navbar">
           <Link to="/" className="navbar-brand logo pl-4">
             <img src="assets/images/kh-logo.png" alt="Logo" />
           </Link>
-          {/* <button
+          <button
             className="navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
@@ -70,7 +70,7 @@ function Header() {
             aria-label="Toggle navigation"
           >
             <img className="toogler-img" src="assets/images/download.svg" alt="" />
-          </button> */}
+          </button> 
           <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
             <ul className={i18n.language === 'en' ? "navbar-nav me-auto mb-2 mb-lg-0" : "navbar-nav me-auto mb-2 mb-lg-0 pl-5"}  dir={i18n.language === 'en' ? 'ltr' : 'rtl'}>
               <li className="nav-item">
