@@ -21,8 +21,8 @@ function Worker() {
   </div>
 </div>
 </div>
-        <div className="col-md-6 find">
-          <div className="worker-text " dir={i18n.language === 'en' ? 'ltr' : 'rtl'}>
+        <div className="col-md-6 find mt-5 ml-3"  dir={i18n.language === 'en' ? 'ltr' : 'rtl'}>
+          <div className="worker-text ">
            <h5 className="text-light">{t("findTheBest")} <br/>  <Link to="/labours"><b className="text-dark">{t("workers")}</b></Link> {t("here")} </h5>
             <p className="text-light p">{t("searchAndFilter")}
             </p>
