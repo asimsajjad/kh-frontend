@@ -292,7 +292,7 @@ function Signup() {
                                 cursor: 'pointer',
                               };
                               return (
-                                <div className='auto-address-options pl-3' {...getSuggestionItemProps(suggestion, { style })}>
+                                <div className='auto-address-options pl-2' {...getSuggestionItemProps(suggestion, { style })}>
                                   {suggestion.description}
                                 </div>
                               );

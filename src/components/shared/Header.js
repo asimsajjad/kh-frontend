@@ -61,7 +61,7 @@ function Header() {
         <div className="col-md-2">
 
         <Link to="/" className="navbar-brand logo pl-4">
-            <img src="assets/images/kh-logo.png" alt="Logo" />
+            <img src={i18n.language === 'en' ? `${process.env.REACT_APP_BASE_URL}assets/images/kh-logo.png` : `${process.env.REACT_APP_BASE_URL}assets/images/kh-logo-rtl.png`} alt="Logo" />
           </Link>
           <button
             className="navbar-toggler"

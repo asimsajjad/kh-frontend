@@ -8,7 +8,11 @@ import { useTranslation } from 'react-i18next';
 
 function Login() {
   const { t, i18n } = useTranslation();
-  const [user, setUser]=useState('');
+  // const [user, setUser]=useState('');
+  const [user, setUser] = useState({
+    email: '',
+    password: ''
+  });
   const [alert, setAlert] = useState(null);
   const navigate = useNavigate();
   const url='loginUser';
@@ -116,7 +120,7 @@ function Login() {
           <div>
           <div className="name-input mb-3 d-flex mt-5">
             <label  className={i18n.language === 'en' ? "": "pr-3 pl-2"}><i className="far fa-envelope"></i></label>
-            <input className="" name="email" type="email" placeholder={t("email")} value={user.email} onChange={handleChange} required pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"/>
+            <input className="" name="email" type="email" placeholder={t("email")} value={user.email} onChange={handleChange} required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}"/>
           </div>
           <div className="password-input d-flex">
             <label  className={i18n.language === 'en' ? "": "pr-3 pl-2"}><i className="fas fa-lock	"></i></label>
