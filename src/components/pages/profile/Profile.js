@@ -87,18 +87,32 @@ function Info() {
                 <div className="col-md-3">
                     <p className="p4">{t("phone")}</p>
                 </div>
-                <div className="col-md-3">
-                    <p className="p4">{info.phone_no}</p>
-                </div>
+                {(() => {
+                        if (info.phone_no == 'undefined'){
+                            return (<p></p>)
+                        }else{
+                            return (
+                                <div className="col-md-3">
+                                <p className="p4">{info.phone_no}</p>
+                            </div>)}                                              
+                            })()}
+                
             </div>
             <div className="col">
             <div className="row">
                 <div className="col-md-3 ">
                     <p className="p4">{t("employeeAdress")}</p>
                 </div>
-                <div className="col-md-9">
-                <p className="p4">{info.address}</p>
-                </div>
+                {(() => {
+                        if (info.address == 'undefined'){
+                            return (<p></p>)
+                        }else{
+                            return (
+                                <div className="col-md-9">
+                                <p className="p4">{info.address ? info.address : ''}</p>
+                                </div>)}                                              
+                            })()}
+                
             </div>
         </div>
                        </div>  

@@ -202,13 +202,14 @@ setSelectedImage(e.target.files[0]);
                   {/* Corrected: Pass inputProps to input element */}
                   <input
                     {...getInputProps({
-                      placeholder: 'Enter Your Address',
+                      placeholder: t('writeYourAddress'),
                       className: '', // Add the necessary class for proper styling
                     })}
                     type="name"
                     name="address"
                     id="floatingTextarea2"
                     value={addressInput}
+                    required
                   />
                   <div className='auto-address'>
                     {loading && <div >Loading...</div>}
