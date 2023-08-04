@@ -104,7 +104,7 @@ const handleImageUpload = (e) => {
   // console.log(e.target.files)
 setSelectedImage(e.target.files[0]);
 };
-// console.log('',profileupdate);
+console.log('coordinates',coordinates);
     const handleSubmit = (e) => {
       e.preventDefault();
       // console.log(profileupdate);
@@ -133,7 +133,11 @@ setSelectedImage(e.target.files[0]);
           // const user_slug=user.toLowerCase();
             axios.post(`${update_url}`, formData, config)
             .then(response =>{
+              // localStorage.removeItem('employer_latitude')
+                // localStorage.removeItem('employer_longitude')
               if(profile[0].user_type === 'employer'){
+                localStorage.setItem('employer_latitude', coordinates.lat)
+                localStorage.setItem('employer_longitude', coordinates.lng)
                 navigate('/labours');
               }else{
                 navigate('/categories');
