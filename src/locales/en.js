@@ -109,4 +109,5 @@ export default{
   This_user_is_not_registered_Kindly_register_first:"This user is not registered, Kindly register first",
 
   required:"required",
+  away:"away",
 }

@@ -14,16 +14,16 @@ function Categories() {
   const lastIndex = currentPage * recordsPerPage;
   const firstIndex = lastIndex - recordsPerPage;
 
-  const url='';
+  const url='index';
   useEffect(() => {
-    console.log("All categories");
+    // console.log("All categories");
     const fetchCategories = async () => {
       try {
         setIsLoading(true);
         const storedLanguage = Cookies.get('language');
         const response = await axios.get(`${url}`);
         let data = [];
-        console.log("All categories msg 2");
+        // console.log("All categories msg 2");
 
         if (storedLanguage === "en") {
           data = response?.data?.data?.en;

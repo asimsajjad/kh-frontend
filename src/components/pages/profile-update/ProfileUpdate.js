@@ -17,12 +17,21 @@ function ProfileUpdate() {
     const [addressInput, setAddressInput] = useState('');
     // const [selectedAddress, setSelectedAddress] = useState('');
     const [coordinates, setCoordinates] = useState({ lat: 0, lng: 0 });
+    const [countryname, setCountryName]=useState('');
 
     // Handler for address suggestions selection
     const handleSelectAddress = async (address) => {
       try {
         const results = await geocodeByAddress(address);
         const latLng = await getLatLng(results[0]);
+        let country = '';
+        for (const component of results[0].address_components) {
+          if (component.types.includes('country')) {
+            country = component.long_name;
+            setCountryName(country);
+            break;
+          }
+        }
         // Do something with latLng if needed.
         setAddressInput(address); // Update the address input value
         setCoordinates(latLng);
@@ -115,6 +124,7 @@ setSelectedImage(e.target.files[0]);
           formData.append('category_id',  profileupdate[0].category_id,)
           formData.append('latitude', coordinates.lat,)
           formData.append('longitude', coordinates.lng,)
+          formData.append('country', countryname,)
           if(selectedImage){
             formData.append('image',  selectedImage)
           }

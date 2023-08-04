@@ -190,7 +190,8 @@ function Categories() {
                             <p><i className="bi mr-2 bi-geo-alt-fill fas fa-location-arrow"></i>{labour_data.country}</p>
                                     )
                                   }else{
-                                    return (<p><i className="bi mr-2 bi-geo-alt-fill fas fa-location-arrow"></i>{labour_data.country}, {(labour_data.distance)} km</p>)
+                                    return (
+                                    <p><i className="bi mr-2 bi-geo-alt-fill fas fa-location-arrow"></i>{labour_data.country}, {(labour_data.distance)}km {t("away")}</p>)
                                   }
                                 })()}
                                 </div>

@@ -95,7 +95,7 @@ function Footer() {
               <i className="mr-2 fa fa-map-marker"></i>
               {t('address')}
             </p>
-            <a href="tel:+923346929604" className="contact">
+            <a href="https://api.whatsapp.com/send?phone=03346929604" className="contact">
               <i className="mr-2 fa fa-phone"></i>+923346929604</a><p></p>
             <a href="mailto:info@ratedsolution.com" className="contact">
               <i className="mr-2 fa fa-envelope"></i>info@ratedsolution.com

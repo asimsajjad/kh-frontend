@@ -109,4 +109,5 @@ export default{
   This_user_is_not_registered_Kindly_register_first:"یہ صارف رجسٹرڈ نہیں ہے، براہ کرم پہلے رجسٹر کریں",
 
   required:"ضروری",
+  away:"دور",
 }

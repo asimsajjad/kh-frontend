@@ -109,4 +109,5 @@ export default{
   This_user_is_not_registered_Kindly_register_first:"هذا المستخدم غير مسجل ، يرجى التسجيل أولاً",
 
   required:"مطلوب",
+  away:"بعيد",
 }
