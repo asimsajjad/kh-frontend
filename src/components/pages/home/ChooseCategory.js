@@ -10,7 +10,7 @@ function ChooseCategory() {
   // const language  = useContext(LanguageContext);
  
   useEffect(() => {
-    const storedLanguage = Cookies.get('language');
+    const storedLanguage = Cookies.get('language') ? Cookies.get('language') : 'en';
     const formData = new FormData()
     axios.get('sevenCategories/8', formData,)
       .then(response => {

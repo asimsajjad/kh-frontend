@@ -80,6 +80,7 @@ function Login() {
           if(response?.data?.message?.success){
             // console.log
              localStorage.setItem('user_id', response?.data?.data[0].user_id)
+             localStorage.setItem('user_type', response?.data?.data[0].usertype)
             //  showAlert( response?.data?.message?.msg, "success")
              showAlert("YouhaveLoggedInSuccesfully", "success")
             if(response?.data?.data[0].usertype=='employee'){

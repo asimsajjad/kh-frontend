@@ -20,7 +20,7 @@ function Search() {
 
   const categories_url = 'index';
   useEffect(() => {
-    const storedLanguage = Cookies.get('language');
+    const storedLanguage = Cookies.get('language') ? Cookies.get('language') : 'en';
     axios
       .get(`${categories_url}`)
       .then((response) => {

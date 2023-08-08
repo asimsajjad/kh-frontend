@@ -10,7 +10,7 @@ function Footer() {
   const user_id = localStorage.getItem('user_id');
 
   const setLanguageFromCookie = () => {
-    const storedLanguage = Cookies.get('language');
+    const storedLanguage = Cookies.get('language') ? Cookies.get('language') : 'en';
     if (storedLanguage) {
       i18n.changeLanguage(storedLanguage);
     }
@@ -33,7 +33,7 @@ function Footer() {
         <div className="row">
           <div className="col-md-3">
             <Link to="/" className="navbar-brand">
-              <img src="assets/images/kh-logo.png" alt="Logo" className="footer" />
+              <img src={i18n.language === 'en' ? `${process.env.REACT_APP_BASE_URL}assets/images/kh-logo.png` : `${process.env.REACT_APP_BASE_URL}assets/images/kh-logo-large-rtl.png`} alt="Logo" className="footer" />
             </Link>
             <p className="foot"  dir={i18n.language === 'en' ? 'ltr' : 'rtl'}>{t('footerDescription')}</p>
           </div>

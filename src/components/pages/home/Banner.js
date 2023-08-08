@@ -7,7 +7,7 @@ function Banner() {
   const { t, i18n } = useTranslation();
 
   const setLanguageFromCookie = () => {
-    const storedLanguage = Cookies.get('language');
+    const storedLanguage = Cookies.get('language') ? Cookies.get('language') : 'en';
     if (storedLanguage) {
       i18n.changeLanguage(storedLanguage);
     }

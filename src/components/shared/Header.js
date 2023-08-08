@@ -8,15 +8,10 @@ function Header() {
   const { t, i18n } = useTranslation();
   const [alert, setAlert] = useState(null);
   const user_id = localStorage.getItem('user_id');
-  // const employer_latitude = localStorage.getItem('employer_latitude');
-  // const employer_longitude = localStorage.getItem('employer_longitude');
   const navigate = useNavigate();
-  
-
   const saveLanguagePreference = (lng) => {
     Cookies.set('language', lng, { expires: 365 }); // Set the cookie to expire in 365 days
   };
-
   const showAlert = (message, type) => {
     setAlert({
       msg: message,
@@ -26,7 +21,6 @@ function Header() {
       setAlert(null);
     }, 3000);
   };
-
   const Logout = (e) => {
     localStorage.removeItem('user_id');
     localStorage.removeItem('employer_latitude');
@@ -35,7 +29,6 @@ function Header() {
     showAlert(t('youHaveLoggedOut'), 'success');
     navigate('/login');
   };
-
   const Labours = () =>{
     window.location.href= "/labours";
     }
@@ -47,7 +40,7 @@ function Header() {
   };
 
   useEffect(() => {
-    const storedLanguage = Cookies.get('language');
+    const storedLanguage = Cookies.get('language') ? Cookies.get('language') : 'en';
     if (storedLanguage) {
       i18n.changeLanguage(storedLanguage);
     }

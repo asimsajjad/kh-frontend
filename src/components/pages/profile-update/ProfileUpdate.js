@@ -15,7 +15,6 @@ function ProfileUpdate() {
     const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(false);
     const [addressInput, setAddressInput] = useState('');
-    // const [selectedAddress, setSelectedAddress] = useState('');
     const [coordinates, setCoordinates] = useState({ lat: 0, lng: 0 });
     const [countryname, setCountryName]=useState('');
 
@@ -45,9 +44,9 @@ function ProfileUpdate() {
 
     const category_url='';
         useEffect(() => {
-          const storedLanguage = Cookies.get('language');
-            axios.get(`${category_url}`).then(response => {
-              if(storedLanguage === "en"){
+          const storedLanguage = Cookies.get('language') ? Cookies.get('language') : 'en';
+          axios.get(`${category_url}`).then(response => {
+            if(storedLanguage === "en"){
                 setCategory(response?.data?.data?.en);
               }else if(storedLanguage === "ur"){
                 setCategory(response?.data?.data?.ur);
@@ -104,7 +103,7 @@ const handleImageUpload = (e) => {
   // console.log(e.target.files)
 setSelectedImage(e.target.files[0]);
 };
-console.log('coordinates',coordinates);
+// console.log('coordinates',coordinates);
     const handleSubmit = (e) => {
       e.preventDefault();
       // console.log(profileupdate);

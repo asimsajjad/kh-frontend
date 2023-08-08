@@ -72,7 +72,7 @@ function Signup() {
 
     const category_url='';
         useEffect(() => {
-          const storedLanguage = Cookies.get('language');
+          const storedLanguage = Cookies.get('language') ? Cookies.get('language') : 'en';
           if(user_id != null){
             navigate("/labours");
           }
@@ -94,33 +94,11 @@ function Signup() {
           
        }, []
        );
-      //  useEffect(() => {
-      //   if ("geolocation" in navigator) {
-      //     // const options = {
-      //     //   enableHighAccuracy: true,
-      //     //   timeout: 5000,
-      //     //   maximumAge: 0,
-      //     // };
-      //     navigator.geolocation.getCurrentPosition(
-      //       (position) => {
-      //         const { latitude, longitude } = position.coords;
-      //         setUserLocation({ latitude, longitude });
-      //       },
-      //       (error) => {
-      //         console.error(error.message);
-      //       },
-      //       // options
-      //     );
-      //   } else {
-      //     console.log("Geolocation is not available in this browser.");
-      //   }
-      // }, []);
-    // const [selectcategory, setSelectCategory]=useState(category);
-
+ 
     const handleSubmit = (e) => {
       setIsLoading(true);
       e.preventDefault();
-      // console.log(coordinates.lat);
+      console.log(coordinates);
           const formData = new FormData()
           const config = {
             headers: { 'content-type': 'multipart/form-data' }
@@ -142,6 +120,7 @@ function Signup() {
             setIsLoading(false);
             if(response?.data?.message?.success){
                localStorage.setItem('user_id', response?.data?.data[0].user_id)
+               localStorage.setItem('user_type', response?.data?.data[0].usertype)
               if(response?.data?.data[0].usertype=='employee'){
                 // window.location.href ="categories";
                 navigate("/categories");
@@ -176,7 +155,7 @@ function Signup() {
     };
   
     function SubmitButton(){
-      // if (user.username && user.email && user.password){
+      // if (user === null){
       //   const regex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
   
       //   if(regex.test(user.email)){
@@ -194,7 +173,6 @@ function Signup() {
 
       // } else {
         return <button className="btn login-btn" type="submit">{t("signUp")}</button>
-      // };
     };  
 
     const renderUser=(<section className="login-section pl-3" dir={i18n.language === 'en' ? 'ltr' : 'rtl'}>    

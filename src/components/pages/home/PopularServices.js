@@ -11,7 +11,7 @@ function PopularServices() {
 
     const url='popularCategories';
     useEffect(() => {
-      const storedLanguage = Cookies.get('language');
+      const storedLanguage = Cookies.get('language') ? Cookies.get('language') : 'en';
         axios.get(`${url}`).then(response => {
           if(storedLanguage === "en"){
             setCategories(response?.data?.data?.en);
