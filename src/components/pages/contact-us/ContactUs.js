@@ -21,6 +21,9 @@ function Contact() {
       setAlert(null);
     }, 3000);
   }
+  useEffect (() => {
+    document.title = 'Khadim Hazir | Contact Us';
+  }, []);
 
   const handleChange = (e) => {
     const value=e.target.value;

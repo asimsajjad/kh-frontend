@@ -16,6 +16,7 @@ function ChangePassword() {
   const changepassword_url='changePassword';
 
   useEffect(() => {
+    document.title = `Khadim Hazir | Password Update`;
     if(user_id == null){
       navigate('/login');
     }

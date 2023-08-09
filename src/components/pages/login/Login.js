@@ -45,6 +45,7 @@ function Login() {
 
 // console.log(userLocation); 
   useEffect(() => {
+    document.title = `Khadim Hazir | Login`;
     if(user_id != null){
       navigate('/labours');
     }

@@ -47,6 +47,8 @@ function ProfileUpdate() {
   
   useEffect(() => {
     const storedLanguage = Cookies.get('language') ? Cookies.get('language') : 'en';
+    document.title = 'Khadim Hazir | Profile Update';
+
     axios.get(`${category_url}`).then(response => {
       if(storedLanguage === "en"){
         setCategory(response?.data?.data?.en);

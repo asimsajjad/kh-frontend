@@ -14,12 +14,14 @@ function Info() {
     const [isLoading, setIsLoading] = useState(false);
     
     useEffect(() => {
+        
         setIsLoading(true);
         const formData = new FormData()
         formData.append('user_slug', type)
         axios.post(`${url}`, formData)
         .then(response => {
         setProfile(response?.data?.data);
+        document.title = `Khadim Hazir | Profile - ${response?.data?.data[0].username}`;
         setIsLoading(false);
         })
         .catch(error => {

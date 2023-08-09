@@ -46,6 +46,7 @@ function Categories() {
 
   function loadEmployees(slug = type) {
     setIsLoading(true);
+    document.title = `Khadim Hazir | Labours`;
     const storedLanguage = Cookies.get('language') ? Cookies.get('language') : 'en';
     const formData = new FormData();
     if (!user_id) {
@@ -65,6 +66,7 @@ function Categories() {
       .then((response) => {
         if (storedLanguage === "en") {
           setLabour(response?.data?.data?.en);
+          
         } else if (storedLanguage === "ur") {
           setLabour(response?.data?.data?.ur);
         } else if (storedLanguage === "ar") {
@@ -182,7 +184,7 @@ function Categories() {
                           return (<p><i className="bi mr-2 bi-geo-alt-fill fas fa-location-arrow"></i>{(labour_data.country)}</p>)
                         }
                         else if(user_id != null && usertype== 'employer'){
-                          if((labour_data.distance != null || labour_data.distance != '')  && (labour_data.country != '')){
+                          if((labour_data.distance !== '')  && (labour_data.country !== '')){
                             return (<p><i className="bi mr-2 bi-geo-alt-fill fas fa-location-arrow"></i>{labour_data.country} {(labour_data.distance)}km {t("away")}</p>)
                           }else if(labour_data.distance !== '' && labour_data.country === ''){
                             return (<p><i className="bi mr-2 bi-geo-alt-fill fas fa-location-arrow"></i>{(labour_data.distance)}km {t("away")}</p>)

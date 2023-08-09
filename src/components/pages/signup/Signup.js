@@ -72,6 +72,7 @@ function Signup() {
 
     const category_url='';
         useEffect(() => {
+          document.title = `Khadim Hazir | Create Account`;
           const storedLanguage = Cookies.get('language') ? Cookies.get('language') : 'en';
           if(user_id != null){
             navigate("/labours");
@@ -190,11 +191,9 @@ function Signup() {
             <p className="text-center">Or use your email for registeration</p> */}
             <div className="container pt-3">
               <div className="row">
-                {/* <div className="col-md-12"> */}
                 <div className="col-md-6">
                 <input className="form-check-input m-4" type="radio" name="usertype" id="radio2" value="employer" checked={usertype === 'employer'} onChange={handleSelect} />
                   <div className="form-check form-check-inline">
-                    {/* <div className="row .redio-buttons-image"> */}
                       <p><img src="assets/images/employee.png" alt="" className=" labour"/></p>
                       <label>{t("employer")}</label>
                     </div>
@@ -202,27 +201,25 @@ function Signup() {
                 <div className="col-md-6">
                     <input className="form-check-input m-4" type="radio" name="usertype" id="radio1" value="employee" checked={usertype === 'employee'} onChange={handleSelect}/>
                     <div className="form-check form-check-inline">
-                      {/* <div className="row .redio-buttons-image"> */}
                         <p><img src="assets/images/labour.png" alt="" className=" labour"/></p>
                         <label>{t("labour")}</label>
                       </div>
-                    </div>                  
-            {/* </div> */}
-          </div>
-        </div>
-        <div>
-        <div className="name-input mb-4 d-flex">
-          <label className={i18n.language === 'en' ? "": "pr-3 pl-2"}><i className="fas fa-user"></i></label>
-          <input className="" type="name" name='username' placeholder={`${t("name")} (${t("required")})`} value={user.username} onChange={handleChange} required title="Please enter your username. This field is required."/>
-        </div>
-        <div className="name-input mb-4 d-flex">
-          <label className={i18n.language === 'en' ? "": "pr-3 pl-2"}><i className="far fa-envelope"></i></label>
-          <input className="" type="email" name='email' placeholder={`${t("email")} (${t("required")})`} value={user.email} onChange={handleChange} pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?" required/>    
-        </div>
-        <div className="password-input mb-4 d-flex">
-          <label className={i18n.language === 'en' ? "": "pr-3 pl-2"}><i className="fas fa-lock	"></i></label>
-          <input className="password-input" type="password" name="password" id="" placeholder={`${t("password")} (${t("required")})`} value={user.password} onChange={handleChange} required/>
-        </div>
+                  </div>                  
+                </div>
+              </div>
+            <div>
+            <div className="name-input mb-4 d-flex">
+              <label className={i18n.language === 'en' ? "": "pr-3 pl-2"}><i className="fas fa-user"></i></label>
+              <input className="" type="name" name='username' placeholder={`${t("name")} (${t("required")})`} value={user.username} onChange={handleChange} required title="Please enter your username. This field is required."/>
+            </div>
+            <div className="name-input mb-4 d-flex">
+              <label className={i18n.language === 'en' ? "": "pr-3 pl-2"}><i className="far fa-envelope"></i></label>
+              <input className="" type="email" name='email' placeholder={`${t("email")} (${t("required")})`} value={user.email} onChange={handleChange} pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?" required/>    
+            </div>
+            <div className="password-input mb-4 d-flex">
+              <label className={i18n.language === 'en' ? "": "pr-3 pl-2"}><i className="fas fa-lock	"></i></label>
+              <input className="password-input" type="password" name="password" id="" placeholder={`${t("password")} (${t("required")})`} value={user.password} onChange={handleChange} required/>
+            </div>
         <div className="name-input d-flex">
           <label className={i18n.language === 'en' ? "": "pr-3 pl-2"}><i className="fas fa-phone"></i></label>
           <input className="" type="number" name='phone_no' placeholder={`${t("phoneNumber")} (${t("required")})`} value={user.phone_no} onChange={handleChange} required/>

@@ -7,8 +7,14 @@ import Search from './Search';
 import PopularServices from './PopularServices';
 import ChooseCategory from './ChooseCategory';
 import Worker from './Worker';
+import { use } from 'i18next';
 
-function index() {
+function Home() {
+  useEffect(() => {
+    // Update the title whenever the component mounts
+    document.title = 'Khadim Hazir - Connect with the Right Talent for Your Needs';
+  }, []);
+
     return <>
     <Banner/>
     <Search/>
@@ -17,6 +23,6 @@ function index() {
     <Worker/>
     </>;
   }
-  export default index;
+  export default Home;
 
  

@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon1.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Discover skilled workers for your projects" />
     <meta name="theme-color" content="#000000" />
     <meta
       name="description"
@@ -36,45 +37,6 @@
 <!-- <script src="/custom.js"></script>
 <script src="/assets/slick/slick.js" type="text/javascript" charset="utf-8"></script> -->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC7dSggJbHZNMT7pOFMUOqLB9jCIGLeiqM&libraries=places"></script>
-<script>
-  // Function to change the title of the page
-  function changePageTitle(newTitle) {
-    document.getElementById("page-title").innerText = newTitle;
-  }
-
-  // Update title based on the current URL
-  function updateTitleBasedOnURL() {
-    const path = window.location.pathname;
-    const url = new URL(window.location.href);
-    const pathnameParts = url.pathname.split('/');
-    const username = pathnameParts[pathnameParts.length - 1];
-    if (path.includes("/categories")) {
-      changePageTitle("Khadim Hazir - Categories");
-    } else if (path.includes("/contact-us")) {
-      changePageTitle("Khadim Hazir - Contact Us");
-    } else if (path.includes("/login")) {
-      changePageTitle("Khadim Hazir - Login");
-    } else if (path.includes("/signup")) {
-      changePageTitle("Khadim Hazir - Signup");
-    } else if (path.includes("/labours")) {
-      changePageTitle("Khadim Hazir - Labours");
-    } else if (path.includes("/profile-update")) {
-      changePageTitle("Khadim Hazir - Profile Update");
-    } else if (path.includes("/profile")) {
-      changePageTitle(`Khadim Hazir profile - ${username}`);
-    } else {
-      changePageTitle("Khadim Hazir");
-    }
-  }
-
-  // Listen for hashchange events (URL changes)
-  window.addEventListener('hashchange', updateTitleBasedOnURL);
-
-  // Trigger the initial title update
-  updateTitleBasedOnURL();
-
-  
-</script>
 
 <link
   rel="stylesheet"

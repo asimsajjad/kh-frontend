@@ -16,6 +16,7 @@ function Categories() {
   const url='index';
   
   useEffect(() => {
+    document.title = 'Khadim Hazir | Categories';
     const fetchCategories = async () => {
       try {
         setIsLoading(true);

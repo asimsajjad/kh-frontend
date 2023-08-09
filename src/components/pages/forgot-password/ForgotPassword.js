@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router,Routes, Route, Link } from 'react-router-dom';
 import axios from '../../../config/axios';
 import Alert from '../../Alerts/alert';
@@ -12,6 +12,9 @@ function ForgotPassword() {
   const url='forgotPassword';
   const [isLoading, setIsLoading] = useState(false);
 
+  useEffect (() => {
+    document.title = `Khadim Hazir | Forgot Password`;
+  }, []);
   const handleChange = (e) => {
     const value=e.target.value;
     // alert(value);
