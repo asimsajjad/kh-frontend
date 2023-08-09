@@ -175,14 +175,24 @@ function Categories() {
                     </div>
                     <div className="col-md-8 ">
                       {(() => {
-                        if (user_id == null){
+                        if (user_id == null && labour_data.country != ''){
                           return (<p><i className="bi mr-2 bi-geo-alt-fill fas fa-location-arrow"></i>{(labour_data.country)}</p>)
                         }
-                        else if(usertype == "employee"){
+                        else if(usertype == "employee" && labour_data.country !=''){
                           return (<p><i className="bi mr-2 bi-geo-alt-fill fas fa-location-arrow"></i>{(labour_data.country)}</p>)
                         }
-                        else{
-                          return (<p><i className="bi mr-2 bi-geo-alt-fill fas fa-location-arrow"></i>{labour_data.country}, {(labour_data.distance)}km {t("away")}</p>)
+                        else if(user_id != null && usertype== 'employer'){
+                          if((labour_data.distance != null || labour_data.distance != '')  && (labour_data.country != '')){
+                            return (<p><i className="bi mr-2 bi-geo-alt-fill fas fa-location-arrow"></i>{labour_data.country} {(labour_data.distance)}km {t("away")}</p>)
+                          }else if(labour_data.distance !== '' && labour_data.country === ''){
+                            return (<p><i className="bi mr-2 bi-geo-alt-fill fas fa-location-arrow"></i>{(labour_data.distance)}km {t("away")}</p>)
+                          }else if(labour_data.distance === '' && (labour_data.country !== '')){
+                            return (<p><i className="bi mr-2 bi-geo-alt-fill fas fa-location-arrow"></i>{(labour_data.country)}</p>)
+                          }else if(labour_data.distance ==='' && labour_data.country === ''){
+                            return (<p></p>)
+                          } 
+                        }else{
+                          return (<p></p>)
                         }
                       })()} 
                     </div>

@@ -9,9 +9,9 @@ export const LanguageProvider = ({ children }) => {
   });
 
   // Update localStorage whenever the language changes
-  useEffect(() => {
-    localStorage.setItem('selectedLanguage', language);
-  }, [language]);
+  // useEffect(() => {
+  //   localStorage.setItem('selectedLanguage', language);
+  // }, [language]);
 
   return (
     <LanguageContext.Provider value={{ language, setLanguage }}>

@@ -7,93 +7,128 @@ import Cookies from 'js-cookie';
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
 
 function ProfileUpdate() {
-    const { t, i18n } = useTranslation();
-    const [profile, setProfile]=useState([]);
-    const [profileupdate, setProfileUpdate]=useState(null);
-    const [category, setCategory] = useState([]);
-    const [selectedImage, setSelectedImage] = useState(null);
-    const navigate = useNavigate();
-    const [isLoading, setIsLoading] = useState(false);
-    const [addressInput, setAddressInput] = useState('');
-    const [coordinates, setCoordinates] = useState({ lat: 0, lng: 0 });
-    const [countryname, setCountryName]=useState('');
+  const { t, i18n } = useTranslation();
+  const [profile, setProfile]=useState([]);
+  const [profileupdate, setProfileUpdate]=useState(null);
+  const [category, setCategory] = useState([]);
+  const [selectedImage, setSelectedImage] = useState(null);
+  const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
+  const [addressInput, setAddressInput] = useState('');
+  const [coordinates, setCoordinates] = useState({ lat: 0, lng: 0 });
+  const [countryname, setCountryName]=useState('');
 
-    // Handler for address suggestions selection
-    const handleSelectAddress = async (address) => {
-      try {
-        const results = await geocodeByAddress(address);
-        const latLng = await getLatLng(results[0]);
+  // Handler for address suggestions selection
+  const handleSelectAddress = async (address) => {
+    try {
+      // console.log(address);
+      const results = await geocodeByAddress(address);
+      const latLng = await getLatLng(results[0]);
+      let country = '';
+      for (const component of results[0].address_components) {
+        if (component.types.includes('country')) {
+          country = component.long_name;
+          setCountryName(country);
+          break;
+        }
+      }
+      // Do something with latLng if needed.
+      setAddressInput(address); // Update the address input value
+      setCoordinates(latLng);
+      handleEdit(0, 'address', address); // Update the address field in the profile state
+    } catch (error) {
+      console.error('Error selecting address', error);
+    }
+  };
+
+  const profile_url='profileData';
+  const update_url='updateProfile';
+  const category_url='';
+  
+  useEffect(() => {
+    const storedLanguage = Cookies.get('language') ? Cookies.get('language') : 'en';
+    axios.get(`${category_url}`).then(response => {
+      if(storedLanguage === "en"){
+        setCategory(response?.data?.data?.en);
+      }else if(storedLanguage === "ur"){
+        setCategory(response?.data?.data?.ur);
+      }else if(storedLanguage === "ar"){
+        setCategory(response?.data?.data?.ar);
+      }
+      // setCategory(response?.data?.data?.en);
+      loadProfile();
+      }).catch(error => {
+      console.error(error);
+    });  
+  }, []);
+    
+  useEffect(() => {
+    // Set the initial value of addressInput to info.address
+    if (profile.length > 0) {
+      setAddressInput(profile[0].address);
+    }
+  }, [profile]);
+    
+  useEffect(() => {
+    if (addressInput) {
+      geocodeByAddress(addressInput)
+      .then(results => getLatLng(results[0]))
+      .then(latLng => {
+      setCoordinates(latLng);
+      handleEdit(0, 'latitude', latLng.lat);  // Update latitude in the profile state
+      handleEdit(0, 'longitude', latLng.lng); // Update longitude in the profile state
+      })
+      .catch(error => {
+          console.error('Error fetching coordinates', error);
+      });
+    }
+  }, [addressInput]);
+      
+  useEffect(() => {
+    if (addressInput) {
+      geocodeByAddress(addressInput)
+      .then(results => {
         let country = '';
         for (const component of results[0].address_components) {
           if (component.types.includes('country')) {
             country = component.long_name;
             setCountryName(country);
+            handleEdit(0, 'country', country); // Update country field in the profile state
             break;
           }
         }
-        // Do something with latLng if needed.
-        setAddressInput(address); // Update the address input value
-        setCoordinates(latLng);
-        handleEdit(0, 'address', address); // Update the address field in the profile state
-      } catch (error) {
-        console.error('Error selecting address', error);
-      }
-    };
-    const profile_url='profileData';
-    const update_url='updateProfile';
+      })
+      .catch(error => {
+        console.error('Error fetching country name', error);
+      });
+    }
+  }, [addressInput]);
 
-    const category_url='';
-        useEffect(() => {
-          const storedLanguage = Cookies.get('language') ? Cookies.get('language') : 'en';
-          axios.get(`${category_url}`).then(response => {
-            if(storedLanguage === "en"){
-                setCategory(response?.data?.data?.en);
-              }else if(storedLanguage === "ur"){
-                setCategory(response?.data?.data?.ur);
-              }else if(storedLanguage === "ar"){
-                setCategory(response?.data?.data?.ar);
-              }
-            // setCategory(response?.data?.data?.en);
-            loadProfile();
-
-            }).catch(error => {
-            console.error(error);
-          });
-          
-       }, []
-       );
-       useEffect(() => {
-        // Set the initial value of addressInput to info.address
-        if (profile.length > 0) {
-          setAddressInput(profile[0].address);
-        }
-      }, [profile]);
-
-   function loadProfile(){
-    const formData = new FormData()
-    const user_id = localStorage.getItem('user_id')
-    formData.append('user_id', user_id)
-    setIsLoading(true);
-    axios.post(`${profile_url}`, formData)
-     .then(response => {
+  function loadProfile(){
+  const formData = new FormData()
+  const user_id = localStorage.getItem('user_id')
+  formData.append('user_id', user_id)
+  setIsLoading(true);
+  axios.post(`${profile_url}`, formData)
+    .then(response => {
       if(!response?.data?.message.success){
         navigate(`/login`);
       }
-    setProfile(response?.data?.data);
-    setIsLoading(false);
+      setProfile(response?.data?.data);
+      setIsLoading(false);
     })
     .catch(error => {
     console.error(error);
     setIsLoading(false);
     });
-}
-const handleEdit = (index, field, value) => {
+  }
+  const handleEdit = (index, field, value) => {
   const newItems = [...profile];
   newItems[index][field] = value;
   setProfileUpdate(newItems);
-};
+  };
 
-const handleImageUpload = (e) => {
+  const handleImageUpload = (e) => {
   const value=e.target.value;
   //console.log(value);
   setProfileUpdate({
@@ -101,65 +136,64 @@ const handleImageUpload = (e) => {
     [e.target.name]: value
   });
   // console.log(e.target.files)
-setSelectedImage(e.target.files[0]);
-};
-// console.log('coordinates',coordinates);
-    const handleSubmit = (e) => {
-      e.preventDefault();
-      // console.log(profileupdate);
-      setIsLoading(true);
-          const formData = new FormData()
-          const config = {
-            headers: { 'content-type': 'multipart/form-data' }
-           }
-           formData.append('user_id', profileupdate[0].user_id,)
-           if(profileupdate[0].user_type === 'employer'){
-            formData.append('category_id', '0',)
-          }
-          //  formData.append('category_slug', '0',)
-          formData.append('username',  profileupdate[0].username,)
-          formData.append('phone_no',  profileupdate[0].phone_no,)
-          formData.append('address',  profileupdate[0].address,)
-          formData.append('category_id',  profileupdate[0].category_id,)
-          formData.append('latitude', coordinates.lat,)
-          formData.append('longitude', coordinates.lng,)
-          formData.append('country', countryname,)
-          if(selectedImage){
-            formData.append('image',  selectedImage)
-          }
+  setSelectedImage(e.target.files[0]);
+  };
+  // console.log('coordinates',coordinates);
+  
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // console.log(profileupdate);
+    setIsLoading(true);
+    const formData = new FormData()
+    const config = {
+      headers: { 'content-type': 'multipart/form-data' }
+    }
+    formData.append('user_id', profileupdate[0].user_id,)
+    if(profileupdate[0].user_type === 'employer'){
+      formData.append('category_id', '0',)
+    }
+    //  formData.append('category_slug', '0',)
+    formData.append('username',  profileupdate[0].username,)
+    formData.append('phone_no',  profileupdate[0].phone_no,)
+    formData.append('address',  profileupdate[0].address,)
+    formData.append('category_id',  profileupdate[0].category_id,)
+    formData.append('latitude', coordinates.lat,)
+    formData.append('longitude', coordinates.lng,)
+    formData.append('country', countryname,)
+    if(selectedImage){
+      formData.append('image',  selectedImage)
+    }
 
-          const user=(profileupdate[0].username).replace(/ /g, '-');
-          // const user_slug=user.toLowerCase();
-            axios.post(`${update_url}`, formData, config)
-            .then(response =>{
-              // localStorage.removeItem('employer_latitude')
-                // localStorage.removeItem('employer_longitude')
-              if(profile[0].user_type === 'employer'){
-                localStorage.setItem('employer_latitude', coordinates.lat)
-                localStorage.setItem('employer_longitude', coordinates.lng)
-                navigate('/labours');
-              }else{
-                navigate('/categories');
-              }
-              // navigate(`/profile/${user_slug}`);
-              setIsLoading(false);
-            })
-            .catch(error => {
-            console.error(error);
-            setIsLoading(false);
-            });
-    };
+    const user=(profileupdate[0].username).replace(/ /g, '-');
+    // const user_slug=user.toLowerCase();
+    axios.post(`${update_url}`, formData, config)
+    .then(response =>{
+      if(profile[0].user_type === 'employer'){
+        localStorage.setItem('employer_latitude', coordinates.lat)
+        localStorage.setItem('employer_longitude', coordinates.lng)
+        navigate('/labours');
+      }else{
+        navigate('/categories');
+      }
+      // navigate(`/profile/${user_slug}`);
+      setIsLoading(false);
+    })
+    .catch(error => {
+    console.error(error);
+    setIsLoading(false);
+    });
+  };
     
-    function SubmitButton(){
-      if (profileupdate === null){
-        return <button className="btn login-btn" type="submit" disabled>{t("update")}</button>  
-      } 
-      else {
-        return <button className="btn login-btn" type="submit">{t("update")}</button>
-      };
-    };  
+  function SubmitButton(){
+    if (profileupdate === null){
+      return <button className="btn login-btn" type="submit" disabled>{t("update")}</button>  
+    } 
+    else {
+      return <button className="btn login-btn" type="submit">{t("update")}</button>
+    };
+  };  
 
-    const renderUser =(<section className="login-section pl-3" dir={i18n.language === 'en' ? 'ltr' : 'rtl'}> 
+  const renderUser =(<section className="login-section pl-3" dir={i18n.language === 'en' ? 'ltr' : 'rtl'}> 
     {profile.map((info, index) => ( 
     <div className="container mt-5" key={info.user_id}>
       <div className="row login-form ">
@@ -195,13 +229,6 @@ setSelectedImage(e.target.files[0]);
           )
         } 
       })()}
-           {/* <div className="row mb-4">
-              <div className="text-left">
-                 <textarea className="form-control" type="name" name="address" id="floatingTextarea2" 
-                 value={info.address} onChange={(event) => handleEdit(index, 'address', event.target.value)} placeholder={t("writeYourAddress")}></textarea>
-                 
-              </div>              
-    </div>*/}
      <div className="autocomplete-container">
             <div className="row mt-4">
           <div className="text-left">

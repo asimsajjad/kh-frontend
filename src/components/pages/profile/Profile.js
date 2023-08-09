@@ -58,7 +58,7 @@ function Info() {
                           <p className="p1">{info.username}</p>
                         </div>
             <div className="col-md-8 ">
-            <p className='p1'> <img src={`${process.env.REACT_APP_BASE_URL}assets/images/location.png`} className='location_icon '></img>{info.country ? info.country : 'Pakistan'}</p> 
+            <p className='p1'> <img src={`${process.env.REACT_APP_BASE_URL}assets/images/location.png`} className='location_icon '></img>{info.country ? info.country : ''}</p> 
             </div>
             </div>
             <p className="p2">{info.category_name}</p>

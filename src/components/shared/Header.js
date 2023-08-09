@@ -25,6 +25,7 @@ function Header() {
     localStorage.removeItem('user_id');
     localStorage.removeItem('employer_latitude');
     localStorage.removeItem('employer_longitude');
+    localStorage.removeItem('user_type');
     sessionStorage.removeItem('user_id');
     showAlert(t('youHaveLoggedOut'), 'success');
     navigate('/login');
