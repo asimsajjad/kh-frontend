@@ -110,4 +110,7 @@ export default{
 
   required:"ضروری",
   away:"دور",
+
+  switchToEmployer:'آجر پر سوئچ کریں۔',
+  switchToLabour:'لیبر پر سوئچ کریں',
 }

@@ -110,4 +110,7 @@ export default{
 
   required:"required",
   away:"Away",
+
+  switchToEmployer:'Switch to Employer',
+  switchToLabour:'Switch to Labour',
 }

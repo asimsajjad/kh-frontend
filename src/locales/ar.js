@@ -110,4 +110,7 @@ export default{
 
   required:"مطلوب",
   away:"بعيد",
+
+  switchToEmployer:'قم بالتبديل إلى صاحب العمل',
+  switchToLabour:'التحول إلى العمل',
 }

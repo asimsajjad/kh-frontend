@@ -82,62 +82,64 @@ function ChangePassword() {
     // };
   };  
 
-  const renderUser =(<section className="login-section pl-3" dir={i18n.language === 'en' ? 'ltr' : 'rtl'}>  
-  <div className="container mt-5">
-    <div className="row login-form ">
-      <div className="col-md-8">
-      <Alert alert={alert}/>
-        <form onSubmit={handleSubmit}  method="POST">
-          <h2 className="text-center mb-4 pt-4">{t("passwordUpdate")}</h2>
-          {/* <div className="social-media-links d-flex justify-content-center pt-3">
-          <Link to=""><i className="fa-brands fa-facebook"></i></Link>
+  const renderUser =(
+    <section className="login-section pl-3" dir={i18n.language === 'en' ? 'ltr' : 'rtl'}>  
+      <div className="container mt-5">
+        <div className="row login-form ">
+          <div className="col-md-8">
+            <Alert alert={alert}/>
+            <form onSubmit={handleSubmit}  method="POST">
+            <h2 className="text-center mb-4 pt-4">{t("passwordUpdate")}</h2>
+            {/* <div className="social-media-links d-flex justify-content-center pt-3">
+            <Link to=""><i className="fa-brands fa-facebook"></i></Link>
             <Link href=""><i className="fa-brands fa-linkedin"></i></Link>
             <Link href=""><i className="fa-brands fa-google-plus"></i></Link>
+            </div>
+            <p className="text-center">Or use your email for registeration</p> */}
+            <div>
+              <div className="name-input mb-4 d-flex">
+                <label className={i18n.language === 'en' ? "": "pr-3 pl-2"}><i className="fas fa-lock"></i></label>
+                <input
+                  type="password"
+                  id="oldpassword"
+                  name="oldpassword"
+                  placeholder={t("enterCurrentPassword")}
+                  value={oldpassword}
+                  onChange={handleInputChange}
+                  required/>
+              </div>
+              <div className="name-input mb-4 d-flex">
+                <label className={i18n.language === 'en' ? "": "pr-3 pl-2"}><i className="fas fa-lock"></i></label>
+                <input
+                type="password"
+                id="newpassword"
+                name="newpassword"
+                placeholder={t("enterNewPassword")}
+                value={newpassword}
+                onChange={handlePasswordChange} required/>
+              </div>
+            </div>
+            <SubmitButton/>
+            </form>
           </div>
-          <p className="text-center">Or use your email for registeration</p> */}
-          <div>
-      <div className="name-input mb-4 d-flex">
-        <label className={i18n.language === 'en' ? "": "pr-3 pl-2"}><i className="fas fa-lock"></i></label>
-        <input
-          type="password"
-          id="oldpassword"
-          name="oldpassword"
-          placeholder={t("enterCurrentPassword")}
-          value={oldpassword}
-          onChange={handleInputChange}
-          required
-        />
-      </div>
-      <div className="name-input mb-4 d-flex">
-        <label className={i18n.language === 'en' ? "": "pr-3 pl-2"}><i className="fas fa-lock"></i></label>
-        <input
-          type="password"
-          id="newpassword"
-          name="newpassword"
-          placeholder={t("enterNewPassword")}
-          value={newpassword}
-          onChange={handlePasswordChange} required
-        />
-      </div>
-      </div>
-          <SubmitButton/>
-        </form>
-      </div>
-      <div className={i18n.language === 'en' ? "col-md-4 pr-0" : "col-md-4 pl-0"}>
-        <div className={i18n.language === 'en' ? "login-details" : "login-details-rtl"}>
-          <h3 className="text-light">{t("welcomeToKhadimHazir")}</h3>
-          <p className="text-light">{t("ifYouWantToUpdateProfile")}</p>
-          <Link className="contact" to="/profile-update">{t("profileUpdate")}<i className={i18n.language === 'en' ? 'ml-3 fas fa-arrow-right' : 'mr-3 fas fa-arrow-left'}></i></Link>
+          <div className={i18n.language === 'en' ? "col-md-4 pr-0" : "col-md-4 pl-0"}>
+            <div className={i18n.language === 'en' ? "login-details" : "login-details-rtl"}>
+              <h3 className="text-light">{t("welcomeToKhadimHazir")}</h3>
+              <p className="text-light">{t("ifYouWantToUpdateProfile")}</p>
+              <Link className="contact" to="/profile-update">{t("profileUpdate")}<i className={i18n.language === 'en' ? 'ml-3 fas fa-arrow-right' : 'mr-3 fas fa-arrow-left'}></i></Link>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-</section>);
+    </section>
+  );
 
-if(user_id != null){
-  return  <> 
-    {isLoading ? <LoadingSpinner /> : renderUser}
+  if(user_id != null){
+    return ( 
+    <> 
+      {isLoading ? <LoadingSpinner /> : renderUser}
     </>
-}
+    )
+  }
 }
 export default ChangePassword;

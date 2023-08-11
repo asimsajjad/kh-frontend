@@ -27,27 +27,27 @@ function ForgotPassword() {
   const handleSubmit = (e) => {
     setIsLoading(true);
     e.preventDefault();
-        const formData = new FormData()
-        formData.append('email',  email.email,)
-        axios.post(`${url}`, formData)
-        .then(response => {
-          setIsLoading(false);
-          console.log(response?.data?.data)
-          if(response?.data?.message?.success){
-            const user=(response?.data?.message?.msg).replace(/ /g, '_');
-              showAlert(user, "success")
-            // showAlert( response?.data?.message?.msg, "success")
-          }else{
-            const user=(response?.data?.message?.msg).replace(/ /g, '_');
-              showAlert(user, "danger")
-            // showAlert(response?.data?.message?.msg, "danger")
-          }
-        })
-        .then(setEmail({email: "",}))
-        .catch(error => {
-        console.error(error);
-        setIsLoading(false);
-        });
+    const formData = new FormData()
+    formData.append('email',  email.email,)
+    axios.post(`${url}`, formData)
+    .then(response => {
+      setIsLoading(false);
+      console.log(response?.data?.data)
+      if(response?.data?.message?.success){
+        const user=(response?.data?.message?.msg).replace(/ /g, '_');
+        showAlert(user, "success")
+        // showAlert( response?.data?.message?.msg, "success")
+      }else{
+        const user=(response?.data?.message?.msg).replace(/ /g, '_');
+        showAlert(user, "danger")
+        // showAlert(response?.data?.message?.msg, "danger")
+      }
+      })
+    .then(setEmail({email: "",}))
+    .catch(error => {
+      console.error(error);
+      setIsLoading(false);
+    });
   };
 
   const showAlert = (message, type) => {
@@ -60,38 +60,39 @@ function ForgotPassword() {
     }, 3000);
   }
 
-  const renderUser = (<section className="login-section pl-3"  dir={i18n.language === 'en' ? 'ltr' : 'rtl'}>
-  <div className="container mt-5">
-    <div className="row ">
-      <div className={i18n.language === 'en' ? "col-md-8 login-form1" : "col-md-8 login-form1-rtl"}>
-      <Alert alert={alert}/>
-        <form onSubmit={handleSubmit}>
-          <h2 className="text-center pt-4">{t("forgotPassword")}</h2>
-          <div className="social-media-links d-flex justify-content-center pt-3">
-          {/* <Link to=""><i class="fa-brands fa-facebook"></i></Link>
-            <Link href=""><i class="fa-brands fa-linkedin"></i></Link>
-            <Link href=""><i class="fa-brands fa-google-plus"></i></Link> */}
+  const renderUser = (
+    <section className="login-section pl-3"  dir={i18n.language === 'en' ? 'ltr' : 'rtl'}>
+      <div className="container mt-5">
+        <div className="row ">
+          <div className={i18n.language === 'en' ? "col-md-8 login-form1" : "col-md-8 login-form1-rtl"}>
+            <Alert alert={alert}/>
+            <form onSubmit={handleSubmit}>
+              <h2 className="text-center pt-4">{t("forgotPassword")}</h2>
+              <div className="social-media-links d-flex justify-content-center pt-3">
+                {/* <Link to=""><i class="fa-brands fa-facebook"></i></Link>
+                <Link href=""><i class="fa-brands fa-linkedin"></i></Link>
+                <Link href=""><i class="fa-brands fa-google-plus"></i></Link> */}
+              </div>
+              <div className="name-input mb-4 d-flex mt-5">
+                <label htmlFor="" className={i18n.language === 'en' ? "": "pr-3"}><i className="far fa-envelope"></i></label>
+                <input className="form-control" type="email" name='email' value={email.email} placeholder={t("enterEmail")} id="formGroupExampleInput2" onChange={handleChange} required/>
+              </div>
+              <button className="btn login-btn mt-5" type='submit'>{t("submit")}</button>
+            </form>
           </div>
-          
-          <div className="name-input mb-4 d-flex mt-5">
-            <label htmlFor="" className={i18n.language === 'en' ? "": "pr-3"}><i className="far fa-envelope"></i></label>
-            <input className="form-control" type="email" name='email' value={email.email} placeholder={t("enterEmail")} id="formGroupExampleInput2" onChange={handleChange} required/>
+          <div className={i18n.language === 'en' ? "col-md-4 pl-0" : "col-md-4 pr-0"}>
+            <div className={i18n.language === 'en' ? "login-details" : "login-details-rtl"}>
+              <h3 className="text-light">{t("welcomeToKhadimHazir")}</h3>
+              <p className="text-light">{t("getNewPassword")}</p>
+              <Link className="contact" to="/login">{t("orLogin")}<i className={i18n.language === 'en' ? 'ml-3 fas fa-arrow-right' : 'mr-3 fas fa-arrow-left'}></i></Link>
+            </div>
           </div>
-         <button className="btn login-btn mt-5" type='submit'>{t("submit")}</button>
-        </form>
-      </div>
-      <div className={i18n.language === 'en' ? "col-md-4 pl-0" : "col-md-4 pr-0"}>
-        <div className={i18n.language === 'en' ? "login-details" : "login-details-rtl"}>
-          <h3 className="text-light">{t("welcomeToKhadimHazir")}</h3>
-          <p className="text-light">{t("getNewPassword")}</p>
-          <Link className="contact" to="/login">{t("orLogin")}<i className={i18n.language === 'en' ? 'ml-3 fas fa-arrow-right' : 'mr-3 fas fa-arrow-left'}></i></Link>
         </div>
       </div>
-    </div>
-  </div>
-</section>);
-    return <>
+    </section>
+  );
+  return <>
     {isLoading ? <LoadingSpinner /> : renderUser}
-    </> 
+  </> 
 }
 export default ForgotPassword;
