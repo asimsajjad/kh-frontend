@@ -19,31 +19,6 @@ function Login() {
   const [isLoading, setIsLoading] = useState(false);
   const user_id = localStorage.getItem('user_id');
 
-  // const [userLocation, setUserLocation] = useState(null);
-
-  // useEffect(() => {
-  //   if ("geolocation" in navigator) {
-  //     // const options = {
-  //     //   enableHighAccuracy: true,
-  //     //   timeout: 5000,
-  //     //   maximumAge: 0,
-  //     // };
-  //     navigator.geolocation.getCurrentPosition(
-  //       (position) => {
-  //         const { latitude, longitude } = position.coords;
-  //         setUserLocation({ latitude, longitude });
-  //       },
-  //       (error) => {
-  //         console.error(error.message);
-  //       },
-  //       // options
-  //     );
-  //   } else {
-  //     console.log("Geolocation is not available in this browser.");
-  //   }
-  // }, []);
-
-// console.log(userLocation); 
   useEffect(() => {
     document.title = `Khadim Hazir | Login`;
     if(user_id != null){

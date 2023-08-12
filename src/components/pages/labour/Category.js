@@ -12,10 +12,11 @@ function Categories() {
   const [category, setCategory] = useState([]);
   const { type } = useParams();
   const [isLoading, setIsLoading] = useState(false);
-  const [currentPage, setCurrenPage] = useState(1);
+  const [totalEmployees, setTotalEmployees] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
   const recordsPerPage = 20;
-  const lastIndex = currentPage * recordsPerPage;
-  const firstIndex = lastIndex - recordsPerPage;
+  // const lastIndex = currentPage * recordsPerPage;
+  // const firstIndex = lastIndex - recordsPerPage;
   const user_id = localStorage.getItem("user_id");
   const usertype = localStorage.getItem("user_type");
   const employer_latitude = localStorage.getItem("employer_latitude");
@@ -41,10 +42,11 @@ function Categories() {
         console.error(error);
         setIsLoading(false);
       });
-    loadEmployees(type);
+      setCurrentPage(1);
+    loadEmployees(type,1);
   }, [type]);
 
-  function loadEmployees(slug = type) {
+  function loadEmployees(slug = type , pageNumber) {
     setIsLoading(true);
     document.title = `Khadim Hazir | Labours`;
     const storedLanguage = Cookies.get('language') ? Cookies.get('language') : 'en';
@@ -60,19 +62,23 @@ function Categories() {
       formData.append("employer_latitude", employer_latitude);
       formData.append("employer_longitude", employer_longitude);
     }
+    formData.append('recordsPerPage', recordsPerPage);
+    formData.append('page', pageNumber);
     const url = "employeesListing";
     axios
       .post(`${url}/multilang`, formData)
       .then((response) => {
         if (storedLanguage === "en") {
           setLabour(response?.data?.data?.en);
-          
+          setTotalEmployees(response?.data?.data?.en[0].totalEmployees);
         } else if (storedLanguage === "ur") {
           setLabour(response?.data?.data?.ur);
+          setTotalEmployees(response?.data?.data?.ur[0].totalEmployees);
         } else if (storedLanguage === "ar") {
           setLabour(response?.data?.data?.ar);
+          setTotalEmployees(response?.data?.data?.ar[0].totalEmployees);
         }
-        setCurrenPage(1);
+        setCurrentPage(pageNumber);
         setIsLoading(false);
       })
       .catch((error) => {
@@ -81,26 +87,14 @@ function Categories() {
       });
   }
 
-  const records = labour.slice(firstIndex, lastIndex);
-  const npage = Math.ceil(labour.length / recordsPerPage);
-  const numbers = [...Array(npage + 1).keys()].slice(1);
+  const totalPages = Math.ceil(totalEmployees / recordsPerPage);
 
-  function prePage() {
-    if (currentPage !== 1) {
-      setCurrenPage(currentPage - 1);
+  function changePage(pageNumber) {
+    if (pageNumber < 1 || pageNumber > totalPages) {
+      return; // Prevent navigating to invalid pages
     }
-  }
-
-  function changeCpage(id) {
-    setCurrenPage(id);
-  }
-
-  function nextPage() {
-    if (currentPage === npage) {
-      setCurrenPage(1);
-    } else {
-      setCurrenPage(currentPage + 1);
-    }
+    setCurrentPage(pageNumber);
+    loadEmployees(type, pageNumber);
   }
 
   const activeCategoryIndex = category.findIndex(
@@ -164,7 +158,7 @@ function Categories() {
     </div>
     <div className="container pt-4">
       <div className="row">
-        {records.map((labour_data) => (
+        {labour.map((labour_data) => (
           <div className="col-md-6 mt-4" key={labour_data.employee_id}>         
             <div className="profile-card d-flex">
               <img src={labour_data.image ? `${process.env.REACT_APP_RESOURCES_URL}images/${labour_data.image}` : `${process.env.REACT_APP_BASE_URL}assets/images/manager.png`} placeholder="no image" className="card-img-top rounded-circle" />    
@@ -224,23 +218,23 @@ function Categories() {
     </div>
     <div>
       {(() => {
-        if (npage>1) {
-          return (
-          <ul className='pagination' style={{justifyContent: 'center'}}>
-            <li className='page-item'>
-              <Link to="/labours" className="page-link" onClick={prePage}>{t("previous")}</Link>
-            </li>
-            {numbers.map((n, i) =>(
-              <li className={`page-item ${currentPage === n ? 'active' : ''}`} key={i}>
-                <Link to="/labours" className="page-link" onClick={()=> changeCpage(n)}>{n}</Link>
+        if(totalPages>1){
+          return(
+            <ul className='pagination' style={{ justifyContent: 'center' }}>
+              <li className='page-item'>
+                <button className="page-link" onClick={() => changePage(currentPage - 1)} disabled={currentPage === 1}>Prev</button>
               </li>
-            ))}
-            <li className='page-item'>
-              <Link to="/labours" className="page-link" onClick={nextPage}>{t("next")}</Link>
-            </li>
-          </ul>
+              {Array.from({ length: totalPages }, (_, index) => index + 1).map((pageNumber) => (
+                <li className={`page-item ${currentPage === pageNumber ? 'active' : ''}`} key={pageNumber}>
+                  <button className="page-link" onClick={() => changePage(pageNumber)}>{pageNumber}</button>
+                </li>
+              ))}
+              <li className='page-item'>
+                <button className="page-link" onClick={() => changePage(currentPage + 1)} disabled={currentPage === totalPages}>Next</button>
+              </li>
+            </ul>
           )
-        } 
+        }
       })()}
     </div>
   </div>);

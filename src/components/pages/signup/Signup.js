@@ -112,9 +112,9 @@ function Signup() {
           formData.append('address',  user.address,)
           formData.append('category_id',  user.category,)
           formData.append('image',  selectedImage)
-          formData.append('latitude', coordinates.lat,)
-          formData.append('longitude', coordinates.lng,)
-          formData.append('country', countryname,)
+          // formData.append('latitude', coordinates.lat,)
+          // formData.append('longitude', coordinates.lng,)
+          // formData.append('country', countryname,)
 
           axios.post(`${url}`, formData, config)
           .then(response => {
@@ -126,8 +126,8 @@ function Signup() {
                 // window.location.href ="categories";
                 navigate("/categories");
               }else{              
-                localStorage.setItem('employer_latitude', coordinates.lat)
-                localStorage.setItem('employer_longitude', coordinates.lng)  
+                localStorage.setItem('employer_latitude', response?.data?.data[0].latitude)
+                localStorage.setItem('employer_longitude', response?.data?.data[0].longitude)  
                 //window.location.href ="labours";
                 navigate("/labours");
               }

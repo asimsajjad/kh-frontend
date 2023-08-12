@@ -15,26 +15,26 @@ function ProfileUpdate() {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const [addressInput, setAddressInput] = useState('');
-  const [coordinates, setCoordinates] = useState({ lat: 0, lng: 0 });
-  const [countryname, setCountryName]=useState('');
+  // const [coordinates, setCoordinates] = useState({ lat: 0, lng: 0 });
+  // const [countryname, setCountryName]=useState('');
 
   // Handler for address suggestions selection
   const handleSelectAddress = async (address) => {
     try {
       // console.log(address);
-      const results = await geocodeByAddress(address);
-      const latLng = await getLatLng(results[0]);
-      let country = '';
-      for (const component of results[0].address_components) {
-        if (component.types.includes('country')) {
-          country = component.long_name;
-          setCountryName(country);
-          break;
-        }
-      }
+      // const results = await geocodeByAddress(address);
+      // const latLng = await getLatLng(results[0]);
+      // let country = '';
+      // for (const component of results[0].address_components) {
+      //   if (component.types.includes('country')) {
+      //     country = component.long_name;
+      //     setCountryName(country);
+      //     break;
+      //   }
+      // }
       // Do something with latLng if needed.
       setAddressInput(address); // Update the address input value
-      setCoordinates(latLng);
+      // setCoordinates(latLng);
       handleEdit(0, 'address', address); // Update the address field in the profile state
     } catch (error) {
       console.error('Error selecting address', error);
@@ -71,40 +71,40 @@ function ProfileUpdate() {
     }
   }, [profile]);
     
-  useEffect(() => {
-    if (addressInput) {
-      geocodeByAddress(addressInput)
-      .then(results => getLatLng(results[0]))
-      .then(latLng => {
-      setCoordinates(latLng);
-      handleEdit(0, 'latitude', latLng.lat);  // Update latitude in the profile state
-      handleEdit(0, 'longitude', latLng.lng); // Update longitude in the profile state
-      })
-      .catch(error => {
-          console.error('Error fetching coordinates', error);
-      });
-    }
-  }, [addressInput]);
+  // useEffect(() => {
+  //   if (addressInput) {
+  //     geocodeByAddress(addressInput)
+  //     .then(results => getLatLng(results[0]))
+  //     .then(latLng => {
+  //     setCoordinates(latLng);
+  //     handleEdit(0, 'latitude', latLng.lat);  // Update latitude in the profile state
+  //     handleEdit(0, 'longitude', latLng.lng); // Update longitude in the profile state
+  //     })
+  //     .catch(error => {
+  //         console.error('Error fetching coordinates', error);
+  //     });
+  //   }
+  // }, [addressInput]);
       
-  useEffect(() => {
-    if (addressInput) {
-      geocodeByAddress(addressInput)
-      .then(results => {
-        let country = '';
-        for (const component of results[0].address_components) {
-          if (component.types.includes('country')) {
-            country = component.long_name;
-            setCountryName(country);
-            handleEdit(0, 'country', country); // Update country field in the profile state
-            break;
-          }
-        }
-      })
-      .catch(error => {
-        console.error('Error fetching country name', error);
-      });
-    }
-  }, [addressInput]);
+  // useEffect(() => {
+  //   if (addressInput) {
+  //     geocodeByAddress(addressInput)
+  //     .then(results => {
+  //       let country = '';
+  //       for (const component of results[0].address_components) {
+  //         if (component.types.includes('country')) {
+  //           country = component.long_name;
+  //           setCountryName(country);
+  //           handleEdit(0, 'country', country); // Update country field in the profile state
+  //           break;
+  //         }
+  //       }
+  //     })
+  //     .catch(error => {
+  //       console.error('Error fetching country name', error);
+  //     });
+  //   }
+  // }, [addressInput]);
 
   function loadProfile(){
   const formData = new FormData()
@@ -159,9 +159,9 @@ function ProfileUpdate() {
     formData.append('phone_no',  profileupdate[0].phone_no,)
     formData.append('address',  profileupdate[0].address,)
     formData.append('category_id',  profileupdate[0].category_id,)
-    formData.append('latitude', coordinates.lat,)
-    formData.append('longitude', coordinates.lng,)
-    formData.append('country', countryname,)
+    // formData.append('latitude', coordinates.lat,)
+    // formData.append('longitude', coordinates.lng,)
+    // formData.append('country', countryname,)
     if(selectedImage){
       formData.append('image',  selectedImage)
     }
@@ -171,8 +171,8 @@ function ProfileUpdate() {
     axios.post(`${update_url}`, formData, config)
     .then(response =>{
       if(profile[0].user_type === 'employer'){
-        localStorage.setItem('employer_latitude', coordinates.lat)
-        localStorage.setItem('employer_longitude', coordinates.lng)
+        localStorage.setItem('employer_latitude', (response?.data?.data[0].latitude))
+        localStorage.setItem('employer_longitude', (response?.data?.data[0].longitude))
         navigate('/labours');
       }else{
         navigate('/categories');
