@@ -124,38 +124,42 @@ function Header() {
                 <option className="option" value="ar">العربية</option>
                 <option className="option" value="ur">اردو</option>
               </select>
+              <div className="nav-link text-light select ml-3 mt-1 switch-input">
               {user_id && (
-                <div className="nav-link text-light select ml-3 mt-1">
-                  {usertype === 'employer' ? (
-                    <label style={{cursor:'pointer'}}>
-                      {t('switchToLabour')}
-                      <input
-                        className="form-check-input"
-                        type="radio"
-                        name="usertype"
-                        value="employee"
-                        checked={usertype === 'employee'}
-                        onChange={handleSelect}
-                        style={{ display: 'none' }}
-                      />        
+                  <div className="">
+                    <label className="switch-label" style={{ cursor: 'pointer' }}>
+                      {usertype === 'employer' ? (
+                        <>
+                          {t('switchToLabour')}
+                          <input
+                            className="form-check-input"
+                            type="radio"
+                            name="usertype"
+                            value="employee"
+                            checked={usertype === 'employee'}
+                            onChange={handleSelect}
+                            style={{ display: 'none' }}
+                          />
+                        </>
+                      ) : (
+                        <>
+                          {t('switchToEmployer')}
+                          <input
+                            className="form-check-input"
+                            type="radio"
+                            name="usertype"
+                            value="employer"
+                            checked={usertype === 'employer'}
+                            onChange={handleSelect}
+                            style={{ display: 'none' }}
+                          />
+                        </>
+                      )}
                     </label>
-                  ) : (
-                    <label style={{cursor:'pointer'}}>
-                      {t('switchToEmployer')}
-                      <input
-                        className="form-check-input"
-                        type="radio"
-                        name="usertype"
-                        value="employer"
-                        checked={usertype === 'employer'}
-                        onChange={handleSelect}
-                        style={{ display: 'none' }}
-                      />
-                      
-                    </label>
-                  )}
-                </div>
-              )}
+                    <div className="wave-background"></div>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
           </div>

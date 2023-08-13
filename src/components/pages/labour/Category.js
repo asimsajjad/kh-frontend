@@ -90,8 +90,10 @@ function Categories() {
   const totalPages = Math.ceil(totalEmployees / recordsPerPage);
 
   function changePage(pageNumber) {
-    if (pageNumber < 1 || pageNumber > totalPages) {
-      return; // Prevent navigating to invalid pages
+    if (pageNumber < 1) {
+      pageNumber = totalPages;
+    } else if (pageNumber > totalPages) {
+      pageNumber = 1;
     }
     setCurrentPage(pageNumber);
     loadEmployees(type, pageNumber);
@@ -222,7 +224,7 @@ function Categories() {
           return(
             <ul className='pagination' style={{ justifyContent: 'center' }}>
               <li className='page-item'>
-                <button className="page-link" onClick={() => changePage(currentPage - 1)} disabled={currentPage === 1}>Prev</button>
+                <button className="page-link" onClick={() => changePage(currentPage - 1)} /*disabled={currentPage === 1}*/>Prev</button>
               </li>
               {Array.from({ length: totalPages }, (_, index) => index + 1).map((pageNumber) => (
                 <li className={`page-item ${currentPage === pageNumber ? 'active' : ''}`} key={pageNumber}>
@@ -230,7 +232,7 @@ function Categories() {
                 </li>
               ))}
               <li className='page-item'>
-                <button className="page-link" onClick={() => changePage(currentPage + 1)} disabled={currentPage === totalPages}>Next</button>
+                <button className="page-link" onClick={() => changePage(currentPage + 1)} /*disabled={currentPage === totalPages}*/>Next</button>
               </li>
             </ul>
           )

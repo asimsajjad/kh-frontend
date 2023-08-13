@@ -783,3 +783,38 @@ input:required:focus {
       font-size: 17px;
       background-color: #673AB7;
   }
+  .switch-input {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden; /* Ensure the overflow is hidden to hide the overflow of the animation */
+  }
+  .switch-label {
+    position: relative;
+    z-index: 2; /* Ensure the text is above the wave background */
+  }
+  
+  .wave-background {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* background-image: linear-gradient(-45deg, #007bff, #00ff80); */
+    background-color: rgb(39, 3, 59);
+    opacity: 0.5;
+    animation: waveAnimation 2s linear infinite; /* Adjust the animation duration and timing function as needed */
+    border-radius: 20px;
+  }
+  
+  @keyframes waveAnimation {
+    0% {
+      transform: translateX(-100%); /* Start the animation from the left */
+    }
+    100% {
+      transform: translateX(100%); /* Move the animation to the right */
+    }
+  }
+  
+  
+  
